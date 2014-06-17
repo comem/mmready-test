@@ -12,8 +12,8 @@ console.log('**********************');
 
 
 
-$(document).ready(function($) {
-console.log('jquery Ready');
+//$(document).ready(function($) {
+//console.log('jquery Ready');
 
 
 
@@ -21,5 +21,5 @@ console.log('jquery Ready');
 
 
 
-});
+//});
 
