@@ -21,7 +21,17 @@ body {
   background-color: #428bca;
 }
 
+/*
+*Show
+*/
 
+.show {
+  border-bottom: solid 1px grey;
+}
+
+.edit {
+  text-align: right;
+}
 
 
 /*
