@@ -2,9 +2,7 @@
 
 echo '{
 status : "success",
- data : {"Events":
-[
-{"id":"1", "name": "Event1", "Artists":
+ data : [{"id":"1", "name": "Event1", "Artists":
 [
 {"id" : "1", "name" : "MMReady()", "Musicians" : [
 { "id" : "1", "name" : "Clélia", "Instruments" : "Vocal" },
@@ -20,10 +18,8 @@ status : "success",
  { "id" : "9", "name" : "Laurent", "Instruments" : "Bass" }
 ]}
 ]
-},
- {"id":"1", "name": "Event2"}
-]
-}}';
+},{"id":"1", "name": "Event2"}]
+}';
 
 
     
