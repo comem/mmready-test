@@ -42,9 +42,9 @@ $(document).ready(function() {
   var event2 = new eventModel({id:"2",name:"event2"});
 console.log(event1);
 
-var evenements = new events(event1,event2);
+var evenements = new allEvents(event1,event2);
 
-console.log(events);
+console.log(allEvents);
 
 });
 

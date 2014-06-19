@@ -42,11 +42,11 @@ var eventModel = MyModel.extend();
         events: new eventsNested(),
         initialize: function() {
             
-            console.log("La collection events est crÃ©e")
+            console.log("La collection events est créée");
             var that = this;//astuce car "this" se perd trop profond dans anonymous function
             setInterval(function() {                
                 that.fetch();
-            }, 10000)
+            }, 10000);
         }
 
     });
