@@ -3688,6 +3688,11 @@ button.close {
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1);
 }
+/** EVENT **/
+.eventResult {
+  border: solid 1px #aeaeae;
+  padding: 10px;
+}
 body {
   background-color: url(img/bg.png);
   margin-top: 75px;
@@ -3771,7 +3776,56 @@ body {
   font-weight: 400;
   src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
 }
-/**SEARCH TOOLS**/
+.button-group,
+.button-group li {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+.button-group {
+  font-size: 0;
+  /* Inline block elements gap - fix */
+
+  margin: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  padding: 7px;
+  border-radius: 7px;
+}
+.button-group li {
+  margin-right: -1px;
+  /* Overlap each right button border */
+
+}
+.button-group .button {
+  font-size: 13px;
+  /* Set the font size, different from inherited 0 */
+
+  border-radius: 0;
+}
+.button-group .button:active {
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2) inset, 5px 0 5px -3px rgba(0, 0, 0, 0.2) inset, -5px 0 5px -3px rgba(0, 0, 0, 0.2) inset;
+}
+/*
+.button-group li:first-child .button{
+  border-radius: 3px 0 0 3px;
+}
+
+.button-group li:first-child .button:active{
+  box-shadow: 0 0 1px rgba(0, 0, 0, .2) inset,
+              -5px 0 5px -3px rgba(0, 0, 0, .2) inset;
+}
+
+.button-group li:last-child .button{
+  border-radius: 0 3px 3px 0;
+}
+
+.button-group li:last-child .button:active{
+  box-shadow: 0 0 1px rgba(0, 0, 0, .2) inset,
+              5px 0 5px -3px rgba(0, 0, 0, .2) inset;
+}
+*//**SEARCH TOOLS**/
 .search-fixed {
   position: fixed;
   height: 50px;
@@ -3782,6 +3836,12 @@ body {
   z-index: 1000;
   background-color: white;
   border-bottom: solid 1px #acacac;
+}
+.advancedSearch {
+  background-color: red;
+}
+.close {
+  padding: 10px;
 }
 /**PANELS**/
 .panel-heading {
