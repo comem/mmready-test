@@ -3690,13 +3690,25 @@ button.close {
 }
 /** EVENT **/
 .eventResult {
-  border: solid 1px #aeaeae;
-  padding: 10px;
+  background-color: #fff;
+  border-left: solid 5px;
+  padding-left: 15px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.date {
+  float: left;
+  height: 100%;
+  margin-right: 10px;
 }
 body {
   background-color: url(img/bg.png);
-  background-color: #ffffff;
+  background-color: #f2f4f8;
   margin-top: 100px;
+  font-family: "Open sans", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333333;
 }
 @font-face {
   font-family: 'icomoon';
@@ -3719,7 +3731,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.ico-party:before {
+.ico-event:before {
   font-family: 'icomoon';
   content: "\e602";
 }
@@ -3750,6 +3762,20 @@ body {
 .ico-search:before {
   font-family: 'icomoon';
   content: "\e60a";
+}
+.ico-edit:before {
+  font-family: 'icomoon';
+  content: "\e60d";
+}
+.ico-delete:before {
+  font-family: 'icomoon';
+  content: "\e612";
+}
+.eventResult h1 {
+  font-size: 1.6em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 0;
 }
 @font-face {
   font-family: 'Open Sans';
