@@ -184,7 +184,7 @@ console.log('***************************************');
 //***************************************************************************//
 //******************* Création des Objets             ***********************//
 //***************************************************************************//
-var eventList = new EventListView({collection: listOfEvents1});
+//var eventList = new EventListView({collection: listOfEvents1});
 
 
 
