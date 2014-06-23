@@ -3713,9 +3713,33 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.musique:before {
+.ico-party:before {
   font-family: 'icomoon';
   content: "\e602";
+}
+.ico-artist:before {
+  font-family: 'icomoon';
+  content: "\e602";
+}
+.ico-date:before {
+  font-family: 'icomoon';
+  content: "\e606";
+}
+.ico-type:before {
+  font-family: 'icomoon';
+  content: "\e602";
+}
+.ico-responsable:before {
+  font-family: 'icomoon';
+  content: "\e601";
+}
+.ico-mail:before {
+  font-family: 'icomoon';
+  content: "\e602";
+}
+.ico-phone:before {
+  font-family: 'icomoon';
+  content: "\e605";
 }
 /**SEARCH TOOLS**/
 .search-fixed {
@@ -3747,7 +3771,8 @@ body {
   border-bottom: 1px solid #aeaeae;
   padding: 10px;
 }
-footer .panel p {
+.panel-footer {
+  padding: 10px;
   text-align: right;
 }
 .panel-default > .panel-heading {
