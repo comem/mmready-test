@@ -3690,13 +3690,23 @@ button.close {
 }
 /** EVENT **/
 .eventResult {
-  border: solid 1px #aeaeae;
-  padding: 10px;
+  background-color: #fff;
+  border-left: solid 5px;
+  padding-left: 15px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.dateResult {
+  font-size: 1.8em;
+  font-weight: 600;
 }
 body {
   background-color: url(img/bg.png);
-  background-color: #ffffff;
+  background-color: #efefef;
   margin-top: 100px;
+  font-family: "Open sans", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
 }
 @font-face {
   font-family: 'icomoon';
@@ -3719,7 +3729,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.ico-party:before {
+.ico-event:before {
   font-family: 'icomoon';
   content: "\e602";
 }
@@ -3750,6 +3760,24 @@ body {
 .ico-search:before {
   font-family: 'icomoon';
   content: "\e60a";
+}
+.ico-edit:before {
+  font-family: 'icomoon';
+  content: "\e60d";
+}
+.ico-delete:before {
+  font-family: 'icomoon';
+  content: "\e612";
+}
+.ico-config:before {
+  font-family: 'icomoon';
+  content: "\e610";
+}
+.eventResult h1 {
+  font-size: 1.6em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 0;
 }
 @font-face {
   font-family: 'Open Sans';
@@ -3802,19 +3830,17 @@ body {
 /**PANELS**/
 .panel-heading {
   padding: 5px;
-  background-color: #428bca;
-}
-.panel {
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  border-bottom: 1px solid #aeaeae;
 }
 .panel ul {
+  background-color: #fff;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 .panel li {
-  border-bottom: 1px solid #aeaeae;
+  border-bottom: 1px solid #ebeff6;
   padding: 10px;
 }
 .panel-footer {
@@ -3870,7 +3896,7 @@ body {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
-  border-radius: 4px;
+  border-radius: 0px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -4189,21 +4215,21 @@ fieldset[disabled] .btn-link:focus {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.33;
-  border-radius: 6px;
+  border-radius: 0px;
 }
 .btn-sm,
 .btn-group-sm > .btn {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 3px;
+  border-radius: 0px;
 }
 .btn-xs,
 .btn-group-xs > .btn {
   padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 3px;
+  border-radius: 0px;
 }
 .btn-block {
   display: block;
