@@ -1,31 +1,31 @@
- ////////////////////////////////////////////////////////////////////////
-    console.log('why so serious');
-    console.log('**********************');
-    console.log('start coding..');
-    console.log('**********************');
-    ///////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+console.log('why so serious');
+console.log('**********************');
+console.log('start coding..');
+console.log('**********************');
+///////////////////////////////////////////////////////////////////////
 
 
 /////////// TEST DE CONNECTION AU SERVEUR//////////////////////////////////////////
- $.ajax({
-        url: URLSERVEURsuccess
-    }).done(function() {
-        ONLINE = true;
-    }).fail(function() {
-        ONLINE = false;
-    }).always(function(data, txtStatus) {
-        if(ONLINE){
-            console.log("statut: online");
-                    }else{
-                       console.log("statut: offline");
-                    }
-                    
+$.ajax({
+    url: URLSERVEURsuccess
+}).done(function() {
+    ONLINE = true;
+}).fail(function() {
+    ONLINE = false;
+}).always(function(data, txtStatus) {
+    if (ONLINE) {
+        console.log("statut: online");
+    } else {
+        console.log("statut: offline");
+    }
+
 //                    console.log("Données Reçues : " + data);
-                       
-        
-    });
-    
-    
+
+
+});
+
+
 
 
 //***************************************************************************//
@@ -37,7 +37,7 @@ var MyCollection = Backbone.Collection.extend();
 var MyView = Backbone.View.extend();
 var MyModelNestedCollection = MyModel.extend({
     nested: 'collection',
-    initialize: function (attrs, options) {
+    initialize: function(attrs, options) {
         this.get(this.nested).on('all', function(eventName) {
             this.trigger(eventName, this);
         }, this);
@@ -46,9 +46,9 @@ var MyModelNestedCollection = MyModel.extend({
         var colObj = {};
         colObj[this.nested] = this.get(this.nested).toJSON();
         return _.extend(
-            Backbone.Model.prototype.toJSON.apply(this, arguments),
-            colObj
-        );
+                Backbone.Model.prototype.toJSON.apply(this, arguments),
+                colObj
+                );
     }
 });
 //***************************************************************************//
@@ -69,9 +69,11 @@ var Instruments = MyCollection.extend({
 
 var Musician = MyModelNestedCollection.extend({
     nested: 'instruments',
-    defaults: function () {return {
-        instruments: new Instruments()
-    }}
+    defaults: function() {
+        return {
+            instruments: new Instruments()
+        }
+    }
 });
 
 var Musicians = MyCollection.extend({
@@ -81,9 +83,11 @@ var Musicians = MyCollection.extend({
 
 var Artist = MyModelNestedCollection.extend({
     nested: 'musicians',
-    defaults: function () {return {
-        musicians: new Musicians()
-    }}
+    defaults: function() {
+        return {
+            musicians: new Musicians()
+        }
+    }
 });
 
 
@@ -92,9 +96,11 @@ var Artists = MyCollection.extend({
 });
 var Event = MyModelNestedCollection.extend({
     nested: 'artists',
-    defaults: function () {return {
-        artists: new Artists()
-    }}
+    defaults: function() {
+        return {
+            artists: new Artists()
+        }
+    }
 });
 var Events = MyCollection.extend({
     model: Event
@@ -104,7 +110,7 @@ var Events = MyCollection.extend({
 
 var EventListView = MyView.extend({
     events: {
-        "click #artist": "artist"
+        "click #btn-artist": "artist"
     },
     template: _.template(templates.eventList),
     initialize: function() {
@@ -115,7 +121,7 @@ var EventListView = MyView.extend({
         console.log('artist');
     },
     render: function() {
-        console.log(this.model.attributes);
+        this.$el.html(this.template(this.model.toJSON()));
         return this;
     }
 });
@@ -145,13 +151,13 @@ var EventListView = MyView.extend({
 //});
 
 //***************************************************************************//
-//******************* Création des Objets             ***********************//
+//******************* Création des Objets ***********************//
 //***************************************************************************//
 
 //var guitar = new Instrument({"name":"Guitar"});
-var bass = new Instrument({"name":"Bass"});
+var bass = new Instrument({"name": "Bass"});
 //var drum = new Instrument({"name":"Drum"});
-var vocal = new Instrument({"name":"Vocal"});
+var vocal = new Instrument({"name": "Vocal"});
 //var synth = new Instrument({"name":"Synth"});
 //
 var musician1 = new Musician({'name': 'Romain'});
@@ -173,6 +179,7 @@ var listOfEvents1 = new Events([event1]);
 
 console.log('***************************************');
 console.log('***************************************');
+console.log('ListOfEvents1');
 console.log(listOfEvents1.toJSON());
 console.log(JSON.stringify(listOfEvents1));
 
@@ -182,9 +189,11 @@ console.log('***************************************');
 
 
 //***************************************************************************//
-//******************* Création des Objets             ***********************//
+//******************* Création des Objets ***********************//
 //***************************************************************************//
-//var eventList = new EventListView({collection: listOfEvents1});
+var eventListView = new EventListView({model: event1});
 
 
-
+$(function() {
+   $('body').append(eventListView.el);
+});

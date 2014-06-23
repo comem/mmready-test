@@ -1,6 +1,9 @@
 /////////////////// View Template Extended////////////////////////////////////////// 
+var MyModel = Backbone.Model.extend();
 
+var MyCollection = Backbone.Collection.extend();
 var MyView = Backbone.View.extend();
+
 
 var EventListView = MyView.extend({
     events: {
@@ -15,11 +18,10 @@ var EventListView = MyView.extend({
         console.log('artist');
     },
     render: function() {
-        console.log(this.model.attributes);
+        this.$el.html(this.template());
         return this;
     }
 });
 
-//var eventList = new EventListView();
 
 
