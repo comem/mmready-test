@@ -3,8 +3,7 @@
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
-html {
+/*! normalize.css v3.0.0 | MIT License | git.io/normalize */html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -3694,16 +3693,12 @@ button.close {
   background-color: #fff;
   border-left: solid 5px;
   padding-left: 15px;
-  padding-top: 5px;
+  padding-top: 2px;
   padding-bottom: 2px;
 }
-.dayResult {
+.dateResult {
   font-size: 1.8em;
   font-weight: 600;
-}
-.monthResult {
-  font-size: 1.2em;
-  font-weight: 300;
 }
 body {
   background-color: url(img/bg.png);
@@ -3712,17 +3707,6 @@ body {
   font-family: "Open sans", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-}
-.icomoon {
-  position: relative;
-  top: 1px;
-  display: inline-block;
-  font-family: 'Glyphicons Halflings';
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 @font-face {
   font-family: 'icomoon';
@@ -3741,6 +3725,7 @@ body {
   text-transform: none;
   line-height: 1;
   /* Better Font Rendering =========== */
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
