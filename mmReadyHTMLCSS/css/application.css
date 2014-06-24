@@ -1,0 +1,10 @@
+li {
+  color: #333333;
+  list-style-type: none;
+  padding: 10px;
+}
+/**
+li:nth-child(2n+2){
+	background-color: #1e1e1e;
+}
+**/
