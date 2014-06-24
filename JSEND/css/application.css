@@ -3689,20 +3689,16 @@ button.close {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 /** EVENT **/
-.searchResult {
+.eventResult {
   background-color: #fff;
   border-left: solid 5px;
   padding-left: 15px;
-  padding-top: 5px;
+  padding-top: 2px;
   padding-bottom: 2px;
 }
-.dayResult {
+.dateResult {
   font-size: 1.8em;
   font-weight: 600;
-}
-.monthResult {
-  font-size: 1.2em;
-  font-weight: 300;
 }
 body {
   background-color: url(img/bg.png);
