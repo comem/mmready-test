@@ -19,7 +19,8 @@ String.prototype.capitalize = function() {
         if(ONLINE){
             console.log("statut: online");
                     }else{
-                       console.log("statut: offline");
+                       console.log("statut: offline");//intéressant il apparaît après les autres console.log
+                                                      //faut croire que la requête ajax est bien plus longue
                     }
                     
          
@@ -54,7 +55,11 @@ var MyModelNestedCollection = MyModel.extend({
 //            this.trigger(eventName, this);
 //        }, this);
     },
-    toJSON: function() { //surcharge de la fonction JSON pour stringifyer une collection contenue dans un attribut d'un model
+    toJSON: function(attrs, options) {//surcharge de la fonction JSON pour stringifyer une collection contenue dans un attribut d'un model
+        if(this.nested === 'undefined'){
+            console.log('this.nested ( '+this.name+' ) is undefined');
+            return;
+        }
         var colObj = {};
         colObj[this.nested] = this.get(this.nested).toJSON();
         return _.extend(
@@ -114,11 +119,7 @@ var Instrument = MyModel.extend({
     }
 });
 var Instruments = MyCollection.extend({
-    url: function (){
-        console.log("Fonction URL de Instruments appelée");
-        return URLSERVEURinstruSuccess;
-    },
-    model: Instrument
+        model: Instrument
 });
 
 
@@ -138,9 +139,11 @@ var Musician = MyModelNestedCollection.extend({
 //                response = response.data;
 //            }
 //            return response;
-
-console.log(response.get('name'));
         }
+});
+
+var Musicians = MyCollection.extend({
+    url: URLSERVEURinstruSuccess 
 });
 
 var musician1 = new Musician({
@@ -150,8 +153,11 @@ var musician1 = new Musician({
                     {'name':'Drums'}]
      
      });
-
-console.log(JSON.stringify(musician1));
+     
+     var musiciansList = new Musicians();
+     musiciansList.fetch();
+     console.log(musiciansList);
+console.log(musician1);
 
 
 
