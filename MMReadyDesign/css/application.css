@@ -4894,9 +4894,17 @@ body {
   content: "\60b";
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 .ico-plus:before {
   content: "\619";
 }
 =======
+>>>>>>> origin/maya
+=======
+=======
+.ico-plus:before {
+  content: "\619";
+}
+>>>>>>> origin/Fabrizio
 >>>>>>> origin/maya
 /**Variables**/
