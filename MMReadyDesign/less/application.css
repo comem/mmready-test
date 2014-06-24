@@ -4897,7 +4897,6 @@ body {
   content: "\619";
 }
 section {
-  background-color: #ffffff;
-  padding: 5px;
+  background-color: red;
 }
 /**Variables**/
