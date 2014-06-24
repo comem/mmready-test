@@ -4893,7 +4893,10 @@ body {
 .ico-info:before {
   content: "\60b";
 }
+<<<<<<< HEAD
 .ico-plus:before {
   content: "\619";
 }
+=======
+>>>>>>> origin/maya
 /**Variables**/
