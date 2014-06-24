@@ -199,13 +199,7 @@ html {
   font-size: 62.5%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-body {
-  font-family: "Open sans", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #333333;
-  background-color: #ffffff;
-}
+
 input,
 button,
 select,
