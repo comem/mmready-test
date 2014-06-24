@@ -1,0 +1,11 @@
+.search-fixed {
+  position: fixed;
+  height: 50px;
+  padding: 8px;
+  right: 0;
+  left: 0;
+  top: 50px;
+  z-index: 1000;
+  background-color: white;
+  border-bottom: solid 1px #acacac;
+}
