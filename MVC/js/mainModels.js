@@ -8,14 +8,6 @@ String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
-////////////////////////////////////////////////////////////////////////
-    console.log('why so serious');
-    console.log('**********************');
-    console.log('start coding..');
-    console.log('**********************');
-    ///////////////////////////////////////////////////////////////////////
-
-
 /////////// TEST DE CONNECTION AU SERVEUR//////////////////////////////////////////
  $.ajax({
         url: URLSERVEUR_EVENTsuccess
@@ -30,7 +22,7 @@ String.prototype.capitalize = function() {
                        console.log("statut: offline");
                     }
                     
-//                    console.log("Données Reçues : " + data);
+         
                        
         
     });
@@ -42,41 +34,27 @@ String.prototype.capitalize = function() {
 //******************* Extension des classes Backbone  ***********************//
 //***************************************************************************//
 var MyModel = Backbone.Model.extend();
-
 var MyCollection = Backbone.Collection.extend();
-var MyView = Backbone.View.extend();
+var MyView = Backbone.View.extend(); ///!\ peut-être conflit avec Naty
 var MyModelNestedCollection = MyModel.extend({
     nested: 'collection',
-    initialize: function (attrs, options) {        
-        if (typeof attrs[this.nested] != "undefined") {
-            this.set(this.nested, new window[this.nested.capitalize()](attrs[this.nested]));
-        }
-        this.get(this.nested).on('all', function(eventName) {
-            this.trigger(eventName, this);
-        }, this);
-    },
-    toJSON: function() {
-        var colObj = {};
-        colObj[this.nested] = this.get(this.nested).toJSON();
-        return _.extend(
-            Backbone.Model.prototype.toJSON.apply(this, arguments),
-            colObj
-        );
-    }
-});
-var MyModelNestedCollection2 = MyModel.extend({
-    nested: 'collection',
-    initialize: function (attrs, options) {
-        
-        if (typeof attrs[this.nested] == "undefined") {
+    initialize: function (attrs, options) { // universalisation des noms de la variable contenant la collection     
+        if (typeof attrs[this.nested] != "undefined") { //SI le type de l'attribut
+                                                        // de ce nom n'est pas indéfini '
+            this.set(this.nested, new window[this.nested.capitalize()](attrs[this.nested])); // ALORS crée une instance portant
+                                                                                             // le nom en lui ajoutant
+                                                                                             // une majuscule sur le premier
+                                                                                             // caractère
+                                                                                            
+           
+        }else{
              attrs[this.nested] = [];
         }
-        this.set(this.nested, new window[this.nested.capitalize()](attrs[this.nested]));
-        this.get(this.nested).on('all', function(eventName) {
-            this.trigger(eventName, this);
-        }, this);
+//        this.get(this.nested).on('all', function(eventName) {
+//            this.trigger(eventName, this);
+//        }, this);
     },
-    toJSON: function() {
+    toJSON: function() { //surcharge de la fonction JSON pour stringifyer une collection contenue dans un attribut d'un model
         var colObj = {};
         colObj[this.nested] = this.get(this.nested).toJSON();
         return _.extend(
@@ -88,6 +66,16 @@ var MyModelNestedCollection2 = MyModel.extend({
 //***************************************************************************//
 //******************* Extension des classes Backbone  ***********************//
 //***************************************************************************//
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -104,7 +92,7 @@ var LangFR = MyModel.extend({
 
 
 var Instrument = MyModel.extend({
-    urlRoot: URLSERVEURinstruSuccess,    
+    //urlRoot: URLSERVEURinstruSuccess,    
     initialize: function(){
         console.log("Nouvel Instrument créé. Name: "+this.get('name'));
         this.on('change', function(event){
@@ -126,6 +114,10 @@ var Instrument = MyModel.extend({
     }
 });
 var Instruments = MyCollection.extend({
+    url: function (){
+        console.log("Fonction URL de Instruments appelée");
+        return URLSERVEURinstruSuccess;
+    },
     model: Instrument
 });
 
@@ -137,27 +129,66 @@ var Musician = MyModelNestedCollection.extend({
 //        instruments: new Instruments()
 //    }},
     initialize: function(attrs, options){
-        console.log();        
+               
         MyModelNestedCollection.prototype.initialize.apply(this, arguments),
         console.log("Nouveau Musician créé. Name: "+this.get('name'));
     },
     parse: function (response) {
-            if (typeof response.data != "undefined") {
-                response = response.data;
-            }
-            return response;
+//            if (typeof response.data != "undefined") {
+//                response = response.data;
+//            }
+//            return response;
+
+console.log(response.get('name'));
         }
 });
 
 var musician1 = new Musician({
-    'name': 'Romain',
-    'instruments' : [{
-        'name': 'piano'
-    }, {
-        'name': 'batterie'
-    }]
-});
-console.log(musician1);
+    'name': 'RRROOOMMM',
+    'instruments': [{'name':'Guitar'},
+                    {'name':'Bass'},
+                    {'name':'Drums'}]
+     
+     });
+
+console.log(JSON.stringify(musician1));
+
+
+
+//***************************************************************************//
+//******************* Création des Models, Collection ***********************//
+//***************************************************************************//
+
+
+
+
+
+
+
+
+
+
+
+
+//***************************************************************************//
+//******************* Appel fetch                     ***********************//
+//***************************************************************************//
+
+//blog.fetch({reset: true, success: function (collection, response, options) {
+//            console.log(blog.models[0].get('comments').at(0).get('text'));
+//            blog.models[0].set('title', 'My first blog post !!');
+//            console.log(blog.models[0].toJSON());
+//            blog.models[0].get('comments').create({
+//                text: 'This is something new',
+//                post_id: blog.models[0].id - 0
+//            });
+//***************************************************************************//
+//******************* Appel fetch                     ***********************//
+//***************************************************************************//
+
+
+
+
 
 //
 //
