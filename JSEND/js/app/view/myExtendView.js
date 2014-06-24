@@ -14,7 +14,7 @@ var EventListView = MyView.extend({
     artist: function(event) {
         console.log('artist');
     },
-    render: function() {
+    render: function() { //appelle le mst?
         console.log(this.model.attributes);
         return this;
     }
