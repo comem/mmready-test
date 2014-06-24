@@ -23,5 +23,11 @@ var EventListView = MyView.extend({
     }
 });
 
+var eventListView = new EventListView({model: MyModel});
+
+
+$(function() {
+   $('body').append(eventListView.el);
+});
 
 
