@@ -189,8 +189,8 @@ console.log('***************************************');
 console.log('***************************************');
 
 $(function() {
-    //$('#eventsSearch').append(eventSearchView.el);
-    //$('#eventsList').append(eventListView.el);
+    
+    $('#eventsList').append(eventListView.el);
     $('#artistsList').append(artistsListView.el);
 });
     
