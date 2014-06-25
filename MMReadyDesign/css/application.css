@@ -274,124 +274,6 @@ hr {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.1;
-  color: inherit;
-}
-h1 small,
-h2 small,
-h3 small,
-h4 small,
-h5 small,
-h6 small,
-.h1 small,
-.h2 small,
-.h3 small,
-.h4 small,
-.h5 small,
-.h6 small,
-h1 .small,
-h2 .small,
-h3 .small,
-h4 .small,
-h5 .small,
-h6 .small,
-.h1 .small,
-.h2 .small,
-.h3 .small,
-.h4 .small,
-.h5 .small,
-.h6 .small {
-  font-weight: normal;
-  line-height: 1;
-  color: #999999;
-}
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-h1 small,
-.h1 small,
-h2 small,
-.h2 small,
-h3 small,
-.h3 small,
-h1 .small,
-.h1 .small,
-h2 .small,
-.h2 .small,
-h3 .small,
-.h3 .small {
-  font-size: 65%;
-}
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-h4 small,
-.h4 small,
-h5 small,
-.h5 small,
-h6 small,
-.h6 small,
-h4 .small,
-.h4 .small,
-h5 .small,
-.h5 .small,
-h6 .small,
-.h6 .small {
-  font-size: 75%;
-}
-h1,
-.h1 {
-  font-size: 36px;
-}
-h2,
-.h2 {
-  font-size: 30px;
-}
-h3,
-.h3 {
-  font-size: 24px;
-}
-h4,
-.h4 {
-  font-size: 18px;
-}
-h5,
-.h5 {
-  font-size: 14px;
-}
-h6,
-.h6 {
-  font-size: 12px;
-}
-p {
-  margin: 0 0 10px;
-}
 .lead {
   margin-bottom: 20px;
   font-size: 16px;
@@ -4354,16 +4236,6 @@ button.close {
 .btn.active {
   background-image: none;
 }
-.btn-default {
-  background-image: -webkit-linear-gradient(top, #ffffff 0%, #e0e0e0 100%);
-  background-image: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e0e0', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-  background-repeat: repeat-x;
-  border-color: #dbdbdb;
-  text-shadow: 0 1px 0 #fff;
-  border-color: #ccc;
-}
 .btn-default:hover,
 .btn-default:focus {
   background-color: #e0e0e0;
@@ -4668,7 +4540,7 @@ button.close {
 /**Search**/
 .search-fixed {
   position: fixed;
-  height: 50px;
+  height: auto;
   padding: 8px;
   right: 0;
   left: 0;
@@ -4779,6 +4651,124 @@ body {
   font-size: 0.6em;
   font-style: italic;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: inherit;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+}
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small,
+.h1 small,
+.h2 small,
+.h3 small,
+.h4 small,
+.h5 small,
+.h6 small,
+h1 .small,
+h2 .small,
+h3 .small,
+h4 .small,
+h5 .small,
+h6 .small,
+.h1 .small,
+.h2 .small,
+.h3 .small,
+.h4 .small,
+.h5 .small,
+.h6 .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #999999;
+}
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+h1 small,
+.h1 small,
+h2 small,
+.h2 small,
+h3 small,
+.h3 small,
+h1 .small,
+.h1 .small,
+h2 .small,
+.h2 .small,
+h3 .small,
+.h3 .small {
+  font-size: 65%;
+}
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+h4 small,
+.h4 small,
+h5 small,
+.h5 small,
+h6 small,
+.h6 small,
+h4 .small,
+.h4 .small,
+h5 .small,
+.h5 .small,
+h6 .small,
+.h6 .small {
+  font-size: 75%;
+}
+h1,
+.h1 {
+  font-size: 36px;
+}
+h2,
+.h2 {
+  font-size: 30px;
+}
+h3,
+.h3 {
+  font-size: 24px;
+}
+h4,
+.h4 {
+  font-size: 18px;
+}
+h5,
+.h5 {
+  font-size: 14px;
+}
+h6,
+.h6 {
+  font-size: 12px;
+}
+p {
+  margin: 0 0 10px;
+}
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
@@ -4882,19 +4872,19 @@ body {
   content: "\e614";
 }
 .ico-note:before {
-  content: "\607";
+  content: "\e607";
 }
 .ico-link:before {
-  content: "\615";
+  content: "\e615";
 }
 .ico-calendar:before {
-  content: "\606";
+  content: "\e606";
 }
 .ico-info:before {
-  content: "\60b";
+  content: "\e60b";
 }
 .ico-plus:before {
-  content: "\619";
+  content: "\e619";
 }
 section {
   background-color: #ffffff;
@@ -4906,4 +4896,41 @@ label {
   /* Cette largeur sert d’exemple, vous pouvez la modifier si vous voulez. */
 
 }
+.buttonsOptions {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+fieldset {
+  background-color: #fff;
+}
+/*DL, DT, DD TAGS LIST DATA*/
+dl {
+  margin-bottom: 50px;
+}
+dl dt {
+  float: left;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 5px;
+  width: 150px;
+}
+dl dd {
+  margin: 2px 0;
+  padding: 5px 0;
+}
+.last {
+  background-color: red;
+}
+.meal dd:last-child {
+  margin-top: 5px;
+  background-color: #aeaeae;
+}
 /**Variables**/
+.green {
+  color: green;
+}
+.headerShowBox {
+  border-bottom: 1px solid red;
+  padding: 5px;
+  margin-bottom: 10px;
+}
