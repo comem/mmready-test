@@ -3,7 +3,11 @@
     <type>org.netbeans.modules.web.clientproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/clientside-project/1">
+<<<<<<< HEAD:MVC/nbproject/project.xml
             <name>EventsManagerBackbone</name>
+=======
+            <name>mmready-test</name>
+>>>>>>> origin/Clélia:nbproject/project.xml
         </data>
     </configuration>
 </project>
