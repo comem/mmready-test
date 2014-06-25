@@ -4848,6 +4848,12 @@ p {
 .ico-plus:before {
   content: "\e619";
 }
+.ico-home:before {
+  content: "\e600";
+}
+.ico-save:before {
+  content: "\e61b";
+}
 section {
   background-color: #ffffff;
   padding: 5px;
