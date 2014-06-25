@@ -8,6 +8,8 @@ var MyModel = Backbone.Model.extend();
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
+
+////////////Model Nested Collection //////////////////////////////
 var MyModelNestedCollection = MyModel.extend({
     nested: 'collection',
     initialize: function (attrs, options) { // universalisation des noms de la variable contenant la collection  
@@ -40,4 +42,12 @@ var MyModelNestedCollection = MyModel.extend({
             colObj
         );
     }
+});
+
+
+
+///////// Model
+
+var LangFR = MyModel.extend({
+    urlRoot: LANGS
 });

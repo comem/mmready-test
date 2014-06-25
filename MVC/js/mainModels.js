@@ -80,9 +80,7 @@ console.log("function IsConnected(){");
 //******************* Création des Models, Collection ***********************//
 //***************************************************************************//
 
-var LangFR = MyModel.extend({
-    urlRoot: LANGS
-});
+
 
 
 
