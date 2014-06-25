@@ -4854,6 +4854,15 @@ p {
 .ico-save:before {
   content: "\e61b";
 }
+.ico-artist:before {
+  content: "\e61c";
+}
+.ico-musician:before {
+  content: "\e61c";
+}
+.ico-contract:before {
+  content: "\e61e";
+}
 section {
   background-color: #ffffff;
   padding: 5px;
