@@ -1,7 +1,7 @@
 //*** extending Backbone classes
 var MyModel = Backbone.Model.extend();
 var MyCollection = Backbone.Collection.extend();
-//var MyCollectionView = Backbone.CollectionView();
+
 var MyModelNestedCollection = Backbone.Model.extend({
     nested: 'collection',
     initialize: function(attrs, options) {
@@ -92,7 +92,8 @@ var ViewEvents = MyView.extend({
     events: {
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
-        'click a.ico-detail': 'detail'
+        'click a.ico-detail': 'detail',
+        
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -136,9 +137,12 @@ var zed = new Artist({'name': 'ZED'});
 var event1 = new Event({title: 'La grosse fiesta 2014',name_de: 'rock'});
 event1.get('artists').add([mmready, zed]);
 
-var listOfEvents1 = new Events([event1]);
+var event2 = new Event({title: 'La grosse fiesta 2015',name_de: 'salsa'});
+event2.get('artists').add([mmready, zed]);
+
+var listOfEvents1 = new Events([event1, event2]);
 var eventListView = new ViewEvents({collection: listOfEvents1});
-var eventSearchView = new ViewEventsSearch({collection: listOfEvents1});
+//var eventSearchView = new ViewEventsSearch({collection: listOfEvents1});
 
 console.log('***************************************');
 console.log('***************************************');

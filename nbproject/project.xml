@@ -3,7 +3,11 @@
     <type>org.netbeans.modules.web.clientproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/clientside-project/1">
+<<<<<<< HEAD:nbproject/project.xml
             <name>mmready-test</name>
+=======
+            <name>EventsManagerBackbone</name>
+>>>>>>> FETCH_HEAD:MVC/nbproject/project.xml
         </data>
     </configuration>
 </project>
