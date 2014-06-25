@@ -202,10 +202,12 @@ console.log('***************************************');
 console.log('***************************************');
 
 $(function() {
-    $('#showDetailEvent').append(showEvent.el);
+    
     $('#eventsList').append(eventListView.el);
-    //$('#artistsList').hide();
+    $('#artistsList').hide();
     $('#artistsList').append(artistsListView.el);
+    $('#showDetailEvent').hide();
+    $('#showDetailEvent').append(showEvent.el);
     
     
 
