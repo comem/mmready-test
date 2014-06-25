@@ -126,7 +126,8 @@ var ViewEvents = MyView.extend({
     events: {
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
-        'click a.ico-detail': 'detail'
+        'click a.ico-detail': 'detail',
+        'click button#artists': 'showListArtist'
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -146,12 +147,16 @@ var ViewEvents = MyView.extend({
     },
     detail: function(event) {
         console.log('detail');
+    },
+    showListArtist: function() {
+         $('#eventsList').hide();
+         $('#artistsList').show();
     }
 });
 
 
 
-var guitar = new Instrument({"name":"Guitar"});
+var guitar = new Instrument({"name": "Guitar"});
 var bass = new Instrument({"name": "Bass"});
 
 var vocal = new Instrument({"name": "Vocal"});
@@ -167,10 +172,10 @@ mmready.get('musicians').add([musician1, musician2]);
 var zed = new Artist({'name': 'ZED'});
 
 //Event collection dans un model
-var event1 = new Event({title: 'La grosse fiesta 2014',name_de: 'rock'});
+var event1 = new Event({title: 'La grosse fiesta 2014', name_de: 'rock'});
 event1.get('artists').add([mmready, zed]);
 
-var event2 = new Event({title: 'La grosse fiesta 2015',name_de: 'salsa'});
+var event2 = new Event({title: 'La grosse fiesta 2015', name_de: 'salsa'});
 event2.get('artists').add([mmready, zed]);
 
 var listOfEvents1 = new Events([event1, event2]);
@@ -189,8 +194,12 @@ console.log('***************************************');
 console.log('***************************************');
 
 $(function() {
-    
     $('#eventsList').append(eventListView.el);
-    $('#artistsList').append(artistsListView.el);
+    $('#artistsList').hide();
+
+      $('#artistsList').append(artistsListView.el);
+
+
+
 });
     
