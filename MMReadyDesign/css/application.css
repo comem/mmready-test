@@ -3,9 +3,6 @@
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-section {
-  display: none;
-}
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -1525,13 +1522,15 @@ table th[class*="col-"] {
     border-bottom: 0;
   }
 }
+/**********************************************************************************/
+/*************************************MAYA*****************************************/
+/**********************************************************************************/
 .artists {
   background-color: #fff;
 }
 fieldset {
   padding: 20px;
-  margin: 0;
-  margin-top: 15px;
+  margin-bottom: 15px;
   border: 1px solid #9b9b9b;
   min-width: 0;
   background-color: #fff;
@@ -1542,8 +1541,9 @@ fieldset {
   padding: 10px;
   margin-top: 10px;
 }
-fieldset h2 {
-  margin-top: 0;
+fieldset h2,
+h3 {
+  margin: 0;
 }
 legend {
   display: block;
@@ -1555,6 +1555,9 @@ legend {
   border: 1px solid #e5e5e5;
   background-color: #fff;
 }
+/**********************************************************************************/
+/**********************************************************************************/
+/**********************************************************************************/
 label {
   display: inline-block;
   margin-bottom: 5px;
@@ -1570,7 +1573,6 @@ input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;
   /* IE8-9 */
-
   line-height: normal;
 }
 input[type="file"] {
@@ -4587,6 +4589,11 @@ button.close {
 .result {
   margin-bottom: 5px;
 }
+[class^="ico-"],
+[class*=" ico-"] {
+  margin-right: 5px;
+  font-size: 1.2em;
+}
 /**ASIDE**/
 .panel-heading {
   padding: 5px;
@@ -4930,15 +4937,31 @@ dl dd {
   margin-top: 5px;
   background-color: #aeaeae;
 }
-.moreInfo ul,
-.moreInfo li {
-  display: inline;
-  text-align: center;
+.moreInfo {
   padding: 2px ;
   margin: 0;
   width: 20%;
 }
+.moreInfo ul,
+.moreInfo li {
+  display: inline;
+  text-align: center;
+  padding: 5px ;
+  margin: 0;
+  width: 20%;
+}
+.moreInfo li {
+  margin-right: 5px;
+}
+.headerShowBox {
+  border-bottom: 1px dotted #aeaeae;
+  padding: 5px;
+  margin-bottom: 10px;
+}
 /**Variables**/
 .green {
   color: green;
+}
+section {
+  display: none;
 }
