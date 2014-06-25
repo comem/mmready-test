@@ -2,7 +2,7 @@
 //*******************          global variables       ***********************//
 //***************************************************************************//
 var ONLINE;
-
+//API Services
 var ROOTIT            = "http://pingouin.heig-vd.ch/rockit/v1/";
 var REPRESENTERS      = "http://pingouin.heig-vd.ch/rockit/v1/";
 var INSTRUS           = "http://pingouin.heig-vd.ch/rockit/v1/instruments";
@@ -19,6 +19,12 @@ var TICKETS           = "http://pingouin.heig-vd.ch/rockit/v1/tickets";
 var LANGSDISPO        = "http://pingouin.heig-vd.ch/rockit/v1/langs";
 var LANGS             = "http://pingouin.heig-vd.ch/rockit/v1/trads/:locale";
 
+var AUTH_MANAGER_DE   = {"email":"chris@chris.ch","password":"chris"};
+var AUTH_MANAGER_FR   = {"email":"matou@matou.ch","password":"matou"};
+var AUTH_STAFF_DE     = {"email":"de@staff.ch","password":"staff"};
+var AUTH_STAFF_FR     = {"email":"fr@staff.ch","password":"staff"};
+		
+	
 //     /!\ local links
 var URLSERVEUR_EVENTsuccess = "../php/services/EventCollectionSUCCESS.php";
 var URLSERVEURfail = "../php/services/EventCollectionFAIL.php";

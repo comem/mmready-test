@@ -14,13 +14,13 @@
 //    
 //});
 
-$.ajax
+$.ajax //Requête de connection API
   ({
     type: "POST",
     url: "http://pingouin.heig-vd.ch/rockit/v1/login",
     dataType: 'json',
     //async: false,
-    data: {"email":"matou@matou.ch", "password":"matou"},
+    data: AUTH_MANAGER_FR,//{"email":"matou@matou.ch", "password":"matou"}
     success: function (data, textStatus, jqXHR){
       console.log("Dialogue client serveur : "+ textStatus);
       console.log("TextStatut : "+ data.status);
@@ -37,7 +37,7 @@ $.ajax
     },
     crossDomain: true,
     error: function(jqXHR, textStatus,errorThrown){
-        console.log("Vous n'�tes pas authentifi� !");
+        console.log("Vous n'êtes pas authentifié !");
         console.log(textStatus);
         console.log(errorThrown);
         console.log(jqXHR);
@@ -63,7 +63,7 @@ String.prototype.capitalize = function() {
 //***************************************************************************//
 var MyModel = Backbone.Model.extend();
 var MyCollection = Backbone.Collection.extend();
-var MyView = Backbone.View.extend(); ///!\ peut-être conflit avec Naty
+var MyView = Backbone.View.extend(); ///!\ peut-Ãªtre conflit avec Naty
 var MyModelNestedCollection = MyModel.extend({
     nested: 'collection',
     initialize: function (attrs, options) { // universalisation des noms de la variable contenant la collection  
@@ -72,11 +72,11 @@ var MyModelNestedCollection = MyModel.extend({
         console.log(JSON.stringify(attrs[this.nested]));
         
         if (typeof attrs[this.nested] !== "undefined") { //SI le type de l'attribut
-                                                        // de ce nom n'est pas ind�fini '
-            this.set(this.nested, new window[this.nested.capitalize()](attrs[this.nested])); // ALORS cr�e une instance portant
+                                                        // de ce nom n'est pas indéfini '
+            this.set(this.nested, new window[this.nested.capitalize()](attrs[this.nested])); // ALORS crée une instance portant
                                                                                              // le nom en lui ajoutant
                                                                                              // une majuscule sur le premier
-                                                                                             // caract�re
+                                                                                             // caractère
         }else{
              attrs[this.nested] = [];
         }
@@ -114,7 +114,7 @@ var MyModelNestedCollection = MyModel.extend({
 
 
 //***************************************************************************//
-//******************* Cr�ation des Models, Collection ***********************//
+//******************* Création des Models, Collection ***********************//
 //***************************************************************************//
 
 var LangFR = MyModel.extend({
@@ -128,13 +128,13 @@ var LangFR = MyModel.extend({
 var Instrument = MyModel.extend({
     //urlRoot: URLSERVEURinstruSuccess,    
     initialize: function(){
-        console.log("Nouvel Instrument cr��. Name: "+this.get('name'));
+        console.log("Nouvel Instrument créé. Name: "+this.get('name'));
         this.on('change', function(event){
-            console.log('Un �v�nement "change" est survenu sur '+JSON.stringify(this.changed)+'. L objet entier en JSON:' +  JSON.stringify(event)); 
+            console.log('Un événement "change" est survenu sur '+JSON.stringify(this.changed)+'. L objet entier en JSON:' +  JSON.stringify(event)); 
             return this;
         });
-        this.on('invalid', function(model, error){//si la méthode validate perçoit un truc pas valide elle génère un évènement "invalid"
-            console.log("Message d'erreur de validation: "+ error); // error contient la string qui est "returnée" par la fonction validate
+        this.on('invalid', function(model, error){//si la mÃ©thode validate perÃ§oit un truc pas valide elle gÃ©nÃ¨re un Ã©vÃ¨nement "invalid"
+            console.log("Message d'erreur de validation: "+ error); // error contient la string qui est "returnÃ©e" par la fonction validate
         });
               
     },
@@ -161,7 +161,7 @@ var Musician = MyModelNestedCollection.extend({
     initialize: function(attrs, options){
                
         MyModelNestedCollection.prototype.initialize.apply(this, arguments),
-        console.log("Nouveau Musician cr��. Name: "+this.get('name'));
+        console.log("Nouveau Musician créé. Name: "+this.get('name'));
     },
     
 });
@@ -211,7 +211,7 @@ $(function () {
 
 
 //***************************************************************************//
-//******************* Blog Chabloz adapt� musicians                    ***********************//
+//******************* Blog Chabloz adapté musicians                    ***********************//
 //***************************************************************************//
 
 //var Instrument = MyModel.extend({});
@@ -300,7 +300,7 @@ $(function () {
 //////        musicians: new Musicians()
 //////    }},
 ////initialize: function(){
-////        console.log("Nouvel Artist créé. Name: "+this.get('name'));
+////        console.log("Nouvel Artist crÃ©Ã©. Name: "+this.get('name'));
 ////    },
 ////    parse: function (response) {
 ////            if (typeof response.data != "undefined") {
@@ -326,7 +326,7 @@ $(function () {
 //////        artists: new Artists()
 //////    }},
 ////initialize: function(){
-////        console.log("Nouvel Event créé. Name: "+this.get('name'));
+////        console.log("Nouvel Event crÃ©Ã©. Name: "+this.get('name'));
 ////    },
 ////    parse: function (response) {
 ////            if (typeof response.data != "undefined") {
@@ -386,7 +386,7 @@ $(function () {
 ////
 ////
 ////console.log("************************");
-////console.log("Début: test si la validation fonctionne");
+////console.log("DÃ©but: test si la validation fonctionne");
 ////console.log("************************");
 ////
 ////var guitar = new Instrument({"name":"Guitar"});
@@ -394,8 +394,8 @@ $(function () {
 ////console.log("L'objet en JSON : "+JSON.stringify(guitar));
 ////
 ////var mess = guitar.unset("name", {validate:true});
-////console.log("Après l'action unset sur 'name' le message de retour :" +mess);
-////console.log("Aperçu de l'attribut : " +guitar.get("name"));
+////console.log("AprÃ¨s l'action unset sur 'name' le message de retour :" +mess);
+////console.log("AperÃ§u de l'attribut : " +guitar.get("name"));
 ////
 ////
 ////console.log("************************");
@@ -407,7 +407,7 @@ $(function () {
 ////
 ////var musician1 = new Musician({'name': 'Romain'});
 ////musician1.get('instruments').add(bass);
-////var musician2 = new Musician({'name': 'Clélia'});
+////var musician2 = new Musician({'name': 'ClÃ©lia'});
 ////musician2.get('instruments').add(vocal);
 ////
 ////var mmready = new Artist({'name': 'mmready()'});
