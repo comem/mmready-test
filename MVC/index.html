@@ -17,10 +17,10 @@
         <script src="js/lib/underscore.js"></script>        
         <script src="js/lib/backbone.js"></script>        
         <script src="js/views/pack.php"></script>
-        <!--<script src="js/mainModels.js"></script>fuck-->
-        <!--<script src="js/main_Naty.js"></script>-->
-        <script src="js/main_Clelia.js"></script>
-        
+        <!--<script src="js/mainModels.js"></script>-->
+        <script src="js/main_Naty.js"></script>
+        <!--<script src="js/main_Clelia.js"></script>-->
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -29,7 +29,7 @@
           <![endif]-->
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="main">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -45,9 +45,9 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                    <ul class="nav navbar-nav"><!--MainNav-->
-                        <li class="active"><a href="#">Event</a></li>
-                        <li><a href="#l">Artist</a></li>
+                    <ul class="nav navbar-nav" id="mainNav"><!--MainNav-->
+                        <li class="active"><a href="eventsList">Event</a></li>
+                        <li><a href="artistsList">Artist</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
@@ -84,14 +84,18 @@
             </div>
         </div>
         <!--/.SEARCH BOX-->
+        <section id="showDetailEvent"> 
 
-        <section id="eventsList">
+        </section>
+        <section id="eventsList"> 
 
         </section>
 
         <section id="artistsList"> 
-        
+
         </section>
+
+
 
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

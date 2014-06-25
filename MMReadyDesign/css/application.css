@@ -3,9 +3,6 @@
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-section {
-  display: none;
-}
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -1525,23 +1522,43 @@ table th[class*="col-"] {
     border-bottom: 0;
   }
 }
+/**********************************************************************************/
+/*************************************MAYA*****************************************/
+/**********************************************************************************/
+.artists {
+  background-color: #fff;
+}
 fieldset {
-  padding: 0;
-  margin: 0;
-  border: 0;
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 1px solid #9b9b9b;
   min-width: 0;
   background-color: #fff;
+}
+.new {
+  border: 1px solid grey;
+  background-color: #ebebeb;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+fieldset h2,
+h3 {
+  margin: 0;
 }
 legend {
   display: block;
   width: 100%;
-  padding: 0;
-  margin-bottom: 20px;
+  padding: 10px;
   font-size: 21px;
+  line-height: inherit;
   color: #333333;
-  border: 0;
-  border-bottom: 1px solid #e5e5e5;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
 }
+/**********************************************************************************/
+/**********************************************************************************/
+/**********************************************************************************/
 label {
   display: inline-block;
   margin-bottom: 5px;
@@ -1557,7 +1574,6 @@ input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;
   /* IE8-9 */
-
   line-height: normal;
 }
 input[type="file"] {
@@ -4357,46 +4373,9 @@ button.close {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca', endColorstr='#ff357ebd', GradientType=0);
   background-color: #357ebd;
 }
-.navbar-default {
-  background-image: -webkit-linear-gradient(top, #ffffff 0%, #f8f8f8 100%);
-  background-image: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff8f8f8', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
-}
-.navbar-default .navbar-nav > .active > a {
-  background-image: -webkit-linear-gradient(top, #ebebeb 0%, #f3f3f3 100%);
-  background-image: linear-gradient(to bottom, #ebebeb 0%, #f3f3f3 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffebebeb', endColorstr='#fff3f3f3', GradientType=0);
-  -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.075);
-}
 .navbar-brand,
 .navbar-nav > li > a {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
-}
-.navbar-inverse {
-  background-image: -webkit-linear-gradient(top, #3c3c3c 0%, #222222 100%);
-  background-image: linear-gradient(to bottom, #3c3c3c 0%, #222222 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-}
-.navbar-inverse .navbar-nav > .active > a {
-  background-image: -webkit-linear-gradient(top, #222222 0%, #282828 100%);
-  background-image: linear-gradient(to bottom, #222222 0%, #282828 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff282828', GradientType=0);
-  -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.25);
-  box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.25);
-}
-.navbar-inverse .navbar-brand,
-.navbar-inverse .navbar-nav > li > a {
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 .navbar-static-top,
 .navbar-fixed-top,
@@ -4560,7 +4539,7 @@ button.close {
 }
 .searchResult [class^="ico-"],
 .searchResult [class*=" ico-"] {
-  margin-right: 15px;
+  margin-right: 5px;
 }
 .dayResult {
   font-size: 1.8em;
@@ -4573,6 +4552,10 @@ button.close {
 }
 .result {
   margin-bottom: 5px;
+}
+[class^="ico-"],
+[class*=" ico-"] {
+  margin-right: 5px;
 }
 /**ASIDE**/
 .panel-heading {
@@ -4813,7 +4796,6 @@ p {
   text-transform: none;
   line-height: 1;
   /* Better Font Rendering =========== */
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -4883,6 +4865,21 @@ p {
 .ico-plus:before {
   content: "\e619";
 }
+.ico-home:before {
+  content: "\e600";
+}
+.ico-save:before {
+  content: "\e61b";
+}
+.ico-artist:before {
+  content: "\e61c";
+}
+.ico-musician:before {
+  content: "\e61c";
+}
+.ico-contract:before {
+  content: "\e61e";
+}
 section {
   background-color: #ffffff;
   padding: 5px;
@@ -4891,13 +4888,11 @@ section {
 label {
   width: 200px;
   /* Cette largeur sert d’exemple, vous pouvez la modifier si vous voulez. */
-
 }
 .buttonsOptions {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-/*DL, DT, DD TAGS LIST DATA*/
 dl {
   margin-bottom: 50px;
 }
@@ -4919,15 +4914,76 @@ dl dd {
   margin-top: 5px;
   background-color: #aeaeae;
 }
-.moreInfo ul,
-.moreInfo li {
-  display: inline;
-  text-align: center;
+.moreInfo {
   padding: 2px ;
   margin: 0;
   width: 20%;
 }
+.moreInfo ul,
+.moreInfo li {
+  display: inline;
+  text-align: center;
+  padding: 5px ;
+  margin: 0;
+  width: 20%;
+}
+.moreInfo li {
+  margin-right: 5px;
+}
+li {
+  margin-right: 5px;
+}
+/*DL, DT, DD TAGS LIST DATA*/
+dl {
+  margin-bottom: 10px;
+}
+dl dt {
+  float: left;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 5px;
+  width: 150px;
+}
+dl dd {
+  margin: 2px;
+  padding: 5px;
+}
+.last {
+  background-color: red;
+}
+.meal dd:last-child {
+  margin-top: 5px;
+  font-weight: 800;
+}
+.moreInfo ul,
+.moreInfo li {
+  display: inline;
+  text-align: center;
+  padding: 5px ;
+  margin: 0;
+  width: 20%;
+}
+.moreInfo li {
+  margin-right: 5px;
+}
+.headerShowBox {
+  border-bottom: 1px dotted #aeaeae;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.sortBy {
+  background-color: #ffffff;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a {
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
 /**Variables**/
 .green {
   color: green;
+}
+section {
+  display: none;
 }

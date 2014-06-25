@@ -1,23 +1,18 @@
 @import "bootstrap/bootstrap.less";
 @import "bootstrap/bootstrap-theme.less";
 
-
 /**Search**/
 @import "searchBox.less";
 @import "advancedSearch.less";
 @import "searchResult.less";
 
-
 /**ASIDE**/
 
 @import "aside.less";
 
-
 @import "body.less";
 @import "fonts.less";
 @import "icomoon.less";
-
-
 
 @import "sectionForm.less";
 
@@ -25,21 +20,22 @@
 
 @import "buttonsOptions.less";
 @import "listPimp.less";
-
-
-
-
-
-
+@import "show.less";
+@import "sortBy.less";
+@import "navBar.less";
 
 /**Variables**/
+
+@main-color: #ADADAD;
+@light-color: lighten(@main-color, 10%);
+
 
 @bg-grey: #AEAEAE;
 @bg-less-grey: #AEAEAE;
 
 @bg-body: #DCDCDC;
 @bg-white: #fff;
-
+@bg-box-grey: #ebebeb;
 
 
 @bg-box: #fff;
@@ -47,9 +43,11 @@
 
 @font-family: "Open sans", Helvetica, Arial, sans-serif;
 
-
 .green{
 	color: green;
 }
 
+section{
+    display:none;
+}
 
