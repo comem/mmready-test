@@ -127,7 +127,7 @@ var ViewEvents = MyView.extend({
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
         'click a.ico-detail': 'detail',
-        'click button#artists': 'showListArtist'
+        
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
