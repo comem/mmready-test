@@ -170,12 +170,12 @@ var zed = new Artist({'name': 'ZED'});
 var event1 = new Event({title: 'La grosse fiesta 2014',name_de: 'rock'});
 event1.get('artists').add([mmready, zed]);
 
-var listOfEvents1 = new Events([event1, event2]);
 var event2 = new Event({title: 'La grosse fiesta 2015',name_de: 'salsa'});
 event2.get('artists').add([mmready, zed]);
+
 var listOfEvents1 = new Events([event1, event2]);
 var eventListView = new ViewEvents({collection: listOfEvents1});
-var eventSearchView = new ViewEventsSearch({collection: listOfEvents1});
+
 var listOfArtists = new Artists([mmready, zed]);
 var artistsListView = new ViewArtists({collection: listOfArtists});
 
