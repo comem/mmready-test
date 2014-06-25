@@ -1,6 +1,7 @@
 //*** extending Backbone classes
 var MyModel = Backbone.Model.extend();
 var MyCollection = Backbone.Collection.extend();
+//var MyCollectionView = Backbone.CollectionView();
 var MyModelNestedCollection = Backbone.Model.extend({
     nested: 'collection',
     initialize: function(attrs, options) {
@@ -24,6 +25,7 @@ var Instrument = MyModel.extend();
 var Instruments = MyCollection.extend({
     model: Instrument
 });
+
 
 
 var Musician = MyModelNestedCollection.extend({
@@ -72,41 +74,58 @@ var Events = MyCollection.extend({
     model: Event
 });
 
-var ViewEvents = MyView.extend({
-    //TEMPLATE FUNZIONANTE!!!
-//    template: _.template(templates.eventsList),
-    template: templates.eventsList2,
-    events: {
-        'click a.ico-delete': 'delete',
-        'click a.ico-edit': 'edit'
-    },
+var ViewEventsSearch = MyView.extend({
+    template: templates.eventsListSearch,
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
         this.render();
     },
     render: function() {
-
         this.$el.html(Mustache.render(this.template, {events: this.collection.toJSON()}));
         return this;
-        
+
+    }
+});
+
+var ViewEvents = MyView.extend({
+    template: templates.eventsList,
+    events: {
+        'click a.ico-delete': 'delete',
+        'click a.ico-edit': 'edit',
+        'click a.ico-detail': 'detail'
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.collection, 'all', this.render);
+        this.render();
+
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {events: this.collection.toJSON()}));
+        return this;
+
     },
     'delete': function(event) {
         console.log('delete');
     },
     edit: function(event) {
         console.log('edit');
+    },
+    detail: function(event) {
+        console.log('detail');
     }
 });
 
-//var guitar = new Instrument({"name":"Guitar"});
+
+
+var guitar = new Instrument({"name":"Guitar"});
 var bass = new Instrument({"name": "Bass"});
-//var drum = new Instrument({"name":"Drum"});
+
 var vocal = new Instrument({"name": "Vocal"});
-//var synth = new Instrument({"name":"Synth"});
+
 //
 var musician1 = new Musician({'name': 'Romain'});
 musician1.get('instruments').add(bass);
-var musician2 = new Musician({'name': 'Clélia'});
+var musician2 = new Musician({'name': 'Cl??lia'});
 musician2.get('instruments').add(vocal);
 
 var mmready = new Artist({'name': 'mmready()'});
@@ -114,12 +133,12 @@ mmready.get('musicians').add([musician1, musician2]);
 var zed = new Artist({'name': 'ZED'});
 
 //Event collection dans un model
-var event1 = new Event({title: 'La grosse fiesta 2014'});
+var event1 = new Event({title: 'La grosse fiesta 2014',name_de: 'rock'});
 event1.get('artists').add([mmready, zed]);
 
 var listOfEvents1 = new Events([event1]);
 var eventListView = new ViewEvents({collection: listOfEvents1});
-//var html = Mustache.to_html(eventsListView, {collection: listOfEvents1});
+var eventSearchView = new ViewEventsSearch({collection: listOfEvents1});
 
 console.log('***************************************');
 console.log('***************************************');
@@ -131,7 +150,8 @@ console.log('***************************************');
 console.log('***************************************');
 
 $(function() {
+    //$('#eventsSearch').append(eventSearchView.el);
     $('#eventsList').append(eventListView.el);
-    
+
 });
     
