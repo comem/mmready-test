@@ -41,7 +41,72 @@ var Musicians = MyCollection.extend({
     model: Musician
 });
 
+/////////////// ADVANCED RESEARCH ARTIST /////////////
 
+var ViewAdvancedResearchArtist = MyView.extend({
+    template: templates.advancedResearchArtist,
+    events: {
+        'click button#events' : 'showListEvent',
+        'click button#artists': 'showListArtist'
+        //'click button#filterRepresenters': 'detail',
+        
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.collection, 'all', this.render);
+        this.render();
+
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
+        return this;
+
+    },
+    showListEvent : function(){
+     $('#artistsList').hide();
+     $('#eventsList').show();
+     $('#advancedResearchEvents').show();
+    },
+    showListArtist : function(){
+     $('#eventsList').hide();
+     $('#advancedResearchEvents').hide();
+     $('#artistsList').show();
+     $('#advancedResearchArtists').show();
+    }
+
+})
+
+///////////////// ADVANCED RESEARCH EVENT /////////////
+
+var ViewAdvancedResearchEvent = MyView.extend({
+    template: templates.advancedResearchEvent,
+    events: {
+        'click button#events' : 'showListEvent',
+        'click button#artists': 'showListArtist'
+        //'click button#filterRepresenters': 'detail',
+        
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.collection, 'all', this.render);
+        this.render();
+
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
+        return this;
+    },
+    showListEvent : function(){
+     $('#artistsList').hide();
+     $('#eventsList').show();
+     $('#advancedResearchEvents').show();
+    },
+    showListArtist : function(){
+     $('#eventsList').hide();
+     $('#advancedResearchEvents').hide();
+     $('#artistsList').show();
+     $('#advancedResearchArtists').show();
+    }
+
+})
 
 ////////////////ARTIST ////////////////////////
 
@@ -64,8 +129,8 @@ var ViewArtists = MyView.extend({
     events: {
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
-        'click a.ico-detail': 'detail',
-        'click button#events' : 'showListEvent'
+        'click a.ico-detail': 'detail'
+        //'click button#events' : 'showListEvents'
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -85,11 +150,11 @@ var ViewArtists = MyView.extend({
     },
     detail: function(event) {
         console.log('detail');
-    },
-    showListEvent : function(){
-     $('#artistsList').hide();
-     $('#eventsList').show();
     }
+//    showListEvents : function(){
+//     $('#artistsList').hide();
+//     $('#eventsList').show();
+//    }
 });
 
 
@@ -118,6 +183,7 @@ var ViewEventsSearch = MyView.extend({
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
         this.render();
+        $('#advancedResearchEvent').show();
     },
     render: function() {
         this.$el.html(Mustache.render(this.template, {events: this.collection.toJSON()}));
@@ -131,8 +197,8 @@ var ViewEvents = MyView.extend({
     events: {
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
-        'click a.ico-detail': 'detail',
-        'click button#artists': 'showListArtist'
+        'click a.ico-detail': 'detail'
+
         
         
     },
@@ -153,17 +219,30 @@ var ViewEvents = MyView.extend({
         console.log('edit');
     },
     detail: function(event) {
-        console.log('detail');
+        $('#eventsList').hide();
+        $('#showDetailEvent').show();
+    }
+//    showListArtists: function() {
+//         $('#eventsList').hide();
+//         $('#artistsList').show();
+//    }
+});
+var ViewShowEvent = MyView.extend({
+    template: templates.showEvent,
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
+
     },
-    showListArtist: function() {
-         $('#eventsList').hide();
-         $('#artistsList').show();
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        return this;
+
     }
 });
 
 
-
-var guitar = new Instrument({"name":"Guitar"});
+var guitar = new Instrument({"name": "Guitar"});
 var bass = new Instrument({"name": "Bass"});
 
 var vocal = new Instrument({"name": "Vocal"});
@@ -179,15 +258,19 @@ mmready.get('musicians').add([musician1, musician2]);
 var zed = new Artist({'name': 'ZED'});
 
 //Event collection dans un model
-var event1 = new Event({title: 'La grosse fiesta 2014',name_de: 'rock'});
+var event1 = new Event({title: 'La grosse fiesta 2014', name_de: 'rock'});
 event1.get('artists').add([mmready, zed]);
-var event2 = new Event({title: 'La grosse fiesta 2015',name_de: 'salsa'});
+
+var event2 = new Event({title: 'La grosse fiesta 2015', name_de: 'salsa'});
 event2.get('artists').add([mmready, zed]);
+
 var listOfEvents1 = new Events([event1, event2]);
 var eventListView = new ViewEvents({collection: listOfEvents1});
-var eventSearchView = new ViewEventsSearch({collection: listOfEvents1});
-
+//var showEvent = new ViewShowEvent({model: event1});
 var listOfArtists = new Artists([mmready, zed]);
+var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: listOfEvents1});
+var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: listOfArtists});
+
 var artistsListView = new ViewArtists({collection: listOfArtists});
 
 console.log('***************************************');
@@ -200,8 +283,13 @@ console.log('***************************************');
 console.log('***************************************');
 
 $(function() {
+    $('#advancedResearchEvents').append(advancedResearchEvent.el);
+    $('#advancedResearchArtists').hide();
+    $('#advancedResearchArtists').append(advancedResearchArtist.el);
     $('#eventsList').append(eventListView.el);
     $('#artistsList').hide();
     $('#artistsList').append(artistsListView.el);
+    $('#showDetailEvent').hide();
+   // $('#showDetailEvent').append(showEvent.el);
 });
     
