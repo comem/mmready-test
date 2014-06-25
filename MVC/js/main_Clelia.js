@@ -64,7 +64,8 @@ var ViewArtists = MyView.extend({
     events: {
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
-        'click a.ico-detail': 'detail'
+        'click a.ico-detail': 'detail',
+        'click button#events' : 'showListEvent'
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -84,6 +85,10 @@ var ViewArtists = MyView.extend({
     },
     detail: function(event) {
         console.log('detail');
+    },
+    showListEvent : function(){
+     $('#artistsList').hide();
+     $('#eventsList').show();
     }
 });
 
@@ -126,7 +131,10 @@ var ViewEvents = MyView.extend({
     events: {
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
-        'click a.ico-detail': 'detail'
+        'click a.ico-detail': 'detail',
+        'click button#artists': 'showListArtist'
+        
+        
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -146,6 +154,10 @@ var ViewEvents = MyView.extend({
     },
     detail: function(event) {
         console.log('detail');
+    },
+    showListArtist: function() {
+         $('#eventsList').hide();
+         $('#artistsList').show();
     }
 });
 
@@ -188,8 +200,8 @@ console.log('***************************************');
 console.log('***************************************');
 
 $(function() {
-    $('#eventsSearch').append(eventSearchView.el);
     $('#eventsList').append(eventListView.el);
+    $('#artistsList').hide();
     $('#artistsList').append(artistsListView.el);
 });
     
