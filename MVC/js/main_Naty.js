@@ -1,4 +1,31 @@
-//*** extending Backbone classes
+/*
+ |--------------------------------------------------------------------------
+ | Configuration (constantes)
+ |--------------------------------------------------------------------------
+ */
+var DATE_FORMAT = 'DD d MM yy'; //Format des dates pour l'affichage
+var DEFAULT_SECTION = 'eventsList';
+
+/*
+ |--------------------------------------------------------------------------
+ | Fallback et chargements conditionnels
+ |--------------------------------------------------------------------------
+ */
+//// Charge conditionnellement la css pour le fallback des champs date
+//$.holdReady(true); // Indique ? jQuery d'attendre avant l'evt. DOM ready
+//Modernizr.load({
+//    test: Modernizr.inputtypes.date,
+//    nope: 'css/jquery-ui.css',
+//    complete: function() {
+//        $.holdReady(false);
+//    }
+//});
+
+/*
+ |--------------------------------------------------------------------------
+ | extending Backbone classes
+ |--------------------------------------------------------------------------
+ */
 var MyModel = Backbone.Model.extend();
 var MyCollection = Backbone.Collection.extend();
 var MyModelNestedCollection = Backbone.Model.extend({
@@ -19,14 +46,22 @@ var MyModelNestedCollection = Backbone.Model.extend({
 });
 var MyView = Backbone.View.extend();
 
-/////////////////////// INSTRUMENT //////////////
+/*
+ |--------------------------------------------------------------------------
+ | INSTRUMENT
+ |--------------------------------------------------------------------------
+ */
 var Instrument = MyModel.extend();
 var Instruments = MyCollection.extend({
     model: Instrument
 });
 
 
-//////////////////////// MSUICIAN ////////////////////
+/*
+ |--------------------------------------------------------------------------
+ | MUSICIAN
+ |--------------------------------------------------------------------------
+ */
 
 var Musician = MyModelNestedCollection.extend({
     nested: 'instruments',
@@ -41,15 +76,19 @@ var Musicians = MyCollection.extend({
     model: Musician
 });
 
-/////////////// ADVANCED RESEARCH ARTIST /////////////
+/*
+ |--------------------------------------------------------------------------
+ | ADVANCED RESEARCH ARTIST
+ |--------------------------------------------------------------------------
+ */
 
 var ViewAdvancedResearchArtist = MyView.extend({
     template: templates.advancedResearchArtist,
     events: {
-        'click button#events' : 'showListEvent',
+        'click button#events': 'showListEvent',
         'click button#artists': 'showListArtist'
-        //'click button#filterRepresenters': 'detail',
-        
+                //'click button#filterRepresenters': 'detail',
+
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -61,54 +100,62 @@ var ViewAdvancedResearchArtist = MyView.extend({
         return this;
 
     },
-    showListEvent : function(){
-     $('#artistsList').hide();
-     $('#eventsList').show();
-     $('#advancedResearchEvents').show();
+    showListEvent: function() {
+        $('#artistsList').hide();
+        $('#eventsList').show();
+        $('#advancedResearchEvents').show();
     },
-    showListArtist : function(){
-     $('#eventsList').hide();
-     $('#advancedResearchEvents').hide();
-     $('#artistsList').show();
-     $('#advancedResearchArtists').show();
-    }
-
-})
-
-///////////////// ADVANCED RESEARCH EVENT /////////////
-
-var ViewAdvancedResearchEvent = MyView.extend({
-    template: templates.advancedResearchEvent,
-    events: {
-        'click button#events' : 'showListEvent',
-        'click button#artists': 'showListArtist'
-        //'click button#filterRepresenters': 'detail',
-        
-    },
-    initialize: function(attrs, options) {
-        this.listenTo(this.collection, 'all', this.render);
-        this.render();
-
-    },
-    render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
-        return this;
-    },
-    showListEvent : function(){
-     $('#artistsList').hide();
-     $('#eventsList').show();
-     $('#advancedResearchEvents').show();
-    },
-    showListArtist : function(){
-     $('#eventsList').hide();
-     $('#advancedResearchEvents').hide();
-     $('#artistsList').show();
-     $('#advancedResearchArtists').show();
+    showListArtist: function() {
+        $('#eventsList').hide();
+        $('#advancedResearchEvents').hide();
+        $('#artistsList').show();
+        $('#advancedResearchArtists').show();
     }
 
 });
 
-////////////////ARTIST ////////////////////////
+/*
+ |--------------------------------------------------------------------------
+ | ADVANCED RESEARCH EVENT
+ |--------------------------------------------------------------------------
+ */
+
+var ViewAdvancedResearchEvent = MyView.extend({
+    template: templates.advancedResearchEvent,
+    events: {
+        'click button#events': 'showListEvent',
+        'click button#artists': 'showListArtist'
+                //'click button#filterRepresenters': 'detail',
+
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.collection, 'all', this.render);
+        this.render();
+
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
+        return this;
+    },
+    showListEvent: function() {
+        $('#artistsList').hide();
+        $('#eventsList').show();
+        $('#advancedResearchEvents').show();
+    },
+    showListArtist: function() {
+        $('#eventsList').hide();
+        $('#advancedResearchEvents').hide();
+        $('#artistsList').show();
+        $('#advancedResearchArtists').show();
+    }
+
+});
+
+/*
+ |--------------------------------------------------------------------------
+ | ARTIST
+ |--------------------------------------------------------------------------
+ */
 
 var Artist = MyModelNestedCollection.extend({
     nested: 'musicians',
@@ -135,6 +182,7 @@ var ViewArtists = MyView.extend({
         this.listenTo(this.collection, 'all', this.render);
         this.render();
 
+
     },
     render: function() {
         this.$el.html(Mustache.render(this.template, {artists: this.collection.toJSON()}));
@@ -153,7 +201,11 @@ var ViewArtists = MyView.extend({
 });
 
 
-////////////////////// EVENT //////////////////////////
+/*
+ |--------------------------------------------------------------------------
+ | EVENT
+ |--------------------------------------------------------------------------
+ */
 var Event = MyModelNestedCollection.extend({
     nested: 'artists',
     defaults: function() {
@@ -224,6 +276,11 @@ var ViewShowEvent = MyView.extend({
     }
 });
 
+/*
+ |--------------------------------------------------------------------------
+ | VARIABLES
+ |--------------------------------------------------------------------------
+ */
 
 var guitar = new Instrument({"name": "Guitar"});
 var bass = new Instrument({"name": "Bass"});
@@ -257,70 +314,112 @@ var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: listOfA
 
 var artistsListView = new ViewArtists({collection: listOfArtists});
 
-console.log('***************************************');
-console.log('***************************************');
-console.log('ListOfEvents1');
-console.log(listOfArtists.toJSON());
-console.log(JSON.stringify(listOfArtists));
+//console.log('***************************************');
+//console.log('***************************************');
+//console.log('ListOfEvents1');
+//console.log(listOfArtists.toJSON());
+//console.log(JSON.stringify(listOfArtists));
+//
+//console.log('***************************************');
+//console.log('***************************************');
 
-console.log('***************************************');
-console.log('***************************************');
 
+/*
+ |--------------------------------------------------------------------------
+ | DOM
+ |--------------------------------------------------------------------------
+ */
 $(function() {
 
-        $('#advancedResearchEvents').append(advancedResearchEvent.el);
+//    // "Fallback" pour le nouveau champ date des <form> HTML5
+//    if (!Modernizr.inputtypes.date) {
+//        $('input[type=date]').datepicker({dateFormat: 'yy-mm-dd'});
+//    }
+
+    //recherches
+    $('#advancedResearchEvents').append(advancedResearchEvent.el);
     $('#advancedResearchArtists').hide();
     $('#advancedResearchArtists').append(advancedResearchArtist.el);
+
+    //lists
     $('#eventsList').append(eventListView.el);
     $('#artistsList').hide();
     $('#artistsList').append(artistsListView.el);
-    $('#showDetailEvent').hide();
+
+    //details
     $('#showDetailEvent').hide();
     $('#showDetailEvent').append(showEvent.el);
 
 
-/////////// bare de navigation ////////////////////
+    /*
+     |--------------------------------------------------------------------------
+     | GESTION DES EVENTS
+     |--------------------------------------------------------------------------
+     */
+
+//    // gestion des boutons "back" et "forward" du browser
+//    $(window).on('popstate', historyHandler);
+//    // simule un premier changement d'url
+//    $(window).trigger('popstate');
     $('ul#mainNav a').on('click', function(e) {
         menuElementClickHandler($(this));
         e.preventDefault();
         return false;
     });
-    $('a').on('click', function(e) {
+    $('ul#mainNav a').on('click', function(e) {
         menuElementClickHandler($(this));
         e.preventDefault();
         return false;
     });
 
-    function menuElementClickHandler(menuElement) {
-        // Recup?re la section corespondante (attribut href du lien)
-        var sectionName = menuElement.attr('href');
-        // Si la section est d?j? active ne rien faire
-        var actualSectionName = location.pathname.split("/").pop();
-        if (sectionName === actualSectionName) {
-            return;
-        }
-        // Simule le changement d'url ver cette section
-        history.pushState(null, null, sectionName);
-        // Affiche la section en question
-        menuGoToSection(sectionName);
-    }
-    function menuGoToSection(sectionName) {
-        var nodeIdToShow = '#' + sectionName;
-        // Enl?ve la classe "activ" de tous les liens
-        $('ul#mainNav a').removeClass('activ');
-        // Rajoute la classe "activ" pour le lien actuellement click?
-        $("ul#mainNav a[href='" + sectionName + "']").addClass('activ');
-        
-        // Enl?ve la classe "activ" de tous les liens
-        $('span#linkEventsList a').removeClass('activ');
-        // Rajoute la classe "activ" pour le lien actuellement click?
-        $("span#linkEventsList a[href='" + sectionName + "']").addClass('activ')
-        // Cache toutes les <section>
-        $('section').hide();
-        // Affichage de la bonne <section>
-        $(nodeIdToShow).show();
-    }
-
-
 });
-    
+
+
+/*
+ |--------------------------------------------------------------------------
+ | Gestion de l'historique (pour les boutons "back" et "forward" du browser
+ |--------------------------------------------------------------------------
+ */
+//function historyHandler() {
+//    // Prend la derni?re partie de l'url (apr?s le dernier '/')
+//    var sectionName = location.pathname.split("/").pop();
+//    // Si aucune section (page d'accueil ?), on va sur 'todo' par d?faut
+//    if (sectionName === '') {
+//        sectionName = DEFAULT_SECTION;
+//    }
+//    menuGoToSection(sectionName);
+//}
+/*
+ |--------------------------------------------------------------------------
+ | Gestion du menu
+ |--------------------------------------------------------------------------
+ */
+function menuElementClickHandler(menuElement) {
+    // Recup?re la section corespondante (attribut href du lien)
+    var sectionName = menuElement.attr('href');
+    // Si la section est d?j? active ne rien faire
+    var actualSectionName = location.pathname.split("/").pop();
+    if (sectionName === actualSectionName) {
+        return;
+    }
+    // Simule le changement d'url ver cette section
+    history.pushState(null, null, sectionName);
+    // Affiche la section en question
+    menuGoToSection(sectionName);
+}
+function menuGoToSection(sectionName) {
+    var nodeIdToShow = '#' + sectionName;
+    // Enl?ve la classe "activ" de tous les liens
+    $('ul#mainNav a').removeClass('activ');
+    // Rajoute la classe "activ" pour le lien actuellement click?
+    $("ul#mainNav a[href='" + sectionName + "']").addClass('activ');
+
+    // Enl?ve la classe "activ" de tous les liens
+    $('span#linkEventsList a').removeClass('activ');
+    // Rajoute la classe "activ" pour le lien actuellement click?
+    $("span#linkEventsList a[href='" + sectionName + "']").addClass('activ')
+    // Cache toutes les <section>
+    $('section').hide();
+    // Affichage de la bonne <section>
+    $(nodeIdToShow).show();
+}
