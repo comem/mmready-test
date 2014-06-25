@@ -1,0 +1,127 @@
+<div class="container-fluid advancedSearch">
+
+    <div class="row">
+        <div class="col-lg-4 col-md-offset-8">
+            <p class="text-right"><a href="#" class="ico-delete"></a></p>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="btn-group btn-group-justified">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">event</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">artist</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">representer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-lg-2">
+            <form role="form">
+                <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <select class="form-control">
+                        <option value="" disabled selected>choose</option>
+                        <option>Country</option>
+                        <option> Rock</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <form role="form">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Date</label>
+                    <input type="datetime" class="form-control" placeholder="date">
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+</div>
+<!--.\ END ADVANCED SEARCH BOX-->
+
+<div class="container-fluid">
+    <div class="row">
+        
+        <div class="col-lg-12">
+            <h1 class="ico-date"> List of event</h1>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            Sort by:
+                        </div>
+                    </div>
+                    {{#events}}
+                    <div class="row">
+                        <div class="col-lg-12 result">
+                            <div class="col-lg-2 col-lg-offset-1 ">
+                                <span class="dayResult">31</span>
+                                <span class="monthResult">Dezember</span>
+                            </div>
+                            <div class="col-lg-7 searchResult">
+
+                                <span class="pull-right"><a href="#" class="ico-delete"></a></span>
+                                <span class="pull-right"><a href="#" class="ico-edit"></a></span>
+                                <span class="pull-right"><a href="#" class="ico-detail"></a></span>
+
+                                <h1>{{title}} 
+
+                                    <small id="genres">{{name_de}}</small></h1>
+                                <p>
+                                    <span class="small ico-clock"> 12:00 </span> 
+                                    <span class="small ico-clock"> 13:20</span> 
+                                    <span class="small ico-cash"> {{amount}} CHF</span>
+                                    {{#artists}}  
+                                    <span class="small ico-responsable">{{name}} </span>
+                                    {{/artists}}
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    {{/events}}  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-lg-offset-3">
+            <ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+</div>
+
