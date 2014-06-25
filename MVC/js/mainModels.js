@@ -1,12 +1,12 @@
 //$.post('http://pingouin.heig-vd.ch/rockit/v1/login',{
 //    email:"matou@matou.ch", password:"matou"
-//}, function () {
-//    //controle
+//}, function (data, textStatus,jqXHR) {
+//    console.log(data);
 //});
 
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
-}
+};
 
 /////////// TEST DE CONNECTION AU SERVEUR//////////////////////////////////////////
  $.ajax({
@@ -134,30 +134,26 @@ var Musician = MyModelNestedCollection.extend({
         MyModelNestedCollection.prototype.initialize.apply(this, arguments),
         console.log("Nouveau Musician créé. Name: "+this.get('name'));
     },
-    parse: function (response) {
-//            if (typeof response.data != "undefined") {
-//                response = response.data;
-//            }
-//            return response;
-        }
+    
 });
 
 var Musicians = MyCollection.extend({
-    url: URLSERVEURinstruSuccess 
+    url: URLSERVEURMusicianSuccess,
+    model:Musician,
+    parse: function (response) {
+        if (typeof response.data != "undefined") {
+            response = response.data;
+            console.log("response.data de parse de Musicians : ");
+            console.log(response.data);
+        }
+        console.log("response de parse de Musicians : ");
+        console.log(response);
+        return response;
+    }
+    
 });
 
-var musician1 = new Musician({
-    'name': 'RRROOOMMM',
-    'instruments': [{'name':'Guitar'},
-                    {'name':'Bass'},
-                    {'name':'Drums'}]
-     
-     });
-     
-     var musiciansList = new Musicians();
-     musiciansList.fetch();
-     console.log(musiciansList);
-console.log(musician1);
+
 
 
 
@@ -169,6 +165,51 @@ console.log(musician1);
 
 
 
+//***************************************************************************//
+//******************* Création des Models, Collection ***********************//
+//***************************************************************************//
+var Comment = MyModel.extend({
+        defaults: function () {
+            return {
+                createdAt: $.now()
+            };
+        }
+    });
+    var PostComments = MyCollection.extend({
+        url: 'http://chabloz.eu/ws/api/v1/comments',
+        model: Comment,
+        comparator: function (comment) {
+            return -comment.get('createdAt');
+        }
+    });
+    var Post = MyModelNestedCollection.extend({
+        nested: 'comments',
+        urlRoot: 'http://chabloz.eu/ws/api/v1/posts',
+        defaults: function () {
+            return {
+                comments: new PostComments()
+            };
+        },
+        parse: function (response) {
+            if (typeof response.data != "undefined") {
+                response = response.data;
+            }
+            response.comments = new PostComments(response.comments);
+            return response;
+        }
+    });
+    var BlogPosts = MyCollection.extend({
+        url: 'http://chabloz.eu/ws/api/v1/posts',
+        model: Post,
+        parse: function (response) {
+            // si jsend, ne prend que les data
+            if (typeof response.data != 'undefined') {
+                response = response.data;
+            }
+            return response;
+        }
+    });
+
 
 
 
@@ -179,6 +220,65 @@ console.log(musician1);
 //***************************************************************************//
 //******************* Appel fetch                     ***********************//
 //***************************************************************************//
+
+console.log('***************Code TP4*********************');
+console.log('***************Code TP4*********************');
+var Task = MyModel.extend({
+    parse: function (response) {
+        if (typeof response.data != "undefined") {
+            response = response.data;
+            
+        }
+        
+        return response;
+    }
+});
+var TodoList = MyCollection.extend({
+    url: 'http://ws.chabloz.eu/api/v1/tasks/',
+    model: Task,
+    comparator: function (comment) {
+        return -comment.get('time');
+    },
+    parse: function (response) {
+        if (typeof response.data != "undefined") {
+            response = response.data;
+            console.log("Response.data de parse de TodoList : ");
+        console.log(response.data);
+        
+        console.log("Le tableau de X tâches : ");
+        console.log(response);
+        return response;
+    }
+}});
+
+
+//***************************************************************************//
+//*******************             main                ***********************//
+//***************************************************************************//
+
+$(function () {
+    
+    var todoList = new TodoList();
+todoList.fetch();
+console.log(JSON.stringify(todoList));
+
+
+
+//var musician1 = new Musician({
+//    'name': 'RRROOOMMM',
+//    'instruments': [{'name':'Guitar'},
+//                    {'name':'Bass'},
+//                    {'name':'Drums'}]
+//     
+//     });
+     
+     var musiciansList = new Musicians();
+     musiciansList.fetch();
+     console.log("Liste de Musicians :");
+     console.log(musiciansList);
+console.log("Un musician :");
+//console.log(musician1);
+});
 
 //blog.fetch({reset: true, success: function (collection, response, options) {
 //            console.log(blog.models[0].get('comments').at(0).get('text'));
@@ -387,12 +487,5 @@ console.log(musician1);
 //
 //
 //
-////***************************************************************************//
-////*******************             main                ***********************//
-////***************************************************************************//
-//
-//$(function () {
-//    
-//    
-//});
-//
+
+
