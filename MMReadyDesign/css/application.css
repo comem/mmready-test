@@ -3,6 +3,9 @@
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+section {
+  display: none;
+}
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -164,10 +167,6 @@ fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
-}
-legend {
-  border: 0;
-  padding: 0;
 }
 textarea {
   overflow: auto;
@@ -1531,6 +1530,7 @@ fieldset {
   margin: 0;
   border: 0;
   min-width: 0;
+  background-color: #fff;
 }
 legend {
   display: block;
@@ -1538,7 +1538,6 @@ legend {
   padding: 0;
   margin-bottom: 20px;
   font-size: 21px;
-  line-height: inherit;
   color: #333333;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
@@ -1558,7 +1557,6 @@ input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;
   /* IE8-9 */
-
   line-height: normal;
 }
 input[type="file"] {
@@ -4637,7 +4635,6 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
-  background-color: #ffffff;
   margin-top: 100px;
   background-color: #dcdcdc;
 }
@@ -4816,7 +4813,6 @@ p {
   text-transform: none;
   line-height: 1;
   /* Better Font Rendering =========== */
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -4894,7 +4890,6 @@ section {
 label {
   width: 200px;
   /* Cette largeur sert d’exemple, vous pouvez la modifier si vous voulez. */
-
 }
 .buttonsOptions {
   margin-top: 10px;
