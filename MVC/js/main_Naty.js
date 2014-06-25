@@ -125,7 +125,7 @@ var vocal = new Instrument({"name": "Vocal"});
 //
 var musician1 = new Musician({'name': 'Romain'});
 musician1.get('instruments').add(bass);
-var musician2 = new Musician({'name': 'Clélia'});
+var musician2 = new Musician({'name': 'Cl??lia'});
 musician2.get('instruments').add(vocal);
 
 var mmready = new Artist({'name': 'mmready()'});
@@ -150,7 +150,7 @@ console.log('***************************************');
 console.log('***************************************');
 
 $(function() {
-    $('#eventsSearch').append(eventSearchView.el);
+    //$('#eventsSearch').append(eventSearchView.el);
     $('#eventsList').append(eventListView.el);
 
 });
