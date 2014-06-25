@@ -4573,7 +4573,7 @@ button.close {
 }
 [class^="ico-"],
 [class*=" ico-"] {
-  margin-right: 15px;
+  margin-right: 5px;
   font-size: 1.2em;
 }
 /**ASIDE**/
@@ -4936,12 +4936,12 @@ dl dd {
 .moreInfo li {
   margin-right: 5px;
 }
+.headerShowBox {
+  border-bottom: 1px dotted #aeaeae;
+  padding: 5px;
+  margin-bottom: 10px;
+}
 /**Variables**/
 .green {
   color: green;
-}
-.headerShowBox {
-  border-bottom: 1px solid red;
-  padding: 5px;
-  margin-bottom: 10px;
 }
