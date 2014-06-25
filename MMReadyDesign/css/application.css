@@ -4953,6 +4953,9 @@ dl dd {
 .moreInfo li {
   margin-right: 5px;
 }
+li {
+  margin-right: 5px;
+}
 .headerShowBox {
   border-bottom: 1px dotted #aeaeae;
   padding: 5px;
