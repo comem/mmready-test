@@ -53,6 +53,32 @@ var Artist = MyModelNestedCollection.extend({
 var Artists = MyCollection.extend({
     model: Artist
 });
+
+var ViewArtists = MyView.extend({
+    //TEMPLATE FUNZIONANTE!!!
+//    template: _.template(templates.artistslist,
+    template: templates.artistslist,
+    events: {
+        'click a.ico-delete': 'delete',
+        'click a.ico-edit': 'edit'
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.collection, 'all', this.render);
+        this.render();
+    },
+    render: function() {
+
+        this.$el.html(Mustache.render(this.template, {artists: this.collection.toJSON()}));
+        return this;
+        
+    },
+    'delete': function(artist) {
+        console.log('delete');
+    },
+    edit: function(artist) {
+        console.log('edit');
+    }
+});
 var Event = MyModelNestedCollection.extend({
     nested: 'artists',
     defaults: function() {
