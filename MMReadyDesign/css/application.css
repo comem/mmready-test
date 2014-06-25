@@ -4925,6 +4925,17 @@ dl dd {
   margin-top: 5px;
   background-color: #aeaeae;
 }
+.moreInfo ul,
+.moreInfo li {
+  display: inline;
+  text-align: center;
+  padding: 5px ;
+  margin: 0;
+  width: 20%;
+}
+.moreInfo li {
+  margin-right: 5px;
+}
 /**Variables**/
 .green {
   color: green;
