@@ -135,7 +135,7 @@ var ViewEvents = MyView.extend({
     detail: function(event) {
         $('#eventsList').hide();
         $('#showDetailEvent').show();
-    },
+    }
 });
 
 var ViewShowEvent = MyView.extend({
@@ -242,9 +242,9 @@ $(function() {
         $("ul#mainNav a[href='" + sectionName + "']").addClass('activ');
         
         // Enl?ve la classe "activ" de tous les liens
-        $('div#linkEventsList a').removeClass('activ');
+        $('span#linkEventsList a').removeClass('activ');
         // Rajoute la classe "activ" pour le lien actuellement click?
-        $("div#linkEventsList a[href='" + sectionName + "']").addClass('activ')
+        $("span#linkEventsList a[href='" + sectionName + "']").addClass('activ')
         // Cache toutes les <section>
         $('section').hide();
         // Affichage de la bonne <section>
