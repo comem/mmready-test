@@ -114,7 +114,7 @@ var ViewEvents = MyView.extend({
     events: {
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
-        'click button.ico-detail': 'detail',
+        'click a.ico-detail': 'detail',
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -211,7 +211,11 @@ $(function() {
 
 /////////// bare de navigation ////////////////////
     $('ul#mainNav a').on('click', function(e) {
-        console.log($(this));
+        menuElementClickHandler($(this));
+        e.preventDefault();
+        return false;
+    });
+    $('a').on('click', function(e) {
         menuElementClickHandler($(this));
         e.preventDefault();
         return false;
@@ -236,6 +240,11 @@ $(function() {
         $('ul#mainNav a').removeClass('activ');
         // Rajoute la classe "activ" pour le lien actuellement click?
         $("ul#mainNav a[href='" + sectionName + "']").addClass('activ');
+        
+        // Enl?ve la classe "activ" de tous les liens
+        $('div#linkEventsList a').removeClass('activ');
+        // Rajoute la classe "activ" pour le lien actuellement click?
+        $("div#linkEventsList a[href='" + sectionName + "']").addClass('activ')
         // Cache toutes les <section>
         $('section').hide();
         // Affichage de la bonne <section>
