@@ -41,7 +41,72 @@ var Musicians = MyCollection.extend({
     model: Musician
 });
 
+/////////////// ADVANCED RESEARCH ARTIST /////////////
 
+var ViewAdvancedResearchArtist = MyView.extend({
+    template: templates.advancedResearchArtist,
+    events: {
+        'click button#events' : 'showListEvent',
+        'click button#artists': 'showListArtist'
+        //'click button#filterRepresenters': 'detail',
+        
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.collection, 'all', this.render);
+        this.render();
+
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
+        return this;
+
+    },
+    showListEvent : function(){
+     $('#artistsList').hide();
+     $('#eventsList').show();
+     $('#advancedResearchEvents').show();
+    },
+    showListArtist : function(){
+     $('#eventsList').hide();
+     $('#advancedResearchEvents').hide();
+     $('#artistsList').show();
+     $('#advancedResearchArtists').show();
+    }
+
+})
+
+///////////////// ADVANCED RESEARCH EVENT /////////////
+
+var ViewAdvancedResearchEvent = MyView.extend({
+    template: templates.advancedResearchEvent,
+    events: {
+        'click button#events' : 'showListEvent',
+        'click button#artists': 'showListArtist'
+        //'click button#filterRepresenters': 'detail',
+        
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.collection, 'all', this.render);
+        this.render();
+
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
+        return this;
+    },
+    showListEvent : function(){
+     $('#artistsList').hide();
+     $('#eventsList').show();
+     $('#advancedResearchEvents').show();
+    },
+    showListArtist : function(){
+     $('#eventsList').hide();
+     $('#advancedResearchEvents').hide();
+     $('#artistsList').show();
+     $('#advancedResearchArtists').show();
+    }
+
+});
 
 ////////////////ARTIST ////////////////////////
 
@@ -186,9 +251,10 @@ event2.get('artists').add([mmready, zed]);
 var listOfEvents1 = new Events([event1, event2]);
 var eventListView = new ViewEvents({collection: listOfEvents1});
 var showEvent = new ViewShowEvent({model: event1});
-
-
 var listOfArtists = new Artists([mmready, zed]);
+var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: listOfEvents1});
+var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: listOfArtists});
+
 var artistsListView = new ViewArtists({collection: listOfArtists});
 
 console.log('***************************************');
@@ -202,9 +268,13 @@ console.log('***************************************');
 
 $(function() {
 
+        $('#advancedResearchEvents').append(advancedResearchEvent.el);
+    $('#advancedResearchArtists').hide();
+    $('#advancedResearchArtists').append(advancedResearchArtist.el);
     $('#eventsList').append(eventListView.el);
     $('#artistsList').hide();
     $('#artistsList').append(artistsListView.el);
+    $('#showDetailEvent').hide();
     $('#showDetailEvent').hide();
     $('#showDetailEvent').append(showEvent.el);
 
