@@ -77,9 +77,9 @@
                     <h1>Add a new event</h1>
                     <div class="row" itemscope itemtype='http://schema.org/Event'>
                         <!-- **************************************INFOS******************************************************-->
-                        <div class="infos col-lg-8">
+                        <div class="col-lg-8">
                             <fieldset> 
-                                <h2  class="ico-info">Informations</h2 > 
+                                <h2><i class="ico-info"></i>Informations</h2 > 
                                 <div class="col-lg-6">
                                     <!--ouverture portes--><br />
                                     <div itemprop="doorTime">
@@ -110,11 +110,7 @@
                                         <input type= "radio" name="followedByPrivateParty" value="true" id="followedByPrivateParty">yes
                                         <input type= "radio" name="followedByPrivateParty" value="false" id="notFollowedByPrivateParty" checked>no
                                     </div>
-                                    <!--Contract--><br />
-                                    <div>
-                                        <label for="contract">Contract: </label>
-                                        <input type="file" name="contract" id="contract" id="contract">
-                                    </div>
+                                    
                                     <!--nb places--><br />
                                     <div>
                                         <label for="nbPlaces">Number of places: *</label>
@@ -125,27 +121,30 @@
                         </div>
 
                         <!-- **************************************TICKETS******************************************************-->
-                        <fieldset class=" col-lg-4">
-                            <h2  class="ico-tiket">Tickets</h2 >
+                        <div class=" col-lg-4">
+                            <fieldset>
+                                <h2><i class="ico-tiket"></i>Tickets</h2 >
 
-                            <select id="selectTicket"> 
-                                <option value="avs">AVS</option> 
-                                <option value="student">Student</option> 
-                                <option value="adult">Adult</option> 
-                            </select> 
-                            <input type="text" name='ticketPrice' id="ticketPrice">
-                            <span>CHF</span>
-                            <br/>
-                            <button id='addTicketCategory'>Add</button>
-                        </fieldset>
+                                <select id="selectTicket"> 
+                                    <option value="avs">AVS</option> 
+                                    <option value="student">Student</option> 
+                                    <option value="adult">Adult</option> 
+                                </select> 
+                                <input type="text" name='ticketPrice' id="ticketPrice" size="5">
+                                <span>CHF</span>
+
+                                <button class="pull-right" id='addTicketCategory'><i class="ico-plus"></i>Add</button>
+                            </fieldset>
+                        </div>
 
                         <!-- **************************************IMAGE******************************************************-->
-                        <fieldset class="col-lg-4">
-                            <h2 class="ico-img">Image</h2 >
-                            <button id="selectExistingImage" disabled>Select an existing image</button> 
-                            <p>or</p>
-                            <input type="file" name="eventImage" id="eventImage">
-                        </fieldset>
+                        <div class="col-lg-4">
+                            <fieldset>
+                                <h2><i class="ico-contract"></i>Contract</h2 >
+                                <!--Contract--><br />
+                                        <input type="file" name="contract" id="contract">
+                            </fieldset>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -154,88 +153,78 @@
 
 
                     <div class="col-lg-12 ">
-                        <h2 class="ico-artist">Artists</h2>
+                        <h2> <i class="ico-artist"></i>Artists</h2>
                         <div>
                             <span>Artist name</span> 
-                            <button id='artistDelete' class='ico-delete'>Delete</button>
-                            <button id='artistEdit' class='ico-edit'>Edit</button>
-                            <button id='artistDetails' class='ico-detail'>Details</button>
+                            <button id='artistDelete' ><i class="ico-delete"></i>Delete</button>
+                            <button id='artistEdit'><i class="ico-edit"></i>Edit</button>
+                            <button id='artistDetails' ><i class='ico-detail'></i>Details</button>
                         </div>
 
 
 
                         <!-- **************************************ARTISTES******************************************************-->
-                        <div class='col-lg-6'>
+                        <div>
                             <!--*********Infos*************-->
-                            <fieldset>
-                                <h2  class="ico-info">Infos</h2  >
+                            <fieldset class='col-lg-6'>
+                                <h2><i class="ico-info"></i>Infos</h2  >
                                 <!--name--><br/>
-                                <label for="artistName">Artist name: *</label>
-                                <input type="text" name="artistName" id="artistName" placeholder="Artist name">
+                                <div class="input-group">
+                                    <label for="artistName">Artist name: *</label>
+                                    <input type="text" name="artistName" id="artistName" placeholder="Artist name">
+                                </div>
                                 <!--genre--><br/>
-                                <label for="genre">Genre: *</label>
-                                <select name="genre" id="selectGenre"> 
-                                    <option value="rock">Rock</option> 
-                                    <option value="metal">Metal</option> 
-                                    <option value="pop">Pop</option> 
-                                </select> 
-                                <button id='addGene'>Add</button>
+                                <div class="input-group">
+                                    <label for="genre">Genre: *</label>
+                                    <select name="genre" id="selectGenre"> 
+                                        <option value="rock">Rock</option> 
+                                        <option value="metal">Metal</option> 
+                                        <option value="pop">Pop</option> 
+                                    </select> 
+                                    <button id='addGene'>Add</button>
+                                </div>
                                 <!--hour of arrival--><br/>
-                                <label for='hourArriva'>Hour of arrival: </label>
-                                <input type="time" name="hourArriva" id='hourArriva'>
+                                <div class="input-group">
+                                    <label for='hourArriva'>Hour of arrival: </label>
+                                    <input type="time" name="hourArriva" id='hourArriva'>
+                                </div>
                                 <!--order--><br/>
-                                <label for='artistOrder'>Order: *</label>
-                                <input type="number" name='artistOrder' id='artistOrder'>
+                                <div class="input-group">
+                                    <label for='artistOrder'>Order: *</label>
+                                    <input type="number" name='artistOrder' id='artistOrder'>
+                                </div>
                                 <!--main performer--><br/>
-                                <label for="mainPerformer">Main performer of the event? </label>
-                                <input type= "radio" name="mainPerformer" value="true" id="mainPerformer">yes
-                                <input type= "radio" name="mainPerformer" value="false" id="mainPerformer" checked>no
+                                <div class="input-group">
+                                    <label for="mainPerformer">Main performer of the event? </label>
+                                    <input type= "radio" name="mainPerformer" value="true" id="mainPerformer">yes
+                                    <input type= "radio" name="mainPerformer" value="false" id="mainPerformer" checked>no
+                                </div>
                                 <!--short description--><br/>
-                                <label for="completeDescription">Complete description:</label>
-                                <textarea name="completeDescription"></textarea>
+                                <div class="input-group">
+                                    <label for="completeDescription">Complete description:</label>
+                                    <textarea name="completeDescription"></textarea>
+                                </div>
                                 <!--complete description--><br/>
-                                <label for="completeDescription">Complete description:</label>
-                                <textarea name="completeDescription"></textarea>
+                                <div class="input-group">
+                                    <label for="completeDescription">Complete description:</label>
+                                    <textarea name="completeDescription"></textarea>
+                                </div>
                             </fieldset>
                         </div>
 
                         <div class='col-lg-6'>
                             <!--*********Musicians*************-->
                             <fieldset>
-                                <h2  class="ico-artist">Musicians</h2>
+                                <h2><i class="ico-artist"></i>Musicians</h2>
                                 <div>
                                     <span>Musician name</span> 
-                                    <button id='musicianDetails' class='ico-detail'>Details</button>
-                                    <button id='musicianDelete' class='ico-delete'>Delete</button>
-                                    <button id='musicianEdit' class='ico-edit'>Edit</button>
-                                </div>
-                                <div>
-                                    <span>Musician name</span> 
-                                    <button id='musicianDetails' class='ico-detail'>Details</button>
-                                    <button id='musicianDelete' class='ico-delete'>Delete</button>
-                                    <button id='musicianEdit' class='ico-edit'>Edit</button>
-                                </div>
-                                <div>
-                                    <span>Musician name</span> 
-                                    <button id='musicianDetails' class='ico-detail'>Details</button>
-                                    <button id='musicianDelete' class='ico-delete'>Delete</button>
-                                    <button id='musicianEdit' class='ico-edit'>Edit</button>
-                                </div>
-                                <div>
-                                    <span>Musician name</span> 
-                                    <button id='musicianDetails' class='ico-detail'>Details</button>
-                                    <button id='musicianDelete' class='ico-delete'>Delete</button>
-                                    <button id='musicianEdit' class='ico-edit'>Edit</button>
-                                </div>
-                                <div>
-                                    <span>Musician name</span> 
-                                    <button id='musicianDetails' class='ico-detail'>Details</button>
-                                    <button id='musicianDelete' class='ico-delete'>Delete</button>
-                                    <button id='musicianEdit' class='ico-edit'>Edit</button>
+                                    <button id='musicianDetails'><i class="ico-detail"></i></button>
+                                    <button id='musicianDelete'><i class="ico-delete"></i></button>
+                                    <button id='musicianEdit'><i class="ico-edit"></i></button>
                                 </div>
 
                                 <div class="new">
-                                    <h2 class="ico-plus">New musician</h2 >
+                                    <h3><i class="ico-plus"></i>New musician</h3>
                                     <!--first name--><br/>
                                     <label for="musicianFirstName">First name: *</label>
                                     <input type="text" name="musicianFirstName" id="musicianFirstName" placeholder="Musician first name">
@@ -252,17 +241,17 @@
                                         <option value="guitarre">Guitarre</option> 
                                         <option value="saxophone">Saxophone</option> 
                                     </select>
-                                    <button class=" ico-plus pull-right" id='addInstrument'>Instrument</button>
+                                    <button class="pull-right" id='addInstrument'><i class="ico-plus"></i>Instrument</button>
                                     <div class="clearfix"></div>
                                 </div>
 
-                                <button class='ico-plus pull-right' id='addMusician'>Musician</button>
+                                <button class='pull-right' id='addMusician'><i class="ico-plus"></i>Musician</button>
                             </fieldset>
                         </div>
                         <div class='col-lg-6'>
                             <!--*********Images*************-->
                             <fieldset>
-                                <h2  class="ico-img">Images</h2 >
+                                <h2><i class="ico-img"></i>Images</h2 >
                                 <input type="file" name="artistImage" id="artistImage">
                                 <button id='addImage'>Add an image</button>
                             </fieldset>
@@ -273,11 +262,12 @@
                                 <h2  class="ico-link">Links</h2 >
                                 <div>
                                     <span>http://link.com</span> 
-                                    <button id='linkDelete' class='ico-delete'>Delete</button>
-                                    <button id='linkEdit' class='ico-edit'>Edit</button>
+                                    <button id='linkDelete'><i class="ico-delete"></i></button>
+                                    <button id='linkEdit'><i class="ico-edit"></i></button>
+                                    <button id='linkDetails'><i class="ico-detail"></i></button>
                                 </div>
                                 <div class="new">
-                                    <h2 class="ico-plus">New link</h2 >
+                                    <h2><i class="ico-plus"></i>New link</h2 >
                                     <label for="linkURL" >URL: *</label>
                                     <input type="url" name="linkURL" id="link" placeholder="http://">
                                     <br/>
@@ -287,14 +277,14 @@
                                     <label for="description">Description:</label>
                                     <input type="text" name="description" id="linkDescription" placeholder="URL description">
                                     <br/>
-                                    <button class="ico-plus" id='addLink'>Link</button>
+                                    <button id='addLink'><i class="ico-plus"></i>Link</button>
                                 </div>
                             </fieldset>
 
                         </div>
 
-                        <button class="ico-save pull-right" id='saveArtist'>Save</button>
-                        <button class="ico-plus pull-right" id='addArtist'>Add</button>
+                        <button class="pull-right" id='saveArtist'><i class="ico-save"></i>Save</button>
+                        <button class="pull-right" id='addArtist'><i class="ico-plus"></i>Add</button>
 
                     </div>
                 </div>
@@ -305,7 +295,7 @@
                     <div class="col-lg-4">
                         <!-- **************************************FOOD******************************************************-->
                         <fieldset>
-                            <h2  class="ico-food">Food</h2 >
+                            <h2><i class="ico-food"></i>Food</h2 >
 
                             <!--normal meals--><br />
                             <div class="input-group">
@@ -328,7 +318,7 @@
                     <div class="col-lg-4">
                         <!-- **************************************NOTES******************************************************-->
                         <fieldset>
-                            <h2  class="ico-note">Notes</h2 >
+                            <h2><i class="ico-note"></i>Notes</h2 >
                             <textarea id='eventNotes'></textarea>
                         </fieldset>
                     </div>
@@ -336,7 +326,7 @@
                         <!-- **************************************ARTISTS ORDER******************************************************--> 
 
                         <fieldset>
-                            <h2  class="ico-info">Artist's order</h2    >
+                            <h2><i class="ico-info"></i>Artist's order</h2    >
                             <span>artist name</span> <input type='number'>
                         </fieldset>
                     </div>
@@ -346,26 +336,33 @@
                 <div class="col-lg-8">
                     <!-- **************************************REPRENSENTER******************************************************-->
                     <section class="representer">
-                        <h2 class="ico-responsable">Representer</h2>
+                        <h2><i class="ico-responsable"></i>Representer</h2>
                         <!--*********infos*************-->
-
-                        <h3 class='ico-info'>Infos</h3>
+                        <h3><i class="ico-info"></i>Infos</h3>
                         <!-- Lastname--> <br/>
-                        <label for="representerLastname">Lastname *: </label>
-                        <input name="representerLastname" id='representerLastname' type="text" required="required">
+                        <div class="input-group">
+                            <label for="representerLastname">Lastname *: </label>
+                            <input name="representerLastname" id='representerLastname' type="text" required="required">
+                        </div>
                         <!-- firstname  --><br/>
-                        <label for="representerFirstname">Firstname: *</label>
-                        <input name="representerFirstname" id='representerFirstname' type="text" required="required">
+                        <div class="input-group">
+                            <label for="representerFirstname">Firstname: *</label>
+                            <input name="representerFirstname" id='representerFirstname' type="text" required="required">
+                        </div>
                         <!-- email--><br/>
-                        <label for="email">E-mail: </label>
-                        <input name="email" type="email" id='email' >
+                        <div class="input-group">
+                            <label for="email">E-mail: </label>
+                            <input name="email" type="email" id='email' >
+                        </div>
                         <!-- phone--><br/>
-                        <label for="phone">Phone number: </label>
-                        <input name="phone" type="number" id='phone' >
+                        <div class="input-group">
+                            <label for="phone">Phone number: </label>
+                            <input name="phone" type="number" id='phone' >
+                        </div>
 
                         <!--*********adresse*************-->
 
-                        <h3>Adress</h3>
+                        <h3><i class="ico-home"></i>Adress</h3>
                         <!-- street--><br/>
                         <label for="street">Street: </label>
                         <input name="street" type="text" id='street'>
@@ -380,6 +377,15 @@
                         <input name="country" type="text" id='country'>
 
                     </section>
+                    <!-- **************************************IMAGE******************************************************-->
+                    <div class="col-lg-4">
+                        <fieldset>
+                            <h2><i class="ico-img"></i>Image</h2 >
+                            <button id="selectExistingImage" disabled>Select an existing image</button> 
+                            <p>or</p>
+                            <input type="file" name="eventImage" id="eventImage">
+                        </fieldset>
+                    </div>
 
                 </div>
 
