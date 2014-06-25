@@ -64,8 +64,7 @@ var ViewArtists = MyView.extend({
     events: {
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
-        'click a.ico-detail': 'detail',
-        'click button#events': 'showListEvents'
+        'click a.ico-detail': 'detail'
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -86,10 +85,6 @@ var ViewArtists = MyView.extend({
     detail: function(event) {
         console.log('detail');
     },
-    showListEvents: function() {
-        $('#artistsList').hide();
-        $('#eventsList').show();
-    }
 });
 
 
@@ -119,8 +114,7 @@ var ViewEvents = MyView.extend({
     events: {
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
-        'click a.ico-detail': 'detail',
-        
+        'click button.ico-detail': 'detail',
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -142,14 +136,13 @@ var ViewEvents = MyView.extend({
         $('#eventsList').hide();
         $('#showDetailEvent').show();
     },
-    showListArtist: function() {
-        $('#eventsList').hide();
-        $('#artistsList').show();
-    }
 });
 
 var ViewShowEvent = MyView.extend({
     template: templates.showEvent,
+    events: {
+        'click #btn-back': 'backListEvents',
+    },
     initialize: function(attrs, options) {
         this.listenTo(this.model, 'all', this.render);
         this.render();
@@ -159,6 +152,10 @@ var ViewShowEvent = MyView.extend({
         this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
         return this;
 
+    },
+    backListEvents: function() {
+        $('#showDetailEvent').hide();
+        $('#eventsList').show();
     }
 });
 
@@ -179,7 +176,8 @@ mmready.get('musicians').add([musician1, musician2]);
 var zed = new Artist({'name': 'ZED'});
 
 //Event collection dans un model
-var event1 = new Event({title: 'La grosse fiesta 2014', name_de: 'rock'});
+var event1 = new Event({title: 'La grosse fiesta 2014', name_de: 'rock', start_date_hour: '25.06.2014',
+    ending_date_hour: '26.06.2014', opening_doors: '16:00'});
 event1.get('artists').add([mmready, zed]);
 
 var event2 = new Event({title: 'La grosse fiesta 2015', name_de: 'salsa'});
@@ -203,15 +201,46 @@ console.log('***************************************');
 console.log('***************************************');
 
 $(function() {
-    
+
     $('#eventsList').append(eventListView.el);
     $('#artistsList').hide();
     $('#artistsList').append(artistsListView.el);
     $('#showDetailEvent').hide();
     $('#showDetailEvent').append(showEvent.el);
-    
-    
 
+
+/////////// bare de navigation ////////////////////
+    $('ul#mainNav a').on('click', function(e) {
+        console.log($(this));
+        menuElementClickHandler($(this));
+        e.preventDefault();
+        return false;
+    });
+
+    function menuElementClickHandler(menuElement) {
+        // Recup?re la section corespondante (attribut href du lien)
+        var sectionName = menuElement.attr('href');
+        // Si la section est d?j? active ne rien faire
+        var actualSectionName = location.pathname.split("/").pop();
+        if (sectionName === actualSectionName) {
+            return;
+        }
+        // Simule le changement d'url ver cette section
+        history.pushState(null, null, sectionName);
+        // Affiche la section en question
+        menuGoToSection(sectionName);
+    }
+    function menuGoToSection(sectionName) {
+        var nodeIdToShow = '#' + sectionName;
+        // Enl?ve la classe "activ" de tous les liens
+        $('ul#mainNav a').removeClass('activ');
+        // Rajoute la classe "activ" pour le lien actuellement click?
+        $("ul#mainNav a[href='" + sectionName + "']").addClass('activ');
+        // Cache toutes les <section>
+        $('section').hide();
+        // Affichage de la bonne <section>
+        $(nodeIdToShow).show();
+    }
 
 
 });
