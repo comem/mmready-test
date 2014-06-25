@@ -4574,7 +4574,6 @@ button.close {
 [class^="ico-"],
 [class*=" ico-"] {
   margin-right: 5px;
-  font-size: 1.2em;
 }
 /**ASIDE**/
 .panel-heading {
@@ -4940,6 +4939,11 @@ dl dd {
   border-bottom: 1px dotted #aeaeae;
   padding: 5px;
   margin-bottom: 10px;
+}
+.sortBy {
+  background-color: #ffffff;
+  margin-bottom: 15px;
+  padding: 10px;
 }
 /**Variables**/
 .green {
