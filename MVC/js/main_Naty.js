@@ -139,7 +139,8 @@ var ViewEvents = MyView.extend({
         console.log('edit');
     },
     detail: function(event) {
-        console.log('detail');
+        $('#eventsList').hide();
+        $('#showDetailEvent').show();
     },
     showListArtist: function() {
         $('#eventsList').hide();
@@ -155,7 +156,7 @@ var ViewShowEvent = MyView.extend({
 
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {events: this.model.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
         return this;
 
     }
