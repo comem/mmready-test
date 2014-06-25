@@ -1,0 +1,64 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1>Artists</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="form-inline">
+                        <label for="sort">Sort by</label>
+                        <select class="form-control">
+                            <option value="" disabled selected>none</option>
+                            <option>Name asc</option>
+                            <option>Name desc</option>
+                        </select>
+                        <button type="button" class="btn btn-default" id="sort">Sort</button>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+
+                {{#artists}}
+                <div class="col-lg-12"><!--Artist-->
+                    <div class="media searchResult">
+                        <a class="pull-left" href="#">
+                            <!-- <img class="media-object img-circle" src="/img/bg.jpg" alt="Naked Soul" height="60" width="60" /> -->
+                        </a>
+                        <div class="media-body">
+
+                            <div class="pull-left">
+
+                                <h4 class="media-heading "> {{name}} </h4>
+                                <h5 class="media-heading">Acoustic Rock, Pop</h5>
+                                <p>{{short_description}}</p>
+
+                            </div>
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-plus"></span> Details
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-pencil"></span> Edit
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-trash"></span> Delete
+                                </button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div> {{/artists}} <!-- end artist-->
+            </div>
+
+        </div>
+    </div>
+</div>
