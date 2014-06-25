@@ -2,31 +2,58 @@
 //    email:"matou@matou.ch", password:"matou"
 //}, function (data, textStatus,jqXHR) {
 //    console.log(data);
+//    console.log(textStatus);
+//    console.log(jqXHR);
+//    
+//    if(textStatus==="success"){
+//      IsConnected();
+//      console.log(data.data.title);
+//    }else{
+//        
+//    }
+//    
 //});
 
+$.ajax
+  ({
+    type: "POST",
+    url: "http://pingouin.heig-vd.ch/rockit/v1/login",
+    dataType: 'json',
+    //async: false,
+    data: {"email":"matou@matou.ch", "password":"matou"},
+    success: function (data, textStatus, jqXHR){
+      console.log("Dialogue client serveur : "+ textStatus);
+      console.log("TextStatut : "+ data.status);
+      
+      console.log(data);
+      if(data.status==='success'){
+          console.log(data.data.title);
+      }else{
+          console.log("Phrase d'erreur : "+ data.message.title);
+          return;
+      }
+      
+      IsConnected();
+    },
+    crossDomain: true,
+    error: function(jqXHR, textStatus,errorThrown){
+        console.log("Vous n'�tes pas authentifi� !");
+        console.log(textStatus);
+        console.log(errorThrown);
+        console.log(jqXHR);
+        
+    }
+});
+
+function IsConnected(){
+
+console.log("function IsConnected(){");
+
+//
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
-/////////// TEST DE CONNECTION AU SERVEUR//////////////////////////////////////////
- $.ajax({
-        url: URLSERVEUR_EVENTsuccess
-    }).done(function() {
-        ONLINE = true;
-    }).fail(function() {
-        ONLINE = false;
-    }).always(function(data, txtStatus) {
-        if(ONLINE){
-            console.log("statut: online");
-                    }else{
-                       console.log("statut: offline");//intéressant il apparaît après les autres console.log
-                                                      //faut croire que la requête ajax est bien plus longue
-                    }
-                    
-         
-                       
-        
-    });
     
     
 
@@ -39,15 +66,17 @@ var MyCollection = Backbone.Collection.extend();
 var MyView = Backbone.View.extend(); ///!\ peut-être conflit avec Naty
 var MyModelNestedCollection = MyModel.extend({
     nested: 'collection',
-    initialize: function (attrs, options) { // universalisation des noms de la variable contenant la collection     
-        if (typeof attrs[this.nested] != "undefined") { //SI le type de l'attribut
-                                                        // de ce nom n'est pas indéfini '
-            this.set(this.nested, new window[this.nested.capitalize()](attrs[this.nested])); // ALORS crée une instance portant
+    initialize: function (attrs, options) { // universalisation des noms de la variable contenant la collection  
+        
+        console.log(attrs[this.nested].toJSON());
+        console.log(JSON.stringify(attrs[this.nested]));
+        
+        if (typeof attrs[this.nested] !== "undefined") { //SI le type de l'attribut
+                                                        // de ce nom n'est pas ind�fini '
+            this.set(this.nested, new window[this.nested.capitalize()](attrs[this.nested])); // ALORS cr�e une instance portant
                                                                                              // le nom en lui ajoutant
                                                                                              // une majuscule sur le premier
-                                                                                             // caractère
-                                                                                            
-           
+                                                                                             // caract�re
         }else{
              attrs[this.nested] = [];
         }
@@ -89,77 +118,93 @@ var MyModelNestedCollection = MyModel.extend({
 //***************************************************************************//
 
 var LangFR = MyModel.extend({
-    urlRoot: URLlangFR
+    urlRoot: LANGS
 });
 
 
 
 
 
-//var Instrument = MyModel.extend({
-//    //urlRoot: URLSERVEURinstruSuccess,    
-//    initialize: function(){
-//        console.log("Nouvel Instrument cr��. Name: "+this.get('name'));
-//        this.on('change', function(event){
-//            console.log('Un �v�nement "change" est survenu sur '+JSON.stringify(this.changed)+'. L objet entier en JSON:' +  JSON.stringify(event)); 
-//            return this;
-//        });
-//        this.on('invalid', function(model, error){//si la méthode validate perçoit un truc pas valide elle génère un évènement "invalid"
-//            console.log("Message d'erreur de validation: "+ error); // error contient la string qui est "returnée" par la fonction validate
-//        });
-//              
-//    },
-//    printDetails: function(){
-//        console.log("Instrument Name: "+this.get('name'));
-//    },
-//    validate: function(attrs){ //ou validateName, validateType, ... :  pour valider qu'un attr
-//        if(!attrs.name){
-//            return "Ein Name einsetzen";
-//        }
-//    }
-//});
-//var Instruments = MyCollection.extend({
-//        model: Instrument
-//});
-//
-//
-//
-//var Musician = MyModelNestedCollection.extend({
-//    nested: 'instruments',
-////    defaults: function () {return {
-////        instruments: new Instruments()
-////    }},
-//    initialize: function(attrs, options){
-//               
-//        MyModelNestedCollection.prototype.initialize.apply(this, arguments),
-//        console.log("Nouveau Musician cr��. Name: "+this.get('name'));
-//    },
-//    
-//});
-//
-//var Musicians = MyCollection.extend({
-//    url: URLSERVEURMusicianSuccess,
-//    model:Musician,
-//    parse: function (response) {
-//        if (typeof response.data != "undefined") {
-//            response = response.data;
-//            console.log("response.data de parse de Musicians : ");
-//            console.log(response.data);
-//        }
-//        console.log("response de parse de Musicians : ");
-//        console.log(response);
-//        return response;
-//    }
-//    
-//});
+var Instrument = MyModel.extend({
+    //urlRoot: URLSERVEURinstruSuccess,    
+    initialize: function(){
+        console.log("Nouvel Instrument cr��. Name: "+this.get('name'));
+        this.on('change', function(event){
+            console.log('Un �v�nement "change" est survenu sur '+JSON.stringify(this.changed)+'. L objet entier en JSON:' +  JSON.stringify(event)); 
+            return this;
+        });
+        this.on('invalid', function(model, error){//si la méthode validate perçoit un truc pas valide elle génère un évènement "invalid"
+            console.log("Message d'erreur de validation: "+ error); // error contient la string qui est "returnée" par la fonction validate
+        });
+              
+    },
+    printDetails: function(){
+        console.log("Instrument Name: "+this.get('name'));
+    },
+    validate: function(attrs){ //ou validateName, validateType, ... :  pour valider qu'un attr
+        if(!attrs.name){
+            return "Ein Name einsetzen";
+        }
+    }
+});
+var Instruments = MyCollection.extend({
+        model: Instrument
+});
 
+
+
+var Musician = MyModelNestedCollection.extend({
+    nested: 'instruments',
+//    defaults: function () {return {
+//        instruments: new Instruments()
+//    }},
+    initialize: function(attrs, options){
+               
+        MyModelNestedCollection.prototype.initialize.apply(this, arguments),
+        console.log("Nouveau Musician cr��. Name: "+this.get('name'));
+    },
+    
+});
+
+var Musicians = MyCollection.extend({
+    url: URLSERVEURMusicianSuccess, //MUSICIANS
+    model:Musician,
+    parse: function (response) {
+        if (typeof response.data != "undefined") {
+            response = response.data;
+            console.log("response.data de parse de Musicians : ");
+            console.log(response.data);
+        }
+        console.log("response de parse de Musicians : ");
+        console.log(response);
+        return response;
+    }
+    
+});
 
 
 
 
 //***************************************************************************//
-//******************* Création des Models, Collection ***********************//
+//*******************             main                ***********************//
 //***************************************************************************//
+
+$(function () {
+    
+   
+
+
+
+
+     
+     var musiciansList = new Musicians();
+     musiciansList.fetch();
+     console.log("Liste de Musicians :");
+    console.log(musiciansList); 
+    console.log(JSON.stringify(musiciansList));
+
+
+});
 
 
 
@@ -169,294 +214,270 @@ var LangFR = MyModel.extend({
 //******************* Blog Chabloz adapt� musicians                    ***********************//
 //***************************************************************************//
 
-var Instrument = MyModel.extend({
-        defaults: function () {
-            return {
-                createdAt: $.now()
-            };
-        }
-    });
-    var Instruments = MyCollection.extend({
-        url: 'http://chabloz.eu/ws/api/v1/comments',
-        model: Instrument,
-        comparator: function (instrument) {
-            return -instrument.get('createdAt');
-        }
-    });
-    var Musician = MyModelNestedCollection.extend({
-        nested: 'instruments',
-        urlRoot: 'http://chabloz.eu/ws/api/v1/posts',
-        defaults: function () {
-            return {
-                instruments: new Instruments()
-            };
-        },
-        parse: function (response) {
-            if (typeof response.data != "undefined") {
-                response = response.data;
-            }
-            response.instruments = new Instruments(response.instruments);
-            return response;
-        }
-    });
-    var Musicians = MyCollection.extend({
-        url: 'http://chabloz.eu/ws/api/v1/posts',
-        model: Musician,
-        parse: function (response) {
-            // si jsend, ne prend que les data
-            if (typeof response.data != 'undefined') {
-                response = response.data;
-            }
-            return response;
-        }
-    });
-    
-    var blog = new Musicians();
-
-    blog.fetch({reset: true, success: function (collection, response, options) {
-            console.log(blog.models[0].get('instruments').at(0).get('text'));
-            blog.models[0].set('title', 'My first blog post !!');
-            console.log(blog.models[0].toJSON());
-            blog.models[0].get('instruments').create({
-                text: 'This is something new',
-                post_id: blog.models[0].id - 0
-            });
-            blog.models[0].save();
-    }});
-
-
-//***************************************************************************//
-//*******************             main                ***********************//
-//***************************************************************************//
-
-//$(function () {
-    
-   
-
-
-
-//var musician1 = new Musician({
-//    'name': 'RRROOOMMM',
-//    'instruments': [{'name':'Guitar'},
-//                    {'name':'Bass'},
-//                    {'name':'Drums'}]
-//     
-//     });
-     
-//     var musiciansList = new Musicians();
-//     musiciansList.fetch();
-//     console.log("Liste de Musicians :");
-//     console.log(musiciansList);
-//console.log("Un musician :");
-////console.log(musician1);
-//});
-
-//blog.fetch({reset: true, success: function (collection, response, options) {
-//            console.log(blog.models[0].get('comments').at(0).get('text'));
-//            blog.models[0].set('title', 'My first blog post !!');
+//var Instrument = MyModel.extend({});
+//    
+//    var guitar = new Instrument();
+//    
+//    var Instruments = MyCollection.extend({
+//        url: URLSERVEURinstruSuccess,
+//        model: Instrument,
+//        comparator: function (instrument) {
+//            return -instrument.get('createdAt');
+//        }
+//    });
+//    var Musician = MyModelNestedCollection.extend({
+//        nested: 'instruments',
+//        urlRoot: URLSERVEURMusicianSuccess,
+//        defaults: function () {
+//            return {
+//                instruments: new Instruments()
+//            };
+//        },
+//        parse: function (response) {
+//            if (typeof response.data != "undefined") {
+//                response = response.data;
+//            }
+//            response.instruments = new Instruments(response.instruments);
+//            return response;
+//        }
+//    });
+//    var Musicians = MyCollection.extend({
+//        url: URLSERVEURMusicianSuccess,
+//        model: Musician,
+//        parse: function (response) {
+//            // si jsend, ne prend que les data
+//            if (typeof response.data != 'undefined') {
+//                response = response.data;
+//            }
+//            return response;
+//        }
+//    });
+//    
+//    var blog = new Musicians();
+//
+//    blog.fetch({reset: true, success: function (collection, response, options) {
+//            console.log("Fetch sur Musicians");
+//            console.log(blog.models[0].get('instruments').at(0).get('name'));
+//            blog.models[0].set('lastname', 'Cerantola');
 //            console.log(blog.models[0].toJSON());
-//            blog.models[0].get('comments').create({
+//            console.log(JSON.stringify(blog.models[0]));
+//            blog.models[0].get('instruments').create({
 //                text: 'This is something new',
-//                post_id: blog.models[0].id - 0
+//                musician_id: blog.models[0].id - 0
 //            });
-//***************************************************************************//
-//******************* Appel fetch                     ***********************//
-//***************************************************************************//
-
-
-
-
-
-//
-//
-//var Musicians = MyCollection.extend({
-//    model: Musician
-//});
-//
-//
-//var Artist = MyModelNestedCollection.extend({
-//    nested: 'musicians',
-////    defaults: function () {return {
-////        musicians: new Musicians()
-////    }},
-//initialize: function(){
-//        console.log("Nouvel Artist créé. Name: "+this.get('name'));
-//    },
-//    parse: function (response) {
-//            if (typeof response.data != "undefined") {
-//                response = response.data;
-//            }
-//            response.musicians = new Musicians(response.musicians);
-//            return response;
-//        }
-//});
-//
-//
-//var Artists = MyCollection.extend({
-//    url: "URLallArtists",
-//    model: Artist
-//});
+//            blog.models[0].save();
+//    }});
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+////***************************************************************************//
+////******************* Appel fetch                     ***********************//
+////***************************************************************************//
 //
 //
 //
 //
-//var Event = MyModelNestedCollection.extend({
-//    nested: 'artists',
-////    defaults: function () {return {
-////        artists: new Artists()
-////    }},
-//initialize: function(){
-//        console.log("Nouvel Event créé. Name: "+this.get('name'));
-//    },
-//    parse: function (response) {
-//            if (typeof response.data != "undefined") {
-//                response = response.data;
-//            }
-//            response.artists = new Artists()(response.artists);
-//            return response;
-//        }
-//});
-//var Events = MyCollection.extend({
-//    url: URLSERVEUR_EVENTsuccess,
-//    model: Event
-//});
 //
-//
-//
-////var Evenement = MyModelNestedCollection.extend({
-////    nested: 'artists',
-////    defaults: function () {return {
-////        artists: new Artists()
-////    }}
+////
+////
+////var Musicians = MyCollection.extend({
+////    model: Musician
 ////});
 ////
-////var Evenements = MyCollection.extend({
-////    url: URLSERVEURsuccess,
-////    model: Evenement,
-////    //je fais le lien avec le model
-////        comparator: function(event) {
-////         return -event.get('name');
-////         conlole.log(Evenement.get('name'));
-////        },
-////        initialize: function() {
-////            var that = this;
-////            setInterval(function() {                
-////                that.fetch();
-////            }, 10000)
-////        
+////
+////var Artist = MyModelNestedCollection.extend({
+////    nested: 'musicians',
+//////    defaults: function () {return {
+//////        musicians: new Musicians()
+//////    }},
+////initialize: function(){
+////        console.log("Nouvel Artist créé. Name: "+this.get('name'));
+////    },
+////    parse: function (response) {
+////            if (typeof response.data != "undefined") {
+////                response = response.data;
+////            }
+////            response.musicians = new Musicians(response.musicians);
+////            return response;
 ////        }
 ////});
-//
-//
-////***************************************************************************//
-////*******************            new                  ***********************//
-////***************************************************************************//
-//
-//
-//
-//
+////
+////
+////var Artists = MyCollection.extend({
+////    url: "URLallArtists",
+////    model: Artist
+////});
+////
+////
+////
+////
+////var Event = MyModelNestedCollection.extend({
+////    nested: 'artists',
+//////    defaults: function () {return {
+//////        artists: new Artists()
+//////    }},
+////initialize: function(){
+////        console.log("Nouvel Event créé. Name: "+this.get('name'));
+////    },
+////    parse: function (response) {
+////            if (typeof response.data != "undefined") {
+////                response = response.data;
+////            }
+////            response.artists = new Artists()(response.artists);
+////            return response;
+////        }
+////});
+////var Events = MyCollection.extend({
+////    url: URLSERVEUR_EVENTsuccess,
+////    model: Event
+////});
+////
+////
+////
+//////var Evenement = MyModelNestedCollection.extend({
+//////    nested: 'artists',
+//////    defaults: function () {return {
+//////        artists: new Artists()
+//////    }}
+//////});
+//////
+//////var Evenements = MyCollection.extend({
+//////    url: URLSERVEURsuccess,
+//////    model: Evenement,
+//////    //je fais le lien avec le model
+//////        comparator: function(event) {
+//////         return -event.get('name');
+//////         conlole.log(Evenement.get('name'));
+//////        },
+//////        initialize: function() {
+//////            var that = this;
+//////            setInterval(function() {                
+//////                that.fetch();
+//////            }, 10000)
+//////        
+//////        }
+//////});
+////
+////
+//////***************************************************************************//
+//////*******************            new                  ***********************//
+//////***************************************************************************//
+////
+////
+////
+////
+//////var guitar = new Instrument({"name":"Guitar"});
+////var bass = new Instrument({"name":"Bass"});
+////bass.set("name","BASS");
+////bass.set("nb_corde","4");
+////
+////
+//////**** test si la validation fonctionne *************
+//////***************************************************
+////
+////
+////console.log("************************");
+////console.log("Début: test si la validation fonctionne");
+////console.log("************************");
+////
 ////var guitar = new Instrument({"name":"Guitar"});
-//var bass = new Instrument({"name":"Bass"});
-//bass.set("name","BASS");
-//bass.set("nb_corde","4");
-//
-//
-////**** test si la validation fonctionne *************
-////***************************************************
-//
-//
-//console.log("************************");
-//console.log("Début: test si la validation fonctionne");
-//console.log("************************");
-//
-//var guitar = new Instrument({"name":"Guitar"});
-//
-//console.log("L'objet en JSON : "+JSON.stringify(guitar));
-//
-//var mess = guitar.unset("name", {validate:true});
-//console.log("Après l'action unset sur 'name' le message de retour :" +mess);
-//console.log("Aperçu de l'attribut : " +guitar.get("name"));
-//
-//
-//console.log("************************");
-//console.log("Fin: test si la validation fonctionne");
-//console.log("********  oui elle fonctionne  *******");
-//
-////***************************************************
-////***************************************************
-//
-//var musician1 = new Musician({'name': 'Romain'});
-//musician1.get('instruments').add(bass);
-//var musician2 = new Musician({'name': 'Clélia'});
-//musician2.get('instruments').add(vocal);
-//
-//var mmready = new Artist({'name': 'mmready()'});
-//mmready.get('musicians').add([musician1, musician2]);
-//var zed = new Artist({'name': 'ZED'});
-//
-//
-//var event1 = new Event({name: 'La grosse fiesta 2014'});
-//event1.get('artists').add([mmready, zed]);
-////var event2 = new Event({title: 'Why so serious Party!'});
-//
-//
-//var listOfEvents1 = new Events([event1]);
-//
-//console.log('***************************************');
-//console.log('***************************************');
-//console.log(listOfEvents1.toJSON());
-//console.log(JSON.stringify(listOfEvents1));
-//
-//console.log('***************************************');
-//console.log('***************************************');
-//
-//var francais = new LangFR();
-//
-//var francais2 = francais.fetch(
-//        
-//         {
-//    success: function(model, response, options){
-//        console.log('Fetch langue success');
-//        return response;
-//    },
-//    error: function(model, response, options){
-//        console.log('Fetch langue error');
-//        console.log(model);
-//        console.log(response);
-//        console.log(options);
-//    },
-//    fail: function(model, response, options){
-//        console.log('Fetch langue fail');
-//    }
-//}
-//         
-//         );
-//console.log("Test LANGUAGE ////////////////////////////////// L'objet : " +JSON.stringify(francais2));
-//
-//
-////*********** test Fetch sur un model 
-//bass.fetch({
-//    success: function(model, response, options){
-//        console.log('Fetch instrument success');
-//    },
-//    error: function(model, response, options){
-//        console.log('Fetch error');
-//        console.log(model);
-//        console.log(response);
-//        console.log(options);
-//    },
-//    fail: function(model, response, options){
-//        console.log('Fetch instrument fail');
-//    }
-//});
-//
-//
-////var drum = new Instrument({"name":"Drum"});
-//var vocal = new Instrument({"name":"Vocal"});
-////var synth = new Instrument({"name":"Synth"});
-//
-//
-//
+////
+////console.log("L'objet en JSON : "+JSON.stringify(guitar));
+////
+////var mess = guitar.unset("name", {validate:true});
+////console.log("Après l'action unset sur 'name' le message de retour :" +mess);
+////console.log("Aperçu de l'attribut : " +guitar.get("name"));
+////
+////
+////console.log("************************");
+////console.log("Fin: test si la validation fonctionne");
+////console.log("********  oui elle fonctionne  *******");
+////
+//////***************************************************
+//////***************************************************
+////
+////var musician1 = new Musician({'name': 'Romain'});
+////musician1.get('instruments').add(bass);
+////var musician2 = new Musician({'name': 'Clélia'});
+////musician2.get('instruments').add(vocal);
+////
+////var mmready = new Artist({'name': 'mmready()'});
+////mmready.get('musicians').add([musician1, musician2]);
+////var zed = new Artist({'name': 'ZED'});
+////
+////
+////var event1 = new Event({name: 'La grosse fiesta 2014'});
+////event1.get('artists').add([mmready, zed]);
+//////var event2 = new Event({title: 'Why so serious Party!'});
+////
+////
+////var listOfEvents1 = new Events([event1]);
+////
+////console.log('***************************************');
+////console.log('***************************************');
+////console.log(listOfEvents1.toJSON());
+////console.log(JSON.stringify(listOfEvents1));
+////
+////console.log('***************************************');
+////console.log('***************************************');
+////
+////var francais = new LangFR();
+////
+////var francais2 = francais.fetch(
+////        
+////         {
+////    success: function(model, response, options){
+////        console.log('Fetch langue success');
+////        return response;
+////    },
+////    error: function(model, response, options){
+////        console.log('Fetch langue error');
+////        console.log(model);
+////        console.log(response);
+////        console.log(options);
+////    },
+////    fail: function(model, response, options){
+////        console.log('Fetch langue fail');
+////    }
+////}
+////         
+////         );
+////console.log("Test LANGUAGE ////////////////////////////////// L'objet : " +JSON.stringify(francais2));
+////
+////
+//////*********** test Fetch sur un model 
+////bass.fetch({
+////    success: function(model, response, options){
+////        console.log('Fetch instrument success');
+////    },
+////    error: function(model, response, options){
+////        console.log('Fetch error');
+////        console.log(model);
+////        console.log(response);
+////        console.log(options);
+////    },
+////    fail: function(model, response, options){
+////        console.log('Fetch instrument fail');
+////    }
+////});
+////
+////
+//////var drum = new Instrument({"name":"Drum"});
+////var vocal = new Instrument({"name":"Vocal"});
+//////var synth = new Instrument({"name":"Synth"});
+////
+////
+////
+////
 //
 
-
+};
