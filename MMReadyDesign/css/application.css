@@ -1557,6 +1557,7 @@ input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;
   /* IE8-9 */
+
   line-height: normal;
 }
 input[type="file"] {
@@ -4812,6 +4813,7 @@ p {
   text-transform: none;
   line-height: 1;
   /* Better Font Rendering =========== */
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -4889,13 +4891,11 @@ section {
 label {
   width: 200px;
   /* Cette largeur sert d’exemple, vous pouvez la modifier si vous voulez. */
+
 }
 .buttonsOptions {
   margin-top: 10px;
   margin-bottom: 10px;
-}
-fieldset {
-  background-color: #fff;
 }
 /*DL, DT, DD TAGS LIST DATA*/
 dl {
