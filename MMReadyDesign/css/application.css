@@ -4900,7 +4900,7 @@ label {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.fieldset {
+fieldset {
   background-color: #fff;
 }
 /*DL, DT, DD TAGS LIST DATA*/
@@ -4928,4 +4928,9 @@ dl dd {
 /**Variables**/
 .green {
   color: green;
+}
+.headerShowBox {
+  border-bottom: 1px solid red;
+  padding: 5px;
+  margin-bottom: 10px;
 }
