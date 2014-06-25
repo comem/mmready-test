@@ -64,7 +64,8 @@ var ViewArtists = MyView.extend({
     events: {
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
-        'click a.ico-detail': 'detail'
+        'click a.ico-detail': 'detail',
+        'click button#events': 'showListEvents'
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -84,6 +85,10 @@ var ViewArtists = MyView.extend({
     },
     detail: function(event) {
         console.log('detail');
+    },
+    showListEvents: function() {
+        $('#artistsList').hide();
+        $('#eventsList').show();
     }
 });
 
@@ -108,18 +113,6 @@ var Events = MyCollection.extend({
     model: Event
 });
 
-var ViewEventsSearch = MyView.extend({
-    template: templates.eventsListSearch,
-    initialize: function(attrs, options) {
-        this.listenTo(this.collection, 'all', this.render);
-        this.render();
-    },
-    render: function() {
-        this.$el.html(Mustache.render(this.template, {events: this.collection.toJSON()}));
-        return this;
-
-    }
-});
 
 var ViewEvents = MyView.extend({
     template: templates.eventsList,
@@ -146,14 +139,28 @@ var ViewEvents = MyView.extend({
         console.log('edit');
     },
     detail: function(event) {
-        console.log('detail');
+        $('#eventsList').hide();
+        $('#showDetailEvent').show();
     },
     showListArtist: function() {
-         $('#eventsList').hide();
-         $('#artistsList').show();
+        $('#eventsList').hide();
+        $('#artistsList').show();
     }
 });
 
+var ViewShowEvent = MyView.extend({
+    template: templates.showEvent,
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
+
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        return this;
+
+    }
+});
 
 
 var guitar = new Instrument({"name": "Guitar"});
@@ -180,6 +187,8 @@ event2.get('artists').add([mmready, zed]);
 
 var listOfEvents1 = new Events([event1, event2]);
 var eventListView = new ViewEvents({collection: listOfEvents1});
+var showEvent = new ViewShowEvent({model: event1});
+
 
 var listOfArtists = new Artists([mmready, zed]);
 var artistsListView = new ViewArtists({collection: listOfArtists});
@@ -194,10 +203,14 @@ console.log('***************************************');
 console.log('***************************************');
 
 $(function() {
+    
     $('#eventsList').append(eventListView.el);
     $('#artistsList').hide();
-
-      $('#artistsList').append(artistsListView.el);
+    $('#artistsList').append(artistsListView.el);
+    $('#showDetailEvent').hide();
+    $('#showDetailEvent').append(showEvent.el);
+    
+    
 
 
 

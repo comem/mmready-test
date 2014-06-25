@@ -4560,7 +4560,7 @@ button.close {
 }
 .searchResult [class^="ico-"],
 .searchResult [class*=" ico-"] {
-  margin-right: 15px;
+  margin-right: 5px;
 }
 .dayResult {
   font-size: 1.8em;
@@ -4923,9 +4923,12 @@ dl dd {
 .moreInfo li {
   display: inline;
   text-align: center;
-  padding: 2px ;
+  padding: 5px ;
   margin: 0;
   width: 20%;
+}
+.moreInfo li {
+  margin-right: 5px;
 }
 /**Variables**/
 .green {
