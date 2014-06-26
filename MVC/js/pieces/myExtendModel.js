@@ -5,49 +5,56 @@
 
 var MyModel = Backbone.Model.extend();
 
-String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-};
 
-////////////Model Nested Collection //////////////////////////////
-var MyModelNestedCollection = MyModel.extend({
-    nested: 'collection',
-    initialize: function (attrs, options) { // universalisation des noms de la variable contenant la collection  
+
+
+
+var LangFR = MyModel.extend({ //A paufiner mais la requete fonctionne il faut juste etre au clair avec les attributs recus
+    urlRoot: LANGS+"/fr",
+    initialize: function(attrs, opt){
         
-        console.log(attrs[this.nested].toJSON());
-        console.log(JSON.stringify(attrs[this.nested]));
-        
-        if (typeof attrs[this.nested] !== "undefined") { //SI le type de l'attribut
-                                                        // de ce nom n'est pas indéfini '
-            this.set(this.nested, new window[this.nested.capitalize()](attrs[this.nested])); // ALORS crée une instance portant
-                                                                                             // le nom en lui ajoutant
-                                                                                             // une majuscule sur le premier
-                                                                                             // caractère
-        }else{
-             attrs[this.nested] = [];
-        }
-//        this.get(this.nested).on('all', function(eventName) {
-//            this.trigger(eventName, this);
-//        }, this);
     },
-    toJSON: function(attrs, options) {//surcharge de la fonction JSON pour stringifyer une collection contenue dans un attribut d'un model
-        if(this.nested === 'undefined'){
-            console.log('this.nested ( '+this.name+' ) is undefined');
-            return;
+    parse: function(attrs, opt){
+        if (typeof attrs.status != "success") {
+            console.log("Le statut de LangFR N'EST PAS success");
+            console.log(attrs);
+            
+            console.log(attrs.mastring);
+            return attrs.mastring;
+        }else{
+        console.log("Le statut de LangFR EST success");
+        console.log(attrs);
+        console.log("response de parse de attrs.data : ");
+        console.log(attrs.data);
+        return attrs.data; 
         }
-        var colObj = {};
-        colObj[this.nested] = this.get(this.nested).toJSON();
-        return _.extend(
-            Backbone.Model.prototype.toJSON.apply(this, arguments),
-            colObj
-        );
+        
     }
 });
 
 
 
-///////// Model
 
-var LangFR = MyModel.extend({
-    urlRoot: LANGS
-});
+
+//var Instrument = MyModel.extend({
+//    //urlRoot: URLSERVEURinstruSuccess,    
+//    initialize: function(){
+//        console.log("Nouvel Instrument créé. Name: "+this.get('name'));
+//        this.on('change', function(event){
+//            console.log('Un événement "change" est survenu sur '+JSON.stringify(this.changed)+'. L objet entier en JSON:' +  JSON.stringify(event)); 
+//            return this;
+//        });
+//        this.on('invalid', function(model, error){//si la mÃ©thode validate perÃ§oit un truc pas valide elle gÃ©nÃ¨re un Ã©vÃ¨nement "invalid"
+//            console.log("Message d'erreur de validation: "+ error); // error contient la string qui est "returnÃ©e" par la fonction validate
+//        });
+//              
+//    },
+//    printDetails: function(){
+//        console.log("Instrument Name: "+this.get('name'));
+//    },
+//    validate: function(attrs){ //ou validateName, validateType, ... :  pour valider qu'un attr
+//        if(!attrs.name){
+//            return "Ein Name einsetzen";
+//        }
+//    }
+//});

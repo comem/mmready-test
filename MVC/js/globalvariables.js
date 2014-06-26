@@ -17,7 +17,7 @@ var GIFTS             = "http://pingouin.heig-vd.ch/rockit/v1/gifts";
 var TICKETS           = "http://pingouin.heig-vd.ch/rockit/v1/tickets";
 
 var LANGSDISPO        = "http://pingouin.heig-vd.ch/rockit/v1/langs";
-var LANGS             = "http://pingouin.heig-vd.ch/rockit/v1/trads/:locale";
+var LANGS             = "http://pingouin.heig-vd.ch/rockit/v1/trads";
 
 var AUTH_MANAGER_DE   = {"email":"chris@chris.ch","password":"chris"};
 var AUTH_MANAGER_FR   = {"email":"matou@matou.ch","password":"matou"};

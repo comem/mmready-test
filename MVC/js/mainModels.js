@@ -47,124 +47,36 @@ $.ajax //Requête de connection API
 
 function IsConnected(){
 
-console.log("function IsConnected(){");
+console.log("start function IsConnected()");
 
-//
+ var french = new LangFR();
+ french.fetch();
+     
 
-
+     
+     var musiciansList = new Musicians();
+     
+     var receivedMusicians = musiciansList.fetch();
+     console.log("Liste de Musicians :");
+    console.log(receivedMusicians); 
+    console.log(JSON.stringify(receivedMusicians));
     
-    
-
-
-//***************************************************************************//
-//******************* Extension des classes Backbone  ***********************//
-//***************************************************************************//
-
-//***************************************************************************//
-//******************* Extension des classes Backbone  ***********************//
-//***************************************************************************//
-
-
-
-
-
-
-
-
-
-
-
-
-
-//***************************************************************************//
-//******************* Création des Models, Collection ***********************//
-//***************************************************************************//
-
-
-
-
-
-
-
-var Instrument = MyModel.extend({
-    //urlRoot: URLSERVEURinstruSuccess,    
-    initialize: function(){
-        console.log("Nouvel Instrument créé. Name: "+this.get('name'));
-        this.on('change', function(event){
-            console.log('Un événement "change" est survenu sur '+JSON.stringify(this.changed)+'. L objet entier en JSON:' +  JSON.stringify(event)); 
-            return this;
-        });
-        this.on('invalid', function(model, error){//si la mÃ©thode validate perÃ§oit un truc pas valide elle gÃ©nÃ¨re un Ã©vÃ¨nement "invalid"
-            console.log("Message d'erreur de validation: "+ error); // error contient la string qui est "returnÃ©e" par la fonction validate
-        });
-              
-    },
-    printDetails: function(){
-        console.log("Instrument Name: "+this.get('name'));
-    },
-    validate: function(attrs){ //ou validateName, validateType, ... :  pour valider qu'un attr
-        if(!attrs.name){
-            return "Ein Name einsetzen";
-        }
-    }
-});
-var Instruments = MyCollection.extend({
-        model: Instrument
-});
-
-
-
-var Musician = MyModelNestedCollection.extend({
-    nested: 'instruments',
-//    defaults: function () {return {
-//        instruments: new Instruments()
-//    }},
-    initialize: function(attrs, options){
-               
-        MyModelNestedCollection.prototype.initialize.apply(this, arguments),
-        console.log("Nouveau Musician créé. Name: "+this.get('name'));
-    },
-    
-});
-
-var Musicians = MyCollection.extend({
-    url: URLSERVEURMusicianSuccess, //MUSICIANS
-    model:Musician,
-    parse: function (response) {
-        if (typeof response.data != "undefined") {
-            response = response.data;
-            console.log("response.data de parse de Musicians : ");
-            console.log(response.data);
-        }
-        console.log("response de parse de Musicians : ");
-        console.log(response);
-        return response;
-    }
-    
-});
-
-
-
+};
 
 //***************************************************************************//
 //*******************             main                ***********************//
 //***************************************************************************//
 
 $(function () {
-    
+    console.log('-------------DOM IS READY----------------------');
    
 
 
+    
+    
+    
 
-
-     
-     var musiciansList = new Musicians();
-     musiciansList.fetch();
-     console.log("Liste de Musicians :");
-    console.log(musiciansList); 
-    console.log(JSON.stringify(musiciansList));
-
-
+console.log('-------------DOM IS FINISH---------------------');
 });
 
 
@@ -441,4 +353,3 @@ $(function () {
 ////
 //
 
-};
