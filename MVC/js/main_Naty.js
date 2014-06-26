@@ -359,7 +359,16 @@ $(function() {
     //details
     $('#showDetailEvent').hide();
     $('#showDetailEvent').append(showEvent.el);
-
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Gestion de l'historique (pour les boutons "back" et "forward" du browser
+    |--------------------------------------------------------------------------
+    */
+//    // gestion des boutons "back" et "forward" du browser
+//    $(window).on('popstate', historyHandler);
+//    // simule un premier changement d'url
+//    $(window).trigger('popstate');
     $('ul#mainNav a').on('click', function(e) {
         menuElementClickHandler($(this));
         e.preventDefault();
