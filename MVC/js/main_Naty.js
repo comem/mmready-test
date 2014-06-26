@@ -232,7 +232,7 @@ var ViewEvents = MyView.extend({
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
         this.render();
-        
+
 
     },
     render: function() {
@@ -250,7 +250,7 @@ var ViewEvents = MyView.extend({
         $('#eventsList').hide();
         $('#showDetailEvent').show();
     },
-    addEvent: function(event){
+    addEvent: function(event) {
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         $('#addEvent').show();
@@ -276,11 +276,23 @@ var ViewShowEvent = MyView.extend({
         $('#showDetailEvent').hide();
         $('#advancedResearchEvents').show();
         $('#eventsList').show();
-         
+
     }
 });
 var ViewAddEvent = MyView.extend({
     template: templates.addEvent,
+    events: {
+        'click #addTicketCategory': 'addTicketCategory',
+        'click #addArtist': 'addArtist'
+    },
+    defaults: function() {
+
+        $("#showAddArtist div").hide();
+//        $("#newArtist div").click(function() {
+//            $(this).next("div").toggle();
+//        });
+
+    },
     initialize: function(attrs, options) {
         this.listenTo(this.model, 'all', this.render);
         this.render();
@@ -290,6 +302,16 @@ var ViewAddEvent = MyView.extend({
         this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
         return this;
 
+    },
+    addTicketCategory: function(event) {
+        var newSelectTicket = $('.ticket').clone();
+        var div = $("<div class='ticket'>").html(newSelectTicket);
+        $(".ticket").append(div);
+    },
+    addArtist: function(event) {
+        var newAddArtist = $('.showAddArtist').clone();
+        var div = $("<div class='showAddArtist'>").html(newAddArtist);
+        $(".showAddArtist").append(div);
     }
 
 });
@@ -361,14 +383,14 @@ $(function() {
     $('#advancedResearchArtists').append(advancedResearchArtist.el);
 
     //lists
-   
+
     $('#artistsList').hide();
     $('#artistsList').append(artistsListView.el);
 
     //details
     $('#showDetailEvent').hide();
     $('#showDetailEvent').append(showEvent.el);
-    
+
     //add
     $('#addEvent').hide();
     $('#addEvent').append(addEventView.el);

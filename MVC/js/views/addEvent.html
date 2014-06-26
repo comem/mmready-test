@@ -53,17 +53,17 @@
             </div>
 
             <!-- **************************************TICKETS******************************************************-->
-            <div class=" col-lg-4">
+            <div class=" col-lg-4" id="tickets">
                 <fieldset>
                     <h2><i class="ico-tiket"></i>Tickets</h2 >
                     <div id="selectTicket">
-                        <div>
+                        <div class="ticket">
                             <select> 
                                 <option value="avs">AVS</option> 
                                 <option value="student">Student</option> 
                                 <option value="adult">Adult</option> 
                             </select> 
-                            <input type="text" name='ticketPrice' id="ticketPrice" size="5">
+                            <input type="text" name='ticketPrice' size="5">
                             <span>CHF</span>
                         </div>
                     </div>
@@ -150,58 +150,60 @@
                         <button class='artistDelete' ><i class="ico-delete"></i>Delete</button>
                     </div>
 
-                    <div class="new">
+                    <div class="new" id="newArtist">
                         <h3><i class="ico-plus"></i>New artist</h3>
                         <div class='row '>
                             <div class="col-lg-12 ">
                                 <!-- **************************************ARTISTES******************************************************-->
                                 <!--*********Infos*************-->
                                 <div class='col-lg-6'>
+                                    <div class="showAddArtist">
 
-                                    <fieldset>
-                                        <h2><i class="ico-info"></i>Infos</h2  >
-                                        <!--name-->
-                                        <div class="input-group">
-                                            <label for="artistName">Artist name: *</label>
-                                            <input type="text" name="artistName" id="artistName" placeholder="Artist name" required>
-                                        </div>
-                                        <!--genre-->
-                                        <div class="input-group genre">
-                                            <label for="genre">Genre: *</label>
-                                            <select name="genre"> 
-                                                <option value="rock">Rock</option> 
-                                                <option value="metal">Metal</option> 
-                                                <option value="pop">Pop</option> 
-                                            </select> 
-                                            <button id='addGenre'>Add</button>
-                                        </div>
-                                        <!--hour of arrival-->
-                                        <div class="input-group">
-                                            <label for='hourArrival'>Hour of arrival: </label>
-                                            <input type="time" name="hourArrival" id='hourArrival'>
-                                        </div>
-                                        <!--order--><br/>
-                                        <div class="input-group">
-                                            <label for='artistOrder'>Order: *</label>
-                                            <input type="number" name='artistOrder' id='artistOrder' required>
-                                        </div>
-                                        <!--main performer-->
-                                        <div class="input-group">
-                                            <label for="mainPerformer">Main performer of the event? </label>
-                                            <input type= "radio" name="mainPerformer" value="true" id="mainPerformer">yes
-                                            <input type= "radio" name="mainPerformer" value="false" id="notMainPerformer" checked>no
-                                        </div>
-                                        <!--short description-->
-                                        <div class="input-group">
-                                            <p class="pull-left">Short description:</p>
-                                            <textarea name="shortDescription" cols="40" rows="3"></textarea>
-                                        </div>
-                                        <!--complete description-->
-                                        <div class="input-group">
-                                            <p class="pull-left">Complete description:</p>
-                                            <textarea name="completeDescription" cols="40" rows="4"></textarea>
-                                        </div>
-                                    </fieldset>
+                                        <fieldset>
+                                            <h2><i class="ico-info"></i>Infos</h2  >
+                                            <!--name-->
+                                            <div class="input-group">
+                                                <label for="artistName">Artist name: *</label>
+                                                <input type="text" name="artistName" id="artistName" placeholder="Artist name" required>
+                                            </div>
+                                            <!--genre-->
+                                            <div class="input-group genre">
+                                                <label for="genre">Genre: *</label>
+                                                <select name="genre"> 
+                                                    <option value="rock">Rock</option> 
+                                                    <option value="metal">Metal</option> 
+                                                    <option value="pop">Pop</option> 
+                                                </select> 
+                                                <button id='addGenre'>Add</button>
+                                            </div>
+                                            <!--hour of arrival-->
+                                            <div class="input-group">
+                                                <label for='hourArrival'>Hour of arrival: </label>
+                                                <input type="time" name="hourArrival" id='hourArrival'>
+                                            </div>
+                                            <!--order--><br/>
+                                            <div class="input-group">
+                                                <label for='artistOrder'>Order: *</label>
+                                                <input type="number" name='artistOrder' id='artistOrder' required>
+                                            </div>
+                                            <!--main performer-->
+                                            <div class="input-group">
+                                                <label for="mainPerformer">Main performer of the event? </label>
+                                                <input type= "radio" name="mainPerformer" value="true" id="mainPerformer">yes
+                                                <input type= "radio" name="mainPerformer" value="false" id="notMainPerformer" checked>no
+                                            </div>
+                                            <!--short description-->
+                                            <div class="input-group">
+                                                <p class="pull-left">Short description:</p>
+                                                <textarea name="shortDescription" cols="40" rows="3"></textarea>
+                                            </div>
+                                            <!--complete description-->
+                                            <div class="input-group">
+                                                <p class="pull-left">Complete description:</p>
+                                                <textarea name="completeDescription" cols="40" rows="4"></textarea>
+                                            </div>
+                                        </fieldset>
+                                    </div>
                                 </div>
 
 
