@@ -227,11 +227,12 @@ var ViewEvents = MyView.extend({
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
         'click a.ico-detail': 'detail',
+        'click #btn-addEvent': 'addEvent'
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
         this.render();
-        $('#advancedResearchEvents').show();
+        
 
     },
     render: function() {
@@ -248,6 +249,11 @@ var ViewEvents = MyView.extend({
     detail: function(event) {
         $('#eventsList').hide();
         $('#showDetailEvent').show();
+    },
+    addEvent: function(event){
+        $('#eventsList').hide();
+        $('#advancedResearchEvents').hide();
+        $('#addEvent').show();
     }
 });
 
