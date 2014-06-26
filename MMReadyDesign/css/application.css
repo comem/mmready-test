@@ -4537,6 +4537,10 @@ button.close {
 .result {
   margin-bottom: 5px;
 }
+[class^="ico-"],
+[class*=" ico-"] {
+  margin-right: 5px;
+}
 /**ASIDE**/
 .panel-heading {
   padding: 5px;
@@ -4877,7 +4881,7 @@ label {
 }
 /*DL, DT, DD TAGS LIST DATA*/
 dl {
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 dl dt {
   float: left;
@@ -4887,15 +4891,15 @@ dl dt {
   width: 150px;
 }
 dl dd {
-  margin: 2px 0;
-  padding: 5px 0;
+  margin: 2px;
+  padding: 5px;
 }
 .last {
   background-color: red;
 }
 .meal dd:last-child {
   margin-top: 5px;
-  background-color: #aeaeae;
+  font-weight: 800;
 }
 .moreInfo ul,
 .moreInfo li {
@@ -4907,6 +4911,61 @@ dl dd {
 }
 .moreInfo li {
   margin-right: 5px;
+}
+.headerShowBox {
+  border-bottom: 1px dotted #aeaeae;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.sortBy {
+  background-color: #ffffff;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a {
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.mainSearch {
+  margin-top: 8px;
+}
+.mainSearch form {
+  background-color: black;
+}
+.signIn .form-signin {
+  background-color: #ffffff;
+  max-width: 330px;
+  padding: 20px;
+  margin: 0 auto;
+}
+.signIn .form-signin .form-signin-heading,
+.signIn .form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.signIn .form-signin .checkbox {
+  font-weight: normal;
+}
+.signIn .form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.signIn .form-signin .form-control:focus {
+  z-index: 2;
+}
+.signIn .form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.signIn .form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 /**Variables**/
 .green {
