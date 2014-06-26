@@ -62,11 +62,16 @@ var ViewAdvancedResearchArtist = MyView.extend({
 
     },
     showListEvent : function(){
+    console.log('caca');
      $('#artistsList').hide();
      $('#eventsList').show();
+     
      $('#advancedResearchEvents').show();
+     
+     $('#advancedResearchArtists').hide();
     },
     showListArtist : function(){
+    console.log('pipi');
      $('#eventsList').hide();
      $('#advancedResearchEvents').hide();
      $('#artistsList').show();
@@ -95,18 +100,22 @@ var ViewAdvancedResearchEvent = MyView.extend({
         return this;
     },
     showListEvent : function(){
+    console.log('con');
      $('#artistsList').hide();
      $('#eventsList').show();
+     console.log('caca');
      $('#advancedResearchEvents').show();
+   
     },
     showListArtist : function(){
+    console.log('pute'),
      $('#eventsList').hide();
      $('#advancedResearchEvents').hide();
      $('#artistsList').show();
      $('#advancedResearchArtists').show();
     }
 
-})
+});
 
 ////////////////ARTIST ////////////////////////
 
@@ -130,7 +139,6 @@ var ViewArtists = MyView.extend({
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
         'click a.ico-detail': 'detail'
-        //'click button#events' : 'showListEvents'
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -150,11 +158,7 @@ var ViewArtists = MyView.extend({
     },
     detail: function(event) {
         console.log('detail');
-    }
-//    showListEvents : function(){
-//     $('#artistsList').hide();
-//     $('#eventsList').show();
-//    }
+    },
 });
 
 
@@ -178,29 +182,13 @@ var Events = MyCollection.extend({
     model: Event
 });
 
-var ViewEventsSearch = MyView.extend({
-    template: templates.eventsListSearch,
-    initialize: function(attrs, options) {
-        this.listenTo(this.collection, 'all', this.render);
-        this.render();
-        $('#advancedResearchEvent').show();
-    },
-    render: function() {
-        this.$el.html(Mustache.render(this.template, {events: this.collection.toJSON()}));
-        return this;
-
-    }
-});
 
 var ViewEvents = MyView.extend({
     template: templates.eventsList,
     events: {
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
-        'click a.ico-detail': 'detail'
-
-        
-        
+        'click a.ico-detail': 'detail',
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -222,13 +210,13 @@ var ViewEvents = MyView.extend({
         $('#eventsList').hide();
         $('#showDetailEvent').show();
     }
-//    showListArtists: function() {
-//         $('#eventsList').hide();
-//         $('#artistsList').show();
-//    }
 });
+
 var ViewShowEvent = MyView.extend({
     template: templates.showEvent,
+    events: {
+        'click #btn-back': 'backListEvents',
+    },
     initialize: function(attrs, options) {
         this.listenTo(this.model, 'all', this.render);
         this.render();
@@ -238,6 +226,10 @@ var ViewShowEvent = MyView.extend({
         this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
         return this;
 
+    },
+    backListEvents: function() {
+        $('#showDetailEvent').hide();
+        $('#eventsList').show();
     }
 });
 
@@ -258,7 +250,8 @@ mmready.get('musicians').add([musician1, musician2]);
 var zed = new Artist({'name': 'ZED'});
 
 //Event collection dans un model
-var event1 = new Event({title: 'La grosse fiesta 2014', name_de: 'rock'});
+var event1 = new Event({title: 'La grosse fiesta 2014', name_de: 'rock', start_date_hour: '25.06.2014',
+    ending_date_hour: '26.06.2014', opening_doors: '16:00'});
 event1.get('artists').add([mmready, zed]);
 
 var event2 = new Event({title: 'La grosse fiesta 2015', name_de: 'salsa'});
@@ -266,7 +259,7 @@ event2.get('artists').add([mmready, zed]);
 
 var listOfEvents1 = new Events([event1, event2]);
 var eventListView = new ViewEvents({collection: listOfEvents1});
-//var showEvent = new ViewShowEvent({model: event1});
+var showEvent = new ViewShowEvent({model: event1});
 var listOfArtists = new Artists([mmready, zed]);
 var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: listOfEvents1});
 var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: listOfArtists});
@@ -283,13 +276,60 @@ console.log('***************************************');
 console.log('***************************************');
 
 $(function() {
+    console.log('caa');
     $('#advancedResearchEvents').append(advancedResearchEvent.el);
     $('#advancedResearchArtists').hide();
     $('#advancedResearchArtists').append(advancedResearchArtist.el);
+    
     $('#eventsList').append(eventListView.el);
     $('#artistsList').hide();
     $('#artistsList').append(artistsListView.el);
     $('#showDetailEvent').hide();
-   // $('#showDetailEvent').append(showEvent.el);
+    $('#showDetailEvent').append(showEvent.el);
+
+
+/////////// bare de navigation ////////////////////
+    $('ul#mainNav a').on('click', function(e) {
+        menuElementClickHandler($(this));
+        e.preventDefault();
+        return false;
+    });
+    $('a').on('click', function(e) {
+        menuElementClickHandler($(this));
+        e.preventDefault();
+        return false;
+    });
+
+    function menuElementClickHandler(menuElement) {
+        // Recup?re la section corespondante (attribut href du lien)
+        var sectionName = menuElement.attr('href');
+        // Si la section est d?j? active ne rien faire
+        var actualSectionName = location.pathname.split("/").pop();
+        if (sectionName === actualSectionName) {
+            return;
+        }
+        // Simule le changement d'url ver cette section
+        history.pushState(null, null, sectionName);
+        // Affiche la section en question
+        menuGoToSection(sectionName);
+    }
+    function menuGoToSection(sectionName) {
+        var nodeIdToShow = '#' + sectionName;
+        // Enl?ve la classe "activ" de tous les liens
+        $('ul#mainNav a').removeClass('activ');
+        // Rajoute la classe "activ" pour le lien actuellement click?
+        $("ul#mainNav a[href='" + sectionName + "']").addClass('activ');
+        
+        // Enl?ve la classe "activ" de tous les liens
+        $('span#linkEventsList a').removeClass('activ');
+        // Rajoute la classe "activ" pour le lien actuellement click?
+        $("span#linkEventsList a[href='" + sectionName + "']").addClass('activ')
+        // Cache toutes les <section>
+        $('section').hide();
+        // Affichage de la bonne <section>
+        $(nodeIdToShow).show();
+    }
+
+
 });
     
