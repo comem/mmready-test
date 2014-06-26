@@ -4,22 +4,28 @@
  |--------------------------------------------------------------------------
  */
 var DATE_FORMAT = 'DD d MM yy'; //Format des dates pour l'affichage
+var LOCALE = 'fr-CH'; // uniquement 'fr-CH' est autorisé
 var DEFAULT_SECTION = 'eventsList';
 
 /*
  |--------------------------------------------------------------------------
- | Fallback et chargements conditionnels
+ | Modernizr date input
  |--------------------------------------------------------------------------
  */
-// Charge conditionnellement la css pour le fallback des champs date
-$.holdReady(true); // Indique ? jQuery d'attendre avant l'evt. DOM ready
-Modernizr.load({
-    test: Modernizr.inputtypes.date,
-    nope: 'css/jquery-ui.css',
-    complete: function() {
-        $.holdReady(false);
-    }
-});
+//// Charge conditionnellement la css pour le fallback des champs date
+//$.holdReady(true); // Indique ? jQuery d'attendre avant l'evt. DOM ready
+//Modernizr.load({
+//  test: Modernizr.inputtypes.date,
+//  nope: ['http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js', 
+//      'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js', 
+//      'jquery-ui.css'],
+//  complete: function () {
+//    $('input[type=date]').datepicker({
+//      dateFormat: 'yy-mm-dd'
+//    }); 
+//  }
+//});
+
 
 /*
  |--------------------------------------------------------------------------
@@ -340,13 +346,20 @@ var artistsListView = new ViewArtists({collection: listOfArtists});
  |--------------------------------------------------------------------------
  */
 $(function() {
+    //Datepicker for Firefox
+    Modernizr.load({
+        test: Modernizr.inputtypes.date,
+        nope: ['http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js',
+            'css/jquery-ui.css'],
+        complete: function() {
+            $('input[type=date]').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        }
+    });
 
-    // "Fallback" pour le nouveau champ date des <form> HTML5
-    if (!Modernizr.inputtypes.date) {
-        $('input[type=date]').datepicker({dateFormat: 'yy-mm-dd'});
-    }
-
-    //recherches
+    //Research
     $('#advancedResearchEvents').append(advancedResearchEvent.el);
     $('#advancedResearchArtists').hide();
     $('#advancedResearchArtists').append(advancedResearchArtist.el);
@@ -359,12 +372,8 @@ $(function() {
     //details
     $('#showDetailEvent').hide();
     $('#showDetailEvent').append(showEvent.el);
-    
-    /*
-    |--------------------------------------------------------------------------
-    | Gestion de l'historique (pour les boutons "back" et "forward" du browser
-    |--------------------------------------------------------------------------
-    */
+
+
 //    // gestion des boutons "back" et "forward" du browser
 //    $(window).on('popstate', historyHandler);
 //    // simule un premier changement d'url
@@ -389,7 +398,7 @@ $(function() {
 function historyHandler() {
     // Prend la dernière partie de l'url (après le dernier '/')
     var sectionName = location.pathname.split("/").pop();
-    // Si aucune section (page d'accueil ?), on va sur 'todo' par défaut
+    // Si aucune section (page d'accueil ?), on va sur 'eventsList' par défaut
     if (sectionName === '') {
         sectionName = DEFAULT_SECTION;
     }
@@ -418,16 +427,6 @@ function menuElementClickHandler(menuElement) {
 
 function menuGoToSection(sectionName) {
     var nodeIdToShow = '#' + sectionName;
-    // Enlève la classe "activ" de tous les liens
-    $('ul#mainNav a').removeClass('activ');
-    // Rajoute la classe "activ" pour le lien actuellement clické
-    $("ul#mainNav a[href='" + sectionName + "']").addClass('activ');
-
-    $('a').removeClass('activ');
-    // Rajoute la classe "activ" pour le lien actuellement clické
-    $("a[href='" + sectionName + "']").addClass('activ');
-
-
     // Cache toutes les <section>
     $('section').hide();
     // Affichage de la bonne <section>
