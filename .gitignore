@@ -1,4 +1,11 @@
 /nbproject/private/
 MMReadyDesign/css/application.css
+<<<<<<< HEAD
 
 MVC/js/main_Clelia.js
+=======
+*.less
+MMReadyDesign/less/application.less
+*.less
+MMReadyDesign/less/application.less
+>>>>>>> master

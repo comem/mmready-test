@@ -3,9 +3,6 @@
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-section {
-  display: none;
-}
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -1525,23 +1522,67 @@ table th[class*="col-"] {
     border-bottom: 0;
   }
 }
+/**********************************************************************************/
+/*************************************MAYA*****************************************/
+/**********************************************************************************/
+input[type="number"] {
+  width: 100px;
+}
+.artists {
+  background-color: #fff;
+  border: 1px solid grey;
+  margin-bottom: 15px;
+}
 fieldset {
-  padding: 0;
-  margin: 0;
-  border: 0;
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 1px solid #9b9b9b;
   min-width: 0;
   background-color: #fff;
+}
+.new h3 {
+  padding-bottom: 10px;
+}
+fieldset p {
+  font-weight: bold;
+  width: 200px;
+}
+.new {
+  border: 1px solid grey;
+  background-color: #ebebeb;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+fieldset h2,
+.new h3 {
+  margin: 0;
+}
+h2 {
+  padding-bottom: 5px;
+}
+.input-group {
+  display: block;
+}
+textarea {
+  resize: none;
+}
+fieldset h2 {
+  margin-bottom: 5px;
 }
 legend {
   display: block;
   width: 100%;
-  padding: 0;
-  margin-bottom: 20px;
+  padding: 10px;
   font-size: 21px;
+  line-height: inherit;
   color: #333333;
-  border: 0;
-  border-bottom: 1px solid #e5e5e5;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
 }
+/**********************************************************************************/
+/**********************************************************************************/
+/**********************************************************************************/
 label {
   display: inline-block;
   margin-bottom: 5px;
@@ -1557,7 +1598,6 @@ input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;
   /* IE8-9 */
-
   line-height: normal;
 }
 input[type="file"] {
@@ -4780,7 +4820,6 @@ p {
   text-transform: none;
   line-height: 1;
   /* Better Font Rendering =========== */
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -4873,11 +4912,50 @@ section {
 label {
   width: 200px;
   /* Cette largeur sert d’exemple, vous pouvez la modifier si vous voulez. */
-
 }
 .buttonsOptions {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+dl {
+  margin-bottom: 50px;
+}
+dl dt {
+  float: left;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 5px;
+  width: 150px;
+}
+dl dd {
+  margin: 2px 0;
+  padding: 5px 0;
+}
+.last {
+  background-color: red;
+}
+.meal dd:last-child {
+  margin-top: 5px;
+  background-color: #aeaeae;
+}
+.moreInfo {
+  padding: 2px ;
+  margin: 0;
+  width: 20%;
+}
+.moreInfo ul,
+.moreInfo li {
+  display: inline;
+  text-align: center;
+  padding: 5px ;
+  margin: 0;
+  width: 20%;
+}
+.moreInfo li {
+  margin-right: 5px;
+}
+li {
+  margin-right: 5px;
 }
 /*DL, DT, DD TAGS LIST DATA*/
 dl {
@@ -4971,3 +5049,9 @@ dl dd {
 .green {
   color: green;
 }
+<<<<<<< HEAD
+=======
+section {
+  display: none;
+}
+>>>>>>> master
