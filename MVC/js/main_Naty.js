@@ -3,28 +3,10 @@
  | Configuration (constantes)
  |--------------------------------------------------------------------------
  */
-var DATE_FORMAT = 'DD d MM yy'; //Format des dates pour l'affichage
-var LOCALE = 'fr-CH'; // uniquement 'fr-CH' est autorisé
+
 var DEFAULT_SECTION = 'eventsList';
 
-/*
- |--------------------------------------------------------------------------
- | Modernizr date input
- |--------------------------------------------------------------------------
- */
-//// Charge conditionnellement la css pour le fallback des champs date
-//$.holdReady(true); // Indique ? jQuery d'attendre avant l'evt. DOM ready
-//Modernizr.load({
-//  test: Modernizr.inputtypes.date,
-//  nope: ['http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js', 
-//      'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js', 
-//      'jquery-ui.css'],
-//  complete: function () {
-//    $('input[type=date]').datepicker({
-//      dateFormat: 'yy-mm-dd'
-//    }); 
-//  }
-//});
+
 
 
 /*
@@ -346,20 +328,8 @@ var artistsListView = new ViewArtists({collection: listOfArtists});
  |--------------------------------------------------------------------------
  */
 $(function() {
-    //Datepicker for Firefox
-    Modernizr.load({
-        test: Modernizr.inputtypes.date,
-        nope: ['http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js',
-            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js',
-            'css/jquery-ui.css'],
-        complete: function() {
-            $('input[type=date]').datepicker({
-                dateFormat: 'yy-mm-dd'
-            });
-        }
-    });
 
-    //Research
+    //research
     $('#advancedResearchEvents').append(advancedResearchEvent.el);
     $('#advancedResearchArtists').hide();
     $('#advancedResearchArtists').append(advancedResearchArtist.el);
