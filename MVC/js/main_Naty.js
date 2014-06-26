@@ -304,15 +304,15 @@ var ViewAddEvent = MyView.extend({
 
     },
     addTicketCategory: function(event) {
-        var newSelectTicket = $('.ticket').clone();
+        var newSelectTicket = $('.ticket');
         var div = $("<div class='ticket'>").html(newSelectTicket);
         $(".ticket").append(div);
-    },
-    addArtist: function(event) {
-        var newAddArtist = $('.showAddArtist').clone();
-        var div = $("<div class='showAddArtist'>").html(newAddArtist);
-        $(".showAddArtist").append(div);
     }
+//    addArtist: function(event) {
+//        var newAddArtist = $('.showAddArtist').clone();
+//        var div = $("<div class='showAddArtist'>").html(newAddArtist);
+//        $(".showAddArtist").append(div);
+//    }
 
 });
 
@@ -409,6 +409,11 @@ $(function() {
         menuElementClickHandler($(this));
         e.preventDefault();
         return false;
+    });
+
+    $('#plusOption').on('click', function(e) {
+        $('#advancedResearchEvents').show();
+        $('#eventsList').show();
     });
 });
 
