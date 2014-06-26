@@ -4213,7 +4213,6 @@ button.close {
 .btn-info,
 .btn-warning,
 .btn-danger {
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
 }
@@ -4235,16 +4234,6 @@ button.close {
 .btn:active,
 .btn.active {
   background-image: none;
-}
-.btn-default:hover,
-.btn-default:focus {
-  background-color: #e0e0e0;
-  background-position: 0 -15px;
-}
-.btn-default:active,
-.btn-default.active {
-  background-color: #e0e0e0;
-  border-color: #dbdbdb;
 }
 .btn-primary {
   background-image: -webkit-linear-gradient(top, #428bca 0%, #2d6ca2 100%);
@@ -4861,7 +4850,7 @@ p {
   content: "\e61c";
 }
 .ico-contract:before {
-  content: "\e61e";
+  content: "\e61d";
 }
 section {
   background-color: #ffffff;
@@ -4872,6 +4861,15 @@ label {
   width: 200px;
   /* Cette largeur sert d’exemple, vous pouvez la modifier si vous voulez. */
 
+}
+.btn-default:hover,
+.btn-default:focus {
+  background-color: #e0e0e0;
+}
+.btn-default:active,
+.btn-default.active {
+  background-color: #e0e0e0;
+  border-color: #dbdbdb;
 }
 .buttonsOptions {
   margin-top: 10px;
