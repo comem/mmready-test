@@ -4927,6 +4927,12 @@ dl dd {
 .navbar-inverse .navbar-nav > li > a {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
+.mainSearch {
+  margin-top: 8px;
+}
+.mainSearch form {
+  background-color: black;
+}
 /**Variables**/
 .green {
   color: green;
