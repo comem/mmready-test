@@ -3,23 +3,8 @@
  | Configuration (constantes)
  |--------------------------------------------------------------------------
  */
-var DATE_FORMAT = 'DD d MM yy'; //Format des dates pour l'affichage
-var DEFAULT_SECTION = 'eventsList';
 
-/*
- |--------------------------------------------------------------------------
- | Fallback et chargements conditionnels
- |--------------------------------------------------------------------------
- */
-// Charge conditionnellement la css pour le fallback des champs date
-$.holdReady(true); // Indique ? jQuery d'attendre avant l'evt. DOM ready
-Modernizr.load({
-    test: Modernizr.inputtypes.date,
-    nope: 'css/jquery-ui.css',
-    complete: function() {
-        $.holdReady(false);
-    }
-});
+var DEFAULT_SECTION = 'eventsList';
 
 /*
  |--------------------------------------------------------------------------
@@ -242,10 +227,12 @@ var ViewEvents = MyView.extend({
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
         'click a.ico-detail': 'detail',
+        'click #btn-addEvent': 'addEvent'
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
         this.render();
+
 
     },
     render: function() {
@@ -262,6 +249,11 @@ var ViewEvents = MyView.extend({
     detail: function(event) {
         $('#eventsList').hide();
         $('#showDetailEvent').show();
+    },
+    addEvent: function(event) {
+        $('#eventsList').hide();
+        $('#advancedResearchEvents').hide();
+        $('#addEvent').show();
     }
 });
 
@@ -282,8 +274,46 @@ var ViewShowEvent = MyView.extend({
     },
     backListEvents: function() {
         $('#showDetailEvent').hide();
+        $('#advancedResearchEvents').show();
         $('#eventsList').show();
+
     }
+});
+var ViewAddEvent = MyView.extend({
+    template: templates.addEvent,
+    events: {
+        'click #addTicketCategory': 'addTicketCategory',
+        'click #addArtist': 'addArtist'
+    },
+    defaults: function() {
+
+        $("#showAddArtist div").hide();
+//        $("#newArtist div").click(function() {
+//            $(this).next("div").toggle();
+//        });
+
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
+
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        return this;
+
+    },
+    addTicketCategory: function(event) {
+        var newSelectTicket = $('.ticket');
+        var div = $("<div class='ticket'>").html(newSelectTicket);
+        $(".ticket").append(div);
+    }
+//    addArtist: function(event) {
+//        var newAddArtist = $('.showAddArtist').clone();
+//        var div = $("<div class='showAddArtist'>").html(newAddArtist);
+//        $(".showAddArtist").append(div);
+//    }
+
 });
 
 /*
@@ -314,14 +344,20 @@ event1.get('artists').add([mmready, zed]);
 
 var event2 = new Event({title: 'La grosse fiesta 2015', name_de: 'salsa'});
 event2.get('artists').add([mmready, zed]);
+var event = new Event();
 
 var listOfEvents1 = new Events([event1, event2]);
+
+
 var eventListView = new ViewEvents({collection: listOfEvents1});
 var showEvent = new ViewShowEvent({model: event1});
+var addEventView = new ViewAddEvent({model: event});
+
 var listOfArtists = new Artists([mmready, zed]);
+
+
 var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: listOfEvents1});
 var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: listOfArtists});
-
 var artistsListView = new ViewArtists({collection: listOfArtists});
 
 //console.log('***************************************');
@@ -340,31 +376,26 @@ var artistsListView = new ViewArtists({collection: listOfArtists});
  |--------------------------------------------------------------------------
  */
 $(function() {
-
-    // "Fallback" pour le nouveau champ date des <form> HTML5
-    if (!Modernizr.inputtypes.date) {
-        $('input[type=date]').datepicker({dateFormat: 'yy-mm-dd'});
-    }
-
-    //recherches
+    $('#eventsList').append(eventListView.el);
+    //research
     $('#advancedResearchEvents').append(advancedResearchEvent.el);
     $('#advancedResearchArtists').hide();
     $('#advancedResearchArtists').append(advancedResearchArtist.el);
 
     //lists
-    $('#eventsList').append(eventListView.el);
+
     $('#artistsList').hide();
     $('#artistsList').append(artistsListView.el);
 
     //details
     $('#showDetailEvent').hide();
     $('#showDetailEvent').append(showEvent.el);
-    
-    /*
-    |--------------------------------------------------------------------------
-    | Gestion de l'historique (pour les boutons "back" et "forward" du browser
-    |--------------------------------------------------------------------------
-    */
+
+    //add
+    $('#addEvent').hide();
+    $('#addEvent').append(addEventView.el);
+
+
 //    // gestion des boutons "back" et "forward" du browser
 //    $(window).on('popstate', historyHandler);
 //    // simule un premier changement d'url
@@ -379,6 +410,11 @@ $(function() {
         e.preventDefault();
         return false;
     });
+
+    $('#plusOption').on('click', function(e) {
+        $('#advancedResearchEvents').show();
+        $('#eventsList').show();
+    });
 });
 
 /*
@@ -389,7 +425,7 @@ $(function() {
 function historyHandler() {
     // Prend la dernière partie de l'url (après le dernier '/')
     var sectionName = location.pathname.split("/").pop();
-    // Si aucune section (page d'accueil ?), on va sur 'todo' par défaut
+    // Si aucune section (page d'accueil ?), on va sur 'eventsList' par défaut
     if (sectionName === '') {
         sectionName = DEFAULT_SECTION;
     }
@@ -418,16 +454,6 @@ function menuElementClickHandler(menuElement) {
 
 function menuGoToSection(sectionName) {
     var nodeIdToShow = '#' + sectionName;
-    // Enlève la classe "activ" de tous les liens
-    $('ul#mainNav a').removeClass('activ');
-    // Rajoute la classe "activ" pour le lien actuellement clické
-    $("ul#mainNav a[href='" + sectionName + "']").addClass('activ');
-
-    $('a').removeClass('activ');
-    // Rajoute la classe "activ" pour le lien actuellement clické
-    $("a[href='" + sectionName + "']").addClass('activ');
-
-
     // Cache toutes les <section>
     $('section').hide();
     // Affichage de la bonne <section>
