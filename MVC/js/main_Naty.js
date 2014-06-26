@@ -6,9 +6,6 @@
 
 var DEFAULT_SECTION = 'eventsList';
 
-
-
-
 /*
  |--------------------------------------------------------------------------
  | extending Backbone classes
@@ -234,6 +231,7 @@ var ViewEvents = MyView.extend({
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
         this.render();
+        $('#advancedResearchEvents').show();
 
     },
     render: function() {
@@ -270,9 +268,12 @@ var ViewShowEvent = MyView.extend({
     },
     backListEvents: function() {
         $('#showDetailEvent').hide();
+        $('#advancedResearchEvents').show();
         $('#eventsList').show();
+         
     }
 });
+
 
 /*
  |--------------------------------------------------------------------------
@@ -328,14 +329,14 @@ var artistsListView = new ViewArtists({collection: listOfArtists});
  |--------------------------------------------------------------------------
  */
 $(function() {
-
+ $('#eventsList').append(eventListView.el);
     //research
     $('#advancedResearchEvents').append(advancedResearchEvent.el);
     $('#advancedResearchArtists').hide();
     $('#advancedResearchArtists').append(advancedResearchArtist.el);
 
     //lists
-    $('#eventsList').append(eventListView.el);
+   
     $('#artistsList').hide();
     $('#artistsList').append(artistsListView.el);
 
