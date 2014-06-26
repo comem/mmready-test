@@ -11,15 +11,15 @@ var DEFAULT_SECTION = 'eventsList';
  | Fallback et chargements conditionnels
  |--------------------------------------------------------------------------
  */
-//// Charge conditionnellement la css pour le fallback des champs date
-//$.holdReady(true); // Indique ? jQuery d'attendre avant l'evt. DOM ready
-//Modernizr.load({
-//    test: Modernizr.inputtypes.date,
-//    nope: 'css/jquery-ui.css',
-//    complete: function() {
-//        $.holdReady(false);
-//    }
-//});
+// Charge conditionnellement la css pour le fallback des champs date
+$.holdReady(true); // Indique ? jQuery d'attendre avant l'evt. DOM ready
+Modernizr.load({
+    test: Modernizr.inputtypes.date,
+    nope: 'css/jquery-ui.css',
+    complete: function() {
+        $.holdReady(false);
+    }
+});
 
 /*
  |--------------------------------------------------------------------------
@@ -86,7 +86,8 @@ var ViewAdvancedResearchArtist = MyView.extend({
     template: templates.advancedResearchArtist,
     events: {
         'click button#events': 'showListEvent',
-        'click button#artists': 'showListArtist'
+        'click button#artists': 'showListArtist',
+        'click a#close': 'close'
                 //'click button#filterRepresenters': 'detail',
 
     },
@@ -103,6 +104,7 @@ var ViewAdvancedResearchArtist = MyView.extend({
     showListEvent: function() {
         $('#artistsList').hide();
         $('#eventsList').show();
+        $('#advancedResearchArtists').hide();
         $('#advancedResearchEvents').show();
     },
     showListArtist: function() {
@@ -110,6 +112,9 @@ var ViewAdvancedResearchArtist = MyView.extend({
         $('#advancedResearchEvents').hide();
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
+    },
+    close: function() {
+        $('#advancedResearchArtists').hide();
     }
 
 });
@@ -124,7 +129,8 @@ var ViewAdvancedResearchEvent = MyView.extend({
     template: templates.advancedResearchEvent,
     events: {
         'click button#events': 'showListEvent',
-        'click button#artists': 'showListArtist'
+        'click button#artists': 'showListArtist',
+        'click a#close': 'close'
                 //'click button#filterRepresenters': 'detail',
 
     },
@@ -141,12 +147,16 @@ var ViewAdvancedResearchEvent = MyView.extend({
         $('#artistsList').hide();
         $('#eventsList').show();
         $('#advancedResearchEvents').show();
+        $('#advancedResearchArtists').hide();
     },
     showListArtist: function() {
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
+    },
+    close: function() {
+        $('#advancedResearchEvents').hide();
     }
 
 });
@@ -331,10 +341,10 @@ var artistsListView = new ViewArtists({collection: listOfArtists});
  */
 $(function() {
 
-//    // "Fallback" pour le nouveau champ date des <form> HTML5
-//    if (!Modernizr.inputtypes.date) {
-//        $('input[type=date]').datepicker({dateFormat: 'yy-mm-dd'});
-//    }
+    // "Fallback" pour le nouveau champ date des <form> HTML5
+    if (!Modernizr.inputtypes.date) {
+        $('input[type=date]').datepicker({dateFormat: 'yy-mm-dd'});
+    }
 
     //recherches
     $('#advancedResearchEvents').append(advancedResearchEvent.el);
@@ -349,77 +359,5 @@ $(function() {
     //details
     $('#showDetailEvent').hide();
     $('#showDetailEvent').append(showEvent.el);
-
-
-    /*
-     |--------------------------------------------------------------------------
-     | GESTION DES EVENTS
-     |--------------------------------------------------------------------------
-     */
-
-//    // gestion des boutons "back" et "forward" du browser
-//    $(window).on('popstate', historyHandler);
-//    // simule un premier changement d'url
-//    $(window).trigger('popstate');
-    $('ul#mainNav a').on('click', function(e) {
-        menuElementClickHandler($(this));
-        e.preventDefault();
-        return false;
-    });
-    $('ul#mainNav a').on('click', function(e) {
-        menuElementClickHandler($(this));
-        e.preventDefault();
-        return false;
-    });
-
 });
 
-
-/*
- |--------------------------------------------------------------------------
- | Gestion de l'historique (pour les boutons "back" et "forward" du browser
- |--------------------------------------------------------------------------
- */
-//function historyHandler() {
-//    // Prend la derni?re partie de l'url (apr?s le dernier '/')
-//    var sectionName = location.pathname.split("/").pop();
-//    // Si aucune section (page d'accueil ?), on va sur 'todo' par d?faut
-//    if (sectionName === '') {
-//        sectionName = DEFAULT_SECTION;
-//    }
-//    menuGoToSection(sectionName);
-//}
-/*
- |--------------------------------------------------------------------------
- | Gestion du menu
- |--------------------------------------------------------------------------
- */
-function menuElementClickHandler(menuElement) {
-    // Recup?re la section corespondante (attribut href du lien)
-    var sectionName = menuElement.attr('href');
-    // Si la section est d?j? active ne rien faire
-    var actualSectionName = location.pathname.split("/").pop();
-    if (sectionName === actualSectionName) {
-        return;
-    }
-    // Simule le changement d'url ver cette section
-    history.pushState(null, null, sectionName);
-    // Affiche la section en question
-    menuGoToSection(sectionName);
-}
-function menuGoToSection(sectionName) {
-    var nodeIdToShow = '#' + sectionName;
-    // Enl?ve la classe "activ" de tous les liens
-    $('ul#mainNav a').removeClass('activ');
-    // Rajoute la classe "activ" pour le lien actuellement click?
-    $("ul#mainNav a[href='" + sectionName + "']").addClass('activ');
-
-    // Enl?ve la classe "activ" de tous les liens
-    $('span#linkEventsList a').removeClass('activ');
-    // Rajoute la classe "activ" pour le lien actuellement click?
-    $("span#linkEventsList a[href='" + sectionName + "']").addClass('activ')
-    // Cache toutes les <section>
-    $('section').hide();
-    // Affichage de la bonne <section>
-    $(nodeIdToShow).show();
-}
