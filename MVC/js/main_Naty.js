@@ -273,7 +273,20 @@ var ViewShowEvent = MyView.extend({
          
     }
 });
+var ViewAddEvent = MyView.extend({
+    template: templates.addEvent,
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
 
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        return this;
+
+    }
+
+});
 
 /*
  |--------------------------------------------------------------------------
@@ -303,14 +316,20 @@ event1.get('artists').add([mmready, zed]);
 
 var event2 = new Event({title: 'La grosse fiesta 2015', name_de: 'salsa'});
 event2.get('artists').add([mmready, zed]);
+var event = new Event();
 
 var listOfEvents1 = new Events([event1, event2]);
+
+
 var eventListView = new ViewEvents({collection: listOfEvents1});
 var showEvent = new ViewShowEvent({model: event1});
+var addEventView = new ViewAddEvent({model: event});
+
 var listOfArtists = new Artists([mmready, zed]);
+
+
 var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: listOfEvents1});
 var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: listOfArtists});
-
 var artistsListView = new ViewArtists({collection: listOfArtists});
 
 //console.log('***************************************');
@@ -329,7 +348,7 @@ var artistsListView = new ViewArtists({collection: listOfArtists});
  |--------------------------------------------------------------------------
  */
 $(function() {
- $('#eventsList').append(eventListView.el);
+    $('#eventsList').append(eventListView.el);
     //research
     $('#advancedResearchEvents').append(advancedResearchEvent.el);
     $('#advancedResearchArtists').hide();
@@ -343,6 +362,10 @@ $(function() {
     //details
     $('#showDetailEvent').hide();
     $('#showDetailEvent').append(showEvent.el);
+    
+    //add
+    $('#addEvent').hide();
+    $('#addEvent').append(addEventView.el);
 
 
 //    // gestion des boutons "back" et "forward" du browser
