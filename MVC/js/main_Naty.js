@@ -359,5 +359,68 @@ $(function() {
     //details
     $('#showDetailEvent').hide();
     $('#showDetailEvent').append(showEvent.el);
+
+    $('ul#mainNav a').on('click', function(e) {
+        menuElementClickHandler($(this));
+        e.preventDefault();
+        return false;
+    });
+    $('a').on('click', function(e) {
+        menuElementClickHandler($(this));
+        e.preventDefault();
+        return false;
+    });
 });
 
+/*
+ |--------------------------------------------------------------------------
+ | Gestion de l'historique (pour les boutons "back" et "forward" du browser
+ |--------------------------------------------------------------------------
+ */
+function historyHandler() {
+    // Prend la dernière partie de l'url (après le dernier '/')
+    var sectionName = location.pathname.split("/").pop();
+    // Si aucune section (page d'accueil ?), on va sur 'todo' par défaut
+    if (sectionName === '') {
+        sectionName = DEFAULT_SECTION;
+    }
+    menuGoToSection(sectionName);
+}
+/*
+ |--------------------------------------------------------------------------
+ | Gestion du menu
+ |--------------------------------------------------------------------------
+ */
+//API History
+function menuElementClickHandler(menuElement) {
+    // Recupère la section corespondante (attribut href du lien)
+    var sectionName = menuElement.attr('href');
+    // Si la section est déjà active ne rien faire
+    var actualSectionName = location.pathname.split("/").pop();
+    if (sectionName === actualSectionName) {
+        return;
+    }
+    // Simule le changement d'url ver cette section
+    history.pushState(null, null, sectionName);
+    // Affiche la section en question
+    menuGoToSection(sectionName);
+
+}
+
+function menuGoToSection(sectionName) {
+    var nodeIdToShow = '#' + sectionName;
+    // Enlève la classe "activ" de tous les liens
+    $('ul#mainNav a').removeClass('activ');
+    // Rajoute la classe "activ" pour le lien actuellement clické
+    $("ul#mainNav a[href='" + sectionName + "']").addClass('activ');
+
+    $('a').removeClass('activ');
+    // Rajoute la classe "activ" pour le lien actuellement clické
+    $("a[href='" + sectionName + "']").addClass('activ');
+
+
+    // Cache toutes les <section>
+    $('section').hide();
+    // Affichage de la bonne <section>
+    $(nodeIdToShow).show();
+}
