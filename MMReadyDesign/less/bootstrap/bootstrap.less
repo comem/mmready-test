@@ -1438,15 +1438,29 @@ table th[class*="col-"] {
 /*************************************MAYA*****************************************/
 /**********************************************************************************/
 
+input[type="number"] {
+    width: 100px;
+}
 .artists {
 background-color: #fff;
+border: 1px solid grey;
+margin-bottom: 15px;
+
 }
+
 fieldset {
   padding:20px;
   margin-bottom: 15px;
   border: 1px solid #9b9b9b;
   min-width: 0;
   background-color: #fff;
+}
+.new h3{
+padding-bottom:10px;
+}
+fieldset p {
+font-weight: bold;
+width: 200px;
 }
 .new{   
     border: 1px solid grey;
@@ -1456,9 +1470,22 @@ fieldset {
     margin-bottom: 10px;
 }
 
-fieldset h2 , h3  {
+fieldset h2 , .new h3  {
 margin:0;
 }
+h2 {
+padding-bottom: 5px;}
+
+.input-group{
+display: block;
+}
+
+textarea {
+resize: none;}
+fieldset h2 {
+margin-bottom: 5px;
+}
+
 
 legend {
   display: block;
