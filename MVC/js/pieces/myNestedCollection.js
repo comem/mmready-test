@@ -53,6 +53,6 @@ var Musician = MyModelNestedCollection.extend({
                
         MyModelNestedCollection.prototype.initialize.apply(this, arguments),
         console.log("Nouveau Musician créé. Name: "+this.get('name'));
-    },
+    }
     
 });

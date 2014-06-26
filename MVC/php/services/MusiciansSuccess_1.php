@@ -1,7 +1,9 @@
 <?php
 
-echo '
-        [{"id":"3",
+echo '{
+	"status":"success",
+	"data": [
+        {"id":"3",
         "name":"Romain",
         "stagename":"Remixed",
         "created_at":"2014-05-26 14:22:41",
@@ -20,4 +22,4 @@ echo '
         {"id":"3","musician_id":"3","name":"Piano"}]}]
         
 	
-';
+}';
