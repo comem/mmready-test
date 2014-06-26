@@ -4927,6 +4927,73 @@ dl dd {
 .navbar-inverse .navbar-nav > li > a {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
+.mainSearch {
+  margin-top: 8px;
+}
+.mainSearch form {
+  background-color: black;
+}
+.signIn .form-signin {
+  background-color: #ffffff;
+  max-width: 330px;
+  padding: 20px;
+  margin: 0 auto;
+  z-index: 1034;
+}
+.signIn .form-signin .form-signin-heading,
+.signIn .form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.signIn .form-signin .checkbox {
+  font-weight: normal;
+}
+.signIn .form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.signIn .form-signin .form-control:focus {
+  z-index: 2;
+}
+.signIn .form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.signIn .form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+img.bgSignIn {
+  /* Set rules to fill background */
+
+  min-height: 100%;
+  min-width: 1024px;
+  z-index: -1;
+  /* Set up proportionate scaling */
+
+  width: 100%;
+  height: auto;
+  /* Set up positioning */
+
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+@media screen and (max-width: 1024px) {
+  /* Specific to this particular image */
+  img.bgSignIn {
+    left: 50%;
+    margin-left: -512px;
+    /* 50% */
+  
+  }
+}
 /**Variables**/
 .green {
   color: green;

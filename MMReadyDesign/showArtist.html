@@ -37,13 +37,16 @@
 
 
 
-          <form class="navbar-group navbar-left col-lg-2" role="search">
+          <form class="navbar-group navbar-left mainSearch col-lg-2" role="search">
             
               <div class="input-group">
-      <span class="input-group-btn">
+   
+      <input type="text" class="form-control" placeholder="artist, event, responsable">
+
+
+         <span class="input-group-btn">
         <button class="btn btn-default" type="button"><i class="ico-search"></i></button>
       </span>
-      <input type="text" class="form-control">
     </div><!-- /input-group -->
           
 
@@ -54,15 +57,20 @@
 
 
 
+        
+  
 
-          <ul class="nav navbar-nav"><!--MainNav-->
+
+
+          <ul class="nav navbar-nav navbar-right"><!--MainNav-->
             <li class="active"><a href="#">Event</a></li>
             <li><a href="#">Artists</a></li>
             <li><a href="#">Responsable</a></li>
-          </ul>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
+
+
+
+          <li class="dropdown">
               <a href="#" class="dropdown-toggle ico-config" data-toggle="dropdown"></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Sprache</a></li>
@@ -70,7 +78,14 @@
                 <li><a href="#">LogOut</a></li>
               </ul>
             </li>
+
           </ul>
+
+
+
+
+
+        
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
