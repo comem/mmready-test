@@ -213,7 +213,8 @@ var ViewArtists = MyView.extend({
     events: {
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
-        'click a.ico-detail': 'detail'
+        'click a.ico-detail': 'detail',
+        'click #btn-addArtist': 'addArtist'
 
     },
     initialize: function(attrs, options) {
@@ -237,6 +238,11 @@ var ViewArtists = MyView.extend({
         $('#artistsList').hide();
         $('#showDetailArtist').show();
     },
+    addArtist: function(event) {
+        $('#eventsList').hide();
+        $('#advancedResearchEvents').hide();
+        $('#addEvent').show();
+    }
 });
 
 var ViewShowArtist = MyView.extend({
