@@ -39,20 +39,27 @@ $(function() {
 
     var artistsList = new Artists();
     var eventsList = new Events();
+    var representerList = new Representers();
+    
+    var romain = new Musician({'name': 'Romain'});
+    
+    var viewRomain = new ViewRomain({model: romain});
+    
+    viewRomain.render().$el.appendTo('#romain');
 
 
 
 
 
-    //var advancedResearchEvent = new ViewArtists({collection: eventsList});
-    //var advancedResearchArtist = new ViewArtists({collection: artistsList});
-    //var researchRepresentant = new ViewArtists({collection: artistsList});
+    var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: eventsList});
+    var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: artistsList});
+    //var researchRepresentant = new ViewResearchRepresentant({collection: artistsList});
     var eventsListView = new ViewEvents({collection: eventsList});
     var artistsListView = new ViewArtists({collection: artistsList});
-    //var representantsListView = new ViewArtists({collection: artistsList});
-    //var showEvent = new ViewShowEvent({model: event});
+    var representantsListView = new ViewRepresentant({collection: representerList});
+    var showEvent = new ViewShowEvent({collection: eventsList});
     var showArtist = new ViewShowArtist({collection: artistsList});
-    //var addEvent = new ViewArtists({model: event});
+    var addEvent = new ViewAddEvent({collection: eventsList});
 
 
     console.log('-------------DOM IS READY----------------------');
@@ -75,21 +82,21 @@ $(function() {
         console.log("start function IsConnected()");
 
         //RESEARCH
-        //advancedResearchEvent.render().$el.appentTo('#advancedResearchEvents');
-        //advancedResearchArtist.render().$el.appentTo('#advancedResearchArtists');
-        //researchRepresentant.render().$el.appentTo('#researchRepresentants');
+        advancedResearchEvent.render().$el.appendTo('#advancedResearchEvents');
+        advancedResearchArtist.render().$el.appendTo('#advancedResearchArtists');
+        //researchRepresentant.render().$el.appendTo('#researchRepresentants');
 
         //LIST
         eventsListView.render().$el.appendTo('#eventsList');
         artistsListView.render().$el.appendTo('#artistsList');
-        //representantsListView.render().$el.appentTo('#representantsList');
+        representantsListView.render().$el.appendTo('#representantsList');
 
         //DETAIL
-        //showEvent.render().$el.appendTo('#showDetailEvent');
+        showEvent.render().$el.appendTo('#showDetailEvent');
         showArtist.render().$el.appendTo('#showDetailArtist');
 
         //ADD
-        //addEvent.render().$el.appentTo('#addEventView');
+        addEvent.render().$el.appendTo('#addEventView');
         
         
         eventsList.fetch({

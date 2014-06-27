@@ -80,7 +80,7 @@ var ViewAdvancedResearchEvent = MyView.extend({
         $('#advancedResearchArtists').show();
     },
     showListRepresentant: function() {
-        console.log('fuck');
+
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         $('#researchRepresentants').show();
@@ -245,11 +245,11 @@ var ViewShowEvent = MyView.extend({
         'click #btn-back': 'backListEvents',
     },
     initialize: function(attrs, options) {
-        this.listenTo(this.model, 'all', this.render);
+        this.listenTo(this.collection, 'all', this.render);
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
         return this;
     },
     backListEvents: function() {
@@ -271,11 +271,11 @@ var ViewAddEvent = MyView.extend({
 //        });
     },
     initialize: function(attrs, options) {
-        this.listenTo(this.model, 'all', this.render);
+        this.listenTo(this.collection, 'all', this.render);
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
         return this;
     },
     addTicketCategory: function(event) {
@@ -317,7 +317,6 @@ var ViewRepresentant = MyView.extend({
     edit: function(representant) {
         console.log('edit');
     },
-
     detail: function(representant) {
         console.log('detail');
     }
@@ -335,4 +334,26 @@ var ViewShowRepresentant = MyView.extend({
         this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
         return this;
     }
+});
+
+
+
+//ROMAIN
+var ViewRomain = MyView.extend({
+    template: templates.Romain,
+    events: {
+        'click #romain': 'romain'
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {romain: this.model.toJSON()}));
+        return this;
+    },
+    romain: function(event) {
+        console.log('buton click');
+    }
+
 });
