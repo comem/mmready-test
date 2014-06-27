@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> Naty
 /*
  |--------------------------------------------------------------------------
  | Configuration (constantes)
@@ -87,6 +92,10 @@ var ViewAdvancedResearchArtist = MyView.extend({
     events: {
         'click button#events': 'showListEvent',
         'click button#artists': 'showListArtist',
+<<<<<<< HEAD
+=======
+        'click button#filterRepresenters' : 'showListRepresentant',
+>>>>>>> Naty
         'click a#close': 'close'
                 //'click button#filterRepresenters': 'detail',
 
@@ -112,6 +121,16 @@ var ViewAdvancedResearchArtist = MyView.extend({
         $('#advancedResearchEvents').hide();
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
+<<<<<<< HEAD
+=======
+    },
+    showListRepresentant : function() {
+        console.log('fuck');
+        $('#artistsList').hide();
+        $('#advancedResearchArtists').hide();
+        $('#representantsList').show();
+        $('#researchRepresentants').show();
+>>>>>>> Naty
     },
     close: function() {
         $('#advancedResearchArtists').hide();
@@ -130,6 +149,9 @@ var ViewAdvancedResearchEvent = MyView.extend({
     events: {
         'click button#events': 'showListEvent',
         'click button#artists': 'showListArtist',
+<<<<<<< HEAD
+=======
+        'click button#representer' : 'showListRepresentant',
         'click a#close': 'close'
                 //'click button#filterRepresenters': 'detail',
 
@@ -155,12 +177,89 @@ var ViewAdvancedResearchEvent = MyView.extend({
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
     },
+    showListRepresentant : function() {
+        console.log('fuck');
+        $('#eventsList').hide();
+        $('#advancedResearchEvents').hide();
+        $('#researchRepresentants').show();
+        $('#representantsList').show();
+    },
     close: function() {
         $('#advancedResearchEvents').hide();
     }
 
 });
 
+/*
+ |--------------------------------------------------------------------------
+ | RESEARCH REPRESENTANTS
+ |--------------------------------------------------------------------------
+ */
+
+var ViewResearchRepresentant = MyView.extend({
+    template: templates.researchRepresentant,
+    events: {
+        'click button#events': 'showListEvent',
+        'click button#artists': 'showListArtist',
+        'click button#filterRepresenters' : 'showListRepresentant',
+>>>>>>> Naty
+        'click a#close': 'close'
+                //'click button#filterRepresenters': 'detail',
+
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.collection, 'all', this.render);
+        this.render();
+
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
+        return this;
+
+    },
+    showListEvent: function() {
+        $('#artistsList').hide();
+        $('#eventsList').show();
+        $('#advancedResearchArtists').hide();
+        $('#advancedResearchEvents').show();
+    },
+<<<<<<< HEAD
+    showListEvent: function() {
+        $('#artistsList').hide();
+        $('#eventsList').show();
+        $('#advancedResearchEvents').show();
+        $('#advancedResearchArtists').hide();
+    },
+=======
+>>>>>>> Naty
+    showListArtist: function() {
+        $('#eventsList').hide();
+        $('#advancedResearchEvents').hide();
+        $('#artistsList').show();
+        $('#advancedResearchArtists').show();
+    },
+<<<<<<< HEAD
+    close: function() {
+        $('#advancedResearchEvents').hide();
+=======
+    showListRepresentant : function() {
+        console.log('fuck');
+        $('#artistsList').hide();
+        $('#advancedResearchArtists').hide();
+        $('#researchRepresentants').show();
+        $('#representantsList').show();
+    },
+    close: function() {
+        $('#advancedResearchArtists').hide();
+>>>>>>> Naty
+    }
+
+});
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> Naty
 /*
  |--------------------------------------------------------------------------
  | ARTIST
@@ -187,6 +286,10 @@ var ViewArtists = MyView.extend({
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
         'click a.ico-detail': 'detail'
+<<<<<<< HEAD
+=======
+        
+>>>>>>> Naty
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -206,8 +309,36 @@ var ViewArtists = MyView.extend({
         console.log('edit');
     },
     detail: function(event) {
+<<<<<<< HEAD
         console.log('detail');
     },
+=======
+        $('#artistsList').hide();
+        $('#showDetailArtist').show();
+    },
+});
+
+var ViewShowArtist = MyView.extend({
+    template: templates.showArtist,
+    events: {
+        'click #btn-backk': 'backListArtist'
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
+
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        return this;
+
+    },
+    backListArtist: function() {
+        $('#showDetailArtist').hide();
+        $('#artistsList').show();
+       
+    }
+>>>>>>> Naty
 });
 
 
@@ -235,6 +366,8 @@ var Events = MyCollection.extend({
     model: Event
 });
 
+<<<<<<< HEAD
+=======
 
 var ViewEvents = MyView.extend({
     template: templates.eventsList,
@@ -285,6 +418,98 @@ var ViewShowEvent = MyView.extend({
         $('#eventsList').show();
     }
 });
+>>>>>>> Naty
+
+
+/*
+ |--------------------------------------------------------------------------
+ | REPRESENTANT
+ |--------------------------------------------------------------------------
+ */
+
+var Representant = MyModelNestedCollection.extend({
+    nested: 'events',
+    defaults: function() {
+        return {
+            events: new Event()
+        }
+    }
+});
+
+
+var Representants = MyCollection.extend({
+    model: Representant
+});
+console.log('wdw');
+var ViewRepresentant = MyView.extend({
+    
+    template: templates.representantsList,
+    events: {
+        'click a.ico-delete': 'delete',
+        'click a.ico-edit': 'edit',
+<<<<<<< HEAD
+        'click a.ico-detail': 'detail',
+=======
+        'click a.ico-detail': 'detail'
+        
+>>>>>>> Naty
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.collection, 'all', this.render);
+        this.render();
+
+
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {representants: this.collection.toJSON()}));
+        return this;
+
+    },
+    'delete': function(representant) {
+        console.log('delete');
+    },
+    edit: function(representant) {
+        console.log('edit');
+    },
+    detail: function(representant) {
+      console.log('detail');
+    }
+<<<<<<< HEAD
+});
+
+var ViewShowEvent = MyView.extend({
+    template: templates.showEvent,
+    events: {
+        'click #btn-back': 'backListEvents',
+=======
+    
+});
+console.log('dsk');
+
+var ViewShowRepresentant = MyView.extend({
+    template: templates.showArtist,
+    events: {
+       
+>>>>>>> Naty
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
+
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        return this;
+
+    },
+    backListEvents: function() {
+        $('#showDetailEvent').hide();
+        $('#eventsList').show();
+    }
+
+});
+console.log('dsds');
+
 
 /*
  |--------------------------------------------------------------------------
@@ -315,14 +540,44 @@ event1.get('artists').add([mmready, zed]);
 var event2 = new Event({title: 'La grosse fiesta 2015', name_de: 'salsa'});
 event2.get('artists').add([mmready, zed]);
 
+
+
 var listOfEvents1 = new Events([event1, event2]);
 var eventListView = new ViewEvents({collection: listOfEvents1});
 var showEvent = new ViewShowEvent({model: event1});
+<<<<<<< HEAD
+=======
+
+
+var showArtist = new ViewShowArtist({model : mmready});
+>>>>>>> Naty
 var listOfArtists = new Artists([mmready, zed]);
-var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: listOfEvents1});
-var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: listOfArtists});
 
 var artistsListView = new ViewArtists({collection: listOfArtists});
+
+var representant1 = new Representant({first_name: 'Jean', last_name:'Ducommun', 
+            email: 'jean.duc@gmail.com', phone:'0789867877'});
+var representant2 = new Representant({first_name: 'Pierre', last_name:'Legros', 
+            email: 'bouboule@gmail.com', phone:'0789867877'});
+var listOfRepresentants = new Representants([representant1, representant2]);
+var representantsListView = new ViewRepresentant ({collection: listOfRepresentants});
+
+var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: listOfEvents1});
+var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: listOfArtists});
+var researchRepresentant = new ViewResearchRepresentant({collection: listOfRepresentants});
+
+
+<<<<<<< HEAD
+//console.log('***************************************');
+//console.log('***************************************');
+//console.log('ListOfEvents1');
+//console.log(listOfArtists.toJSON());
+//console.log(JSON.stringify(listOfArtists));
+//
+//console.log('***************************************');
+//console.log('***************************************');
+
+=======
 
 //console.log('***************************************');
 //console.log('***************************************');
@@ -333,6 +588,7 @@ var artistsListView = new ViewArtists({collection: listOfArtists});
 //console.log('***************************************');
 //console.log('***************************************');
 
+>>>>>>> Naty
 
 /*
  |--------------------------------------------------------------------------
@@ -350,16 +606,41 @@ $(function() {
     $('#advancedResearchEvents').append(advancedResearchEvent.el);
     $('#advancedResearchArtists').hide();
     $('#advancedResearchArtists').append(advancedResearchArtist.el);
+<<<<<<< HEAD
+=======
+    $('#researchRepresentants').hide();
+    $('#researchRepresentants').append(researchRepresentant.el);
+>>>>>>> Naty
 
     //lists
     $('#eventsList').append(eventListView.el);
     $('#artistsList').hide();
     $('#artistsList').append(artistsListView.el);
+<<<<<<< HEAD
+=======
+    $('#representantsList').hide();
+    $('#representantsList').append(representantsListView.el);
+>>>>>>> Naty
 
     //details
     $('#showDetailEvent').hide();
     $('#showDetailEvent').append(showEvent.el);
+<<<<<<< HEAD
 
+=======
+    $('#showDetailArtist').hide();
+    $('#showDetailArtist').append(showArtist.el);
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Gestion de l'historique (pour les boutons "back" et "forward" du browser
+    |--------------------------------------------------------------------------
+    */
+//    // gestion des boutons "back" et "forward" du browser
+//    $(window).on('popstate', historyHandler);
+//    // simule un premier changement d'url
+//    $(window).trigger('popstate');
+>>>>>>> Naty
     $('ul#mainNav a').on('click', function(e) {
         menuElementClickHandler($(this));
         e.preventDefault();
