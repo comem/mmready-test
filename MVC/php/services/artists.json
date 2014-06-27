@@ -1,0 +1,28 @@
+{
+    "status": "success",
+    "data": [{
+            "id": 1,
+            "name": "Die toten Socken",
+            "short_description_de": "Band die nur \u00fcber kleider singt ",
+            "complete_description_de": "Rock band, die nur \u00fcber kleider signt und zu populair ist",
+            "created_at": "2014-06-23 11:55:54",
+            "updated_at": "2014-06-23 11:55:54",
+            "deleted_at": null
+        }, {
+            "id": 2,
+            "name": "Rock family",
+            "short_description_de": "This family really do not know aht goes about rock ",
+            "complete_description_de": "Just a crazy family perfomring in the name of the Stein music",
+            "created_at": "2014-06-23 11:55:54",
+            "updated_at": "2014-06-23 11:55:54",
+            "deleted_at": null
+        }, {
+            "id": 3,
+            "name": "redbulp",
+            "short_description_de": "New talent from Belp",
+            "complete_description_de": " A new Singer that know how to sing well",
+            "created_at": "2014-06-23 11:55:54",
+            "updated_at": "2014-06-23 11:55:54",
+            "deleted_at": null
+        }]
+}

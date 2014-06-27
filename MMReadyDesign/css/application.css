@@ -3,6 +3,9 @@
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+section {
+  display: none;
+}
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -164,10 +167,6 @@ fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
-}
-legend {
-  border: 0;
-  padding: 0;
 }
 textarea {
   overflow: auto;
@@ -1531,6 +1530,7 @@ fieldset {
   margin: 0;
   border: 0;
   min-width: 0;
+  background-color: #fff;
 }
 legend {
   display: block;
@@ -1538,7 +1538,6 @@ legend {
   padding: 0;
   margin-bottom: 20px;
   font-size: 21px;
-  line-height: inherit;
   color: #333333;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
@@ -4511,6 +4510,10 @@ button.close {
   padding-top: 5px;
   padding-bottom: 2px;
 }
+.searchResult [class^="ico-"],
+.searchResult [class*=" ico-"] {
+  margin-right: 15px;
+}
 .dayResult {
   font-size: 1.8em;
   font-weight: 600;
@@ -4523,10 +4526,13 @@ button.close {
 .result {
   margin-bottom: 5px;
 }
+<<<<<<< HEAD
 [class^="ico-"],
 [class*=" ico-"] {
   margin-right: 5px;
 }
+=======
+>>>>>>> origin/Romain
 /**ASIDE**/
 .panel-heading {
   padding: 5px;
@@ -4588,7 +4594,6 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
-  background-color: #ffffff;
   margin-top: 100px;
   background-color: #dcdcdc;
 }
@@ -4875,9 +4880,6 @@ label {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-fieldset {
-  background-color: #fff;
-}
 /*DL, DT, DD TAGS LIST DATA*/
 dl {
   margin-bottom: 10px;
@@ -4904,6 +4906,7 @@ dl dd {
 .moreInfo li {
   display: inline;
   text-align: center;
+<<<<<<< HEAD
   padding: 5px ;
   margin: 0;
   width: 20%;
@@ -4996,3 +4999,13 @@ img.bgSignIn {
 .green {
   color: green;
 }
+=======
+  padding: 2px ;
+  margin: 0;
+  width: 20%;
+}
+/**Variables**/
+.green {
+  color: green;
+}
+>>>>>>> origin/Romain
