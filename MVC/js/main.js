@@ -33,33 +33,65 @@ $(function() {
 //        
 //    }
             });
-
-//var eventsList = new Events();
+    
+    var instrusList = new Instruments();
+    var musiciansList = new Musicians();
+ 
     var artistsList = new Artists();
-//var musiciansList = new Musicians();
-//var instrusList = new Instruments();
+    var eventsList = new Events();
+   
 
+
+
+
+    //var advancedResearchEvent = new ViewArtists({collection: eventsList});
+    //var advancedResearchArtist = new ViewArtists({collection: artistsList});
+    //var researchRepresentant = new ViewArtists({collection: artistsList});
+    var eventListView = new ViewEvents({collection: eventsList});
     var artistsListView = new ViewArtists({collection: artistsList});
-
-        console.log('-------------DOM IS READY----------------------');
-        $('#advancedResearchEvents').hide();
-        $('#login').hide();
-        $('#eventsList').hide();
-        $('#advancedResearchArtists').hide();
-        $('#researchRepresentants').hide();
-        $('#representantsList').hide();
-        $('#showDetailEvent').hide();
-        $('#showDetailArtist').hide();
-        $('#addEvent').hide();
-        console.log("COUCOU");
+    //var representantsListView = new ViewArtists({collection: artistsList});
+    //var showEvent = new ViewShowEvent({model: event});
+    var showArtist = new ViewShowArtist({collection: artistsList});
+    //var addEvent = new ViewArtists({model: event});
 
 
-        console.log('-------------DOM IS FINISH---------------------');
+    console.log('-------------DOM IS READY----------------------');
+    $('#advancedResearchEvents').show;
+    $('#login').hide();
+    $('#eventsList').show();
+    $('#artistsList').hide();
+    $('#advancedResearchArtists').hide();
+    $('#researchRepresentants').hide();
+    $('#representantsList').hide();
+    $('#showDetailEvent').hide();
+    $('#showDetailArtist').hide();
+    $('#addEvent').hide();
+    console.log("COUCOU");
+
+
+    console.log('-------------DOM IS FINISH---------------------');
 
     function IsConnected() {
         console.log("start function IsConnected()");
 
+        //RESEARCH
+        //advancedResearchEvent.render().$el.appentTo('#advancedResearchEvents');
+        //advancedResearchArtist.render().$el.appentTo('#advancedResearchArtists');
+        //researchRepresentant.render().$el.appentTo('#researchRepresentants');
+
+        //LIST
+        eventListView.render().$el.appendTo('#eventsList');
         artistsListView.render().$el.appendTo('#artistsList');
+        //representantsListView.render().$el.appentTo('#representantsList');
+
+        //DETAIL
+        //showEvent.render().$el.appendTo('#showDetailEvent');
+        showArtist.render().$el.appendTo('#showDetailArtist');
+
+        //ADD
+        //addEvent.render().$el.appentTo('#addEventView');
+
+
         artistsList.fetch({
             success: function(collection, response, options) {
                 console.log(artistsList);
@@ -68,42 +100,63 @@ $(function() {
 
         });
 
-
-
-//console.log('--------------------  All Events  --------------------');
-//eventsList.fetch({
-//    success: function (collection, response, options) {
-//        console.log(eventsList);
-//        console.log(JSON.stringify(eventsList));
-//    }
-//});
-
-//console.log('--------------------  All Artists  --------------------');
-
-//
-//console.log('--------------------  All Musicians  --------------------');
-//musiciansList.fetch({
-//    success: function (collection, response, options) {
-//        console.log(musiciansList);
-//        console.log(JSON.stringify(musiciansList));
-//    }
-//});
-//
-//console.log('--------------------  All Instruments  --------------------');
-//instrusList.fetch({
-//    success: function (collection, response, options) {
-//        console.log(instrusList);
-//        console.log(JSON.stringify(instrusList));
-//    }
-//});
-
-
-
-
-
     }
     ;
-
+    $('ul#mainNav a').on('click', function(e) {
+        menuElementClickHandler($(this));
+        e.preventDefault();
+        return false;
+    });
+    $('a').on('click', function(e) {
+        menuElementClickHandler($(this));
+        e.preventDefault();
+        return false;
+    });
+    $('#plusOption').on('click', function(e) {
+        $('#advancedResearchEvents').show();
+        $('#eventsList').show();
+    });
+});
+/*
+ |--------------------------------------------------------------------------
+ | Gestion de l'historique (pour les boutons "back" et "forward" du browser
+ |--------------------------------------------------------------------------
+ */
+function historyHandler() {
+    // Prend la dernière partie de l'url (après le dernier '/')
+    var sectionName = location.pathname.split("/").pop();
+    // Si aucune section (page d'accueil ?), on va sur 'eventsList' par défaut
+    if (sectionName === '') {
+        sectionName = DEFAULT_SECTION;
+    }
+    menuGoToSection(sectionName);
+}
+/*
+ |--------------------------------------------------------------------------
+ | Gestion du menu
+ |--------------------------------------------------------------------------
+ */
+//API History
+function menuElementClickHandler(menuElement) {
+    // Recupère la section corespondante (attribut href du lien)
+    var sectionName = menuElement.attr('href');
+    // Si la section est déjà active ne rien faire
+    var actualSectionName = location.pathname.split("/").pop();
+    if (sectionName === actualSectionName) {
+        return;
+    }
+    // Simule le changement d'url ver cette section
+    history.pushState(null, null, sectionName);
+    // Affiche la section en question
+    menuGoToSection(sectionName);
+}
+function menuGoToSection(sectionName) {
+    var nodeIdToShow = '#' + sectionName;
+    // Cache toutes les <section>
+    $('section').hide();
+    // Affichage de la bonne <section>
+    $(nodeIdToShow).show();
+}
 
 
 
@@ -146,6 +199,32 @@ $(function() {
 //***************************************************************************//
 
 
+//console.log('--------------------  All Events  --------------------');
+//eventsList.fetch({
+//    success: function (collection, response, options) {
+//        console.log(eventsList);
+//        console.log(JSON.stringify(eventsList));
+//    }
+//});
+
+//console.log('--------------------  All Artists  --------------------');
+
+//
+//console.log('--------------------  All Musicians  --------------------');
+//musiciansList.fetch({
+//    success: function (collection, response, options) {
+//        console.log(musiciansList);
+//        console.log(JSON.stringify(musiciansList));
+//    }
+//});
+//
+//console.log('--------------------  All Instruments  --------------------');
+//instrusList.fetch({
+//    success: function (collection, response, options) {
+//        console.log(instrusList);
+//        console.log(JSON.stringify(instrusList));
+//    }
+//});
 
 
 //$.ajax //Requête de connection API
@@ -182,5 +261,5 @@ $(function() {
 //});
 
 
-});
+
 
