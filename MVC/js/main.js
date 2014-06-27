@@ -33,13 +33,13 @@ $(function() {
 //        
 //    }
             });
-    
+
     var instrusList = new Instruments();
     var musiciansList = new Musicians();
- 
+
     var artistsList = new Artists();
     var eventsList = new Events();
-   
+
 
 
 
@@ -47,7 +47,7 @@ $(function() {
     //var advancedResearchEvent = new ViewArtists({collection: eventsList});
     //var advancedResearchArtist = new ViewArtists({collection: artistsList});
     //var researchRepresentant = new ViewArtists({collection: artistsList});
-    var eventListView = new ViewEvents({collection: eventsList});
+    var eventsListView = new ViewEvents({collection: eventsList});
     var artistsListView = new ViewArtists({collection: artistsList});
     //var representantsListView = new ViewArtists({collection: artistsList});
     //var showEvent = new ViewShowEvent({model: event});
@@ -80,7 +80,7 @@ $(function() {
         //researchRepresentant.render().$el.appentTo('#researchRepresentants');
 
         //LIST
-        eventListView.render().$el.appendTo('#eventsList');
+        eventsListView.render().$el.appendTo('#eventsList');
         artistsListView.render().$el.appendTo('#artistsList');
         //representantsListView.render().$el.appentTo('#representantsList');
 
@@ -90,15 +90,24 @@ $(function() {
 
         //ADD
         //addEvent.render().$el.appentTo('#addEventView');
-
-
-        artistsList.fetch({
+        
+        
+        eventsList.fetch({
             success: function(collection, response, options) {
-                console.log(artistsList);
-                console.log(JSON.stringify(artistsList));
+                console.log('FETCH EVENT LIST');
+                console.log(eventsList);
+                console.log(JSON.stringify(eventsList));
             }
-
         });
+
+//        artistsList.fetch({
+//            success: function(collection, response, options) {
+//                console.log(artistsList);
+//                console.log(JSON.stringify(artistsList));
+//            }
+//
+//        });
+
 
     }
     ;

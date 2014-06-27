@@ -27,7 +27,7 @@ var AUTH_STAFF_FR     = {"email":"fr@staff.ch","password":"staff"};
 		
 	
 //     /!\ local links
-var URLSERVEUR_EVENTsuccess = "../php/services/EventCollectionSUCCESS.php";
+var URLSERVEUR_EVENTsuccess = "php/services/EventCollectionSUCCESS.php";
 var URLSERVEURfail = "../php/services/EventCollectionFAIL.php";
 var URLSERVEURerror = "../php/services/EventCollectionERROR.php";
 
