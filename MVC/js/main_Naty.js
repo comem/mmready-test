@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*
  |--------------------------------------------------------------------------
  | Configuration (constantes)
@@ -395,14 +395,7 @@ var ViewRepresentant = MyView.extend({
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
         'click a.ico-detail': 'detail'
-=======
-var ViewEvents = MyView.extend({
-    template: templates.eventsList,
-    events: {
-        'click a.ico-delete': 'delete',
-        'click a.ico-edit': 'edit',
-        'click a.ico-detail': 'detail',
->>>>>>> origin/Romain
+
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -418,7 +411,7 @@ var ViewEvents = MyView.extend({
     edit: function(representant) {
         console.log('edit');
     },
-<<<<<<< HEAD
+
     detail: function(representant) {
         console.log('detail');
     }
@@ -466,7 +459,11 @@ var eventListView = new ViewEvents({collection: listOfEvents1});
 var showEvent = new ViewShowEvent({model: event1});
 var showArtist = new ViewShowArtist({model: mmready});
 var listOfArtists = new Artists([mmready, zed]);
-var artistsListView = new ViewArtists({collection: listOfArtists});
+
+
+
+
+
 var representant1 = new Representant({first_name: 'Jean', last_name: 'Ducommun',
     email: 'jean.duc@gmail.com', phone: '0789867877'});
 var representant2 = new Representant({first_name: 'Pierre', last_name: 'Legros',
@@ -477,14 +474,13 @@ var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: listOfEve
 var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: listOfArtists});
 var researchRepresentant = new ViewResearchRepresentant({collection: listOfRepresentants});
 var addEventView = new ViewAddEvent({model: event});
-//console.log('***************************************');
-//console.log('***************************************');
-//console.log('ListOfEvents1');
-//console.log(listOfArtists.toJSON());
-//console.log(JSON.stringify(listOfArtists));
-//
-//console.log('***************************************');
-//console.log('***************************************');
+var artistsListView = new ViewArtists({collection: listOfArtists});
+
+
+
+
+console.log(JSON.stringify(listOfArtists));
+
 /*
  |--------------------------------------------------------------------------
  | DOM
@@ -500,7 +496,10 @@ $(function() {
     //lists
     $('#eventsList').append(eventListView.el);
     $('#artistsList').hide();
+    //artistsListView.render().$el.appendTo('#artistsList');
     $('#artistsList').append(artistsListView.el);
+    //artistsList.fetch();
+    console.log(artistsList);
     $('#representantsList').hide();
     $('#representantsList').append(representantsListView.el);
     //details
@@ -570,10 +569,6 @@ function menuGoToSection(sectionName) {
     // Affichage de la bonne <section>
     $(nodeIdToShow).show();
 }
-=======
-    detail: function(event) {
-        $('#eventsList').hide();
-        $('#showDetailEvent').show();
-    }
-});
->>>>>>> origin/Romain
+
+
+

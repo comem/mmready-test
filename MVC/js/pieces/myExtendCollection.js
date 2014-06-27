@@ -21,6 +21,7 @@ var Events = MyCollection.extend({
 var Artists = MyCollection.extend({
     url: ARTISTS, 
     model:Artist
+    
         //model: Instrument//diff de Chabloz lui il n'a rien
 });
 
