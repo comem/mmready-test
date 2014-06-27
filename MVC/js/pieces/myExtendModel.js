@@ -47,7 +47,7 @@ var Instrument = MyModel.extend({
     //urlRoot: URLSERVEURinstruSuccess,    
     initialize: function(attrs, opt){
         console.log("Nouvel Instrument créé");
-        console.log(attrs.name_de);
+        //console.log(attrs.name_de);
         this.on('change', function(event){
             console.log('Un événement "change" est survenu sur '+JSON.stringify(this.changed)+'. L objet entier en JSON:' +  JSON.stringify(event)); 
             return this;
@@ -146,6 +146,21 @@ var Ticket = MyModel.extend({
     urlRoot: TICKETS,   
     initialize: function(){
         console.log("Nouveau Ticket créé. Name: "+this.get('name'));
+        this.on('change', function(event){
+            console.log('Un événement "change" est survenu sur '+JSON.stringify(this.changed)+'. L objet entier en JSON:' +  JSON.stringify(event)); 
+            return this;
+        });
+        this.on('invalid', function(model, error){//si la mÃ©thode validate perÃ§oit un truc pas valide elle gÃ©nÃ¨re un Ã©vÃ¨nement "invalid"
+            console.log("Message d'erreur de validation: "+ error); // error contient la string qui est "returnÃ©e" par la fonction validate
+        });
+          }    
+
+});
+
+var Image = MyModel.extend({
+    urlRoot: "",   
+    initialize: function(){
+        console.log("Nouveau Image créé. Name: "+this.get('name'));
         this.on('change', function(event){
             console.log('Un événement "change" est survenu sur '+JSON.stringify(this.changed)+'. L objet entier en JSON:' +  JSON.stringify(event)); 
             return this;

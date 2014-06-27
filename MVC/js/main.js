@@ -23,7 +23,7 @@ $.ajax //Requête de connection API
       
       IsConnected();
     },
-    crossDomain: true,
+    crossDomain: true
 //    error: function(jqXHR, textStatus,errorThrown){
 //        console.log("Vous n'êtes pas authentifié blblblbl!");
 //        console.log(textStatus);
@@ -46,32 +46,44 @@ eventsList.fetch({
     success: function (collection, response, options) {
         console.log(eventsList);
         console.log(JSON.stringify(eventsList));
+    },
+    error: function(collection, response, options){
+        
+        console.log("ERROR FETCH");
+        
     }
 });
 
-console.log('--------------------  All Artists  --------------------');
-artistsList.fetch({
-    success: function (collection, response, options) {
-        console.log(artistsList);
-        console.log(JSON.stringify(artistsList));
-    }
-});
-
-console.log('--------------------  All Musicians  --------------------');
-musiciansList.fetch({
-    success: function (collection, response, options) {
-        console.log(musiciansList);
-        console.log(JSON.stringify(musiciansList));
-    }
-});
-
-console.log('--------------------  All Instruments  --------------------');
-instrusList.fetch({
-    success: function (collection, response, options) {
-        console.log(instrusList);
-        console.log(JSON.stringify(instrusList));
-    }
-});
+//console.log('--------------------  All Artists  --------------------');
+//artistsList.fetch({
+//    success: function (collection, response, options) {
+//        console.log("Ma collection d'Artists mode object");
+//        console.log(artistsList);
+//        
+//        console.log("artistsList.data");
+//        console.log(artistsList.data);
+////        console.log("artistsList.data.get()");
+////        console.log(artistsList.data.get());
+//        console.log("Ma collection d'Artists mode JSON");
+//        console.log(JSON.stringify(artistsList));
+//    }
+//});
+//
+//console.log('--------------------  All Musicians  --------------------');
+//musiciansList.fetch({
+//    success: function (collection, response, options) {
+//        console.log(musiciansList);
+//        console.log(JSON.stringify(musiciansList));
+//    }
+//});
+//
+//console.log('--------------------  All Instruments  --------------------');
+//instrusList.fetch({
+//    success: function (collection, response, options) {
+//        console.log(instrusList);
+//        console.log(JSON.stringify(instrusList));
+//    }
+//});
 
 
 
@@ -125,6 +137,8 @@ $(function () {
 
     
     console.log("COUCOU");
+    
+    var muscians1 = new Musician({});
     
 
 console.log('-------------DOM IS FINISH---------------------');
