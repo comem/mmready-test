@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  |--------------------------------------------------------------------------
  | Configuration (constantes)
@@ -394,6 +395,14 @@ var ViewRepresentant = MyView.extend({
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
         'click a.ico-detail': 'detail'
+=======
+var ViewEvents = MyView.extend({
+    template: templates.eventsList,
+    events: {
+        'click a.ico-delete': 'delete',
+        'click a.ico-edit': 'edit',
+        'click a.ico-detail': 'detail',
+>>>>>>> origin/Romain
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -409,6 +418,7 @@ var ViewRepresentant = MyView.extend({
     edit: function(representant) {
         console.log('edit');
     },
+<<<<<<< HEAD
     detail: function(representant) {
         console.log('detail');
     }
@@ -560,3 +570,10 @@ function menuGoToSection(sectionName) {
     // Affichage de la bonne <section>
     $(nodeIdToShow).show();
 }
+=======
+    detail: function(event) {
+        $('#eventsList').hide();
+        $('#showDetailEvent').show();
+    }
+});
+>>>>>>> origin/Romain
