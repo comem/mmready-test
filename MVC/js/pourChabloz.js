@@ -27,8 +27,9 @@ var MyModelNestedCollection = MyModel.extend({
     parse: function (response) {
         response = MyModel.prototype.parse.apply(this, arguments);
         
-        parseNested(response);
-        parseNested2(response);
+        var a = parseNested(response);
+        var b = parseNested2(response);
+        return a+b;
     }
 });
 
