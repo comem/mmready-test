@@ -4,23 +4,113 @@
 //    $('#activation').on('click', function (e){
 //        login();
 //    });
-//    
-//  
-//
-var Login = Backbone.Model.extend({
-    label: function () {
-        return this.get("email");
+//window.onload = pageSet();
+//function pageSet(){};
+
+
+$(document).ready(function() {
+      console.log("document ready occurred!");
+      
+      var login = new MyLoginModel({"txtButton":"Activation"});
+    var loginViewVar = new LoginView({model: login});
+    loginViewVar.render().$el.appendTo("#login");
+    
+    $('#Activation').on("click", activation(event));
+
+});//FIN DU DOM
+
+var MyLoginModel = Backbone.Model.extend();
+
+var MyLoginView = Backbone.View.extend();
+
+var LoginView = MyLoginView.extend({
+    template: templates.login,
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {login: this.model.toJSON()}));
+        return this;
+
+    },
+    events: {
+//          'submit #Activation': 'activation'
+//        'click a.ico-edit': 'edit',
+//        'click a.ico-detail': 'detail',
+        
     }
 });
 
-
-
-
-
-var LoginCollection = Backbone.Collection.extend({
-    model: Login
+function activation(event){
+    console.log("click activation");
+    var email = $("#email").val();
+    var password = $("#password").val();
     
+    $.ajax //Requête de connection API
+  ({
+    type: "POST",
+    url: LOGIN,
+    dataType: 'json',
+    //async: false,
+    data:  "{'email':"+email+", 'password':"+password+"}",                             //AUTH_MANAGER_FR ,      //{"email":"matou@matou.ch", "password":"matou"}
+    //email: email ,
+    //password: password,
+    
+    success: function (data, textStatus, jqXHR){
+      console.log("Dialogue client serveur : "+ textStatus);
+      console.log("TextStatut : "+ data.status);
+      
+      
+      console.log(data);
+      if(data.status==='success'){
+          console.log("Data.title : ");
+          console.log(data.data.title);
+      }else{
+          console.log("Phrase d'erreur : "+ data.message.title);
+          //IsConnected();
+          return;
+      }
+      
+      //IsConnected();
+    },
+    crossDomain: true
+//    error: function(jqXHR, textStatus,errorThrown){
+//        console.log("Vous n'êtes pas authentifié blblblbl!");
+//        console.log(textStatus);
+//        console.log(errorThrown);
+//        console.log(jqXHR);
+//        
+//    }
 });
+    
+    
+    
+    
+}
+
+//var LoginCollection = Backbone.Collection.extend({
+//    model: Login 
+//
+//});
+
+//$(window).load(function() {
+//      
+//      console.log("window load occurred!");
+//    
+//    
+//        
+//    
+//
+//var Login = Backbone.Model.extend({
+//    label: function () {
+//        return this.get("email");
+//    }
+//});
+//
+//});//FIN Windows Load
+
+
 //
 //
 //new AutoCompleteView({
