@@ -13,7 +13,11 @@ var MyCollection = Backbone.Collection.extend({
 
 
 var Events = MyCollection.extend({
+<<<<<<< HEAD
     url: URLSERVEUR_EVENTsuccess, //EVENTS
+=======
+    url: "../php/services/EventCollectionSUCCESS.php", //EVENTS
+>>>>>>> origin/Romain
     model:Event
         //model: Instrument//diff de Chabloz lui il n'a rien
 });

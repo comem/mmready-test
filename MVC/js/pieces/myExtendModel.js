@@ -156,3 +156,18 @@ var Ticket = MyModel.extend({
           }    
 
 });
+
+var Image = MyModel.extend({
+    urlRoot: "",   
+    initialize: function(){
+        console.log("Nouveau Image créé. Name: "+this.get('name'));
+        this.on('change', function(event){
+            console.log('Un événement "change" est survenu sur '+JSON.stringify(this.changed)+'. L objet entier en JSON:' +  JSON.stringify(event)); 
+            return this;
+        });
+        this.on('invalid', function(model, error){//si la mÃ©thode validate perÃ§oit un truc pas valide elle gÃ©nÃ¨re un Ã©vÃ¨nement "invalid"
+            console.log("Message d'erreur de validation: "+ error); // error contient la string qui est "returnÃ©e" par la fonction validate
+        });
+          }    
+
+});

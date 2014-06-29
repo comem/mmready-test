@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $(function() {
     $.ajax //Requête de connection API
             ({
@@ -25,6 +26,34 @@ $(function() {
                     IsConnected();
                 },
                 crossDomain: true,
+=======
+$.ajax //Requête de connection API
+  ({
+    type: "POST",
+    url: LOGIN,
+    dataType: 'json',
+    //async: false,
+    data: {"email":"chris@chris.ch","password":"chr"}, //AUTH_MANAGER_FR       //{"email":"matou@matou.ch", "password":"matou"}
+    
+    success: function (data, textStatus, jqXHR){
+      console.log("Dialogue client serveur : "+ textStatus);
+      console.log("TextStatut : "+ data.status);
+      
+      
+      console.log(data);
+      if(data.status==='success'){
+          console.log("Data.title : ");
+          console.log(data.data.title);
+      }else{
+          console.log("Phrase d'erreur : "+ data.message.title);
+          IsConnected();
+          return;
+      }
+      
+      IsConnected();
+    },
+    crossDomain: true
+>>>>>>> origin/Romain
 //    error: function(jqXHR, textStatus,errorThrown){
 //        console.log("Vous n'êtes pas authentifié blblblbl!");
 //        console.log(textStatus);
@@ -47,9 +76,55 @@ $(function() {
     
     viewRomain.render().$el.appendTo('#romain');
 
+<<<<<<< HEAD
 
 
 
+=======
+console.log('--------------------  All Events  --------------------');
+eventsList.fetch({
+    success: function (collection, response, options) {
+        console.log(eventsList);
+        console.log(JSON.stringify(eventsList));
+    },
+    error: function(collection, response, options){
+        
+        console.log("ERROR FETCH");
+        
+    }
+});
+
+//console.log('--------------------  All Artists  --------------------');
+//artistsList.fetch({
+//    success: function (collection, response, options) {
+//        console.log("Ma collection d'Artists mode object");
+//        console.log(artistsList);
+//        
+//        console.log("artistsList.data");
+//        console.log(artistsList.data);
+////        console.log("artistsList.data.get()");
+////        console.log(artistsList.data.get());
+//        console.log("Ma collection d'Artists mode JSON");
+//        console.log(JSON.stringify(artistsList));
+//    }
+//});
+//
+//console.log('--------------------  All Musicians  --------------------');
+//musiciansList.fetch({
+//    success: function (collection, response, options) {
+//        console.log(musiciansList);
+//        console.log(JSON.stringify(musiciansList));
+//    }
+//});
+//
+//console.log('--------------------  All Instruments  --------------------');
+//instrusList.fetch({
+//    success: function (collection, response, options) {
+//        console.log(instrusList);
+//        console.log(JSON.stringify(instrusList));
+//    }
+//});
+>>>>>>> origin/Romain
 
     var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: eventsList});
     var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: artistsList});
@@ -223,7 +298,15 @@ function menuGoToSection(sectionName) {
 //    }
 //});
 
+<<<<<<< HEAD
 //console.log('--------------------  All Artists  --------------------');
+=======
+    
+    console.log("COUCOU");
+    
+    var muscians1 = new Musician({});
+    
+>>>>>>> origin/Romain
 
 //
 //console.log('--------------------  All Musicians  --------------------');
