@@ -4,10 +4,12 @@
 
 var MyModelNestedCollection = MyModel.extend({
     nested: 'collection',
-    nested2:'collection',
     initialize: function (attrs, options) {
+        
+        console.log("Initialize Nested Collection");
+        console.log(attrs);
         // Si la "nested" col. n'est pas fournie à la création, on la crée vide
-        if (typeof attrs[this.nested] == "undefined") {
+        if (typeof c == "undefined") {
             attrs[this.nested] = [];
         }
         // Création de la nested collection
@@ -41,32 +43,9 @@ var MyModelNestedCollection = MyModel.extend({
     }
 });
 
-function parseNested(response){
-    if (typeof response[this.nested] == "undefined") {
-            response[this.nested] = [];
-        }
-        // Création de la nested collection
-        response[this.nested] = new window[this.nested.capitalize()](
-                response[this.nested]
-        );
-        return response;
-}
-
-function parseNested2(response){
-    if (typeof response[this.nested2] == "undefined") {
-            response[this.nested2] = [];
-        }
-        // Création de la nested collection
-        response[this.nested2] = new window[this.nested2.capitalize()](
-                response[this.nested2]
-        );
-        return response;
-}
 
 var Event = MyModelNestedCollection.extend({
-    nested: 'artists',
-    nested2: 'images'
-    
+    nested: 'artists'
 //    defaults: function () {return {
 //        instruments: new Instruments()
 //    }},
@@ -79,9 +58,7 @@ var Event = MyModelNestedCollection.extend({
 });
 
 var Artist = MyModelNestedCollection.extend({
-    urlRoot: ARTISTS+"-new",
-    nested: 'musicians',
-    nested2:'genres'
+    nested: 'musicians'
 //    defaults: function () {return {
 //        instruments: new Instruments()
 //    }},
