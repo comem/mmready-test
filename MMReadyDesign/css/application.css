@@ -4512,7 +4512,7 @@ button.close {
 }
 .searchResult [class^="ico-"],
 .searchResult [class*=" ico-"] {
-  margin-right: 15px;
+  margin-right: 5px;
 }
 .dayResult {
   font-size: 1.8em;
@@ -4527,12 +4527,18 @@ button.close {
   margin-bottom: 5px;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Naty
 [class^="ico-"],
 [class*=" ico-"] {
   margin-right: 5px;
 }
+<<<<<<< HEAD
 =======
 >>>>>>> origin/Romain
+=======
+>>>>>>> Naty
 /**ASIDE**/
 .panel-heading {
   padding: 5px;
@@ -4907,6 +4913,9 @@ dl dd {
   display: inline;
   text-align: center;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Naty
   padding: 5px ;
   margin: 0;
   width: 20%;
@@ -4939,7 +4948,10 @@ dl dd {
   max-width: 330px;
   padding: 20px;
   margin: 0 auto;
+<<<<<<< HEAD
+=======
   z-index: 1034;
+>>>>>>> Fabrizio
 }
 .signIn .form-signin .form-signin-heading,
 .signIn .form-signin .checkbox {
@@ -4970,6 +4982,8 @@ dl dd {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+<<<<<<< HEAD
+=======
 img.bgSignIn {
   /* Set rules to fill background */
 
@@ -4995,10 +5009,12 @@ img.bgSignIn {
   
   }
 }
+>>>>>>> Fabrizio
 /**Variables**/
 .green {
   color: green;
 }
+<<<<<<< HEAD
 =======
   padding: 2px ;
   margin: 0;
@@ -5009,3 +5025,5 @@ img.bgSignIn {
   color: green;
 }
 >>>>>>> origin/Romain
+=======
+>>>>>>> Naty

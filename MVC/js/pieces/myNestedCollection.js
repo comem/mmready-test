@@ -5,8 +5,11 @@
 var MyModelNestedCollection = MyModel.extend({
     nested: 'collection',
     initialize: function (attrs, options) {
+        
+        console.log("Initialize Nested Collection");
+        console.log(attrs);
         // Si la "nested" col. n'est pas fournie à la création, on la crée vide
-        if (typeof attrs[this.nested] == "undefined") {
+        if (typeof c == "undefined") {
             attrs[this.nested] = [];
         }
         // Création de la nested collection

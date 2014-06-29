@@ -1,59 +1,5 @@
-
-/*
- |--------------------------------------------------------------------------
- | Configuration (constantes)
- |--------------------------------------------------------------------------
- */
-var DEFAULT_SECTION = 'eventsList';
-/*
- |--------------------------------------------------------------------------
- | extending Backbone classes
- |--------------------------------------------------------------------------
- */
-var MyModel = Backbone.Model.extend();
-var MyCollection = Backbone.Collection.extend();
-var MyModelNestedCollection = Backbone.Model.extend({
-    nested: 'collection',
-    initialize: function(attrs, options) {
-        this.get(this.nested).on('all', function(eventName) {
-            this.trigger(eventName, this);
-        }, this);
-    },
-    toJSON: function() {
-        var colObj = {};
-        colObj[this.nested] = this.get(this.nested).toJSON();
-        return _.extend(
-                Backbone.Model.prototype.toJSON.apply(this, arguments),
-                colObj
-                );
-    }
-});
 var MyView = Backbone.View.extend();
-/*
- |--------------------------------------------------------------------------
- | INSTRUMENT
- |--------------------------------------------------------------------------
- */
-var Instrument = MyModel.extend();
-var Instruments = MyCollection.extend({
-    model: Instrument
-});
-/*
- |--------------------------------------------------------------------------
- | MUSICIAN
- |--------------------------------------------------------------------------
- */
-var Musician = MyModelNestedCollection.extend({
-    nested: 'instruments',
-    defaults: function() {
-        return {
-            instruments: new Instruments()
-        }
-    }
-});
-var Musicians = MyCollection.extend({
-    model: Musician
-});
+
 /*
  |--------------------------------------------------------------------------
  | ADVANCED RESEARCH ARTIST
@@ -134,7 +80,7 @@ var ViewAdvancedResearchEvent = MyView.extend({
         $('#advancedResearchArtists').show();
     },
     showListRepresentant: function() {
-        console.log('fuck');
+
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         $('#researchRepresentants').show();
@@ -189,25 +135,12 @@ var ViewResearchRepresentant = MyView.extend({
         $('#advancedResearchArtists').hide();
     }
 });
+
 /*
  |--------------------------------------------------------------------------
  | ARTIST
  |--------------------------------------------------------------------------
  */
-
-var Artist = MyModelNestedCollection.extend({
-    nested: 'musicians',
-    defaults: function() {
-        return {
-            musicians: new Musicians()
-        }
-    }
-});
-
-
-var Artists = MyCollection.extend({
-    model: Artist
-});
 
 var ViewArtists = MyView.extend({
     template: templates.artistsList,
@@ -252,12 +185,12 @@ var ViewShowArtist = MyView.extend({
         'click #btn-backk': 'backListArtist'
     },
     initialize: function(attrs, options) {
-        this.listenTo(this.model, 'all', this.render);
+        this.listenTo(this.collection, 'all', this.render);
         this.render();
 
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
         return this;
 
     },
@@ -267,29 +200,13 @@ var ViewShowArtist = MyView.extend({
 
     }
 });
+
 /*
  |--------------------------------------------------------------------------
  | EVENT
  |--------------------------------------------------------------------------
  */
-var Event = MyModelNestedCollection.extend({
-    nested: 'artists',
-    defaults: function() {
-        return {
-            artists: new Artists()
-        }
-    },
-    parse: function(response) {
-        var data = response.data;
-        var date = new Date(data.date);
-        data.month = date.getMonth();
-        data.hour = date.getHours();
-        return data;
-    }
-});
-var Events = MyCollection.extend({
-    model: Event
-});
+
 var ViewEvents = MyView.extend({
     template: templates.eventsList,
     events: {
@@ -328,11 +245,11 @@ var ViewShowEvent = MyView.extend({
         'click #btn-back': 'backListEvents',
     },
     initialize: function(attrs, options) {
-        this.listenTo(this.model, 'all', this.render);
+        this.listenTo(this.collection, 'all', this.render);
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
         return this;
     },
     backListEvents: function() {
@@ -354,11 +271,11 @@ var ViewAddEvent = MyView.extend({
 //        });
     },
     initialize: function(attrs, options) {
-        this.listenTo(this.model, 'all', this.render);
+        this.listenTo(this.collection, 'all', this.render);
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
         return this;
     },
     addTicketCategory: function(event) {
@@ -372,23 +289,12 @@ var ViewAddEvent = MyView.extend({
 //        $(".showAddArtist").append(div);
 //    }
 });
+
 /*
  |--------------------------------------------------------------------------
  | REPRESENTANT
  |--------------------------------------------------------------------------
  */
-var Representant = MyModelNestedCollection.extend({
-    nested: 'events',
-    defaults: function() {
-        return {
-            events: new Event()
-        }
-    }
-});
-var Representants = MyCollection.extend({
-    model: Representant
-});
-console.log('wdw');
 var ViewRepresentant = MyView.extend({
     template: templates.representantsList,
     events: {
@@ -411,7 +317,6 @@ var ViewRepresentant = MyView.extend({
     edit: function(representant) {
         console.log('edit');
     },
-
     detail: function(representant) {
         console.log('detail');
     }
@@ -430,145 +335,25 @@ var ViewShowRepresentant = MyView.extend({
         return this;
     }
 });
-console.log('dsds');
-/*
- |--------------------------------------------------------------------------
- | VARIABLES
- |--------------------------------------------------------------------------
- */
-var guitar = new Instrument({"name": "Guitar"});
-var bass = new Instrument({"name": "Bass"});
-var vocal = new Instrument({"name": "Vocal"});
-//
-var musician1 = new Musician({'name': 'Romain'});
-musician1.get('instruments').add(bass);
-var musician2 = new Musician({'name': 'Cl??lia'});
-musician2.get('instruments').add(vocal);
-var mmready = new Artist({'name': 'mmready()'});
-mmready.get('musicians').add([musician1, musician2]);
-var zed = new Artist({'name': 'ZED'});
-//Event collection dans un model
-var event1 = new Event({title: 'La grosse fiesta 2014', name_de: 'rock', start_date_hour: '25.06.2014',
-    ending_date_hour: '26.06.2014', opening_doors: '16:00'});
-event1.get('artists').add([mmready, zed]);
-var event2 = new Event({title: 'La grosse fiesta 2015', name_de: 'salsa'});
-event2.get('artists').add([mmready, zed]);
-var event = new Event();
-var listOfEvents1 = new Events([event1, event2]);
-var eventListView = new ViewEvents({collection: listOfEvents1});
-var showEvent = new ViewShowEvent({model: event1});
-var showArtist = new ViewShowArtist({model: mmready});
-var listOfArtists = new Artists([mmready, zed]);
 
 
 
+//ROMAIN
+var ViewRomain = MyView.extend({
+    template: templates.Romain,
+    events: {
+        'click #romain': 'romain'
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {romain: this.model.toJSON()}));
+        return this;
+    },
+    romain: function(event) {
+        console.log('buton click');
+    }
 
-
-var representant1 = new Representant({first_name: 'Jean', last_name: 'Ducommun',
-    email: 'jean.duc@gmail.com', phone: '0789867877'});
-var representant2 = new Representant({first_name: 'Pierre', last_name: 'Legros',
-    email: 'bouboule@gmail.com', phone: '0789867877'});
-var listOfRepresentants = new Representants([representant1, representant2]);
-var representantsListView = new ViewRepresentant({collection: listOfRepresentants});
-var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: listOfEvents1});
-var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: listOfArtists});
-var researchRepresentant = new ViewResearchRepresentant({collection: listOfRepresentants});
-var addEventView = new ViewAddEvent({model: event});
-var artistsListView = new ViewArtists({collection: listOfArtists});
-
-
-
-
-console.log(JSON.stringify(listOfArtists));
-
-/*
- |--------------------------------------------------------------------------
- | DOM
- |--------------------------------------------------------------------------
- */
-$(function() {
-    //research
-    $('#advancedResearchEvents').append(advancedResearchEvent.el);
-    $('#advancedResearchArtists').hide();
-    $('#advancedResearchArtists').append(advancedResearchArtist.el);
-    $('#researchRepresentants').hide();
-    $('#researchRepresentants').append(researchRepresentant.el);
-    //lists
-    $('#eventsList').append(eventListView.el);
-    $('#artistsList').hide();
-    //artistsListView.render().$el.appendTo('#artistsList');
-    $('#artistsList').append(artistsListView.el);
-    //artistsList.fetch();
-    console.log(artistsList);
-    $('#representantsList').hide();
-    $('#representantsList').append(representantsListView.el);
-    //details
-    $('#showDetailEvent').hide();
-    $('#showDetailEvent').append(showEvent.el);
-    $('#showDetailArtist').hide();
-    $('#showDetailArtist').append(showArtist.el);
-    //add
-    $('#addEvent').hide();
-    $('#addEvent').append(addEventView.el);
-//    // gestion des boutons "back" et "forward" du browser
-//    $(window).on('popstate', historyHandler);
-//    // simule un premier changement d'url
-//    $(window).trigger('popstate');
-    $('ul#mainNav a').on('click', function(e) {
-        menuElementClickHandler($(this));
-        e.preventDefault();
-        return false;
-    });
-    $('a').on('click', function(e) {
-        menuElementClickHandler($(this));
-        e.preventDefault();
-        return false;
-    });
-    $('#plusOption').on('click', function(e) {
-        $('#advancedResearchEvents').show();
-        $('#eventsList').show();
-    });
 });
-/*
- |--------------------------------------------------------------------------
- | Gestion de l'historique (pour les boutons "back" et "forward" du browser
- |--------------------------------------------------------------------------
- */
-function historyHandler() {
-    // Prend la dernière partie de l'url (après le dernier '/')
-    var sectionName = location.pathname.split("/").pop();
-    // Si aucune section (page d'accueil ?), on va sur 'eventsList' par défaut
-    if (sectionName === '') {
-        sectionName = DEFAULT_SECTION;
-    }
-    menuGoToSection(sectionName);
-}
-/*
- |--------------------------------------------------------------------------
- | Gestion du menu
- |--------------------------------------------------------------------------
- */
-//API History
-function menuElementClickHandler(menuElement) {
-    // Recupère la section corespondante (attribut href du lien)
-    var sectionName = menuElement.attr('href');
-    // Si la section est déjà active ne rien faire
-    var actualSectionName = location.pathname.split("/").pop();
-    if (sectionName === actualSectionName) {
-        return;
-    }
-    // Simule le changement d'url ver cette section
-    history.pushState(null, null, sectionName);
-    // Affiche la section en question
-    menuGoToSection(sectionName);
-}
-function menuGoToSection(sectionName) {
-    var nodeIdToShow = '#' + sectionName;
-    // Cache toutes les <section>
-    $('section').hide();
-    // Affichage de la bonne <section>
-    $(nodeIdToShow).show();
-}
-
-
-

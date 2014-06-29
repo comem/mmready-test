@@ -1,29 +1,30 @@
-$.ajax //Requête de connection API
-  ({
-    type: "POST",
-    url: LOGIN,
-    dataType: 'json',
-    //async: false,
-    data: {"email":"chris@chris.ch","password":"chr"}, //AUTH_MANAGER_FR       //{"email":"matou@matou.ch", "password":"matou"}
-    
-    success: function (data, textStatus, jqXHR){
-      console.log("Dialogue client serveur : "+ textStatus);
-      console.log("TextStatut : "+ data.status);
-      
-      
-      console.log(data);
-      if(data.status==='success'){
-          console.log("Data.title : ");
-          console.log(data.data.title);
-      }else{
-          console.log("Phrase d'erreur : "+ data.message.title);
-          IsConnected();
-          return;
-      }
-      
-      IsConnected();
-    },
-    crossDomain: true,
+$(function() {
+    $.ajax //Requête de connection API
+            ({
+                type: "POST",
+                url: LOGIN,
+                dataType: 'json',
+                //async: false,
+                data: {"email": "chris@chris.ch", "password": "chr"}, //AUTH_MANAGER_FR       //{"email":"matou@matou.ch", "password":"matou"}
+
+                success: function(data, textStatus, jqXHR) {
+                    console.log("Dialogue client serveur : " + textStatus);
+                    console.log("TextStatut : " + data.status);
+
+
+                    console.log(data);
+                    if (data.status === 'success') {
+                        console.log("Data.title : ");
+                        console.log(data.data.title);
+                    } else {
+                        console.log("Phrase d'erreur : " + data.message.title);
+                        IsConnected();
+                        return;
+                    }
+
+                    IsConnected();
+                },
+                crossDomain: true,
 //    error: function(jqXHR, textStatus,errorThrown){
 //        console.log("Vous n'êtes pas authentifié blblblbl!");
 //        console.log(textStatus);
@@ -31,53 +32,148 @@ $.ajax //Requête de connection API
 //        console.log(jqXHR);
 //        
 //    }
-});
-var eventsList = new Events();
-var artistsList = new Artists();
-var musiciansList = new Musicians();
-var instrusList = new Instruments();
+            });
 
-function IsConnected(){
+    var instrusList = new Instruments();
+    var musiciansList = new Musicians();
 
-console.log("start function IsConnected()");
+    var artistsList = new Artists();
+    var eventsList = new Events();
+    var representerList = new Representers();
+    
+    var romain = new Musician({'name': 'Romain'});
+    
+    var viewRomain = new ViewRomain({model: romain});
+    
+    viewRomain.render().$el.appendTo('#romain');
 
-console.log('--------------------  All Events  --------------------');
-eventsList.fetch({
-    success: function (collection, response, options) {
-        console.log(eventsList);
-        console.log(JSON.stringify(eventsList));
+
+
+
+
+    var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: eventsList});
+    var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: artistsList});
+    //var researchRepresentant = new ViewResearchRepresentant({collection: artistsList});
+    var eventsListView = new ViewEvents({collection: eventsList});
+    var artistsListView = new ViewArtists({collection: artistsList});
+    var representantsListView = new ViewRepresentant({collection: representerList});
+    var showEvent = new ViewShowEvent({collection: eventsList});
+    var showArtist = new ViewShowArtist({collection: artistsList});
+    var addEvent = new ViewAddEvent({collection: eventsList});
+
+
+    console.log('-------------DOM IS READY----------------------');
+    $('#advancedResearchEvents').show;
+    $('#login').hide();
+    $('#eventsList').show();
+    $('#artistsList').hide();
+    $('#advancedResearchArtists').hide();
+    $('#researchRepresentants').hide();
+    $('#representantsList').hide();
+    $('#showDetailEvent').hide();
+    $('#showDetailArtist').hide();
+    $('#addEvent').hide();
+    console.log("COUCOU");
+
+
+    console.log('-------------DOM IS FINISH---------------------');
+
+    function IsConnected() {
+        console.log("start function IsConnected()");
+
+        //RESEARCH
+        advancedResearchEvent.render().$el.appendTo('#advancedResearchEvents');
+        advancedResearchArtist.render().$el.appendTo('#advancedResearchArtists');
+        //researchRepresentant.render().$el.appendTo('#researchRepresentants');
+
+        //LIST
+        eventsListView.render().$el.appendTo('#eventsList');
+        artistsListView.render().$el.appendTo('#artistsList');
+        representantsListView.render().$el.appendTo('#representantsList');
+
+        //DETAIL
+        showEvent.render().$el.appendTo('#showDetailEvent');
+        showArtist.render().$el.appendTo('#showDetailArtist');
+
+        //ADD
+        addEvent.render().$el.appendTo('#addEventView');
+        
+        
+        eventsList.fetch({
+            success: function(collection, response, options) {
+                console.log('FETCH EVENT LIST');
+                console.log(eventsList);
+                console.log(JSON.stringify(eventsList));
+            }
+        });
+
+//        artistsList.fetch({
+//            success: function(collection, response, options) {
+//                console.log(artistsList);
+//                console.log(JSON.stringify(artistsList));
+//            }
+//
+//        });
+
+
     }
+    ;
+    $('ul#mainNav a').on('click', function(e) {
+        menuElementClickHandler($(this));
+        e.preventDefault();
+        return false;
+    });
+    $('a').on('click', function(e) {
+        menuElementClickHandler($(this));
+        e.preventDefault();
+        return false;
+    });
+    $('#plusOption').on('click', function(e) {
+        $('#advancedResearchEvents').show();
+        $('#eventsList').show();
+    });
 });
-
-console.log('--------------------  All Artists  --------------------');
-artistsList.fetch({
-    success: function (collection, response, options) {
-        console.log(artistsList);
-        console.log(JSON.stringify(artistsList));
+/*
+ |--------------------------------------------------------------------------
+ | Gestion de l'historique (pour les boutons "back" et "forward" du browser
+ |--------------------------------------------------------------------------
+ */
+function historyHandler() {
+    // Prend la dernière partie de l'url (après le dernier '/')
+    var sectionName = location.pathname.split("/").pop();
+    // Si aucune section (page d'accueil ?), on va sur 'eventsList' par défaut
+    if (sectionName === '') {
+        sectionName = DEFAULT_SECTION;
     }
-});
-
-console.log('--------------------  All Musicians  --------------------');
-musiciansList.fetch({
-    success: function (collection, response, options) {
-        console.log(musiciansList);
-        console.log(JSON.stringify(musiciansList));
+    menuGoToSection(sectionName);
+}
+/*
+ |--------------------------------------------------------------------------
+ | Gestion du menu
+ |--------------------------------------------------------------------------
+ */
+//API History
+function menuElementClickHandler(menuElement) {
+    // Recupère la section corespondante (attribut href du lien)
+    var sectionName = menuElement.attr('href');
+    // Si la section est déjà active ne rien faire
+    var actualSectionName = location.pathname.split("/").pop();
+    if (sectionName === actualSectionName) {
+        return;
     }
-});
+    // Simule le changement d'url ver cette section
+    history.pushState(null, null, sectionName);
+    // Affiche la section en question
+    menuGoToSection(sectionName);
+}
+function menuGoToSection(sectionName) {
+    var nodeIdToShow = '#' + sectionName;
+    // Cache toutes les <section>
+    $('section').hide();
+    // Affichage de la bonne <section>
+    $(nodeIdToShow).show();
+}
 
-console.log('--------------------  All Instruments  --------------------');
-instrusList.fetch({
-    success: function (collection, response, options) {
-        console.log(instrusList);
-        console.log(JSON.stringify(instrusList));
-    }
-});
-
-
-
-
-
-};
 
 
 //function IsConnected(){
@@ -118,17 +214,33 @@ instrusList.fetch({
 //*******************             main                ***********************//
 //***************************************************************************//
 
-$(function () {
-    console.log('-------------DOM IS READY----------------------');
-   
 
+//console.log('--------------------  All Events  --------------------');
+//eventsList.fetch({
+//    success: function (collection, response, options) {
+//        console.log(eventsList);
+//        console.log(JSON.stringify(eventsList));
+//    }
+//});
 
-    
-    console.log("COUCOU");
-    
+//console.log('--------------------  All Artists  --------------------');
 
-console.log('-------------DOM IS FINISH---------------------');
-});
+//
+//console.log('--------------------  All Musicians  --------------------');
+//musiciansList.fetch({
+//    success: function (collection, response, options) {
+//        console.log(musiciansList);
+//        console.log(JSON.stringify(musiciansList));
+//    }
+//});
+//
+//console.log('--------------------  All Instruments  --------------------');
+//instrusList.fetch({
+//    success: function (collection, response, options) {
+//        console.log(instrusList);
+//        console.log(JSON.stringify(instrusList));
+//    }
+//});
 
 
 //$.ajax //Requête de connection API

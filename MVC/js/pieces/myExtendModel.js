@@ -47,7 +47,7 @@ var Instrument = MyModel.extend({
     //urlRoot: URLSERVEURinstruSuccess,    
     initialize: function(attrs, opt){
         console.log("Nouvel Instrument créé");
-        console.log(attrs.name_de);
+        //console.log(attrs.name_de);
         this.on('change', function(event){
             console.log('Un événement "change" est survenu sur '+JSON.stringify(this.changed)+'. L objet entier en JSON:' +  JSON.stringify(event)); 
             return this;
