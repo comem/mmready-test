@@ -54,7 +54,7 @@ console.log('-------------DOM IS FINISH---------------------');
 //----------------------------------------------------------------------------
 
 
-var eventsList = new Events();
+//var eventsList = new Events();
 var artistsList = new Artists();
 var musiciansList = new Musicians();
 var instrusList = new Instruments();
