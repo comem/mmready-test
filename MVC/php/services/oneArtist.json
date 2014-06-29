@@ -1,0 +1,415 @@
+{
+    "status": "success",
+    "data":
+            {
+                "response": [{
+                        "id": "1",
+                        "name": "Die toten Socken",
+                        "short_description_de": "Band die nur \u00fcber kleider singt ",
+                        "complete_description_de": "Rock band, die nur \u00fcber kleider signt und zu populair ist",
+                        "created_at": "2014-06-25 14:00:23",
+                        "updated_at": "2014-06-25 14:00:23",
+                        "links": [{
+                                "id": "1",
+                                "url": "www.totensocken.eu",
+                                "name_de": "webseite von die toten Socken",
+                                "title_de": null
+                            }, {
+                                "id": "2",
+                                "url": "www.totensocken.at",
+                                "name_de": "\u00d6stereichiese webseite von die toten Socken",
+                                "title_de": null
+                            }],
+                        "images": [{
+                                "id": "4",
+                                "alt_de": null,
+                                "caption_de": null,
+                                "source": "\/dsc_7642.jpg",
+                                "created_at": "2014-06-25 14:00:23",
+                                "updated_at": "2014-06-25 14:00:23"
+                            }],
+                        "genres": [{
+                                "id": "1",
+                                "name_de": "Pop- rock",
+                                "pivot": {
+                                    "artist_id": "1",
+                                    "genre_id": "1",
+                                    "id": "1"
+                                }
+                            }],
+                        "events": [{
+                                "id": "1",
+                                "start_date_hour": "2014-07-07 18:00:00",
+                                "event_type_id": "1",
+                                "representer_id": "1",
+                                "image_id": "1",
+                                "ending_date_hour": "0000-00-00 00:00:00",
+                                "opening_doors": null,
+                                "title_de": "",
+                                "nb_meal": "12",
+                                "nb_vegan_meal": "0",
+                                "meal_notes": null,
+                                "nb_places": "180",
+                                "followed_by_private": "0",
+                                "contact_src": null,
+                                "notes": null,
+                                "created_at": "2014-06-25 14:00:23",
+                                "updated_at": "2014-06-27 15:36:16",
+                                "published_at": "2014-06-27 15:36:16",
+                                "performers": [{
+                                        "id": "1",
+                                        "order": "1",
+                                        "is_support": "0",
+                                        "artist_hour_of_arrival": "2014-08-02 18:00:00"
+                                    }]
+                            }, {
+                                "id": "2",
+                                "start_date_hour": "2014-08-07 18:00:00",
+                                "event_type_id": "1",
+                                "representer_id": "2",
+                                "image_id": "2",
+                                "ending_date_hour": "0000-00-00 00:00:00",
+                                "opening_doors": null,
+                                "title_de": "",
+                                "nb_meal": "6",
+                                "nb_vegan_meal": "12",
+                                "meal_notes": null,
+                                "nb_places": "180",
+                                "followed_by_private": "0",
+                                "contact_src": null,
+                                "notes": null,
+                                "created_at": "2014-06-25 14:00:23",
+                                "updated_at": "2014-06-25 14:00:23",
+                                "published_at": null,
+                                "performers": [{
+                                        "id": "3",
+                                        "order": "0",
+                                        "is_support": "1",
+                                        "artist_hour_of_arrival": "2014-09-18 17:00:00"
+                                    }]
+                            }],
+                        "musicians": [{
+                                "id": "1",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-25 14:00:23",
+                                "updated_at": "2014-06-25 14:00:23",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "1"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "2"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "3"
+                                    }]
+                            }, {
+                                "id": "6",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-26 14:32:58",
+                                "updated_at": "2014-06-26 14:32:58",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "8"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "9"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "10"
+                                    }]
+                            }, {
+                                "id": "7",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-26 14:34:09",
+                                "updated_at": "2014-06-26 14:34:09",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "11"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "12"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "13"
+                                    }]
+                            }, {
+                                "id": "8",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-26 14:35:56",
+                                "updated_at": "2014-06-26 14:35:56",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "14"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "15"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "16"
+                                    }]
+                            }, {
+                                "id": "9",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-26 14:36:48",
+                                "updated_at": "2014-06-26 14:36:48",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "17"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "18"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "19"
+                                    }]
+                            }, {
+                                "id": "10",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-26 14:37:31",
+                                "updated_at": "2014-06-26 14:37:31",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "20"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "21"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "22"
+                                    }]
+                            }, {
+                                "id": "11",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-26 14:37:52",
+                                "updated_at": "2014-06-26 14:37:52",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "23"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "24"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "25"
+                                    }]
+                            }, {
+                                "id": "12",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-26 14:38:13",
+                                "updated_at": "2014-06-26 14:38:13",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "26"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "27"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "28"
+                                    }]
+                            }, {
+                                "id": "13",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-26 14:39:58",
+                                "updated_at": "2014-06-26 14:39:58",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "29"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "30"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "31"
+                                    }]
+                            }, {
+                                "id": "14",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-26 14:40:50",
+                                "updated_at": "2014-06-26 14:40:50",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "32"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "33"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "34"
+                                    }]
+                            }, {
+                                "id": "15",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-26 14:41:28",
+                                "updated_at": "2014-06-26 14:41:28",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "35"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "36"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "37"
+                                    }]
+                            }, {
+                                "id": "16",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-26 14:42:21",
+                                "updated_at": "2014-06-26 14:42:21",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "38"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "39"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "40"
+                                    }]
+                            }, {
+                                "id": "17",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-26 15:08:49",
+                                "updated_at": "2014-06-26 15:08:49",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "41"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "42"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "43"
+                                    }]
+                            }, {
+                                "id": "18",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-26 15:09:11",
+                                "updated_at": "2014-06-26 15:09:11",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "44"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "45"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "46"
+                                    }]
+                            }, {
+                                "id": "19",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-26 15:09:26",
+                                "updated_at": "2014-06-26 15:09:26",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "47"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "48"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "49"
+                                    }]
+                            }, {
+                                "id": "20",
+                                "first_name": "Karl",
+                                "last_name": "Legerfeld",
+                                "stagename": "Bonzai",
+                                "created_at": "2014-06-27 15:36:16",
+                                "updated_at": "2014-06-27 15:36:16",
+                                "instruments": [{
+                                        "id": "1",
+                                        "name_de": "Fl\u00f6te",
+                                        "lineup_id": "50"
+                                    }, {
+                                        "id": "2",
+                                        "name_de": "Gitarre",
+                                        "lineup_id": "51"
+                                    }, {
+                                        "id": "3",
+                                        "name_de": "Batterie",
+                                        "lineup_id": "52"
+                                    }]
+                            }]
+                    }],
+                "paginate": {}
+            }
+}

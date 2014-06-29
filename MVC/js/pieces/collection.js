@@ -19,6 +19,11 @@ var Events = MyCollection.extend({
     model:Event
         //model: Instrument//diff de Chabloz lui il n'a rien
 });
+var GenresListColl = MyCollection.extend({
+    url: GENRESLOCAL, 
+    model:Genre
+        //model: Instrument//diff de Chabloz lui il n'a rien
+});
 
 var Artists = MyCollection.extend({
     url: ARTISTS+"-new", 

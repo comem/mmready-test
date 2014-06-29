@@ -4,7 +4,7 @@
 
 //----------------------------   LOGIN ---------------------------------------
 
-var MyLoginModel = Backbone.Model.extend();
+var MyInitModel = Backbone.Model.extend();
 
 //------------------------------- Others ----------------------------------
 var MyModel = Backbone.Model.extend({
@@ -15,6 +15,7 @@ var MyModel = Backbone.Model.extend({
     }
 });
 
+var GenresListModel = MyInitModel.extend();
 
 
 

@@ -4,7 +4,6 @@
 
 var MyModelNestedCollection = MyModel.extend({
     nested: 'collection',
-    nested2:'collection',
     initialize: function (attrs, options) {
         // Si la "nested" col. n'est pas fournie à la création, on la crée vide
         if (typeof attrs[this.nested] == "undefined") {
@@ -65,7 +64,7 @@ function parseNested2(response){
 
 var Event = MyModelNestedCollection.extend({
     nested: 'artists',
-    nested2: 'images'
+    nested: 'images'
     
 //    defaults: function () {return {
 //        instruments: new Instruments()
@@ -80,8 +79,7 @@ var Event = MyModelNestedCollection.extend({
 
 var Artist = MyModelNestedCollection.extend({
     urlRoot: ARTISTS+"-new",
-    nested: 'musicians',
-    nested2:'genres'
+    nested: 'musicians'
 //    defaults: function () {return {
 //        instruments: new Instruments()
 //    }},
