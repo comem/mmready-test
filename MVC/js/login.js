@@ -56,7 +56,7 @@ $(document).ready(function() {
     $('button').click(function(){
         
     
-        getAllArtits();
+        
     
         console.log("click activation");
         

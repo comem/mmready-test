@@ -9,7 +9,7 @@ var LoginView = MyLoginView.extend({
     render: function() {
         this.$el.html(Mustache.render(this.template, {login: this.model.toJSON()}));
         console.log("render of LoginView is rendering");
-//        this.$el.appendTo("#login");
+        this.$el.appendTo("#login");
         return this;
 
     },
