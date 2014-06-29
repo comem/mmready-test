@@ -1,5 +1,5 @@
 //--------------------------------------------------------
-//                login de index romain
+//                login de index romain de RomainNaty
 //--------------------------------------------------------
 
 
@@ -40,10 +40,10 @@ var LoginView = MyLoginView.extend({
 
 
 var login = new MyLoginModel({"txtButton":"Activation"});
-    var loginViewVar = new LoginView({model: login});
+var loginViewVar = new LoginView({model: login});
     
 //--------------------------------------------------------
-//                DOM READY
+//                DOM READY de login.js de RomainNaty
 //--------------------------------------------------------
 
 
@@ -56,7 +56,7 @@ $(document).ready(function() {
     $('button').click(function(){
         
     
-        
+        getAllArtits();
     
         console.log("click activation");
         
