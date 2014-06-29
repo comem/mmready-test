@@ -63,6 +63,8 @@ $(document).ready(function() {
     var email = $("input#email").val();
     console.log(email);
     var password = $("input#password").val();
+    console.log("password");
+    console.log(password);
     
 //    var user = '{"email":"'+email+'", "password":"'+password+'"}';
 //    var userJ = $(user).toJSON();

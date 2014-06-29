@@ -11,41 +11,47 @@ $(function () {
 
 console.log('-------------DOM IS FINISH---------------------');
 });
-$.ajax //Requête de connection API
-  ({
-    type: "POST",
-    url: LOGIN,
-    dataType: 'json',
-    //async: false,
-    data: {"email":"matou@matou.ch","password":"matou"}, //AUTH_MANAGER_FR       //{"email":"matou@matou.ch", "password":"matou"}
-    
-    success: function (data, textStatus, jqXHR){
-      console.log("Dialogue client serveur : "+ textStatus);
-      console.log("TextStatut : "+ data.status);
-      
-      
-      console.log(data);
-      if(data.status==='success'){
-          console.log("Data.title : ");
-          console.log(data.data.title);
-      }else{
-          console.log("Phrase d'erreur : "+ data.message.title);
-          IsConnected();
-          return;
-      }
-      
-      IsConnected();
-    },
-    crossDomain: true
-//    error: function(jqXHR, textStatus,errorThrown){
-//        console.log("Vous n'êtes pas authentifié blblblbl!");
-//        console.log(textStatus);
-//        console.log(errorThrown);
-//        console.log(jqXHR);
-//        
-//    }
-});
 
+//----------------------------------------------------------------------------
+//                LOGIN AJAX
+//----------------------------------------------------------------------------                
+//$.ajax //Requête de connection API /////LOGIN AJAX
+//  ({
+//    type: "POST",
+//    url: LOGIN,
+//    dataType: 'json',
+//    //async: false,
+//    data: {"email":"matou@matou.ch","password":"matou"}, //AUTH_MANAGER_FR       //{"email":"matou@matou.ch", "password":"matou"}
+//    
+//    success: function (data, textStatus, jqXHR){
+//      console.log("Dialogue client serveur : "+ textStatus);
+//      console.log("TextStatut : "+ data.status);
+//      
+//      
+//      console.log(data);
+//      if(data.status==='success'){
+//          console.log("Data.title : ");
+//          console.log(data.data.title);
+//      }else{
+//          console.log("Phrase d'erreur : "+ data.message.title);
+//          IsConnected();
+//          return;
+//      }
+//      
+//      IsConnected();
+//    },
+//    crossDomain: true
+////    error: function(jqXHR, textStatus,errorThrown){
+////        console.log("Vous n'êtes pas authentifié blblblbl!");
+////        console.log(textStatus);
+////        console.log(errorThrown);
+////        console.log(jqXHR);
+////        
+////    }
+//});
+//----------------------------------------------------------------------------
+//                LOGIN AJAX
+//----------------------------------------------------------------------------
 
 
 var eventsList = new Events();
