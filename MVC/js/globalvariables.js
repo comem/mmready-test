@@ -2,7 +2,7 @@
 // /!\ url depuis index.html
 
 
-    var URLSERVEUR_EVENTsuccess = "../php/services/EventCollectionSUCCESS.php";
+    var URLSERVEUR_EVENTsuccess = "php/services/EventCollectionSUCCESS.php";
     var URLSERVEURfail = "../php/services/EventCollectionFAIL.php";
     var URLSERVEURerror = "../php/services/EventCollectionERROR.php";
     
@@ -10,7 +10,7 @@
     var URLSERVEURinstruError = "../php/services/InstruError.php";
     
     
-   var URLSERVEURMusicianSuccess = "../php/services/MusicianSuccess.php";
+   var URLSERVEURMusicianSuccess = "php/services/MusicianSuccess.php";
     var URLSERVEURMusicianError = "../php/services/MusicianError.php"; 
     
     var URLlangFR = "../php/services/langFR.php";
