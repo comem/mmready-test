@@ -1,14 +1,14 @@
 
-$(function() {          
-        $( "#search").keyup(function(){
-            var cat=$("#categoryTag option:selected").text();
-            var url = "${resource.path}.suggestion.$"+this.value+".$"+cat+".json";
-            $(this).autocomplete({               
-                   source: url,
-                   minLength: 2,
-                   appendTo: "#search_results_div"
-               });
-        });
+//$(function() {          
+//        $( "#search").keyup(function(){
+//            var cat=$("#categoryTag option:selected").text();
+//            var url = "${resource.path}.suggestion.$"+this.value+".$"+cat+".json";
+//            $(this).autocomplete({               
+//                   source: url,
+//                   minLength: 2,
+//                   appendTo: "#search_results_div"
+//               });
+//        });
 
 
 
