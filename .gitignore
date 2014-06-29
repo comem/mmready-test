@@ -1,2 +1,16 @@
 /nbproject/private/
 MMReadyDesign/css/application.css
+<<<<<<< HEAD
+
+MVC/js/main_Clelia.js
+<<<<<<< HEAD
+
+MMReadyDesign/css/application.css
+=======
+=======
+*.less
+MMReadyDesign/less/application.less
+*.less
+MMReadyDesign/less/application.less
+>>>>>>> master
+>>>>>>> FETCH_HEAD
