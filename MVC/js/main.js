@@ -41,15 +41,6 @@ $(function() {
     var eventsList = new Events();
     var representerList = new Representers();
     
-    var romain = new Musician({'name': 'Romain'});
-    
-    var viewRomain = new ViewRomain({model: romain});
-    
-    viewRomain.render().$el.appendTo('#romain');
-
-
-
-
 
     var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: eventsList});
     var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: artistsList});
@@ -73,6 +64,7 @@ $(function() {
     $('#showDetailEvent').hide();
     $('#showDetailArtist').hide();
     $('#addEvent').hide();
+    $('#musiciansList').hide();
     console.log("COUCOU");
 
 
@@ -90,6 +82,7 @@ $(function() {
         eventsListView.render().$el.appendTo('#eventsList');
         artistsListView.render().$el.appendTo('#artistsList');
         representantsListView.render().$el.appendTo('#representantsList');
+        
 
         //DETAIL
         showEvent.render().$el.appendTo('#showDetailEvent');
