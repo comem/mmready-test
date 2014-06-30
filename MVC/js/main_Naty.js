@@ -54,7 +54,7 @@ var Musician = MyModelNestedCollection.extend({
 var Musicians = MyCollection.extend({
     model: Musician
 });
-<<<<<<< HEAD
+
 
 var ViewMusician = MyView.extend({
     template: templates.showMusician,
@@ -72,8 +72,7 @@ var ViewMusician = MyView.extend({
 
 });
 
-=======
->>>>>>> origin/Naty
+
 /*
  |--------------------------------------------------------------------------
  | ADVANCED RESEARCH ARTIST
@@ -84,11 +83,8 @@ var ViewAdvancedResearchArtist = MyView.extend({
     events: {
         'click button#events': 'showListEvent',
         'click button#artists': 'showListArtist',
-<<<<<<< HEAD
+
         'click button#filterRepresenters' : 'showListRepresentant',
-=======
-        'click button#filterRepresenters': 'showListRepresentant',
->>>>>>> origin/Naty
         'click a#close': 'close'
                 //'click button#filterRepresenters': 'detail',
     },
@@ -112,11 +108,10 @@ var ViewAdvancedResearchArtist = MyView.extend({
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
     },
-<<<<<<< HEAD
-    showListRepresentant : function() {
-=======
+
+    
+
     showListRepresentant: function() {
->>>>>>> origin/Naty
         console.log('fuck');
         $('#artistsList').hide();
         $('#advancedResearchArtists').hide();
@@ -137,11 +132,9 @@ var ViewAdvancedResearchEvent = MyView.extend({
     events: {
         'click button#events': 'showListEvent',
         'click button#artists': 'showListArtist',
-<<<<<<< HEAD
-        'click button#representer' : 'showListRepresentant',
-=======
+
         'click button#representer': 'showListRepresentant',
->>>>>>> origin/Naty
+
         'click a#close': 'close'
                 //'click button#filterRepresenters': 'detail',
     },
@@ -165,11 +158,8 @@ var ViewAdvancedResearchEvent = MyView.extend({
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
     },
-<<<<<<< HEAD
+
     showListRepresentant : function() {
-=======
-    showListRepresentant: function() {
->>>>>>> origin/Naty
         console.log('fuck');
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
@@ -271,23 +261,17 @@ var ViewArtists = MyView.extend({
     edit: function(event) {
         console.log('edit');
     },
-<<<<<<< HEAD
    detail: function(event) {
 
         console.log('detail');
         $('#artistsList').hide();
         $('#showDetailArtist').show();
         $('#musiciansList').show();
-=======
-    detail: function(event) {
-        $('#artistsList').hide();
-        $('#showDetailArtist').show();
-    },
+   },
     addArtist: function(event) {
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         $('#addEvent').show();
->>>>>>> origin/Naty
     }
 });
 
@@ -489,13 +473,11 @@ var musician1 = new Musician({'first_name': 'Romain', stagename: 'Roro', instrum
 musician1.get('instruments').add(bass);
 var musician2 = new Musician({'first_name': 'Clelia'});
 musician2.get('instruments').add(vocal);
-<<<<<<< HEAD
 
 var mmready = new Artist({'name': 'mmready()', short_description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     complete_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at magna vel turpis varius suscipit a at elit. Integer semper elit sit amet tristique luctus. Praesent eu lacus pharetra ipsum aliquet aliquet id non metus. Sed sed venenatis turpis. Vestibulum consequat nunc a nisi pulvinar, at volutpat mauris pellentesque. Proin in purus nisl. Nunc sit amet lacus euismod, hendrerit sapien nec, lacinia nibh. Curabitur vitae tellus ornare, aliquet ipsum nec, pharetra est. Vivamus egestas risus vitae purus mollis, nec auctor massa faucibus.'});
-=======
+
 var mmready = new Artist({'name': 'mmready()'});
->>>>>>> origin/Naty
 mmready.get('musicians').add([musician1, musician2]);
 var zed = new Artist({'name': 'ZED'});
 //Event collection dans un model
@@ -510,14 +492,12 @@ var eventListView = new ViewEvents({collection: listOfEvents1});
 var showEvent = new ViewShowEvent({model: event1});
 var showArtist = new ViewShowArtist({model: mmready});
 
-<<<<<<< HEAD
 var listOfArtists = new Artists([mmready, zed]);
 var artistsListView = new ViewArtists({collection: listOfArtists});
-=======
 
 
 
->>>>>>> origin/Naty
+
 
 var listOfMusician = new Musicians([musician1, musician2]);
 var musicianListView = new ViewMusician({model: musician1});
@@ -560,7 +540,6 @@ $(function() {
     console.log(artistsList);
     $('#representantsList').hide();
     $('#representantsList').append(representantsListView.el);
-<<<<<<< HEAD
     $('#musiciansList').hide();
     $('#musiciansList').append(musicianListView.el);
 
@@ -571,13 +550,11 @@ $(function() {
     $('#showDetailArtist').hide();
     $('#showDetailArtist').append(showArtist.el);
 
-=======
     //details
     $('#showDetailEvent').hide();
     $('#showDetailEvent').append(showEvent.el);
     $('#showDetailArtist').hide();
     $('#showDetailArtist').append(showArtist.el);
->>>>>>> origin/Naty
     //add
     $('#addEvent').hide();
     $('#addEvent').append(addEventView.el);
