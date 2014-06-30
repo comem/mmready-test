@@ -71,18 +71,7 @@ var Ticket_Cats = MyCollection.extend({
 
 var Paginates = MyCollection.extend();
 
-
-
-
-
-
-
-
-
-
-
-
-
+//--------OLD----------------------------
 //var Events = MyCollection.extend({
 //    url: "../php/services/EventCollectionSUCCESS.php", //EVENTS
 //    model:Event

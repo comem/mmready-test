@@ -72,7 +72,24 @@ $(document).ready(function() {
     
     $("#btnOneArtist").on("click", function(){
         console.log("click");
-        getOneArtist();
+        var id = $("#idArtistInput").val();
+        getOneArtist(id);
+});
+
+$("#btnCreateArtist").on("click", function(){
+        console.log("create Artist");
+        
+      var name = $("#nameArtistInput").val();  
+      var genre = $("#genreArtistInput").val();
+      var descr = $("#shortDescrArtistInput").val();
+        console.log("name");
+        console.log(name);
+        if(name === " "){
+            console.log("caractère vide");
+        }else{
+          newArtist(name, genre, descr);  
+        }
+        
 });
    
     
@@ -80,5 +97,4 @@ $(document).ready(function() {
     
       
 });//FIN DU DOM
-
 

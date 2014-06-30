@@ -15,8 +15,9 @@
         <script src="../js/lib/jquery.js"></script>
         <script src="../js/lib/underscore.js"></script>        
         <script src="../js/lib/backbone.js"></script>
-        <script src="../js/lib/validator.js"></script>
-        
+        <script src="../js/pieces/validator.js"></script>
+        <script src="../js/pieces/backbone.stickit.js"></script>
+        <script src="../js/pieces/ValidatorModelnView.js"></script>
         <script src="../js/views/pack.php"></script>
         
         <script src="../js/globalvariables.js"></script>
@@ -24,11 +25,12 @@
         <!--<script src="../js/pieces/sync.js"></script>-->
         
         <script src="../js/pieces/model.js"></script>
-        
         <script src="../js/pieces/collection.js"></script>
         <script src="../js/pieces/viewRomain.js"></script>
+        
         <script src="../js/pieces/functions.js"></script>
         <script src="../js/login.js"></script>
+        
         <script src="../js/main_Romain.js"></script>
         
         
@@ -45,6 +47,8 @@
         <section id="bouton">
             <button type="button" id="btnAllArtists">GET AllArtists</button>
             <button type="button" id="btnTests">TESTS</button>
+            
+            <input type="text" placeholder="idArtist" id="idArtistInput" autocomplete="off">
             <button data-id="1" data-genre="Pop- rock" type="button" id="btnOneArtist">One Artist</button>
         </section>
          <section id="createArtist">

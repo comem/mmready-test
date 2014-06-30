@@ -30,7 +30,7 @@ function getAllArtists(){
 function getOneArtist(id){
    
    var OneArtist = Artists.extend({
-       url:ONEARTIST,
+       url:ARTISTS+"/"+id,
        parse: function (response) {
         // Gestion conditionnelle du format JSEND
         console.log("La response reçue du Parse d'un collection");
@@ -41,11 +41,89 @@ function getOneArtist(id){
        
    console.log("getOneArtists");
    
-   artist1 = new OneArtist();
+    var artist1 = new OneArtist();
    var oneArtistView = new ViewShowArtist({collection: artist1});
    
    //artist1.set("id", id);
     artist1.fetch();
+//    console.log(artist1);
+//    console.log(JSON.stringify(artist1));
+
+
+//var id=1;
+//    artist.set("id", id);
+//    artist.fetch();
+//    
+//    console.log(artist);
+    
+}
+
+function newArtist(name,genre, descr){
+   
+    
+       
+//   console.log("getOneArtists");
+//   
+//    var artist1 = new Artist({
+//        urlRoot: ARTIST+"/"+name+"/"+genre
+//    });
+//   var oneArtistView = new ViewShowArtist({collection: artist1});
+//   
+//   //artist1.set("id", id);
+//    artist1.fetch();
+    
+    var artist1 = new Artist({"name":name, "genres": [genre], "short_description_de": descr});
+       
+       console.log(artist1);
+       
+       console.log(JSON.stringify(artist1));
+       
+       console.log("L'artiste après le save()");
+       console.log(JSON.stringify(artist1));
+       
+       
+       
+      var id = artist1.save({"short_description_de": "Led Zeppelin [ˌlɛdˈzɛplɪn] war eine englische Rockband. 1968 gegründet, gehört sie mit 300 Millionen verkauften Alben zu den erfolgreichsten Bands überhaupt."},{ //Work only when we add
+                                                        //a new attribute in the save method in first parameter
+
+           success: function(model, response, options){
+               if(response.status == 'fail'){
+                   console.log(response.status);
+                  
+                   console.log(response.data.name);
+                   
+               }else
+               if (response.status == 'error'){
+                   console.log(response.status);
+                   console.log(response.data.name);
+               }else{
+                   console.log("ARTISTS SAVED");
+                   console.log(response.data.title);
+                   console.log(response.data.id);
+                   return response.data.id;
+                   
+               }
+               
+//               console.log('Le Model');
+//               console.log(model);
+//               console.log('response');
+//               console.log(response);
+//               console.log('options');
+//               console.log(options);
+           },
+           error:function(model, response, options){ // A tester en se déconnectant!
+               console.log("ARTISTS ERROR");
+               console.log('Model');
+               console.log(model);
+               console.log('response');
+               console.log(response);
+           }
+//           ,fail: function(model, response){ //pas prévu pour .save() tout va dans success
+//           
+       });
+       
+                   console.log("Artist Created id");
+                   console.log(id);
 //    console.log(artist1);
 //    console.log(JSON.stringify(artist1));
 
@@ -113,13 +191,17 @@ function loginFunction(){
 }); //FIN AJAX
 }
 
+
 function TESTS(){
     
-console.log('--------------------  GET ONE ARTIST  --------------------');
+console.log('--------------------  VALIDATOR TEST  --------------------');
 
-//    
-//    
-//    
+console.log("--------------------  Création d'artists  --------------------");
+
+  
+
+
+    
 //
 //
 ////console.log('--------------------  All Events  --------------------');//API inexistants
@@ -174,51 +256,12 @@ console.log('--------------------  GET ONE ARTIST  --------------------');
 //});
 //
 //
-//      console.log("--------------------  Création d'artists  --------------------");
-//       var artist1 = new Artist({"name":"Florent le Babouin", "genres": [1]});
-//       
-//       console.log(artist1);
-//       
-//       console.log(JSON.stringify(artist1));
-//       
-//       console.log("L'artiste après le save()");
-//       console.log(JSON.stringify(artist1));
-//       
-//       
-//       
-//       artist1.save({"short_description_de": "salut"},{ //Work only when we add
-//                                                        //a new attribute in the save method in first parameter
-//
-//           success: function(model, response, options){
-//               if (response.status != 'success'){
-//                   console.log(response.status);
-//                   console.log(response.data.name);
-//               }else{
-//                   console.log("ARTISTS SAVED");
-//                   console.log(response.data.title);
-//               }
-//               
-//               console.log('Le Model');
-//               console.log(model);
-//               console.log('response');
-//               console.log(response);
-//               console.log('options');
-//               console.log(options);
-//           },
-//           error:function(model, response, options){ // A tester en se déconnectant!
-//               console.log("ARTISTS ERROR");
-//               console.log('Model');
-//               console.log(model);
-//               console.log('response');
-//               console.log(response);
-//           }
-////           ,fail: function(model, response){ //pas prévu pour .save() tout va dans success
-////           
-//       });
-//       
-//       
-//       
-//       
+      
+       
+       
+       
+       
+       
 //       
 //
 //console.log('--------------------  All Musicians  --------------------');
@@ -243,4 +286,6 @@ console.log('--------------------  GET ONE ARTIST  --------------------');
 
 
 };
+
+
 
