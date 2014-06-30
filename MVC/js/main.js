@@ -57,7 +57,7 @@ $(function() {
     //var addEvent = new ViewAddEvent({collection: eventsList});
 
 
-    console.log('-------------DOM IS READY----------------------');
+
     $('#advancedResearchEvents').show;
     $('#login').hide();
     $('#eventsList').show();
@@ -71,10 +71,7 @@ $(function() {
     $('#musiciansList').hide();
     $('#showTicket').hide();
     $('#showRepresenter').hide();
-    console.log("COUCOU");
-
-
-    console.log('-------------DOM IS FINISH---------------------');
+    
 
     function IsConnected() {
         console.log("start function IsConnected()");
