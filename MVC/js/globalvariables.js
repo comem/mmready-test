@@ -27,16 +27,18 @@ var AUTH_STAFF_FR     = {"email":"fr@staff.ch","password":"staff"};
 		
 	
 //     /!\ local links
-var URLSERVEUR_EVENTsuccess = "php/services/EventCollectionSUCCESS.php";
-var URLSERVEURfail = "../php/services/EventCollectionFAIL.php";
-var URLSERVEURerror = "../php/services/EventCollectionERROR.php";
+var ONEARTIST                =   "../php/services/oneArtist.json";
+var GENRESLOCAL                =   "../php/services/genres.json";
+var URLSERVEUR_EVENTsuccess =   "../php/services/EventCollectionSUCCESS.php";
+var URLSERVEURfail =            "../php/services/EventCollectionFAIL.php";
+var URLSERVEURerror =           "../php/services/EventCollectionERROR.php";
 
-var URLSERVEURinstruSuccess = "../php/services/InstruSuccess.php";
-var URLSERVEURinstruError = "../php/services/InstruError.php";
+var URLSERVEURinstruSuccess =   "../php/services/InstruSuccess.php";
+var URLSERVEURinstruError =     "../php/services/InstruError.php";
 
 
 var URLSERVEURMusicianSuccess = "../php/services/MusiciansSuccess.php";
-var URLSERVEURMusicianError = "../php/services/MusicianError.php";
+var URLSERVEURMusicianError =   "../php/services/MusicianError.php";
 
 
 

@@ -1,117 +1,115 @@
-var myView = Backbone.View.extend();
+//--------------------------------------------------------
+//                login de index romain de RomainNaty
+//--------------------------------------------------------
 
-var myModel = Backbone.Model.extend();
-var loginModel = myModel.extend({
-    initialize: function(){
-        console.log("New loginModel Created");
+
+
+////window.onload="sart()";
+//
+//function start(){};
+//    $('#activation').on('click', function (e){
+//        login();
+//    });
+//window.onload = pageSet();
+//function pageSet(){};
+
+
+var MyLoginModel = Backbone.Model.extend();
+
+var MyLoginView = Backbone.View.extend();
+
+var LoginView = MyLoginView.extend({
+    template: templates.login,
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
     },
-    validate: function(){
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {login: this.model.toJSON()}));
+        console.log("render is rendering");
+        return this;
+
+    },
+    events: {
+//          'submit #Activation': 'activation'
+//        'click a.ico-edit': 'edit',
+//        'click a.ico-detail': 'detail',
         
     }
 });
 
 
-
-
-$(function(){
+var login = new MyLoginModel({"txtButton":"Activation"});
+var loginViewVar = new LoginView({model: login});
     
-    console.log("------DOM IS READY--------");
-    
-    
-     
-    
-   window.LoginView = myView.extend({
+//--------------------------------------------------------
+//                DOM READY de login.js de RomainNaty
+//--------------------------------------------------------
 
-    initialize:function () {
-        console.log('Initializing Login View');
-        this.listenTo(this.model, 'all', this.render);
-      this.render();
-    },
-    template: templates.login,
-
-    events: {
-        "click #loginButton": "login"
-    },
-
-    render: function() {
-        this.$el.html(Mustache.render(this.template, {LoginView: this.model.toJSON()}));
-        return this;},
-
-    login:function (event) {
-        event.preventDefault(); // Don't let this button submit the form
-        $('.alert-error').hide(); // Hide any errors on a new submit
-        var url = LOGIN;
-        console.log('Loggin in... ');
-        var formValues = {
-            email: $('#inputEmail').val(),
-            password: $('#inputPassword').val()
-        };
-
-        $.ajax({
-            url:url,
-            type:'POST',
-            dataType:"json",
-            data: formValues,
-            success:function (data) {
-                console.log(["Login request details: ", data]);
-               
-                if(data.error) {  // If there is an error, show the error messages
-                    $('.alert-error').text(data.error.text).show();
-                }
-                else { // If not, send them back to the home page
-                    window.location.replace('#');
-                }
-            }
-        });
-    }
-}); 
-    
-    
-    
-   console.log("------DOM IS Finish------"); 
-});
-
-//var ViewEvents = MyView.extend({
-//    template: templates.login,
-//    events: {
-//         "click #loginButton": "login"
-//    },
-//    initialize: function(attrs, options) {
-//        this.listenTo(this.model, 'all', this.render);
-//        this.render();
 //
-//    },
-//    render: function() {
-//        this.$el.html(Mustache.render(this.template, {loginView: this.model.toJSON()}));
-//        return this;
+//$(document).ready(function() {
+//      console.log("document ready occurred!");
+//      
+//     
+//    loginViewVar.render().$el.appendTo("#login");
+//    
+//    $('button').click(function(){
+//        
+//    
+//        
+//    
+//        console.log("click activation");
+//        
+//    var email = $("input#email").val();
+//    console.log(email);
+//    var password = $("input#password").val();
+//    console.log("password");
+//    console.log(password);
+//    
+////    var user = '{"email":"'+email+'", "password":"'+password+'"}';
+////    var userJ = $(user).toJSON();
+////    console.log(user);
+//    //Requête de connection API
+//    $.ajax({  
+//    type: "POST",
+//    url: LOGIN,
+//    dataType: 'json',
+//    //async: false,
+//    data: {"email":email ,"password":password} ,                       //AUTH_MANAGER_FR ,      //"matou@matou.ch""matou"}
 //
+//    
+//    success: function (data, textStatus, jqXHR){
+//      console.log("Dialogue client serveur : "+ textStatus);
+//      console.log("TextStatut : "+ data.status);
+//      
+//      
+//      console.log(data);
+//      if(data.status==='success'){
+//          console.log("Data.title : ");
+//          console.log(data.data.title);
+//          $("#login").hide();
+//          alert("Vous êtes bien authentifié en tant que Manager");
+//      }else{
+//          console.log("Phrase d'erreur : "+ data.message.title);
+//          //IsConnected();
+//          return;
+//      }
+//      
+//      //IsConnected();
 //    },
-//    login:function (event) {
-//        event.preventDefault(); // Don't let this button submit the form
-//        //$('.alert-error').hide(); // Hide any errors on a new submit
-//        var url = '../api/login';
-//        console.log('Loggin in... ');
-//        var formValues = {
-//            email: $('#inputEmail').val(),
-//            password: $('#inputPassword').val()
-//        };
+//    crossDomain: true
+////    error: function(jqXHR, textStatus,errorThrown){
+////        console.log("Vous n'êtes pas authentifié blblblbl!");
+////        console.log(textStatus);
+////        console.log(errorThrown);
+////        console.log(jqXHR);
+////        
+////    }
+//}); //FIN AJAX
+//    }); // FIN ONCLICK
+//            
+//});//FIN DU DOM
 //
-//        $.ajax({
-//            url:url,
-//            type:'POST',
-//            dataType:"json",
-//            data: formValues,
-//            success:function (data) {
-//                console.log(["Login request details: ", data]);
-//               
-//                if(data.error) {  // If there is an error, show the error messages
-//                    $('.alert-error').text(data.error.text).show();
-//                }
-//                else { // If not, send them back to the home page
-//                    window.location.replace('#');
-//                }
-//            }
-//        });
-//    }
-//});
+
+
 

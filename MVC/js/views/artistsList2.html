@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    <div class="row buttonsOptions">
+        <div class="col-lg-5 col-lg-offset-7">
+            <button class="btn btn-default" id="btn-addArtist">Add Artist</button>
+
+
+        </div>
+
+    </div>
+
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1>Artists</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="form-inline">
+                        <label for="sort">Sort by</label>
+                        <select class="form-control">
+                            <option value="" disabled selected>none</option>
+                            <option>Name asc</option>
+                            <option>Name desc</option>
+                        </select>
+                        <button type="button" class="btn btn-default" id="sort">Sort</button>
+                    </div>
+                </div>
+            </div>
+            {{#allArtists}}
+            <!--ListArtist-->        <!-- ATTENTION DES ARTISTES PEUVENT AVOIR PLUSIEURS GENRE -->
+            <div data-id="{{id}}" {{#genres}}data-genre="{{name_de}}"{{/genres}} class="row">
+                <button type="submit" class="moreDetails">++Details</button>
+                <div class="col-lg-12 result">
+                    <div class="col-lg-7 col-lg-offset-1 searchResult">
+                        <span class="pull-right"><a href="#" class="ico-delete"></a></span>
+                        <span class="pull-right"><a href="#" class="ico-edit"></a></span>
+                        <span class="pull-right"><a href="#" class="ico-detail"></a></span>
+                        <h1>{{name}} <small>{{#genres}} {{name_de}} {{/genres}}</small></h1>
+                              <div class="row moreInfo">
+                                    <div class="col-lg-12">
+                                        <ul>
+                                            <li><i class="ico-calendar"></i>12 juni 2014</li>
+                                            <li><i class="ico-info"></i>12:00</li>
+                                            <li><i class="ico-clock"></i>12:00</li>
+                                            <li><i class="ico-responsable"></i>Mississi</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                    </div> 
+                </div>
+            </div>{{/allArtists}} <!-- /.end ListArtist-->
+        </div>
+    </div>
+</div>

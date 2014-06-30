@@ -1,8 +1,8 @@
 <?php 
 
 echo '{
-status : "success",
- data : [{"title":"La grosse fiesta 2014",
+"status" : "success",
+ "data" : [{"title":"La grosse fiesta 2014",
           "artists":[
                      {"name":"mmready()",
                      "musicians":[
@@ -13,7 +13,7 @@ status : "success",
 
                      {"name":"ZED","musicians":[]}
                      ]
-        },{}]
+        }]
         
        }';
 

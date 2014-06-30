@@ -1,5 +1,5 @@
-<input type="text" class="formInput" id="inputEmail" placeholder="email">
-        <input type="text" class="formInput" id="inputPassword" placeholder="password">
-        <button id="loginButton">OK</button>
-    
-
+{{#login}}
+<input type="text" placeholder="email" id="email" autocomplete="off">
+<input type="text" placeholder="password" id="password">
+<button type="submit" id="{{txtButton}}">{{txtButton}}</button>
+{{/login}}
