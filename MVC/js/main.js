@@ -127,6 +127,10 @@ $(function() {
         $('#advancedResearchEvents').show();
         $('#eventsList').show();
     });
+    
+     $(".listArtists p").each(function (index, elem){
+        $(elem).prepend(++index +". ");
+    });
 });
 /*
  |--------------------------------------------------------------------------

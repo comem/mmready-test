@@ -31,15 +31,15 @@
 
                 <dt>Name</dt>
                 <dd>Ciao{{name}}</dd>
-                
+                {{#genres}}
                 <dt>Genre(s)</dt>
-                <dd>12th May 1986</dd>
-
+                <dd>{{name_de}}</dd>
+                {{/genres}}
                 <dt>heure d'arrivée </dt>
-                <dd>Mississipi</dd>
-
+                <dd>{{artist_hour_of_arrival}}</dd>
+                
                 <dt>Order </dt>
-                <dd>private</dd>
+                <dd>{{order}}</dd>
 
                 <dt>Main performer</dt>
                 <dd>true / false</dd>
@@ -75,7 +75,7 @@
             {{#link}}
             <dl>       
                 <dt>Link name</dt>
-                <dd><a href="#">{{url}}</a></dd>
+                <dd><a href="{{url}}">{{url}}</a></dd>
             </dl>
             {{/link}}
         </div>
