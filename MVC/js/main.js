@@ -113,8 +113,8 @@ $(function() {
 
     }
 
-    // gestion des boutons "back" et "forward" du browser
-    $(window).on('popstate', historyHandler);
+//    // gestion des boutons "back" et "forward" du browser
+//    $(window).on('popstate', historyHandler);
     
     $('ul#mainNav a').on('click', function(e) {
         menuElementClickHandler($(this));
