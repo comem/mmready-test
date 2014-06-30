@@ -35,21 +35,25 @@ $(function() {
             });
 
     var instrusList = new Instruments();
-    
+    var event1 = new Event({title: 'La grosse fiesta 2014', name_de: 'rock', start_date_hour: '25.06.2014',
+        ending_date_hour: '26.06.2014', opening_doors: '16:00'});
 
     var artistsList = new Artists();
-    var eventsList = new Events();
+    var eventsList = new Events([event1]);
     var representerList = new Representers();
-    
+
+
+
+
 
     var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: eventsList});
     var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: artistsList});
     //var researchRepresentant = new ViewResearchRepresentant({collection: artistsList});
     var eventsListView = new ViewEvents({collection: eventsList});
     var artistsListView = new ViewArtists({collection: artistsList});
-    var representantsListView = new ViewRepresentant({collection: representerList});
+    var representantsListView = new ViewRepresenters({collection: representerList});
     var showEvent = new ViewShowEvent({collection: eventsList});
-    
+
     var addEvent = new ViewAddEvent({collection: eventsList});
 
 
@@ -59,12 +63,14 @@ $(function() {
     $('#eventsList').show();
     $('#artistsList').hide();
     $('#advancedResearchArtists').hide();
-    $('#researchRepresentants').hide();
-    $('#representantsList').hide();
+    $('#researchRepresenters').hide();
+    $('#representerList').hide();
     $('#showDetailEvent').hide();
     $('#showDetailArtist').hide();
     $('#addEvent').hide();
     $('#musiciansList').hide();
+    $('#showTicket').hide();
+    $('#showRepresenter').hide();
     console.log("COUCOU");
 
 
@@ -82,16 +88,16 @@ $(function() {
         eventsListView.render().$el.appendTo('#eventsList');
         artistsListView.render().$el.appendTo('#artistsList');
         representantsListView.render().$el.appendTo('#representantsList');
-        
+
 
         //DETAIL
         showEvent.render().$el.appendTo('#showDetailEvent');
-        
+
 
         //ADD
         addEvent.render().$el.appendTo('#addEventView');
-        
-        
+
+
 //        eventsList.fetch({
 //            success: function(collection, response, options) {
 //                console.log('FETCH EVENT LIST');
