@@ -80,7 +80,7 @@ var CreateArtistView = MyView.extend({
 });
 
 var ViewAllArtists = MyView.extend({
-    template: templates.artistsList,
+    template: templates.artistsList2,
     events: {
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
@@ -118,7 +118,7 @@ var ViewAllArtists = MyView.extend({
 });
 
 var ViewShowArtist = MyView.extend({
-    template: templates.showArtist,
+    template: templates.showArtist2,
     events: {
         'click #btn-backk': 'backListArtist'
     },

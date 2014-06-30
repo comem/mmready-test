@@ -1,0 +1,124 @@
+
+<div class="container-fluid">
+    <div class="row buttonsOptions">{{#oneArtist}}
+        <div data-id="{{id}}" class="col-lg-5 col-lg-offset-7">
+            <button id="btn-backk" class="btn btn-default"><span class="ico-edit">Back<Edit/span></button>
+                        <button id="btn-edit" class="btn btn-default"><span class="ico-edit">Edit artist<Edit/span></button>
+                                    <button id="btn-delete" class="btn btn-default"><span class="ico-delete">Delete artist<Edit/span></button>
+                                                </div>
+                                                </div>
+                                                </div>
+
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <h1 class="page-header">{{name}}</h1> 
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="headerShowBox">
+                                                                <h2><i class="ico-info"></i> Information</h2> 
+                                                            </div>
+                                                            <dl>       
+                                                                <dt>Name</dt>
+                                                                <dd>{{name}}</dd>
+                                                                <dt>Genre</dt>
+                                                                {{#genres}}<dd>{{name_de}}</dd>{{/genres}}
+                                                                <dt>Heure d'arrivée</dt>
+                                                                <dd>{{events.0.performers.0.artist_hour_of_arrival}}</dd>
+                                                                <dt>Order </dt>
+                                                                <dd>private</dd>
+                                                                <dt>Main performer</dt>
+                                                                <dd>true / false</dd>
+                                                                <dt>Main performer</dt>
+                                                                <dd>true / false</dd>
+                                                            </dl>
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <h3>Short description</h3> 
+                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <h3>Long description</h3> 
+                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at magna vel turpis varius suscipit a at elit. Integer semper elit sit amet tristique luctus. Praesent eu lacus pharetra ipsum aliquet aliquet id non metus. Sed sed venenatis turpis. Vestibulum consequat nunc a nisi pulvinar, at volutpat mauris pellentesque. Proin in purus nisl. Nunc sit amet lacus euismod, hendrerit sapien nec, lacinia nibh. Curabitur vitae tellus ornare, aliquet ipsum nec, pharetra est. Vivamus egestas risus vitae purus mollis, nec auctor massa faucibus.</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+
+                                                        <div class="col-lg-12">
+                                                            <div class="headerShowBox">
+                                                                <h2><i class="ico-img"> Images</i></h2>
+                                                            </div>
+                                                            <img src="../img/event.jpg" height="50px"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="headerShowBox">
+                                                                <h2><i class="ico-link"></i> Link</h2> 
+                                                            </div>
+                                                            <dl>       
+                                                                <dt>Link name</dt>
+                                                                <dd><a href="#">www.mississipi.com</a></dd>
+                                                            </dl>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="headerShowBox">
+                                                                <h2><i class="ico-musician"></i>Musician</h2> 
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-3">
+                                                                    <dl>       
+                                                                        <dt>Name</dt>
+                                                                        <dd>Mississipi</dd>
+                                                                        <dt>Scene Name</dt>
+                                                                        <dd>Holy mississipi</dd>
+                                                                        <dt>Instruments</dt>
+                                                                        <dd>Pinossissipi</dd>
+                                                                    </dl>
+                                                                </div>
+                                                                <div class="col-lg-3">
+                                                                    <dl>       
+                                                                        <dt>Name</dt>
+                                                                        <dd>Mississipi</dd>
+                                                                        <dt>Scene Name</dt>
+                                                                        <dd>Holy mississipi</dd>
+                                                                        <dt>Instruments</dt>
+                                                                        <dd>Pinossissipi</dd>
+                                                                    </dl>
+                                                                </div>
+                                                                <div class="col-lg-3">
+                                                                    <dl>       
+                                                                        <dt>Name</dt>
+                                                                        <dd>Mississipi</dd>
+                                                                        <dt>Scene Name</dt>
+                                                                        <dd>Holy mississipi</dd>
+                                                                        <dt>Instruments</dt>
+                                                                        <dd>Pinossissipi</dd>
+                                                                    </dl>
+                                                                </div>
+                                                                <div class="col-lg-3">
+                                                                    <dl>       
+                                                                        <dt>Name</dt>
+                                                                        <dd>Mississipi</dd>
+                                                                        <dt>Scene Name</dt>
+                                                                        <dd>Holy mississipi</dd>
+                                                                        <dt>Instruments</dt>
+                                                                        <dd>Pinossissipi</dd>
+                                                                    </dl>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+{{/oneArtist}}
