@@ -12,9 +12,6 @@ var MyModel = Backbone.Model.extend({
 });
 
 
-
-
-
 var LangFR = MyModel.extend({ //A paufiner mais la requete fonctionne il faut juste etre au clair avec les attributs recus
     urlRoot: LANGS+"/fr",
     initialize: function(attrs, opt){

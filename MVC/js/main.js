@@ -35,7 +35,7 @@ $(function() {
             });
 
     var instrusList = new Instruments();
-    var musiciansList = new Musicians();
+    
 
     var artistsList = new Artists();
     var eventsList = new Events();
@@ -49,7 +49,7 @@ $(function() {
     var artistsListView = new ViewArtists({collection: artistsList});
     var representantsListView = new ViewRepresentant({collection: representerList});
     var showEvent = new ViewShowEvent({collection: eventsList});
-    var showArtist = new ViewShowArtist({collection: artistsList});
+    
     var addEvent = new ViewAddEvent({collection: eventsList});
 
 
@@ -86,27 +86,27 @@ $(function() {
 
         //DETAIL
         showEvent.render().$el.appendTo('#showDetailEvent');
-        showArtist.render().$el.appendTo('#showDetailArtist');
+        
 
         //ADD
         addEvent.render().$el.appendTo('#addEventView');
         
         
-        eventsList.fetch({
-            success: function(collection, response, options) {
-                console.log('FETCH EVENT LIST');
-                console.log(eventsList);
-                console.log(JSON.stringify(eventsList));
-            }
-        });
-
-//        artistsList.fetch({
+//        eventsList.fetch({
 //            success: function(collection, response, options) {
-//                console.log(artistsList);
-//                console.log(JSON.stringify(artistsList));
+//                console.log('FETCH EVENT LIST');
+//                console.log(eventsList);
+//                console.log(JSON.stringify(eventsList));
 //            }
-//
 //        });
+
+        artistsList.fetch({
+            success: function(collection, response, options) {
+                console.log(artistsList);
+                console.log(JSON.stringify(artistsList));
+            }
+
+        });
 
 
     }

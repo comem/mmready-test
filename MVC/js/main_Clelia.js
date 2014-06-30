@@ -230,6 +230,7 @@ var ViewResearchRepresentant = MyView.extend({
 
     close: function() {
         $('#advancedResearchEvents').hide();
+    },
 
     showListRepresentant : function() {
         console.log('fuck');
@@ -462,7 +463,7 @@ var ViewShowEvent = MyView.extend({
     template: templates.showEvent,
     events: {
         'click #btn-back': 'backListEvents',
-
+    }
     
 });
 console.log('dsk');
@@ -555,7 +556,7 @@ var researchRepresentant = new ViewResearchRepresentant({collection: listOfRepre
 //console.log('***************************************');
 //console.log('***************************************');
 
-=======
+
 
 //console.log('***************************************');
 //console.log('***************************************');
@@ -566,7 +567,6 @@ var researchRepresentant = new ViewResearchRepresentant({collection: listOfRepre
 //console.log('***************************************');
 //console.log('***************************************');
 
->>>>>>> Naty
 
 /*
  |--------------------------------------------------------------------------
@@ -584,28 +584,24 @@ $(function() {
     $('#advancedResearchEvents').append(advancedResearchEvent.el);
     $('#advancedResearchArtists').hide();
     $('#advancedResearchArtists').append(advancedResearchArtist.el);
-<<<<<<< HEAD
-=======
+
     $('#researchRepresentants').hide();
     $('#researchRepresentants').append(researchRepresentant.el);
->>>>>>> Naty
+
 
     //lists
     $('#eventsList').append(eventListView.el);
     $('#artistsList').hide();
     $('#artistsList').append(artistsListView.el);
-<<<<<<< HEAD
-=======
+
     $('#representantsList').hide();
     $('#representantsList').append(representantsListView.el);
->>>>>>> Naty
+
 
     //details
     $('#showDetailEvent').hide();
     $('#showDetailEvent').append(showEvent.el);
-<<<<<<< HEAD
 
-=======
     $('#showDetailArtist').hide();
     $('#showDetailArtist').append(showArtist.el);
     
@@ -618,7 +614,7 @@ $(function() {
 //    $(window).on('popstate', historyHandler);
 //    // simule un premier changement d'url
 //    $(window).trigger('popstate');
->>>>>>> Naty
+
     $('ul#mainNav a').on('click', function(e) {
         menuElementClickHandler($(this));
         e.preventDefault();
