@@ -322,6 +322,7 @@ var ViewRepresentant = MyView.extend({
     }
 });
 console.log('dsk');
+
 var ViewShowRepresentant = MyView.extend({
     template: templates.showArtist,
     events: {
@@ -334,26 +335,4 @@ var ViewShowRepresentant = MyView.extend({
         this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
         return this;
     }
-});
-
-
-
-//ROMAIN
-var ViewRomain = MyView.extend({
-    template: templates.Romain,
-    events: {
-        'click #romain': 'romain'
-    },
-    initialize: function(attrs, options) {
-        this.listenTo(this.model, 'all', this.render);
-        this.render();
-    },
-    render: function() {
-        this.$el.html(Mustache.render(this.template, {romain: this.model.toJSON()}));
-        return this;
-    },
-    romain: function(event) {
-        console.log('buton click');
-    }
-
 });
