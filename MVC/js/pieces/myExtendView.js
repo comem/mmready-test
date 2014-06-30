@@ -197,10 +197,10 @@ var ViewArtists = MyView.extend({
     },
     detail: function(event) {
         $('#artistsList').hide();
-//        var indexArtist = $(event.target).attr('data-index');
-//        var artist = this.collection.at(indexArtsist);
-//        this.showArtist.model = artist;
-//        this.showArtist.render();
+        var indexArtist = $(event.target).attr('data-index');
+        var artist = this.collection.at(indexArtsist);
+        this.showArtist.model = artist;
+        this.showArtist.render();
         $('#showDetailArtist').show();
         $('#musiciansList').show();
     },

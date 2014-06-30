@@ -6,74 +6,74 @@
 var MyCollection = Backbone.Collection.extend({
     parse: function (response) {
         // todo error et fail   
-        return typeof response.data.artists != "undefined" ? response.data.artists : response;
+        return typeof response.data.response != "undefined" ? response.data.response : response;
     }
 });
 
 
-var Paginates = MyModel.extend();
+var Paginates = MyCollection.extend();
 /*---------------------------------------------------------------------------
  * ------------  Artist nested
  *///------------------------------------------------------------------------
 
 
 
-var Links = MyModel.extend({
+var Links = MyCollection.extend({
     
 });
-var Genres = MyModel.extend();
-var Images = MyModel.extend();
+var Genres = MyCollection.extend();
+var Images = MyCollection.extend();
 
-var Gifts = MyModel.extend();
+var Gifts = MyCollection.extend();
 
 
 
-var Representers = MyModel.extend();
-var Performers = MyModel.extend();
+var Representers = MyCollection.extend();
+var Performers = MyCollection.extend();
 
-var Instruments = MyModel.extend();
-var Musicians = MyModel.extend();
-var Artists = MyModel.extend({
+var Instruments = MyCollection.extend();
+var Musicians = MyCollection.extend();
+var Artists = MyCollection.extend({
     url: ARTISTS
 });
-var Events = MyModel.extend();
+var Events = MyCollection.extend();
 
 /*---------------------------------------------------------------------------
  * Event nested
  *///------------------------------------------------------------------------
 
 
-var Tickets = MyModel.extend();
-var Ticket_Cats = MyModel.extend();
+var Tickets = MyCollection.extend();
+var Ticket_Cats = MyCollection.extend();
 /*---------------------------------------------------------------------------
  * ------------  Artist nested
  *///------------------------------------------------------------------------
 
 
 
-var Link = MyModel.extend();
-var Genre = MyModel.extend();
-var Image = MyModel.extend();
+var Link = MyCollection.extend();
+var Genre = MyCollection.extend();
+var Image = MyCollection.extend();
 
-var Gift = MyModel.extend();
+var Gift = MyCollection.extend();
 
 
 
-var Representer = MyModel.extend();
-var Performer = MyModel.extend();
+var Representer = MyCollection.extend();
+var Performer = MyCollection.extend();
 
-var Instrument = MyModel.extend();
-var Musician = MyModel.extend();
-var Artist = MyModel.extend();
-var Event = MyModel.extend();
+var Instrument = MyCollection.extend();
+var Musician = MyCollection.extend();
+var Artist = MyCollection.extend();
+var Event = MyCollection.extend();
 
 /*---------------------------------------------------------------------------
  * Event nested
  *///------------------------------------------------------------------------
 
 
-var Ticket = MyModel.extend();
-var Ticket_Cat = MyModel.extend();
+var Ticket = MyCollection.extend();
+var Ticket_Cat = MyCollection.extend();
 
 
 
