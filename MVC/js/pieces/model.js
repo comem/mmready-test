@@ -2,11 +2,11 @@
 //*******************           Model                 ***********************//
 //***************************************************************************//
 
-//----------------------------   LOGIN ---------------------------------------
-
+//!\ LES POST DELETE ET PUT n'ont pas l'attr RESPONSE
+//   ainsi que fail et error
 var MyInitModel = Backbone.Model.extend();
 
-//------------------------------- Others ----------------------------------
+
 var MyModel = Backbone.Model.extend({
     parse: function (response) {       
         // to do if statut fail/error
@@ -21,43 +21,74 @@ var MyModel = Backbone.Model.extend({
     }
 });
 
+var Login = MyModel.extend({
+    urlRoot: LOGIN
+});
+
+var Logout = MyModel.extend({
+    urlRoot: LOGOUT
+});
+//--------------------------------------------
+
+var Artist = MyModel.extend({
+    urlRoot: ARTISTS
+});
+
+var Event = MyModel.extend({
+    urlRoot: EVENTS
+});
+
+var EventType = MyModel.extend({
+    urlRoot: EVENT_TYPES
+});
+
+var Genre = MyModel.extend({
+    urlRoot:GENRES
+});
+
+var Gift = MyModel.extend({
+    urlRoot:GIFTS
+});
+
+//!\ requêtes complexes liées avec Artists-> check DOC
+var Illustration = MyModel.extend({
+    urlRoot:ILLUS
+});
+
+var Image = MyModel.extend({
+    urlRoot:IMAGES
+});
+
+var Instrument = MyModel.extend({
+    urlRoot: INSTRUS
+});
+
+var Link = MyModel.extend({
+    urlRoot: LINKS
+});
+
+var Musician = MyModel.extend({
+    urlRoot: MUSICIANS
+});
+
+var Performer = MyModel.extend({
+    urlRoot: PERFORMERS
+});
+
+var Representer = MyModel.extend({
+    urlRoot: REPRESENTERS
+});
+
+var Ticket = MyModel.extend({
+    urlRoot: TICKETS
+});
+var Ticket_Cat = MyModel.extend({
+    urlRoot: TICKET_CATS
+});
 
 var Paginate = MyModel.extend();
-/*---------------------------------------------------------------------------
- * ------------  Artist nested
- *///------------------------------------------------------------------------
 
-
-
-var Link = MyModel.extend();
-var Genre = MyModel.extend();
-var Image = MyModel.extend();
-
-var Gift = MyModel.extend();
-
-
-
-var Representer = MyModel.extend();
-var Performer = MyModel.extend();
-
-var Instrument = MyModel.extend();
-var Musician = MyModel.extend();
-var Artist = MyModel.extend();
-var Event = MyModel.extend();
-
-/*---------------------------------------------------------------------------
- * Event nested
- *///------------------------------------------------------------------------
-
-
-var Ticket = MyModel.extend();
-var Ticket_Cat = MyModel.extend();
-
-
-
-
-
-
+//--------OLD----------------------------
 //var Artist = MyModelNestedCollection.extend({
 //    urlRoot: ARTISTS+"-new",
 //    nested: 'musicians'

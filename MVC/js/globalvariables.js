@@ -2,30 +2,45 @@
 //*******************          global variables       ***********************//
 //***************************************************************************//
 var ONLINE;
-//API Services
+//***************************************************************************//
+//*******************          API RockIT             ***********************//
+//***************************************************************************//
+
 var ROOTIT            = "http://pingouin.heig-vd.ch/rockit/v1/";
-var REPRESENTERS      = "http://pingouin.heig-vd.ch/rockit/v1/";
-var INSTRUS           = "http://pingouin.heig-vd.ch/rockit/v1/instruments";
-var MUSICIANS         = "http://pingouin.heig-vd.ch/rockit/v1/musicians";
-var ARTISTS           = "http://pingouin.heig-vd.ch/rockit/v1/artists";
-var EVENTS            = "http://pingouin.heig-vd.ch/rockit/v1/events";
 
-var EVENT_TYPES       = "http://pingouin.heig-vd.ch/rockit/v1/event-types";
-var TICKET_CATEGORIES = "http://pingouin.heig-vd.ch/rockit/v1/ticket-categories";
-var GENRES            = "http://pingouin.heig-vd.ch/rockit/v1/genres";
-var GIFTS             = "http://pingouin.heig-vd.ch/rockit/v1/gifts";
-var TICKETS           = "http://pingouin.heig-vd.ch/rockit/v1/tickets";
+var LOGIN             = "http://pingouin.heig-vd.ch/rockit/v1/login";
+var LOGOUT            = "http://pingouin.heig-vd.ch/rockit/v1/logout";
 
-var LANGSDISPO        = "http://pingouin.heig-vd.ch/rockit/v1/langs";
-var LANGS             = "http://pingouin.heig-vd.ch/rockit/v1/trads";
-
-var LOGIN            = "http://pingouin.heig-vd.ch/rockit/v1/login";
 var AUTH_MANAGER_DE   = {"email":"chris@chris.ch","password":"chris"};
 var AUTH_MANAGER_FR   = {"email":"matou@matou.ch","password":"matou"};
 var AUTH_STAFF_DE     = {"email":"de@staff.ch","password":"staff"};
 var AUTH_STAFF_FR     = {"email":"fr@staff.ch","password":"staff"};
-		
-	
+   
+var ARTISTS           = "http://pingouin.heig-vd.ch/rockit/v1/artists";
+var EVENTS            = "http://pingouin.heig-vd.ch/rockit/v1/events";
+
+var EVENT_TYPES       = "http://pingouin.heig-vd.ch/rockit/v1/event-types";
+var GENRES            = "http://pingouin.heig-vd.ch/rockit/v1/genres";
+var GIFTS             = "http://pingouin.heig-vd.ch/rockit/v1/gifts";
+var ILLUS             = "http://pingouin.heig-vd.ch/rockit/v1/illustrations";
+var IMAGES            = "http://pingouin.heig-vd.ch/rockit/v1/images";
+
+var INSTRUS           = "http://pingouin.heig-vd.ch/rockit/v1/instruments";
+var LINKS             = "http://pingouin.heig-vd.ch/rockit/v1/links";
+
+var MUSICIANS         = "http://pingouin.heig-vd.ch/rockit/v1/musicians";
+
+var PERFORMERS        = "http://pingouin.heig-vd.ch/rockit/v1/performers";
+var REPRESENTERS        = "http://pingouin.heig-vd.ch/rockit/v1/representers";
+
+var TICKETS           = "http://pingouin.heig-vd.ch/rockit/v1/tickets";
+var TICKET_CATS       = "http://pingouin.heig-vd.ch/rockit/v1/ticket-categories";
+
+
+var LANGSDISPO        = "http://pingouin.heig-vd.ch/rockit/v1/langs";
+var LANGS             = "http://pingouin.heig-vd.ch/rockit/v1/trads";
+
+
 //     /!\ local links
 var ONEARTIST                =   "../php/services/oneArtist.json";
 var GENRESLOCAL                =   "../php/services/genres.json";

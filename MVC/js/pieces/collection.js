@@ -2,7 +2,8 @@
 //*******************           Collection            ***********************//
 //***************************************************************************//
 
-
+//!\ LES POST DELETE ET PUT n'ont pas l'attr RESPONSE
+//   ainsi que fail et error
 var MyCollection = Backbone.Collection.extend({
     parse: function (response) {
         // todo error et fail   
@@ -10,70 +11,74 @@ var MyCollection = Backbone.Collection.extend({
     }
 });
 
+//--------------------------------------------
 
-var Paginates = MyCollection.extend();
-/*---------------------------------------------------------------------------
- * ------------  Artist nested
- *///------------------------------------------------------------------------
-
-
-
-var Links = MyCollection.extend({
-    
-});
-var Genres = MyCollection.extend();
-var Images = MyCollection.extend();
-
-var Gifts = MyCollection.extend();
-
-
-
-var Representers = MyCollection.extend();
-var Performers = MyCollection.extend();
-
-var Instruments = MyCollection.extend();
-var Musicians = MyCollection.extend();
 var Artists = MyCollection.extend({
     url: ARTISTS
 });
-var Events = MyCollection.extend();
 
-/*---------------------------------------------------------------------------
- * Event nested
- *///------------------------------------------------------------------------
+var Events = MyCollection.extend({
+    url: EVENTS
+});
+
+var EventTypes = MyCollection.extend({
+    url: EVENT_TYPES
+});
+
+var Genres = MyCollection.extend({
+    url:GENRES
+});
+
+var Gifts = MyCollection.extend({
+    url: GIFTS
+});
+
+//!\ plusieurs requêtes -> check DOC
+var Illustrations = MyCollection.extend({
+    url:ILLUS
+});
+
+var Images = MyCollection.extend({
+    url:IMAGES
+});
+
+var Instruments = MyCollection.extend({
+    url: INSTRUS
+});
+
+var Links = MyCollection.extend({
+    url: LINKS
+});
+
+var Musicians = MyCollection.extend({
+    url: MUSICIANS
+});
+
+var Performers = MyCollection.extend({
+    url: PERFORMERS
+});
+
+var Representers = MyCollection.extend({
+    url: REPRESENTERS
+});
+
+var Tickets = MyCollection.extend({
+    url: TICKETS
+});
+var Ticket_Cats = MyCollection.extend({
+    url: TICKET_CATS
+});
+
+var Paginates = MyCollection.extend();
 
 
-var Tickets = MyCollection.extend();
-var Ticket_Cats = MyCollection.extend();
-/*---------------------------------------------------------------------------
- * ------------  Artist nested
- *///------------------------------------------------------------------------
 
 
 
-var Link = MyCollection.extend();
-var Genre = MyCollection.extend();
-var Image = MyCollection.extend();
-
-var Gift = MyCollection.extend();
 
 
 
-var Representer = MyCollection.extend();
-var Performer = MyCollection.extend();
 
-var Instrument = MyCollection.extend();
-var Musician = MyCollection.extend();
-var Artist = MyCollection.extend();
-var Event = MyCollection.extend();
-
-/*---------------------------------------------------------------------------
- * Event nested
- *///------------------------------------------------------------------------
-
-
-var Ticket = MyCollection.extend();
-var Ticket_Cat = MyCollection.extend();
 
 
 
