@@ -114,13 +114,17 @@ var ViewResearchRepresenter = MyView.extend({
     },
     showListEvent: function() {
         $('#artistsList').hide();
-        $('#eventsList').show();
         $('#advancedResearchArtists').hide();
+        $('#researchRepresenters').hide();
+        $('#representersList').hide();
+        $('#eventsList').show();
         $('#advancedResearchEvents').show();
     },
     showListArtist: function() {
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
+        $('#researchRepresenters').hide();
+        $('#representersList').hide();
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
     },
@@ -265,6 +269,10 @@ var ViewEvents = MyView.extend({
         'click #btn-addEvent': 'addEvent'
     },
     initialize: function(attrs, options) {
+        // internal view for artist detail
+        this.showEvent = new ViewShowEvent({model: new Event({})});
+        this.showEvent.render().$el.appendTo('#showDetailEvent');
+
         this.listenTo(this.collection, 'all', this.render);
         this.render();
     },
@@ -294,16 +302,16 @@ var ViewEvents = MyView.extend({
 var ViewShowEvent = MyView.extend({
     template: templates.showEvent,
     events: {
-        'click #btn-back': 'backListEvents',
+        'click #btn-back': 'backListEvents'
     },
     initialize: function(attrs, options) {
         this.viewTicket = new ViewTicket({model: new Ticket({})});
         this.viewRepresenter = new ViewShowRepresenter({model: new Representer({})});
-        this.listenTo(this.collection, 'all', this.render);
+        this.listenTo(this.model, 'all', this.render);
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
         this.viewTicket.render().$el.appendTo(this.$el.find('#showTicket'));
         this.viewRepresenter.render().$el.appendTo(this.$el.find('#showRepresenter'));
         return this;

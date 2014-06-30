@@ -37,10 +37,11 @@ $(function() {
     var instrusList = new Instruments();
     var event1 = new Event({title: 'La grosse fiesta 2014', name_de: 'rock', start_date_hour: '25.06.2014',
         ending_date_hour: '26.06.2014', opening_doors: '16:00'});
-
+    var representant1 = new Representer({first_name: 'Jean', last_name: 'Ducommun',
+        email: 'jean.duc@gmail.com', phone: '0789867877'});
     var artistsList = new Artists();
     var eventsList = new Events([event1]);
-    var representerList = new Representers();
+    var representerList = new Representers([representant1]);
 
 
 
@@ -52,9 +53,8 @@ $(function() {
     var eventsListView = new ViewEvents({collection: eventsList});
     var artistsListView = new ViewArtists({collection: artistsList});
     var representersListView = new ViewRepresenters({collection: representerList});
-    var showEvent = new ViewShowEvent({collection: eventsList});
 
-    var addEvent = new ViewAddEvent({collection: eventsList});
+    //var addEvent = new ViewAddEvent({collection: eventsList});
 
 
     console.log('-------------DOM IS READY----------------------');
@@ -90,12 +90,8 @@ $(function() {
         representersListView.render().$el.appendTo('#representersList');
 
 
-        //DETAIL
-        showEvent.render().$el.appendTo('#showDetailEvent');
-
-
         //ADD
-        addEvent.render().$el.appendTo('#addEventView');
+        //addEvent.render().$el.appendTo('#addEventView');
 
 
 //        eventsList.fetch({
@@ -116,7 +112,10 @@ $(function() {
 
 
     }
-    ;
+
+    // gestion des boutons "back" et "forward" du browser
+    $(window).on('popstate', historyHandler);
+    
     $('ul#mainNav a').on('click', function(e) {
         menuElementClickHandler($(this));
         e.preventDefault();
