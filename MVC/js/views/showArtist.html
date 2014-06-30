@@ -35,25 +35,28 @@
                 <dt>Genre(s)</dt>
                 <dd>{{name_de}}</dd>
                 {{/genres}}
+                
+                {{#performers}}
                 <dt>heure d'arrivée </dt>
                 <dd>{{artist_hour_of_arrival}}</dd>
                 
                 <dt>Order </dt>
                 <dd>{{order}}</dd>
 
-                <dt>Main performer</dt>
-                <dd>true / false</dd>
+                <dt>Is Support</dt>
+                <dd>{{is_support}}</dd>
+                {{/performers}}
             </dl>
             <div class="row">
                 <div class="col-lg-6">
                     <h3>Short description</h3> 
-                    <p>{{short_description}}</p>
+                    <p>{{short_description_de}}</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
                     <h3>Long description</h3> 
-                    <p>{{complete_description}}</p>
+                    <p>{{complete_description_de}}</p>
                 </div>
             </div>
         </div>
