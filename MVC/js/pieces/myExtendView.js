@@ -19,7 +19,7 @@ var ViewAdvancedResearchArtist = MyView.extend({
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {artist: this.collection.toJSON()}));
         return this;
     },
     showListEvent: function() {
@@ -35,10 +35,10 @@ var ViewAdvancedResearchArtist = MyView.extend({
         $('#advancedResearchArtists').show();
     },
     showListRepresenter: function() {
-        console.log('fuck');
+
         $('#artistsList').hide();
         $('#advancedResearchArtists').hide();
-        $('#representantsList').show();
+        $('#representersList').show();
         $('#researchRepresenters').show();
     },
     close: function() {
@@ -84,7 +84,7 @@ var ViewAdvancedResearchEvent = MyView.extend({
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         $('#researchRepresenters').show();
-        $('#representantsList').show();
+        $('#representersList').show();
     },
     close: function() {
         $('#advancedResearchEvents').hide();
@@ -109,7 +109,7 @@ var ViewResearchRepresenter = MyView.extend({
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {representer: this.collection.toJSON()}));
         return this;
     },
     showListEvent: function() {
@@ -125,11 +125,11 @@ var ViewResearchRepresenter = MyView.extend({
         $('#advancedResearchArtists').show();
     },
     showListRepresenter: function() {
-        console.log('fuck');
+
         $('#artistsList').hide();
         $('#advancedResearchArtists').hide();
         $('#researchRepresenters').show();
-        $('#representantsList').show();
+        $('#representersList').show();
     },
     close: function() {
         $('#advancedResearchArtists').hide();
@@ -280,6 +280,7 @@ var ViewEvents = MyView.extend({
     },
     detail: function(event) {
         $('#eventsList').hide();
+        $('#advancedResearchEvents').hide();
         $('#showDetailEvent').show();
         $('#showTicket').show();
         $('#showRepresenter').show();
@@ -316,34 +317,19 @@ var ViewShowEvent = MyView.extend({
 });
 var ViewAddEvent = MyView.extend({
     template: templates.addEvent,
-    events: {
-        'click #addTicketCategory': 'addTicketCategory',
-        'click #addArtist': 'addArtist'
-    },
     defaults: function() {
         $("#showAddArtist div").hide();
-//        $("#newArtist div").click(function() {
-//            $(this).next("div").toggle();
-//        });
+
     },
     initialize: function(attrs, options) {
-        this.listenTo(this.collection, 'all', this.render);
+        this.listenTo(this.model, 'all', this.render);
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
         return this;
     }
-//    addTicketCategory: function(event) {
-//        var newSelectTicket = $('.ticket').clone;
-//        var div = $("<div class='ticket'>").html(newSelectTicket);
-//        $(".ticket").append(div);
-//    }
-//    addArtist: function(event) {
-//        var newAddArtist = $('.showAddArtist').clone();
-//        var div = $("<div class='showAddArtist'>").html(newAddArtist);
-//        $(".showAddArtist").append(div);
-//    }
+
 });
 
 /*
@@ -377,7 +363,6 @@ var ViewRepresenters = MyView.extend({
         console.log('detail');
     }
 });
-console.log('dsk');
 
 var ViewShowRepresenter = MyView.extend({
     template: templates.showRepresenter,

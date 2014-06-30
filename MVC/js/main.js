@@ -51,7 +51,7 @@ $(function() {
     //var researchRepresentant = new ViewResearchRepresentant({collection: artistsList});
     var eventsListView = new ViewEvents({collection: eventsList});
     var artistsListView = new ViewArtists({collection: artistsList});
-    var representantsListView = new ViewRepresenters({collection: representerList});
+    var representersListView = new ViewRepresenters({collection: representerList});
     var showEvent = new ViewShowEvent({collection: eventsList});
 
     var addEvent = new ViewAddEvent({collection: eventsList});
@@ -64,7 +64,7 @@ $(function() {
     $('#artistsList').hide();
     $('#advancedResearchArtists').hide();
     $('#researchRepresenters').hide();
-    $('#representerList').hide();
+    $('#representersList').hide();
     $('#showDetailEvent').hide();
     $('#showDetailArtist').hide();
     $('#addEvent').hide();
@@ -87,7 +87,7 @@ $(function() {
         //LIST
         eventsListView.render().$el.appendTo('#eventsList');
         artistsListView.render().$el.appendTo('#artistsList');
-        representantsListView.render().$el.appendTo('#representantsList');
+        representersListView.render().$el.appendTo('#representersList');
 
 
         //DETAIL
