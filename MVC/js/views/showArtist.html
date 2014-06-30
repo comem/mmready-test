@@ -36,6 +36,7 @@
                 <dd>{{name_de}}</dd>
                 {{/genres}}
                 
+               {{#events}}
                 {{#performers}}
                 <dt>heure d'arrivée </dt>
                 <dd>{{artist_hour_of_arrival}}</dd>
@@ -46,6 +47,7 @@
                 <dt>Is Support</dt>
                 <dd>{{is_support}}</dd>
                 {{/performers}}
+                {{/events}}
             </dl>
             <div class="row">
                 <div class="col-lg-6">
@@ -67,9 +69,9 @@
             <div class="headerShowBox">
                 <h2><i class="ico-img"> Images</i></h2>
             </div>
-            {{#image}}
-            <img src="{{source}}" height="50px"/>
-            {{/image}}
+            {{#images}}
+            <!--<img src="{{source}}" height="50px">--><p>{{source}}</p>
+            {{/images}}
         </div>
     </div>
     <div class="row">
