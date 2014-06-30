@@ -115,7 +115,8 @@
                     <!-- **************************************TICKETS******************************************************-->
                     <div class=" col-lg-4">
                         <fieldset>
-                            <h2><i class="ico-tiket"></i>Tickets</h2 >
+                            <h2><i class="ico-tiket"></i>Tickets</h2>
+                            <button class="pull-right" id='addTicketCategory'><i class="ico-plus"></i>Ticket</button>
                             <div id="selectTicket">
                                 <div class="ticket" id="ticket_1">
                                     <select> 
@@ -127,7 +128,7 @@
                                     <span>CHF</span>
                                 </div>
                             </div>
-                            <button class="pull-right" id='addTicketCategory'><i class="ico-plus"></i>Add</button>
+
                         </fieldset>
                     </div>
                     <div class="col-lg-8">
@@ -206,7 +207,7 @@
                             </div>
 
                             <div class="new">
-                                <h3><i class="ico-plus"></i>New artist</h3>
+                                <h3>New artist</h3>
                                 <div class='row '>
                                     <div class="col-lg-12 ">
                                         <!-- **************************************ARTISTES******************************************************-->
@@ -242,9 +243,9 @@
                                                 </div>
                                                 <!--main performer-->
                                                 <div class="input-group">
-                                                    <label for="mainPerformer">Main performer of the event? </label>
-                                                    <input type= "radio" name="mainPerformer" value="true" id="mainPerformer">yes
-                                                    <input type= "radio" name="mainPerformer" value="false" id="notMainPerformer" checked>no
+                                                    <label for="support"></label>
+                                                    <input type= "radio" name="support" value="true" id="mainPerformer">yes
+                                                    <input type= "radio" name="support" value="false" id="notMainPerformer" checked>no
                                                 </div>
                                                 <!--short description-->
                                                 <div class="input-group">
@@ -262,7 +263,7 @@
 
                                         <div class='col-lg-6'>
                                             <!--*********Musicians*************-->
-                                            <fieldset id="musicians">
+                                            <fieldset>
                                                 <h2><i class="ico-artist"></i>Musicians</h2>
                                                 <button class='pull-right' id='addMusician'><i class="ico-plus"></i>Musician</button>
                                                 <div id="listMusicians">
@@ -273,43 +274,44 @@
                                                         <button class='musicianDelete'><i class="ico-delete"></i></button>
                                                     </div>
                                                 </div>
+                                                <div  id="musicians">
 
-                                                <div class="new musician hide">
-                                                    <h3>New musician</h3>
-                                                    <!--first name-->
-                                                    <div class="input-group">
-                                                        <label for="musicianFirstName">First name: *</label>
-                                                        <input type="text" name="musicianFirstName" id="musicianFirstName" placeholder="Musician first name" required>
-                                                    </div>
-                                                    <!-- last name-->
-                                                    <div class="input-group">
-                                                        <label for="musicianLastName">Last name: </label>
-                                                        <input type="text" name="musicianLastName" id="musicianLastName" placeholder="Musician last name">
-                                                    </div>
-                                                    <!--nom de scene -->
-
-                                                    <div class="input-group">
-                                                        <label for="musicianScenetName">Scene name: </label>
-                                                        <input type="text" name="musicianScenetName" id="musicianScenetName" placeholder="Musician scene name">
-                                                    </div>
-                                                    <!-- Instruments-->
-                                                    <div class="input-group instruments">
-                                                        <div class="instrument">
-                                                            <p  class="pull-left">Instruments: *</p> 
-                                                            <select name="instrument" id="selectInstrument"> 
-                                                                <option value="trompette">Trompette</option> 
-                                                                <option value="guitarre">Guitarre</option> 
-                                                                <option value="saxophone">Saxophone</option> 
-                                                            </select>
-                                                            <button class="pull-right deleteInstrument"><i class="ico-delete"></i>Delete</button>
-
+                                                    <div class="new musician hide">
+                                                        <h3>New musician</h3>
+                                                        <!--first name-->
+                                                        <div class="input-group">
+                                                            <label for="musicianFirstName">First name: *</label>
+                                                            <input type="text" name="musicianFirstName" id="musicianFirstName" placeholder="Musician first name" required>
                                                         </div>
+                                                        <!-- last name-->
+                                                        <div class="input-group">
+                                                            <label for="musicianLastName">Last name: </label>
+                                                            <input type="text" name="musicianLastName" id="musicianLastName" placeholder="Musician last name">
+                                                        </div>
+                                                        <!--nom de scene -->
+                                                        <div class="input-group">
+                                                            <label for="musicianScenetName">Scene name: </label>
+                                                            <input type="text" name="musicianScenetName" id="musicianScenetName" placeholder="Musician scene name">
+                                                        </div>
+                                                        <!-- Instruments-->
+                                                        <div class="input-group instruments">
+
+                                                            <div class="instrument">
+                                                                <p  class="pull-left">Instruments: *</p> 
+                                                                <select name="instrument" id="selectInstrument"> 
+                                                                    <option value="trompette">Trompette</option> 
+                                                                    <option value="guitarre">Guitarre</option> 
+                                                                    <option value="saxophone">Saxophone</option> 
+                                                                </select>
+
+                                                            </div>
+                                                        </div>
+                                                        <button class="pull-right addInstrument hide"><i class="ico-plus"></i>Instrument</button>
+                                                        <div class="clearfix"></div>
+                                                        <br/>
+                                                        <button class="pull-right saveMusician"><i class="ico-save"></i>Save</button>
+                                                        <button class="deleteMusician pull-right"><i class="ico-delete"></i>Delete</button><div class="clearfix"></div>
                                                     </div>
-                                                    <button class="pull-right addInstrument"><i class="ico-plus"></i>Instrument</button>
-                                                    <div class="clearfix"></div>
-                                                    <br/>
-                                                    <button class="pull-right saveMusician"><i class="ico-save"></i>Save</button>
-                                                    <button class="deleteMusician pull-right"><i class="ico-delete"></i>Delete</button><div class="clearfix"></div>
                                                 </div>
                                             </fieldset>
                                         </div>
@@ -320,6 +322,7 @@
                                             <!--*********Images*************-->
                                             <fieldset>
                                                 <h2><i class="ico-img"></i>Images</h2 >
+                                                <button class="pull-right" id='addImage'><i class="ico-plus"></i>Image</button>
                                                 <div id="listImages">
                                                     <div class="artistImage">
                                                         <span>Image.jpg</span>
@@ -328,54 +331,62 @@
                                                         <button class='imageDetails'><i class="ico-detail"></i></button>
                                                     </div>
                                                 </div>
+                                                <div id="images">
 
-                                                <div  class="new">
-                                                    <h3>New image</h3>
-                                                    <div class="input-group">
-                                                        <label for="imageTitle">Titre:</label>
-                                                        <input type="text" id="imageTitle" name="imageTitle">
+                                                    <div  class="new image">
+                                                        <h3>New image</h3>
+                                                        <div class="input-group">
+                                                            <label for="imageTitle">Titre:</label>
+                                                            <input type="text" id="imageTitle" name="imageTitle">
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <label for="imageDescription">Description:</label>
+                                                            <input type="text" id="imageDescription" name="imageDescription">
+                                                        </div>
+                                                        <input type="file" name="artistImage" id="artistImage">
+                                                        <button class='saveImage pull-right'><i class="ico-save"></i>Save</button>
+                                                        <button class="deleteImage pull-right"><i class="ico-delete"></i>Delete</button><div class="clearfix"></div>
+                                                        <br/>
                                                     </div>
-                                                    <div class="input-group">
-                                                        <label for="imageDescription">Description:</label>
-                                                        <input type="text" id="imageDescription" name="imageDescription">
-                                                    </div>
-                                                    <input type="file" name="artistImage" id="artistImage">
-                                                    <button class='saveImage pull-right'><i class="ico-save"></i>Save</button>
-                                                    <br/>
                                                 </div>
-                                                <button class="pull-right" id='addImage'><i class="ico-plus"></i>Image</button>
+
                                             </fieldset>
                                         </div>
                                         <div class='col-lg-6'>
                                             <!--*********Links*************-->
                                             <fieldset>
                                                 <h2><i   class="ico-link"></i>Links</h2>
+                                                <button id='addLink' class="pull-right"><i class="ico-plus"></i>Link</button>
                                                 <div id="listLinks">
-                                                    <div class="link">
+                                                    <div class="listLinks">
                                                         <span>http://link.com</span> 
                                                         <button class='linkDetails'><i class="ico-detail"></i></button>
                                                         <button class='linkEdit'><i class="ico-edit"></i></button>
                                                         <button class='linkDelete'><i class="ico-delete"></i></button>
                                                     </div>
                                                 </div>
-                                                <div class="new">
-                                                    <h3>New link</h3>
-                                                    <div class="input-group">
-                                                        <label for="linkURL" >URL: *</label>
-                                                        <input type="url" name="linkURL" id="linkURL" placeholder="http://" required>
+
+                                                <div id="links">
+                                                    <div class="new link">
+                                                        <h3>New link</h3>
+                                                        <div class="input-group">
+                                                            <label for="linkURL" >URL: *</label>
+                                                            <input type="url" name="linkURL" id="linkURL" placeholder="http://" required>
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <label for="linkTitle">Titre: *</label>
+                                                            <input type="text" name="linkTitle" id="linkTitle" placeholder="URL title" required>
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <label for="linkDescription">Description:</label>
+                                                            <input type="text" name="linkDescription" id="linkDescription" placeholder="URL description">
+                                                        </div>
+                                                        <button class='saveLink pull-right'><i class="ico-save"></i>Save</button>
+                                                        <button class="deleteLink pull-right"><i class="ico-delete"></i>Delete</button><div class="clearfix"></div>
+                                                        <br/>
                                                     </div>
-                                                    <div class="input-group">
-                                                        <label for="linkTitle">Titre: *</label>
-                                                        <input type="text" name="linkTitle" id="linkTitle" placeholder="URL title" required>
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <label for="linkDescription">Description:</label>
-                                                        <input type="text" name="linkDescription" id="linkDescription" placeholder="URL description">
-                                                    </div>
-                                                    <button class='saveLink pull-right'><i class="ico-save"></i>Save</button>
-                                                    <br/>
                                                 </div>
-                                                <button id='addLink' class="pull-right"><i class="ico-plus"></i>Link</button>
+
                                             </fieldset>
                                         </div>
                                     </div>
