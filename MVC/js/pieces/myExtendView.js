@@ -197,8 +197,11 @@ var ViewArtists = MyView.extend({
     },
     detail: function(event) {
         $('#artistsList').hide();
-        var indexArtist = $(event.target).attr('data-index');
-        var artist = this.collection.at(indexArtsist);
+        var idArtist = $(event.target).attr('data-id');
+        var artist = this.collection.get({'id': idArtist}); //.at(idArtist)
+        console.log('artist');
+        console.log(artist);
+        console.log(JSON.stringify(artist));
         this.showArtist.model = artist;
         this.showArtist.render();
         $('#showDetailArtist').show();
