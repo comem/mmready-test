@@ -3,6 +3,9 @@
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+section {
+  display: none;
+}
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -1522,67 +1525,23 @@ table th[class*="col-"] {
     border-bottom: 0;
   }
 }
-/**********************************************************************************/
-/*************************************MAYA*****************************************/
-/**********************************************************************************/
-input[type="number"] {
-  width: 100px;
-}
-.artists {
-  background-color: #fff;
-  border: 1px solid grey;
-  margin-bottom: 15px;
-}
 fieldset {
-  padding: 20px;
-  margin-bottom: 15px;
-  border: 1px solid #9b9b9b;
+  padding: 0;
+  margin: 0;
+  border: 0;
   min-width: 0;
   background-color: #fff;
-}
-.new h3 {
-  padding-bottom: 10px;
-}
-fieldset p {
-  font-weight: bold;
-  width: 200px;
-}
-.new {
-  border: 1px solid grey;
-  background-color: #ebebeb;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-fieldset h2,
-.new h3 {
-  margin: 0;
-}
-h2 {
-  padding-bottom: 5px;
-}
-.input-group {
-  display: block;
-}
-textarea {
-  resize: none;
-}
-fieldset h2 {
-  margin-bottom: 5px;
 }
 legend {
   display: block;
   width: 100%;
-  padding: 10px;
+  padding: 0;
+  margin-bottom: 20px;
   font-size: 21px;
-  line-height: inherit;
   color: #333333;
-  border: 1px solid #e5e5e5;
-  background-color: #fff;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
 }
-/**********************************************************************************/
-/**********************************************************************************/
-/**********************************************************************************/
 label {
   display: inline-block;
   margin-bottom: 5px;
@@ -1598,6 +1557,7 @@ input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;
   /* IE8-9 */
+
   line-height: normal;
 }
 input[type="file"] {
@@ -4252,7 +4212,6 @@ button.close {
 .btn-info,
 .btn-warning,
 .btn-danger {
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
 }
@@ -4274,16 +4233,6 @@ button.close {
 .btn:active,
 .btn.active {
   background-image: none;
-}
-.btn-default:hover,
-.btn-default:focus {
-  background-color: #e0e0e0;
-  background-position: 0 -15px;
-}
-.btn-default:active,
-.btn-default.active {
-  background-color: #e0e0e0;
-  border-color: #dbdbdb;
 }
 .btn-primary {
   background-image: -webkit-linear-gradient(top, #428bca 0%, #2d6ca2 100%);
@@ -4820,6 +4769,7 @@ p {
   text-transform: none;
   line-height: 1;
   /* Better Font Rendering =========== */
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -4902,7 +4852,7 @@ p {
   content: "\e61c";
 }
 .ico-contract:before {
-  content: "\e61e";
+  content: "\e61d";
 }
 section {
   background-color: #ffffff;
@@ -4912,50 +4862,20 @@ section {
 label {
   width: 200px;
   /* Cette largeur sert d’exemple, vous pouvez la modifier si vous voulez. */
+
+}
+.btn-default:hover,
+.btn-default:focus {
+  background-color: #e0e0e0;
+}
+.btn-default:active,
+.btn-default.active {
+  background-color: #e0e0e0;
+  border-color: #dbdbdb;
 }
 .buttonsOptions {
   margin-top: 10px;
   margin-bottom: 10px;
-}
-dl {
-  margin-bottom: 50px;
-}
-dl dt {
-  float: left;
-  font-weight: bold;
-  margin-right: 10px;
-  padding: 5px;
-  width: 150px;
-}
-dl dd {
-  margin: 2px 0;
-  padding: 5px 0;
-}
-.last {
-  background-color: red;
-}
-.meal dd:last-child {
-  margin-top: 5px;
-  background-color: #aeaeae;
-}
-.moreInfo {
-  padding: 2px ;
-  margin: 0;
-  width: 20%;
-}
-.moreInfo ul,
-.moreInfo li {
-  display: inline;
-  text-align: center;
-  padding: 5px ;
-  margin: 0;
-  width: 20%;
-}
-.moreInfo li {
-  margin-right: 5px;
-}
-li {
-  margin-right: 5px;
 }
 /*DL, DT, DD TAGS LIST DATA*/
 dl {
@@ -5015,6 +4935,10 @@ dl dd {
   max-width: 330px;
   padding: 20px;
   margin: 0 auto;
+<<<<<<< HEAD
+=======
+  z-index: 1034;
+>>>>>>> Fabrizio
 }
 .signIn .form-signin .form-signin-heading,
 .signIn .form-signin .checkbox {
@@ -5045,13 +4969,35 @@ dl dd {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+<<<<<<< HEAD
+=======
+img.bgSignIn {
+  /* Set rules to fill background */
+
+  min-height: 100%;
+  min-width: 1024px;
+  z-index: -1;
+  /* Set up proportionate scaling */
+
+  width: 100%;
+  height: auto;
+  /* Set up positioning */
+
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+@media screen and (max-width: 1024px) {
+  /* Specific to this particular image */
+  img.bgSignIn {
+    left: 50%;
+    margin-left: -512px;
+    /* 50% */
+  
+  }
+}
+>>>>>>> Fabrizio
 /**Variables**/
 .green {
   color: green;
 }
-<<<<<<< HEAD
-=======
-section {
-  display: none;
-}
->>>>>>> master
