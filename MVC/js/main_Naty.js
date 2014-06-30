@@ -61,6 +61,22 @@ var Musicians = MyCollection.extend({
     model: Musician
 });
 
+var ViewMusician = MyView.extend({
+    template: templates.showMusician,
+
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
+
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {musician: this.model.toJSON()}));
+        return this;
+
+    },
+
+});
+
 /*
  |--------------------------------------------------------------------------
  | ADVANCED RESEARCH ARTIST
@@ -72,6 +88,7 @@ var ViewAdvancedResearchArtist = MyView.extend({
     events: {
         'click button#events': 'showListEvent',
         'click button#artists': 'showListArtist',
+        'click button#filterRepresenters' : 'showListRepresentant',
         'click a#close': 'close'
                 //'click button#filterRepresenters': 'detail',
 
@@ -97,6 +114,13 @@ var ViewAdvancedResearchArtist = MyView.extend({
         $('#advancedResearchEvents').hide();
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
+    },
+    showListRepresentant : function() {
+        console.log('fuck');
+        $('#artistsList').hide();
+        $('#advancedResearchArtists').hide();
+        $('#representantsList').show();
+        $('#researchRepresentants').show();
     },
     close: function() {
         $('#advancedResearchArtists').hide();
@@ -115,6 +139,7 @@ var ViewAdvancedResearchEvent = MyView.extend({
     events: {
         'click button#events': 'showListEvent',
         'click button#artists': 'showListArtist',
+        'click button#representer' : 'showListRepresentant',
         'click a#close': 'close'
                 //'click button#filterRepresenters': 'detail',
 
@@ -139,6 +164,13 @@ var ViewAdvancedResearchEvent = MyView.extend({
         $('#advancedResearchEvents').hide();
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
+    },
+    showListRepresentant : function() {
+        console.log('fuck');
+        $('#eventsList').hide();
+        $('#advancedResearchEvents').hide();
+        $('#researchRepresentants').show();
+        $('#representantsList').show();
     },
     close: function() {
         $('#advancedResearchEvents').hide();
@@ -242,9 +274,13 @@ var ViewArtists = MyView.extend({
     edit: function(event) {
         console.log('edit');
     },
-    detail: function(event) {
+   detail: function(event) {
+
         console.log('detail');
-    },
+        $('#artistsList').hide();
+        $('#showDetailArtist').show();
+        $('#musiciansList').show();
+    }
 });
 var ViewShowArtist = MyView.extend({
     template: templates.showArtist,
@@ -257,7 +293,7 @@ var ViewShowArtist = MyView.extend({
 
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {artist: this.model.toJSON()}));
         return this;
 
     },
@@ -473,12 +509,13 @@ var bass = new Instrument({"name": "Bass"});
 var vocal = new Instrument({"name": "Vocal"});
 
 //
-var musician1 = new Musician({'name': 'Romain'});
+var musician1 = new Musician({'first_name': 'Romain', stagename: 'Roro', instrument:'bass' });
 musician1.get('instruments').add(bass);
-var musician2 = new Musician({'name': 'Cl??lia'});
+var musician2 = new Musician({'first_name': 'Clelia'});
 musician2.get('instruments').add(vocal);
 
-var mmready = new Artist({'name': 'mmready()'});
+var mmready = new Artist({'name': 'mmready()', short_description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    complete_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at magna vel turpis varius suscipit a at elit. Integer semper elit sit amet tristique luctus. Praesent eu lacus pharetra ipsum aliquet aliquet id non metus. Sed sed venenatis turpis. Vestibulum consequat nunc a nisi pulvinar, at volutpat mauris pellentesque. Proin in purus nisl. Nunc sit amet lacus euismod, hendrerit sapien nec, lacinia nibh. Curabitur vitae tellus ornare, aliquet ipsum nec, pharetra est. Vivamus egestas risus vitae purus mollis, nec auctor massa faucibus.'});
 mmready.get('musicians').add([musician1, musician2]);
 var zed = new Artist({'name': 'ZED'});
 
@@ -494,12 +531,13 @@ var event = new Event();
 var listOfEvents1 = new Events([event1, event2]);
 var eventListView = new ViewEvents({collection: listOfEvents1});
 var showEvent = new ViewShowEvent({model: event1});
-
-
 var showArtist = new ViewShowArtist({model: mmready});
-var listOfArtists = new Artists([mmready, zed]);
 
+var listOfArtists = new Artists([mmready, zed]);
 var artistsListView = new ViewArtists({collection: listOfArtists});
+
+var listOfMusician = new Musicians([musician1, musician2]);
+var musicianListView = new ViewMusician({model: musician1});
 
 var representant1 = new Representant({first_name: 'Jean', last_name: 'Ducommun',
     email: 'jean.duc@gmail.com', phone: '0789867877'});
@@ -543,10 +581,15 @@ $(function() {
     $('#artistsList').append(artistsListView.el);
     $('#representantsList').hide();
     $('#representantsList').append(representantsListView.el);
+    $('#musiciansList').hide();
+    $('#musiciansList').append(musicianListView.el);
 
     //details
     $('#showDetailEvent').hide();
     $('#showDetailEvent').append(showEvent.el);
+    
+    $('#showDetailArtist').hide();
+    $('#showDetailArtist').append(showArtist.el);
 
     //add
     $('#addEvent').hide();
@@ -610,6 +653,7 @@ function menuElementClickHandler(menuElement) {
 }
 
 function menuGoToSection(sectionName) {
+    
     var nodeIdToShow = '#' + sectionName;
     // Cache toutes les <section>
     $('section').hide();

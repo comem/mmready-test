@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
 
-
->>>>>>> Naty
 /*
  |--------------------------------------------------------------------------
  | Configuration (constantes)
@@ -92,10 +88,7 @@ var ViewAdvancedResearchArtist = MyView.extend({
     events: {
         'click button#events': 'showListEvent',
         'click button#artists': 'showListArtist',
-<<<<<<< HEAD
-=======
         'click button#filterRepresenters' : 'showListRepresentant',
->>>>>>> Naty
         'click a#close': 'close'
                 //'click button#filterRepresenters': 'detail',
 
@@ -121,8 +114,7 @@ var ViewAdvancedResearchArtist = MyView.extend({
         $('#advancedResearchEvents').hide();
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
-<<<<<<< HEAD
-=======
+
     },
     showListRepresentant : function() {
         console.log('fuck');
@@ -130,7 +122,6 @@ var ViewAdvancedResearchArtist = MyView.extend({
         $('#advancedResearchArtists').hide();
         $('#representantsList').show();
         $('#researchRepresentants').show();
->>>>>>> Naty
     },
     close: function() {
         $('#advancedResearchArtists').hide();
@@ -149,8 +140,6 @@ var ViewAdvancedResearchEvent = MyView.extend({
     events: {
         'click button#events': 'showListEvent',
         'click button#artists': 'showListArtist',
-<<<<<<< HEAD
-=======
         'click button#representer' : 'showListRepresentant',
         'click a#close': 'close'
                 //'click button#filterRepresenters': 'detail',
@@ -202,7 +191,7 @@ var ViewResearchRepresentant = MyView.extend({
         'click button#events': 'showListEvent',
         'click button#artists': 'showListArtist',
         'click button#filterRepresenters' : 'showListRepresentant',
->>>>>>> Naty
+
         'click a#close': 'close'
                 //'click button#filterRepresenters': 'detail',
 
@@ -223,25 +212,25 @@ var ViewResearchRepresentant = MyView.extend({
         $('#advancedResearchArtists').hide();
         $('#advancedResearchEvents').show();
     },
-<<<<<<< HEAD
+
     showListEvent: function() {
         $('#artistsList').hide();
         $('#eventsList').show();
         $('#advancedResearchEvents').show();
         $('#advancedResearchArtists').hide();
     },
-=======
->>>>>>> Naty
+
+
     showListArtist: function() {
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
     },
-<<<<<<< HEAD
+
     close: function() {
         $('#advancedResearchEvents').hide();
-=======
+
     showListRepresentant : function() {
         console.log('fuck');
         $('#artistsList').hide();
@@ -251,15 +240,11 @@ var ViewResearchRepresentant = MyView.extend({
     },
     close: function() {
         $('#advancedResearchArtists').hide();
->>>>>>> Naty
+
     }
 
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> Naty
 /*
  |--------------------------------------------------------------------------
  | ARTIST
@@ -286,10 +271,7 @@ var ViewArtists = MyView.extend({
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
         'click a.ico-detail': 'detail'
-<<<<<<< HEAD
-=======
-        
->>>>>>> Naty
+
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -309,10 +291,10 @@ var ViewArtists = MyView.extend({
         console.log('edit');
     },
     detail: function(event) {
-<<<<<<< HEAD
+
         console.log('detail');
-    },
-=======
+    
+
         $('#artistsList').hide();
         $('#showDetailArtist').show();
     },
@@ -338,7 +320,7 @@ var ViewShowArtist = MyView.extend({
         $('#artistsList').show();
        
     }
->>>>>>> Naty
+
 });
 
 
@@ -366,8 +348,7 @@ var Events = MyCollection.extend({
     model: Event
 });
 
-<<<<<<< HEAD
-=======
+
 
 var ViewEvents = MyView.extend({
     template: templates.eventsList,
@@ -418,7 +399,7 @@ var ViewShowEvent = MyView.extend({
         $('#eventsList').show();
     }
 });
->>>>>>> Naty
+
 
 
 /*
@@ -447,12 +428,12 @@ var ViewRepresentant = MyView.extend({
     events: {
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
-<<<<<<< HEAD
+
         'click a.ico-detail': 'detail',
-=======
+
         'click a.ico-detail': 'detail'
         
->>>>>>> Naty
+
     },
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
@@ -474,14 +455,14 @@ var ViewRepresentant = MyView.extend({
     detail: function(representant) {
       console.log('detail');
     }
-<<<<<<< HEAD
+
 });
 
 var ViewShowEvent = MyView.extend({
     template: templates.showEvent,
     events: {
         'click #btn-back': 'backListEvents',
-=======
+
     
 });
 console.log('dsk');
@@ -490,7 +471,6 @@ var ViewShowRepresentant = MyView.extend({
     template: templates.showArtist,
     events: {
        
->>>>>>> Naty
     },
     initialize: function(attrs, options) {
         this.listenTo(this.model, 'all', this.render);
@@ -545,12 +525,11 @@ event2.get('artists').add([mmready, zed]);
 var listOfEvents1 = new Events([event1, event2]);
 var eventListView = new ViewEvents({collection: listOfEvents1});
 var showEvent = new ViewShowEvent({model: event1});
-<<<<<<< HEAD
-=======
+
 
 
 var showArtist = new ViewShowArtist({model : mmready});
->>>>>>> Naty
+
 var listOfArtists = new Artists([mmready, zed]);
 
 var artistsListView = new ViewArtists({collection: listOfArtists});
@@ -567,7 +546,6 @@ var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: listOfA
 var researchRepresentant = new ViewResearchRepresentant({collection: listOfRepresentants});
 
 
-<<<<<<< HEAD
 //console.log('***************************************');
 //console.log('***************************************');
 //console.log('ListOfEvents1');
