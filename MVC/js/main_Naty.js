@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /*
  |--------------------------------------------------------------------------
@@ -10,6 +11,11 @@ var DEFAULT_SECTION = 'eventsList';
  | extending Backbone classes
  |--------------------------------------------------------------------------
  */
+=======
+<<<<<<< HEAD
+=======
+//*** extending Backbone classes
+>>>>>>> master
 var MyModel = Backbone.Model.extend();
 var MyCollection = Backbone.Collection.extend();
 var MyModelNestedCollection = Backbone.Model.extend({
@@ -290,6 +296,12 @@ var Event = MyModelNestedCollection.extend({
 var Events = MyCollection.extend({
     model: Event
 });
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> FETCH_HEAD
+>>>>>>> master
 var ViewEvents = MyView.extend({
     template: templates.eventsList,
     events: {
@@ -321,6 +333,12 @@ var ViewEvents = MyView.extend({
         $('#advancedResearchEvents').hide();
         $('#addEvent').show();
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+});
+=======
+>>>>>>> master
 });
 var ViewShowEvent = MyView.extend({
     template: templates.showEvent,
@@ -572,3 +590,9 @@ function menuGoToSection(sectionName) {
 
 
 
+<<<<<<< HEAD
+=======
+});
+    
+>>>>>>> FETCH_HEAD
+>>>>>>> master

@@ -1525,6 +1525,23 @@ table th[class*="col-"] {
     border-bottom: 0;
   }
 }
+<<<<<<< HEAD
+=======
+/**********************************************************************************/
+/*************************************MAYA*****************************************/
+/**********************************************************************************/
+.hide {
+  display: none;
+}
+input[type="number"] {
+  width: 100px;
+}
+.artists {
+  background-color: #fff;
+  border: 1px solid grey;
+  margin-bottom: 15px;
+}
+>>>>>>> master
 fieldset {
   padding: 0;
   margin: 0;
@@ -4529,7 +4546,11 @@ button.close {
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
 >>>>>>> Naty
+=======
+>>>>>>> FETCH_HEAD
+>>>>>>> master
 [class^="ico-"],
 [class*=" ico-"] {
   margin-right: 5px;
@@ -4538,7 +4559,11 @@ button.close {
 =======
 >>>>>>> origin/Romain
 =======
+<<<<<<< HEAD
 >>>>>>> Naty
+=======
+>>>>>>> FETCH_HEAD
+>>>>>>> master
 /**ASIDE**/
 .panel-heading {
   padding: 5px;
@@ -4915,7 +4940,11 @@ dl dd {
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
 >>>>>>> Naty
+=======
+>>>>>>> FETCH_HEAD
+>>>>>>> master
   padding: 5px ;
   margin: 0;
   width: 20%;
@@ -5024,6 +5053,16 @@ img.bgSignIn {
 .green {
   color: green;
 }
+<<<<<<< HEAD
 >>>>>>> origin/Romain
 =======
 >>>>>>> Naty
+=======
+<<<<<<< HEAD
+>>>>>>> origin/Romain
+=======
+section {
+  display: none;
+}
+>>>>>>> FETCH_HEAD
+>>>>>>> master
