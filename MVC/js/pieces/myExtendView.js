@@ -269,7 +269,7 @@ var ViewEvents = MyView.extend({
         'click #btn-addEvent': 'addEvent'
     },
     initialize: function(attrs, options) {
-        // internal view for artist detail
+        // internal view for event detail
         this.showEvent = new ViewShowEvent({model: new Event({})});
         this.showEvent.render().$el.appendTo('#showDetailEvent');
 
