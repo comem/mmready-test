@@ -25,26 +25,26 @@ $(function() {
         ending_date_hour: '26.06.2014', opening_doors: '16:00'});
     var representant1 = new Representer({first_name: 'Jean', last_name: 'Ducommun',
         email: 'jean.duc@gmail.com', phone: '0789867877'});
-    var artistsList = new Artists();
+    //var artistsList = new Artists();
     var eventsList = new Events([event1]);
     var representerList = new Representers([representant1]);
     
     var event = new Event({});
-    var artist = new Artist({});
+    
 
 
 
 
 
     var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: eventsList});
-    var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: artistsList});
+    var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: new Artists()});
     //var researchRepresentant = new ViewResearchRepresentant({collection: artistsList});
     var eventsListView = new ViewEvents({collection: eventsList});
-    var artistsListView = new ViewArtists({collection: artistsList});
+    var artistsListView = new ViewArtists({collection: new Artists()});
     var representersListView = new ViewRepresenters({collection: representerList});
 
     var addEvent = new ViewAddEvent({model: event});
-    var addArtist = new ViewAddArtist({model: artist});
+    var addArtist = new ViewAddArtist({model: new Artist({})});
 
 
 
@@ -81,17 +81,17 @@ $(function() {
         addEvent.render().$el.appendTo('#addEvent');
         addArtist.render().$el.appendTo('#addOneArtist');
 
+//
+//        artistsList.fetch({
+//            success: function(collection, response, options) {
+//                 //console.log(artistsList);
+//                //console.log(JSON.stringify(artistsList));
+//            }
+//           
+//
+//        });
 
-        artistsList.fetch({
-            success: function(collection, response, options) {
-                
-            }
-           
 
-        });
-
- console.log(artistsList);
-                console.log(JSON.stringify(artistsList));
 
 
 //    // gestion des boutons "back" et "forward" du browser

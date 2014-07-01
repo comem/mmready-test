@@ -178,7 +178,7 @@ var ViewArtists = MyView.extend({
         // internal view for artist detail
         this.showArtist = new ViewShowArtist({model: new Artist({})});
         this.showArtist.render().$el.appendTo('#showDetailArtist');
-
+        this.collection.fetch();
         this.listenTo(this.collection, 'all', this.render);
         this.render();
 
@@ -199,20 +199,28 @@ var ViewArtists = MyView.extend({
 
         $('#artistsList').hide();
         var idArtist = $(event.target).attr('data-id');
-       
+        //var idArtist = $(".ico-detail").attr("data-id");
+        //var artist = this.collection.at(idArtist); //.at(idArtist)
 
-        var artist = this.collection.get({'id': idArtist}); //.at(idArtist)
         this.showArtist.model.set('urlRoot', ARTISTS + "/" + idArtist);
-        //console.log(idArtist);
-//        console.log('artist');
-//        console.log(artist);
-//        console.log(JSON.stringify(artist));
-        this.showArtist.model = artist;
-        this.showArtist.render();
+        console.log(this.showArtist.model);
+        artist = this.showArtist.model;
+        artist.fetch({
+            success: function(object,response,c){
+                console.log(object);
+                console.log(c);
+                
+            },error: function(object,response,c){
+                console.log(object);
+                console.log(response);
+            }
+        });
+
         $('#showDetailArtist').show();
         $('#musiciansList').show();
-        //this.showArtist.model.fetch();
-        getOneArtist(idArtist);
+       //this.showArtist.render();
+
+
     },
     addArtist: function(event) {
         $('#artistsList').hide();
@@ -450,3 +458,17 @@ var ViewShowRepresenter = MyView.extend({
         return this;
     }
 });
+
+
+//
+//        var artist = this.collection.get({'id': idArtist}); //.at(idArtist)
+//        //this.showArtist.model.set('urlRoot', ARTISTS + "/" + 2);
+//        console.log(idArtist);
+////        console.log('artist');
+//        console.log(this.showArtist.model);
+////        console.log(JSON.stringify(artist));
+//        this.showArtist.model = artist;
+//        this.showArtist.render();
+//        $('#showDetailArtist').show();
+//        $('#musiciansList').show();
+//        //this.showArtist.model.fetch();
