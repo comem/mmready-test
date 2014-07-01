@@ -61,6 +61,7 @@ $(function() {
     $('#musiciansList').hide();
     $('#showTicket').hide();
     $('#showRepresenter').hide();
+    $('#addArtistIntoEvent').hide();
     
 
 

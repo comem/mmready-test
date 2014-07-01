@@ -315,6 +315,7 @@ var ViewEvents = MyView.extend({
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         $('#addEvent').show();
+        $('#addArtistIntoEvent').show();
     }
 });
 var ViewShowEvent = MyView.extend({
@@ -352,7 +353,8 @@ var ViewAddEvent = MyView.extend({
     },
     render: function() {
         this.$el.html(Mustache.render(this.template, {addEvent: this.model.toJSON()}));
-        this.addArtistIntoEvent.render().$el.appendTo('#addOneArtist');
+        
+        this.addArtistIntoEvent.render().$el.appendTo(this.$el.find('#addArtistIntoEvent'));
         return this;
     }
 
