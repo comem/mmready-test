@@ -206,11 +206,11 @@ var ViewArtists = MyView.extend({
         console.log(this.showArtist.model);
         artist = this.showArtist.model;
         artist.fetch({
-            success: function(object,response,c){
+            success: function(object, response, c) {
                 console.log(object);
                 console.log(c);
-                
-            },error: function(object,response,c){
+
+            }, error: function(object, response, c) {
                 console.log(object);
                 console.log(response);
             }
@@ -218,7 +218,7 @@ var ViewArtists = MyView.extend({
 
         $('#showDetailArtist').show();
         $('#musiciansList').show();
-       //this.showArtist.render();
+        //this.showArtist.render();
 
 
     },
@@ -267,7 +267,10 @@ var ViewAddArtist = MyView.extend({
     template: templates.addArtist,
     events: {
         'click #addMusician': 'addMusician',
-        'click #saveOneArtist': 'getValue'
+        'click #saveOneArtist': 'getValue',
+        'click #saveMusician': 'saveMusician',
+        'click #saveImage': 'saveImage',
+        'click #saveLink': 'saveLink'
     },
     initialize: function(attrs, options) {
         this.listenTo(this.model, 'all', this.render);
@@ -286,7 +289,10 @@ var ViewAddArtist = MyView.extend({
         var name = this.$el.find('[name="artistNameInput"]').val();
         var genre = this.$el.find('[name="artistGenreInput"]').val();
         var hourArrival = this.$el.find('[name="hourArrival"]').val();
+        var order = this.$el.find('[name="artistOrder"]').val();
+        var mainPerformer = this.$el.find('[name="mainPerformer"]').val();
         var shortDescription = this.$el.find('[name="shortDescription"]').val();
+        var completeDescription = this.$el.find('[name="completeDescription"]').val();
 
         console.log("name");
         console.log(name);
@@ -294,14 +300,31 @@ var ViewAddArtist = MyView.extend({
         console.log("genre");
         console.log(genre);
 
-        console.log("hourArrival");
-        console.log(hourArrival);
+        console.log("short");
+        console.log(shortDescription);
+
+        console.log(completeDescription);
 
         if (name === " ") {
             console.log("caractère vide");
         } else {
             saveArtist(name, genre, shortDescription);
         }
+    },
+    saveMusician: function(event) {
+        var musicianFirstName = this.$el.find('[name="musicianFirstName"]').val();
+        var musicianLastName = this.$el.find('[name="musicianLastName"]').val();
+        var musicianScenetName = this.$el.find('[name="musicianScenetName"]').val();
+        var instrument = this.$el.find('[name="instrument"]').val();
+    },
+    saveImage: function(event) {
+        var imageTitle = this.$el.find('[name="imageTitle"]').val();
+        var imageDescription = this.$el.find('[name="imageDescription"]').val();
+        var artistImage = this.$el.find('[name="artistImage"]').val();
+    },
+    saveLink: function(event) {
+        var linkURL = this.$el.find('[name="linkURL"]').val();
+        var linkDescription = this.$el.find('[name="linkDescription"]').val();
     }
 });
 
