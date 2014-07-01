@@ -4982,10 +4982,10 @@ dl dd {
   max-width: 330px;
   padding: 20px;
   margin: 0 auto;
-<<<<<<< HEAD
-=======
+
+
   z-index: 1034;
->>>>>>> Fabrizio
+
 }
 .signIn .form-signin .form-signin-heading,
 .signIn .form-signin .checkbox {
@@ -5016,8 +5016,7 @@ dl dd {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-<<<<<<< HEAD
-=======
+
 img.bgSignIn {
   /* Set rules to fill background */
 
@@ -5043,7 +5042,7 @@ img.bgSignIn {
   
   }
 }
->>>>>>> Fabrizio
+
 /**Variables**/
 .green {
   color: green;

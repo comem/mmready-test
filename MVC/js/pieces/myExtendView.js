@@ -10,7 +10,7 @@ var ViewAdvancedResearchArtist = MyView.extend({
     events: {
         'click button#events': 'showListEvent',
         'click button#artists': 'showListArtist',
-        'click button#filterRepresenters': 'showListRepresentant',
+        'click button#filterRepresenters': 'showListRepresenter',
         'click a#close': 'close'
                 //'click button#filterRepresenters': 'detail',
     },
@@ -19,7 +19,7 @@ var ViewAdvancedResearchArtist = MyView.extend({
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {artist: this.collection.toJSON()}));
         return this;
     },
     showListEvent: function() {
@@ -34,12 +34,12 @@ var ViewAdvancedResearchArtist = MyView.extend({
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
     },
-    showListRepresentant: function() {
-        console.log('fuck');
+    showListRepresenter: function() {
+
         $('#artistsList').hide();
         $('#advancedResearchArtists').hide();
-        $('#representantsList').show();
-        $('#researchRepresentants').show();
+        $('#representersList').show();
+        $('#researchRepresenters').show();
     },
     close: function() {
         $('#advancedResearchArtists').hide();
@@ -55,7 +55,7 @@ var ViewAdvancedResearchEvent = MyView.extend({
     events: {
         'click button#events': 'showListEvent',
         'click button#artists': 'showListArtist',
-        'click button#representer': 'showListRepresentant',
+        'click button#representer': 'showListRepresenter',
         'click a#close': 'close'
                 //'click button#filterRepresenters': 'detail',
     },
@@ -79,12 +79,12 @@ var ViewAdvancedResearchEvent = MyView.extend({
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
     },
-    showListRepresentant: function() {
+    showListRepresenter: function() {
 
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
-        $('#researchRepresentants').show();
-        $('#representantsList').show();
+        $('#researchRepresenters').show();
+        $('#representersList').show();
     },
     close: function() {
         $('#advancedResearchEvents').hide();
@@ -95,12 +95,12 @@ var ViewAdvancedResearchEvent = MyView.extend({
  | RESEARCH REPRESENTANTS
  |--------------------------------------------------------------------------
  */
-var ViewResearchRepresentant = MyView.extend({
-    template: templates.researchRepresentant,
+var ViewResearchRepresenter = MyView.extend({
+    template: templates.researchRepresenter,
     events: {
         'click button#events': 'showListEvent',
         'click button#artists': 'showListArtist',
-        'click button#filterRepresenters': 'showListRepresentant',
+        'click button#filterRepresenters': 'showListRepresenter',
         'click a#close': 'close'
                 //'click button#filterRepresenters': 'detail',
     },
@@ -109,30 +109,53 @@ var ViewResearchRepresentant = MyView.extend({
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {representer: this.collection.toJSON()}));
         return this;
     },
     showListEvent: function() {
         $('#artistsList').hide();
-        $('#eventsList').show();
         $('#advancedResearchArtists').hide();
+        $('#researchRepresenters').hide();
+        $('#representersList').hide();
+        $('#eventsList').show();
         $('#advancedResearchEvents').show();
     },
     showListArtist: function() {
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
+        $('#researchRepresenters').hide();
+        $('#representersList').hide();
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
     },
-    showListRepresentant: function() {
-        console.log('fuck');
+    showListRepresenter: function() {
+
         $('#artistsList').hide();
         $('#advancedResearchArtists').hide();
-        $('#researchRepresentants').show();
-        $('#representantsList').show();
+        $('#researchRepresenters').show();
+        $('#representersList').show();
     },
     close: function() {
         $('#advancedResearchArtists').hide();
+    }
+});
+
+/*
+ |--------------------------------------------------------------------------
+ | MUSICIAN
+ |--------------------------------------------------------------------------
+ */
+
+var ViewMusicians = MyView.extend({
+    template: templates.showMusician,
+    initialize: function(attrs, options) {
+        this.listenTo(this.collection, 'all', this.render);
+        this.render();
+
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {musicians: this.collection.toJSON()}));
+        return this;
     }
 });
 
@@ -152,6 +175,10 @@ var ViewArtists = MyView.extend({
 
     },
     initialize: function(attrs, options) {
+        // internal view for artist detail
+        this.showArtist = new ViewShowArtist({model: new Artist({})});
+        this.showArtist.render().$el.appendTo('#showDetailArtist');
+
         this.listenTo(this.collection, 'all', this.render);
         this.render();
 
@@ -170,7 +197,15 @@ var ViewArtists = MyView.extend({
     },
     detail: function(event) {
         $('#artistsList').hide();
+        var idArtist = $(event.target).attr('data-id');
+        var artist = this.collection.get({'id': idArtist}); //.at(idArtist)
+        console.log('artist');
+        console.log(artist);
+        console.log(JSON.stringify(artist));
+        this.showArtist.model = artist;
+        this.showArtist.render();
         $('#showDetailArtist').show();
+        $('#musiciansList').show();
     },
     addArtist: function(event) {
         $('#eventsList').hide();
@@ -185,19 +220,40 @@ var ViewShowArtist = MyView.extend({
         'click #btn-backk': 'backListArtist'
     },
     initialize: function(attrs, options) {
-        this.listenTo(this.collection, 'all', this.render);
+        // internal view for musician
+        this.viewMusicians = new ViewMusicians({collection: new Musicians({})});
+        this.listenTo(this.model, 'all', this.render);
         this.render();
-
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {artist: this.model.toJSON()}));
+        this.viewMusicians.render().$el.appendTo(this.$el.find('#musiciansList'));
         return this;
 
     },
     backListArtist: function() {
         $('#showDetailArtist').hide();
+        $('#musiciansList').hide();
         $('#artistsList').show();
 
+    }
+});
+/*
+ |--------------------------------------------------------------------------
+ | TICKET
+ |--------------------------------------------------------------------------
+ */
+
+var ViewTicket = MyView.extend({
+    template: templates.showTicket,
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
+
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {ticket: this.model.toJSON()}));
+        return this;
     }
 });
 
@@ -216,6 +272,10 @@ var ViewEvents = MyView.extend({
         'click #btn-addEvent': 'addEvent'
     },
     initialize: function(attrs, options) {
+        // internal view for event detail
+        this.showEvent = new ViewShowEvent({model: new Event({})});
+        this.showEvent.render().$el.appendTo('#showDetailEvent');
+
         this.listenTo(this.collection, 'all', this.render);
         this.render();
     },
@@ -231,7 +291,10 @@ var ViewEvents = MyView.extend({
     },
     detail: function(event) {
         $('#eventsList').hide();
+        $('#advancedResearchEvents').hide();
         $('#showDetailEvent').show();
+        $('#showTicket').show();
+        $('#showRepresenter').show();
     },
     addEvent: function(event) {
         $('#eventsList').hide();
@@ -242,52 +305,42 @@ var ViewEvents = MyView.extend({
 var ViewShowEvent = MyView.extend({
     template: templates.showEvent,
     events: {
-        'click #btn-back': 'backListEvents',
+        'click #btn-back': 'backListEvents'
     },
     initialize: function(attrs, options) {
-        this.listenTo(this.collection, 'all', this.render);
+        this.viewTicket = new ViewTicket({model: new Ticket({})});
+        this.viewRepresenter = new ViewShowRepresenter({model: new Representer({})});
+        this.listenTo(this.model, 'all', this.render);
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        this.viewTicket.render().$el.appendTo(this.$el.find('#showTicket'));
+        this.viewRepresenter.render().$el.appendTo(this.$el.find('#showRepresenter'));
         return this;
     },
     backListEvents: function() {
         $('#showDetailEvent').hide();
+        $('#showTicket').hide();
         $('#advancedResearchEvents').show();
         $('#eventsList').show();
     }
 });
 var ViewAddEvent = MyView.extend({
     template: templates.addEvent,
-    events: {
-        'click #addTicketCategory': 'addTicketCategory',
-        'click #addArtist': 'addArtist'
-    },
     defaults: function() {
         $("#showAddArtist div").hide();
-//        $("#newArtist div").click(function() {
-//            $(this).next("div").toggle();
-//        });
+
     },
     initialize: function(attrs, options) {
-        this.listenTo(this.collection, 'all', this.render);
+        this.listenTo(this.model, 'all', this.render);
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.collection.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
         return this;
-    },
-    addTicketCategory: function(event) {
-        var newSelectTicket = $('.ticket').clone;
-        var div = $("<div class='ticket'>").html(newSelectTicket);
-        $(".ticket").append(div);
     }
-//    addArtist: function(event) {
-//        var newAddArtist = $('.showAddArtist').clone();
-//        var div = $("<div class='showAddArtist'>").html(newAddArtist);
-//        $(".showAddArtist").append(div);
-//    }
+
 });
 
 /*
@@ -295,8 +348,8 @@ var ViewAddEvent = MyView.extend({
  | REPRESENTANT
  |--------------------------------------------------------------------------
  */
-var ViewRepresentant = MyView.extend({
-    template: templates.representantsList,
+var ViewRepresenters = MyView.extend({
+    template: templates.representersList,
     events: {
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
@@ -308,22 +361,22 @@ var ViewRepresentant = MyView.extend({
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {representants: this.collection.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {representers: this.collection.toJSON()}));
         return this;
     },
-    'delete': function(representant) {
+    'delete': function(event) {
         console.log('delete');
     },
-    edit: function(representant) {
+    edit: function(event) {
         console.log('edit');
     },
-    detail: function(representant) {
+    detail: function(event) {
         console.log('detail');
     }
 });
-console.log('dsk');
-var ViewShowRepresentant = MyView.extend({
-    template: templates.showArtist,
+
+var ViewShowRepresenter = MyView.extend({
+    template: templates.showRepresenter,
     events: {
     },
     initialize: function(attrs, options) {
@@ -331,29 +384,7 @@ var ViewShowRepresentant = MyView.extend({
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {representer: this.model.toJSON()}));
         return this;
     }
-});
-
-
-
-//ROMAIN
-var ViewRomain = MyView.extend({
-    template: templates.Romain,
-    events: {
-        'click #romain': 'romain'
-    },
-    initialize: function(attrs, options) {
-        this.listenTo(this.model, 'all', this.render);
-        this.render();
-    },
-    render: function() {
-        this.$el.html(Mustache.render(this.template, {romain: this.model.toJSON()}));
-        return this;
-    },
-    romain: function(event) {
-        console.log('buton click');
-    }
-
 });
