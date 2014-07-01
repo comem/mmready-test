@@ -208,9 +208,11 @@ var ViewArtists = MyView.extend({
         $('#musiciansList').show();
     },
     addArtist: function(event) {
-        $('#eventsList').hide();
-        $('#advancedResearchEvents').hide();
-        $('#addEvent').show();
+        console.log('cucu');
+        $('#artistsList').hide();
+        $('#advancedResearchArtist').hide();
+        $('#addArtist').show();
+
     }
 });
 
@@ -237,6 +239,19 @@ var ViewShowArtist = MyView.extend({
         $('#artistsList').show();
 
     }
+});
+
+var ViewAddArtist = MyView.extend({
+    template: templates.addArtist,
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {addArtist: this.model.toJSON()}));
+        return this;
+    }
+
 });
 /*
  |--------------------------------------------------------------------------
@@ -328,16 +343,12 @@ var ViewShowEvent = MyView.extend({
 });
 var ViewAddEvent = MyView.extend({
     template: templates.addEvent,
-    defaults: function() {
-        $("#showAddArtist div").hide();
-
-    },
     initialize: function(attrs, options) {
         this.listenTo(this.model, 'all', this.render);
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {addEvent: this.model.toJSON()}));
         return this;
     }
 
