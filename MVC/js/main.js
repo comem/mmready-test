@@ -18,6 +18,7 @@ var templateLink;
 
 $(function() {
     
+    console.log("---DOM IS READY---");
 
     var instrusList = new Instruments();
     var event1 = new Event({title: 'La grosse fiesta 2014', name_de: 'rock', start_date_hour: '25.06.2014',
@@ -83,13 +84,14 @@ $(function() {
 
         artistsList.fetch({
             success: function(collection, response, options) {
-                console.log(artistsList);
-                console.log(JSON.stringify(artistsList));
+                
             }
+           
 
         });
 
-
+ console.log(artistsList);
+                console.log(JSON.stringify(artistsList));
 
 
 //    // gestion des boutons "back" et "forward" du browser
