@@ -196,9 +196,14 @@ var ViewArtists = MyView.extend({
         console.log('edit');
     },
     detail: function(event) {
+
         $('#artistsList').hide();
         var idArtist = $(event.target).attr('data-id');
+       
+
         var artist = this.collection.get({'id': idArtist}); //.at(idArtist)
+        this.showArtist.model.set('urlRoot', ARTISTS + "/" + idArtist);
+        //console.log(idArtist);
 //        console.log('artist');
 //        console.log(artist);
 //        console.log(JSON.stringify(artist));
@@ -206,6 +211,7 @@ var ViewArtists = MyView.extend({
         this.showArtist.render();
         $('#showDetailArtist').show();
         $('#musiciansList').show();
+        //this.showArtist.model.fetch();
         getOneArtist(idArtist);
     },
     addArtist: function(event) {
@@ -269,25 +275,20 @@ var ViewAddArtist = MyView.extend({
     getValue: function(event) {
 
         console.log("create Artist");
-         var name =  this.$el.find('[name="artistNameInput"]').val();
-         var genre =  this.$el.find('[name="artistGenreInput"]').val();
-         var hourArrival = this.$el.find('[name="hourArrival"]').val();
-         var shortDescription = this.$el.find('[name="shortDescription"]').val();
-    
+        var name = this.$el.find('[name="artistNameInput"]').val();
+        var genre = this.$el.find('[name="artistGenreInput"]').val();
+        var hourArrival = this.$el.find('[name="hourArrival"]').val();
+        var shortDescription = this.$el.find('[name="shortDescription"]').val();
+
         console.log("name");
         console.log(name);
-        
+
         console.log("genre");
         console.log(genre);
-        
+
         console.log("hourArrival");
         console.log(hourArrival);
-//        var genre = $("#genres").next('option').attr('data-id');
-//         console.log("genre");
-//        console.log(genre);
-//        var descr = $("#shortDescription").val();
-        
-        
+
         if (name === " ") {
             console.log("caractère vide");
         } else {
