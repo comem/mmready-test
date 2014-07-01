@@ -270,20 +270,29 @@ var ViewAddArtist = MyView.extend({
 
         console.log("create Artist");
          var name =  this.$el.find('[name="artistNameInput"]').val();
+         var genre =  this.$el.find('[name="artistGenreInput"]').val();
+         var hourArrival = this.$el.find('[name="hourArrival"]').val();
+         var shortDescription = this.$el.find('[name="shortDescription"]').val();
     
         console.log("name");
         console.log(name);
+        
+        console.log("genre");
+        console.log(genre);
+        
+        console.log("hourArrival");
+        console.log(hourArrival);
 //        var genre = $("#genres").next('option').attr('data-id');
 //         console.log("genre");
 //        console.log(genre);
 //        var descr = $("#shortDescription").val();
         
-//        
-//        if (name === " ") {
-//            console.log("caractère vide");
-//        } else {
-//            saveArtist(name, genre, descr);
-//        }
+        
+        if (name === " ") {
+            console.log("caractère vide");
+        } else {
+            saveArtist(name, genre, shortDescription);
+        }
     }
 });
 

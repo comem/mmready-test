@@ -11,16 +11,17 @@
                     <!--name-->
                     <div class="input-group">
                         <label for="artistNameLabel">Artist name: *</label>
-                        <input type="text" name="artistNameInput" id="artistName" placeholder="Artist name" >
+                        <input type="text" name="artistNameInput" id="artistName" placeholder="Artist name" required>
                     </div>
                     <!--genre-->
                     <div class="input-group genre">
                         <label for="genre">Genre: *</label>
-                        <select name="genre" id="genres"> 
+                        <!--<select name="genre" id="genres"> 
                             <option value="rock" data-id="1">Rock</option> 
                             <option value="metal">Metal</option> 
                             <option value="pop">Pop</option> 
-                        </select> 
+                        </select> -->
+                        <input type="text" name="artistGenreInput" id="artistGenre" placeholder="Artist genre" required>
                         <button id='addGenre'>Add</button>
                     </div>
                     <!--hour of arrival-->
