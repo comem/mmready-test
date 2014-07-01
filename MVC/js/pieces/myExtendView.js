@@ -250,8 +250,8 @@ var ViewShowArtist = MyView.extend({
 
 var ViewAddArtist = MyView.extend({
     template: templates.addArtist,
-    event: {
-    'click #addMusician': 'addMusician',
+    events: {
+        'click #addMusician': 'addMusician',
         'click #saveOneArtist': 'getValue'
     },
     initialize: function(attrs, options) {
@@ -262,27 +262,24 @@ var ViewAddArtist = MyView.extend({
         this.$el.html(Mustache.render(this.template, {addArtist: this.model.toJSON()}));
         return this;
     },
+    addMusician: function(event) {
+        console.log('addMusician');
+    },
     getValue: function(event) {
         console.log("create Artist");
-//        var name = $("#nameArtistInput").val();
-//        var genre = $("#genreArtistInput").val();
-//        var descr = $("#shortDescrArtistInput").val();
-//        console.log("name");
-//        console.log(name);
-//        if (name === " ") {
-//            console.log("caractère vide");
-//        } else {
-//            saveArtist(name, genre, descr);
-//        }
-    },
-    saveArtist: function(name, genre, descr) {
-
-    },
-    addMusician: function(event){
-        console.log('addMusician');
+        var name = $("#artistName").val();
+        var genre = $("#genreArtistInput").val();
+        var descr = $("#shortDescrArtistInput").val();
+        console.log("name");
+        console.log(name);
+        if (name === " ") {
+            console.log("caractère vide");
+        } else {
+            saveArtist(name, genre, descr);
+        }
     }
-
 });
+
 /*
  |--------------------------------------------------------------------------
  | TICKET
