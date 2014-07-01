@@ -218,7 +218,9 @@ var ViewArtists = MyView.extend({
 var ViewShowArtist = MyView.extend({
     template: templates.showArtist,
     events: {
-        'click #btn-backk': 'backListArtist'
+        'click #btn-back': 'backListArtist',
+        'click #btn-edit': 'editArtist',
+        'click #btn-delete': 'deleteArtist',
     },
     initialize: function(attrs, options) {
         // internal view for musician
@@ -232,17 +234,24 @@ var ViewShowArtist = MyView.extend({
         return this;
 
     },
-    backListArtist: function() {
+    backListArtist: function(event) {
         $('#showDetailArtist').hide();
         $('#musiciansList').hide();
         $('#artistsList').show();
 
+    },
+    editArtist: function(event) {
+        console.log('edit Artist');
+    },
+    deleteArtist: function(event) {
+        console.log('delete Artist');
     }
 });
 
 var ViewAddArtist = MyView.extend({
     template: templates.addArtist,
     event: {
+    'click #addMusician': 'addMusician',
         'click #saveOneArtist': 'getValue'
     },
     initialize: function(attrs, options) {
@@ -268,6 +277,9 @@ var ViewAddArtist = MyView.extend({
     },
     saveArtist: function(name, genre, descr) {
 
+    },
+    addMusician: function(event){
+        console.log('addMusician');
     }
 
 });
