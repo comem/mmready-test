@@ -38,6 +38,11 @@ var genresListView = new GenresListView({collection: genresList});
 //--------------------------------------------------------
 
 
+$.holdReady( true );
+$.getScript( "../js/pieces/ValidatorModelnView.js", function() {
+$.holdReady( false );
+});
+
 $(document).ready(function() {
     
     loginViewVar.$el.appendTo("#login");

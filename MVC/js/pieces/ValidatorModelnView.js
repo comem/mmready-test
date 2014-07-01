@@ -11,61 +11,51 @@ Backbone.Validation.configure({
 _.extend(Backbone.Validation.callbacks, {
     valid: function (view, attr, selector) {
         var $el = view.$('[name=' + attr + ']'), 
-            $group = $el.closest('.form-group');
+            $group = $el.closest('.input-group');
         
         $group.removeClass('has-error');
         $group.find('.help-block').html('').addClass('hidden');
     },
     invalid: function (view, attr, error, selector) {
         var $el = view.$('[name=' + attr + ']'), 
-            $group = $el.closest('.form-group');
+            $group = $el.closest('.input-group');
         
         $group.addClass('has-error');
         $group.find('.help-block').html(error).removeClass('hidden');
     }
 });
 
+
+
+Backbone.Validation.configure({
+  labelFormatter: 'label'
+});
+
+
 // Define a model with some validation rules
-var SignUpModel = Backbone.Model.extend({
-    defaults: {
-        country: 'Norway'
-    },
+var CreatArtistModel = Backbone.Model.extend({
+    
     validation: {
-        username: {
-            required: true
-        },
-        email: {
-            required: true,
-            pattern: 'email'
-        },
-        password: {
-            minLength: 8
-        },
-        repeatPassword: {
-            equalTo: 'password',
-            msg: 'The passwords does not match'
-        },
-        country: {
-          oneOf: ['Norway', 'Sweeden']
-        },
-        gender: {
-            required: true
-        },
-        age: {
+        nameArtistInput: {
+            
+            minLength: 8,
             required: false,
-            range: [18, 100]
+            msg: "Min 8"
+        },genreArtistInput: {
+            required: true,
         },
-        terms: {
-            acceptance: true
+        shortDescrArtistInput: {
+            required: true,
+            msg: "min 1 genre"
         }
     }
 });
 
-var SignUpForm = Backbone.View.extend({
+var CreatAnArtist = Backbone.View.extend({
     events: {
-        'click #signUpButton': function (e) {
+        'click #btnCreateArtist': function (e) {
             e.preventDefault();
-            this.signUp();
+            this.creatArtist();
         }
     },
     
@@ -73,59 +63,21 @@ var SignUpForm = Backbone.View.extend({
     // the model and the view
     // See: https://github.com/NYTimes/backbone.stickit
     bindings: {
-        '[name=username]': {
-            observe: 'username',
+        '[name=nameArtistInput]': {
+            observe: 'nameArtistInput',
+            setOptions: {
+                validate: false
+            }
+        },
+        '[name=shortDescrArtistInput]': {
+            observe: 'shortDescrArtistInput',
             setOptions: {
                 validate: true
             }
-        },
-        '[name=email]': {
-            observe: 'email',
-            setOptions: {
-                validate: true
-            }
-        },
-        '[name=password]': {
-            observe: 'password',
-            setOptions: {
-                validate: true
-            }
-        },
-        '[name=repeatPassword]': {
-            observe: 'repeatPassword',
-            setOptions: {
-                validate: true
-            }
-        },
-        '[name=country]': {
-            observe: 'country',
-            selectOptions: {
-                collection: function() {
-                  return ['Norway', 'Sweeden', 'Denmark', 'Finland', 'Iceland'];
-                }
-            },
-            setOptions: {
-                validate: true
-            }
-        },
-        '[name=gender]': {
-            observe: 'gender',
-            setOptions: {
-                validate: true
-            }
-        },
-        '[name=age]': {
-            observe: 'age',
-            events: ['change'],
-            onSet: function(val) {
-                return parseInt(val, 10) || undefined;
-            },
-            setOptions: {
-                validate: true
-            }
-        },
-        '[name=terms]': {
-            observe: 'terms',
+        }
+        ,
+        '[name=genreArtistInput]': {
+            observe: 'genreArtistInput',
             setOptions: {
                 validate: true
             }
@@ -143,7 +95,7 @@ var SignUpForm = Backbone.View.extend({
         return this;
     },
     
-    signUp: function () {
+    creatArtist: function () {
         // Check if the model is valid before saving
         // See: http://thedersen.com/projects/backbone-validation/#methods/isvalid
         if(this.model.isValid(true)) {       
@@ -161,9 +113,9 @@ var SignUpForm = Backbone.View.extend({
 });
 
 $(function () {
-    var view = new SignUpForm({
+    var view = new CreatAnArtist({
         el: 'form',
-        model: new SignUpModel()
+        model: new CreatArtistModel()
     });
     view.render();
 });
