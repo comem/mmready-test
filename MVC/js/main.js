@@ -43,7 +43,7 @@ $(function() {
     var representersListView = new ViewRepresenters({collection: representerList});
 
     var addEvent = new ViewAddEvent({model: event});
-    var addArtist = new ViewAddArtist({model: event});
+    var addArtist = new ViewAddArtist({model: artist});
 
 
 
@@ -57,7 +57,7 @@ $(function() {
     $('#showDetailEvent').hide();
     $('#showDetailArtist').hide();
     $('#addEvent').hide();
-    $('#addArtist').hide();
+    $('#addOneArtist').hide();
     $('#musiciansList').hide();
     $('#showTicket').hide();
     $('#showRepresenter').hide();
@@ -77,13 +77,13 @@ $(function() {
         
         //ADD
         addEvent.render().$el.appendTo('#addEvent');
-        addArtist.render().$el.appendTo('#addArtist');
+        addArtist.render().$el.appendTo('#addOneArtist');
 
 
         artistsList.fetch({
             success: function(collection, response, options) {
-                console.log(artistsList);
-                console.log(JSON.stringify(artistsList));
+//                console.log(artistsList);
+//                console.log(JSON.stringify(artistsList));
             }
 
         });
@@ -113,7 +113,9 @@ $(function() {
         $(elem).prepend(++index +". ");
     });
     
-        //musiciens
+    ///////GESTION DES EVENEMENT DANS LES FORMULAIRE DE CREATE ARTIST ET EVENT////////////
+    
+    //musiciens
     templateMusician = $('.musician').clone();
     $('#addMusician').click(addMusician);
     $('.musicians').empty();
@@ -130,6 +132,8 @@ $(function() {
     $('.links').empty();
     //$('#addInstrument').click(addInstrument);
 });
+
+
 /*
  |--------------------------------------------------------------------------
  | Gestion de l'historique (pour les boutons "back" et "forward" du browser

@@ -199,19 +199,19 @@ var ViewArtists = MyView.extend({
         $('#artistsList').hide();
         var idArtist = $(event.target).attr('data-id');
         var artist = this.collection.get({'id': idArtist}); //.at(idArtist)
-        console.log('artist');
-        console.log(artist);
-        console.log(JSON.stringify(artist));
+//        console.log('artist');
+//        console.log(artist);
+//        console.log(JSON.stringify(artist));
         this.showArtist.model = artist;
         this.showArtist.render();
         $('#showDetailArtist').show();
         $('#musiciansList').show();
     },
     addArtist: function(event) {
-        console.log('cucu');
+        
         $('#artistsList').hide();
         $('#advancedResearchArtist').hide();
-        $('#addArtist').show();
+        $('#addOneArtist').show();
 
     }
 });
@@ -344,11 +344,15 @@ var ViewShowEvent = MyView.extend({
 var ViewAddEvent = MyView.extend({
     template: templates.addEvent,
     initialize: function(attrs, options) {
+        // internal view for event detail
+        this.addArtistIntoEvent = new ViewAddArtist({model: new Artist({})});
+        
         this.listenTo(this.model, 'all', this.render);
         this.render();
     },
     render: function() {
         this.$el.html(Mustache.render(this.template, {addEvent: this.model.toJSON()}));
+        this.addArtistIntoEvent.render().$el.appendTo('#addOneArtist');
         return this;
     }
 
