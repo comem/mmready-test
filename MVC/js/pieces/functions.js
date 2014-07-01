@@ -145,9 +145,10 @@ function loginButton(){
 
      
     $("#btnConnect").on("click", function(){
-      var email = $("input#email").val();
+      var email = $("input[type=email]").val();
+      console.log("email");
     console.log(email);
-    var password = $("input#password").val();
+    var password = $("input[type=password]").val();
     console.log("password");
     console.log(password);
     
@@ -160,7 +161,7 @@ function loginButton(){
     url: LOGIN,
     dataType: 'json',
     //async: false,
-    data: {"email":email ,"password":password} ,                       //AUTH_MANAGER_FR ,      //"matou@matou.ch""matou"}
+    data: {"email":email ,"password":password} ,      //email     password            //AUTH_MANAGER_FR ,      //"matou@matou.ch""matou"}
 
     
     success: function (data, textStatus, jqXHR){
@@ -174,10 +175,13 @@ function loginButton(){
           console.log(data.data.title);
           //$("#loginFab").hide();
           alert(data.data.title);
-      }else{
+      }else if (data.status==="error"){
           alert(data.message.title);
           console.log("Phrase d'erreur : "+ data.message.title);
           //IsConnected();
+          return;
+      }else if((data.status==="fail")){
+          console.log("Phrase d'erreur : "+ data.message);
           return;
       }
       

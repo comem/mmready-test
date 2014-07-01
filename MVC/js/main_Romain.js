@@ -22,8 +22,8 @@ var musiciansList = new Musicians();
 var instrusList = new Instruments();
 
 
-var login = new MyInitModel({"txtButton":"Activation"});
-var loginViewVar = new LoginView({model: login});
+//var login = new MyInitModel({"txtButton":"Activation"});
+//var loginViewVar = new LoginView({model: login});
 
 var createArtist = new MyModel();
 var createArtistView = new CreateArtistView({model: createArtist});
