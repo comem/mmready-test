@@ -35,18 +35,23 @@
                 <dt>Genre(s)</dt>
                 <dd>{{name_de}}</dd>
                 {{/genres}}
-
-
+            </dl>
+            {{#events}}
+            <dl>
+                <dt>Event</dt>
+                <dd>{{title_de}}</dd>
+                {{#performers}}
                 <dt>heure d'arrivée </dt>
                 <dd>{{artist_hour_of_arrival}}</dd>
-                
+
                 <dt>Order </dt>
                 <dd>{{order}}</dd>
 
                 <dt>Is Support</dt>
                 <dd>{{is_support}}</dd>
-
+                {{/performers}}
             </dl>
+{{/events}}
             <div class="row">
                 <div class="col-lg-6">
                     <h3>Short description</h3> 
@@ -85,8 +90,34 @@
             {{/links}}
         </div>
     </div>
-    <section id="musiciansList">
+    <!--<section id="musiciansList">
 
-    </section>
+    </section>-->
+    {{#musicians}}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="headerShowBox">
+                <h2><i class="ico-musician"></i>Musician</h2> 
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+
+                    <dl>       
+                        <dt>Name</dt>
+                        <dd>{{first_name}}</dd>
+                        <dt>Scene Name</dt>
+                        <dd>{{stagename}}</dd>
+                        {{#instruments}}
+                        <dt>Instruments</dt>
+                        <dd>{{name_de}}</dd>
+                        {{/instruments}}
+                    </dl>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    {{/musicians}}
 </div>
 {{/artist}}

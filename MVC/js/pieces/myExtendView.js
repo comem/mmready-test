@@ -196,29 +196,44 @@ var ViewArtists = MyView.extend({
         console.log('edit');
     },
     detail: function(event) {
-
         $('#artistsList').hide();
         var idArtist = $(event.target).attr('data-id');
-        //var idArtist = $(".ico-detail").attr("data-id");
-        //var artist = this.collection.at(idArtist); //.at(idArtist)
-
-        this.showArtist.model.set('urlRoot', ARTISTS + "/" + idArtist);
-        console.log(this.showArtist.model);
-        artist = this.showArtist.model;
+        var artist = this.showArtist.model;
+        artist.set('id', idArtist);
         artist.fetch({
             success: function(object, response, c) {
                 console.log(object);
                 console.log(c);
-
             }, error: function(object, response, c) {
                 console.log(object);
                 console.log(response);
             }
         });
-
         $('#showDetailArtist').show();
         $('#musiciansList').show();
         //this.showArtist.render();
+//        $('#artistsList').hide();
+//        var idArtist = $(event.target).attr('data-id');
+//        //var idArtist = $(".ico-detail").attr("data-id");
+//        //var artist = this.collection.at(idArtist); //.at(idArtist)
+//
+//        this.showArtist.model.set('urlRoot', ARTISTS + "/" + idArtist);
+//        console.log(this.showArtist.model);
+//        artist = this.showArtist.model;
+//        artist.fetch({
+//            success: function(object, response, c) {
+//                console.log(object);
+//                console.log(c);
+//
+//            }, error: function(object, response, c) {
+//                console.log(object);
+//                console.log(response);
+//            }
+//        });
+//
+//        $('#showDetailArtist').show();
+//        $('#musiciansList').show();
+//        //this.showArtist.render();
 
 
     },
