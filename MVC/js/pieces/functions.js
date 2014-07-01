@@ -74,6 +74,9 @@ function newArtist(name,genre, descr){
     
     var artist1 = new Artist({"name":name, "genres": [genre], "short_description_de": descr});
        
+       
+       
+       
        console.log(artist1);
        
        console.log(JSON.stringify(artist1));
@@ -137,13 +140,23 @@ function newArtist(name,genre, descr){
 }
 
 
-function loginFunction(){
+function loginButton(){
+     var login = new MyLoginModel({});
+var loginViewVar = new LoginView({model: login});
     
+    
+    loginFunction();
+    
+   
     //LOGIN
 
-    console.log("click activation");
-        
-    var email = $("input#email").val();
+   
+}
+
+
+function loginFunction(){
+    
+     var email = $("input#email").val();
     console.log(email);
     var password = $("input#password").val();
     console.log("password");
@@ -189,7 +202,8 @@ function loginFunction(){
 //        
 //    }
 }); //FIN AJAX
-}
+
+};
 
 
 function TESTS(){

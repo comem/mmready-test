@@ -40,7 +40,7 @@ var genresListView = new GenresListView({collection: genresList});
 
 $(document).ready(function() {
     
-    loginViewVar.$el.appendTo("#login");
+    //loginViewVar.$el.appendTo("#login");
     createArtistView.$el.appendTo("#createArtist");
     
    //genresList.fetch();
@@ -90,6 +90,15 @@ $("#btnCreateArtist").on("click", function(){
           newArtist(name, genre, descr);  
         }
         
+});
+
+ $("#btnLOGINFab").on("click", function(){
+        console.log("clickLOGIN");
+        $("section").hide();
+        loginViewVar.render().$el.appendTo("body");
+        
+        //$("section#loginFab").show();
+        loginButton();
 });
    
     
