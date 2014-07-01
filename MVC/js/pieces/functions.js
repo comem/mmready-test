@@ -29,8 +29,8 @@ function getAllArtists(){
 
 function getOneArtist(id){
    
-   var OneArtist = Artists.extend({
-       url:ARTISTS+"/"+id,
+   var OneArtist = Artist.extend({
+       urlRoot:ARTISTS+"/"+id,
        parse: function (response) {
         // Gestion conditionnelle du format JSEND
         console.log("La response reçue du Parse d'un collection");
@@ -42,7 +42,7 @@ function getOneArtist(id){
    console.log("getOneArtists");
    
     var artist1 = new OneArtist();
-   var oneArtistView = new ViewShowArtist({collection: artist1});
+//   var oneArtistView = new ViewShowArtist({collection: artist1});
    
    //artist1.set("id", id);
     artist1.fetch();
@@ -58,7 +58,7 @@ function getOneArtist(id){
     
 }
 
-function newArtist(name,genre, descr){
+function saveArtist(name,genre, descr){
    
     
        
@@ -73,6 +73,9 @@ function newArtist(name,genre, descr){
 //    artist1.fetch();
     
     var artist1 = new Artist({"name":name, "genres": [genre], "short_description_de": descr});
+       
+       
+       
        
        console.log(artist1);
        
@@ -137,13 +140,12 @@ function newArtist(name,genre, descr){
 }
 
 
-function loginFunction(){
+function loginButton(){
     
-    //LOGIN
 
-    console.log("click activation");
-        
-    var email = $("input#email").val();
+     
+    $("#btnConnect").on("click", function(){
+      var email = $("input#email").val();
     console.log(email);
     var password = $("input#password").val();
     console.log("password");
@@ -170,17 +172,18 @@ function loginFunction(){
       if(data.status==='success'){
           console.log("Data.title : ");
           console.log(data.data.title);
-          $("#login").hide();
-          alert("Vous êtes bien authentifié en tant que Manager");
+          //$("#loginFab").hide();
+          alert(data.data.title);
       }else{
+          alert(data.message.title);
           console.log("Phrase d'erreur : "+ data.message.title);
           //IsConnected();
           return;
       }
       
       //IsConnected();
-    },
-    crossDomain: true
+    }
+   //, crossDomain: true
 //    error: function(jqXHR, textStatus,errorThrown){
 //        console.log("Vous n'êtes pas authentifié blblblbl!");
 //        console.log(textStatus);
@@ -189,7 +192,22 @@ function loginFunction(){
 //        
 //    }
 }); //FIN AJAX
-}
+    });//FIN #btnConnect
+    
+};
+    
+   
+    
+
+    
+
+
+
+function loginFunction(){
+    
+    
+
+};
 
 
 function TESTS(){

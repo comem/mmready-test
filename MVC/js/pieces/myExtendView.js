@@ -196,28 +196,38 @@ var ViewArtists = MyView.extend({
         console.log('edit');
     },
     detail: function(event) {
+
         $('#artistsList').hide();
         var idArtist = $(event.target).attr('data-id');
+       
+
         var artist = this.collection.get({'id': idArtist}); //.at(idArtist)
-        console.log('artist');
-        console.log(artist);
-        console.log(JSON.stringify(artist));
+        this.showArtist.model.set('urlRoot', ARTISTS + "/" + idArtist);
+        //console.log(idArtist);
+//        console.log('artist');
+//        console.log(artist);
+//        console.log(JSON.stringify(artist));
         this.showArtist.model = artist;
         this.showArtist.render();
         $('#showDetailArtist').show();
         $('#musiciansList').show();
+        //this.showArtist.model.fetch();
+        getOneArtist(idArtist);
     },
     addArtist: function(event) {
-        $('#eventsList').hide();
-        $('#advancedResearchEvents').hide();
-        $('#addEvent').show();
+        $('#artistsList').hide();
+        $('#advancedResearchArtist').hide();
+        $('#addOneArtist').show();
+
     }
 });
 
 var ViewShowArtist = MyView.extend({
     template: templates.showArtist,
     events: {
-        'click #btn-backk': 'backListArtist'
+        'click #btn-back': 'backListArtist',
+        'click #btn-edit': 'editArtist',
+        'click #btn-delete': 'deleteArtist',
     },
     initialize: function(attrs, options) {
         // internal view for musician
@@ -231,13 +241,62 @@ var ViewShowArtist = MyView.extend({
         return this;
 
     },
-    backListArtist: function() {
+    backListArtist: function(event) {
         $('#showDetailArtist').hide();
         $('#musiciansList').hide();
         $('#artistsList').show();
 
+    },
+    editArtist: function(event) {
+        console.log('edit Artist');
+    },
+    deleteArtist: function(event) {
+        console.log('delete Artist');
     }
 });
+
+var ViewAddArtist = MyView.extend({
+    template: templates.addArtist,
+    events: {
+        'click #addMusician': 'addMusician',
+        'click #saveOneArtist': 'getValue'
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {addArtist: this.model.toJSON()}));
+        return this;
+    },
+    addMusician: function(event) {
+        console.log('addMusician');
+    },
+    getValue: function(event) {
+
+        console.log("create Artist");
+        var name = this.$el.find('[name="artistNameInput"]').val();
+        var genre = this.$el.find('[name="artistGenreInput"]').val();
+        var hourArrival = this.$el.find('[name="hourArrival"]').val();
+        var shortDescription = this.$el.find('[name="shortDescription"]').val();
+
+        console.log("name");
+        console.log(name);
+
+        console.log("genre");
+        console.log(genre);
+
+        console.log("hourArrival");
+        console.log(hourArrival);
+
+        if (name === " ") {
+            console.log("caractère vide");
+        } else {
+            saveArtist(name, genre, shortDescription);
+        }
+    }
+});
+
 /*
  |--------------------------------------------------------------------------
  | TICKET
@@ -297,9 +356,11 @@ var ViewEvents = MyView.extend({
         $('#showRepresenter').show();
     },
     addEvent: function(event) {
+
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         $('#addEvent').show();
+        $('#addArtistIntoEvent').show();
     }
 });
 var ViewShowEvent = MyView.extend({
@@ -328,16 +389,17 @@ var ViewShowEvent = MyView.extend({
 });
 var ViewAddEvent = MyView.extend({
     template: templates.addEvent,
-    defaults: function() {
-        $("#showAddArtist div").hide();
-
-    },
     initialize: function(attrs, options) {
+        // internal view for event detail
+        this.addArtistIntoEvent = new ViewAddArtist({model: new Artist({})});
+
         this.listenTo(this.model, 'all', this.render);
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {addEvent: this.model.toJSON()}));
+
+        this.addArtistIntoEvent.render().$el.appendTo(this.$el.find('#addArtistIntoEvent'));
         return this;
     }
 

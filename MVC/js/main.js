@@ -28,6 +28,7 @@ $.ajaxSetup({
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     IsConnected();
                 },
                 crossDomain: true,
@@ -71,6 +72,16 @@ $.ajax //Requête de connection API
 $(function() {
     
 >>>>>>> origin/Backbone
+=======
+var templateMusician;
+var templateTicket;
+var templateImage;
+var templateLink;
+
+$(function() {
+    
+    console.log("---DOM IS READY---");
+>>>>>>> origin/Backbone
 
     var instrusList = new Instruments();
     var event1 = new Event({title: 'La grosse fiesta 2014', name_de: 'rock', start_date_hour: '25.06.2014',
@@ -80,6 +91,9 @@ $(function() {
     var artistsList = new Artists();
     var eventsList = new Events([event1]);
     var representerList = new Representers([representant1]);
+    
+    var event = new Event({});
+    var artist = new Artist({});
 
 <<<<<<< HEAD
 
@@ -138,7 +152,8 @@ eventsList.fetch({
     var artistsListView = new ViewArtists({collection: artistsList});
     var representersListView = new ViewRepresenters({collection: representerList});
 
-    //var addEvent = new ViewAddEvent({collection: eventsList});
+    var addEvent = new ViewAddEvent({model: event});
+    var addArtist = new ViewAddArtist({model: artist});
 
 
 
@@ -152,9 +167,11 @@ eventsList.fetch({
     $('#showDetailEvent').hide();
     $('#showDetailArtist').hide();
     $('#addEvent').hide();
+    $('#addOneArtist').hide();
     $('#musiciansList').hide();
     $('#showTicket').hide();
     $('#showRepresenter').hide();
+    $('#addArtistIntoEvent').hide();
     
 
 
@@ -170,18 +187,20 @@ eventsList.fetch({
         representersListView.render().$el.appendTo('#representersList');
         
         //ADD
-        //addEvent.render().$el.appendTo('#addEventView');
+        addEvent.render().$el.appendTo('#addEvent');
+        addArtist.render().$el.appendTo('#addOneArtist');
 
 
         artistsList.fetch({
             success: function(collection, response, options) {
-                console.log(artistsList);
-                console.log(JSON.stringify(artistsList));
+                
             }
+           
 
         });
 
-
+ console.log(artistsList);
+                console.log(JSON.stringify(artistsList));
 
 
 //    // gestion des boutons "back" et "forward" du browser
@@ -205,7 +224,28 @@ eventsList.fetch({
      $(".listArtists p").each(function (index, elem){
         $(elem).prepend(++index +". ");
     });
+    
+    ///////GESTION DES EVENEMENT DANS LES FORMULAIRE DE CREATE ARTIST ET EVENT////////////
+    
+//    //musiciens
+//    templateMusician = $('.musician').clone();
+//    $('#addMusician').click(addMusician);
+//    $('.musicians').empty();
+//    //ticket
+//    templateTicket = $('.ticket').clone();
+//    $('#addTicketCategory').on('click', addTicket);
+//    //image
+//    templateImage = $('.image').clone();
+//    $('#addImage').on('click', addImage);
+//    $('.images').empty();
+//    //link
+//    templateLink = $('.link').clone();
+//    $('#addLink').on('click', addLink);
+//    $('.links').empty();
+//    //$('#addInstrument').click(addInstrument);
 });
+
+
 /*
  |--------------------------------------------------------------------------
  | Gestion de l'historique (pour les boutons "back" et "forward" du browser
@@ -246,6 +286,107 @@ function menuGoToSection(sectionName) {
     // Affichage de la bonne <section>
     $(nodeIdToShow).show();
 }
+//
+//////***********************************************************************************
+//////*************************************TICKETS***************************************
+//////***********************************************************************************
+//function addTicket() {
+//    var ticket = templateTicket.clone();
+//    //récupérer le nombre de ticket actuellement visibles
+//    var nbTickets = $(".ticket").length;
+//    //incrémenter l'id du prochain ticket
+//    var nextId = nbTickets + 1;
+//    //cloner et rajouter au dom
+//    $(ticket).clone().appendTo("#selectTicket");
+//    //modifier l'id du dernier élément ajouté
+//    $(".ticket").last().attr('id', 'ticket_' + nextId);
+//    //faire apparaître
+//    $(".ticket").last().removeClass('hide');
+//    //ajouter le bouton supprimer
+//    $('<button class="deleteTicket"><i class="ico-delete "></i>Supprimer</button> ').appendTo($(".ticket").last());
+//    //supprimer un ticket
+//    $('.deleteTicket').on('click', deleteTicket);
+//    
+//}
+//
+//function deleteTicket() {
+//    $(this).parent().remove();
+//}
+//
+////***********************************************************************************
+////*************************************MUSICIEN**************************************
+////***********************************************************************************
+//function addMusician() {
+//    var musician=templateMusician.clone();
+//    //récupérer le nombre de ticket actuellement visibles
+//    var nbMusicians = $(".musician").length;
+//    //incrémenter l'id du prochain musicien
+//    var nextId = nbMusicians + 1;
+//    //cloner et rajouter au dom
+//    $(musician).clone().appendTo(".musicians");
+//    //modifier l'id du dernier élément ajouté
+//    $(".musician").last().attr('id', 'musician_' + nextId);
+//    //supprimer un musicien
+//    $('.deleteMusician').click(deleteMusician);
+//    //sauvegarder un musicien
+//    $('.saveMusician').click(saveMusician);
+//
+//}
+//
+//function deleteMusician() {
+//    $(this).parent().remove();
+//}
+//function saveMusician() {
+//    var firstName = $(this).parent().find('input[data-key=musicianFirstName]').val();
+//    var lastName = $(this).parent().find('input[data-key=musicianLastName]').val();
+//    var sceneName = $(this).parent().find('input[data-key=musicianScenetName]').val();
+//    alert(firstName);
+//    alert(lastName);
+//}
+////***********************************************************************************
+////*************************************IMAGE**************************************
+////***********************************************************************************
+//function addImage() {
+//    var image=templateImage.clone();
+//    //récupérer le nombre de ticket actuellement visibles
+//    var nb = $(".image").length;
+//    //incrémenter l'id du prochain musicien
+//    var nextId = nb + 1;
+//    //cloner et rajouter au dom
+//    $(image).clone().appendTo(".images");
+//    //modifier l'id du dernier élément ajouté
+//    $(".image").last().attr('id', 'image_' + nextId);
+//    
+//    //supprimer un musicien
+//    $('.deleteImage').click(deleteImage);
+//}
+//
+//function deleteImage() {
+//    $(this).parent().remove();
+//}
+//
+////***********************************************************************************
+////*************************************LINKS**************************************
+////***********************************************************************************
+//function addLink() {
+//    var image=templateLink.clone();
+//    //récupérer le nombre de ticket actuellement visibles
+//    var nb = $(".link").length;
+//    //incrémenter l'id du prochain musicien
+//    var nextId = nb + 1;
+//    //cloner et rajouter au dom
+//    $(image).clone().appendTo(".links");
+//    //modifier l'id du dernier élément ajouté
+//    $(".link").last().attr('id', 'link_' + nextId);
+//    
+//    //supprimer un musicien
+//    $('.deleteLink').click(deleteLink);
+//
+//}
+//
+//function deleteLink() {
+//    $(this).parent().remove();
+//}
 
 
 
