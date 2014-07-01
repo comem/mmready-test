@@ -83,8 +83,8 @@ $(function() {
 
         artistsList.fetch({
             success: function(collection, response, options) {
-//                console.log(artistsList);
-//                console.log(JSON.stringify(artistsList));
+                console.log(artistsList);
+                console.log(JSON.stringify(artistsList));
             }
 
         });

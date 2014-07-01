@@ -10,14 +10,14 @@
                     <h2><i class="ico-info"></i>Infos</h2  >
                     <!--name-->
                     <div class="input-group">
-                        <label for="artistName">Artist name: *</label>
-                        <input type="text" name="artistName" id="artistName" placeholder="Artist name" required>
+                        <label for="artistNameLabel">Artist name: *</label>
+                        <input type="text" name="artistNameInput" id="artistName" placeholder="Artist name" >
                     </div>
                     <!--genre-->
                     <div class="input-group genre">
                         <label for="genre">Genre: *</label>
-                        <select name="genre"> 
-                            <option value="rock">Rock</option> 
+                        <select name="genre" id="genres"> 
+                            <option value="rock" data-id="1">Rock</option> 
                             <option value="metal">Metal</option> 
                             <option value="pop">Pop</option> 
                         </select> 
@@ -181,6 +181,6 @@
             </div>
         </div>
     </div>
-    <button id="saveOneArtist" class="pull-righ saveArtist" ><i class="ico-save"></i>Save Artist</button>
+    <button id="saveOneArtist" class="pull-righ saveArtist" type="button"><i class="ico-save"></i>Save Artist</button>
     <br/>
 </div>  

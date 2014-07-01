@@ -206,6 +206,7 @@ var ViewArtists = MyView.extend({
         this.showArtist.render();
         $('#showDetailArtist').show();
         $('#musiciansList').show();
+        getOneArtist(idArtist);
     },
     addArtist: function(event) {
         $('#artistsList').hide();
@@ -266,17 +267,23 @@ var ViewAddArtist = MyView.extend({
         console.log('addMusician');
     },
     getValue: function(event) {
+
         console.log("create Artist");
-        var name = $("#artistName").val();
-        var genre = $("#genreArtistInput").val();
-        var descr = $("#shortDescrArtistInput").val();
+         var name =  this.$el.find('[name="artistNameInput"]').val();
+    
         console.log("name");
         console.log(name);
-        if (name === " ") {
-            console.log("caractère vide");
-        } else {
-            saveArtist(name, genre, descr);
-        }
+//        var genre = $("#genres").next('option').attr('data-id');
+//         console.log("genre");
+//        console.log(genre);
+//        var descr = $("#shortDescription").val();
+        
+//        
+//        if (name === " ") {
+//            console.log("caractère vide");
+//        } else {
+//            saveArtist(name, genre, descr);
+//        }
     }
 });
 
