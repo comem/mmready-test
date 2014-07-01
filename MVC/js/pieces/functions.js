@@ -29,8 +29,8 @@ function getAllArtists(){
 
 function getOneArtist(id){
    
-   var OneArtist = Artists.extend({
-       url:ARTISTS+"/"+id,
+   var OneArtist = Artist.extend({
+       urlRoot:ARTISTS+"/"+id,
        parse: function (response) {
         // Gestion conditionnelle du format JSEND
         console.log("La response reçue du Parse d'un collection");
@@ -42,7 +42,7 @@ function getOneArtist(id){
    console.log("getOneArtists");
    
     var artist1 = new OneArtist();
-   var oneArtistView = new ViewShowArtist({collection: artist1});
+//   var oneArtistView = new ViewShowArtist({collection: artist1});
    
    //artist1.set("id", id);
     artist1.fetch();
@@ -145,68 +145,69 @@ function loginButton(){
 
      
     $("#btnConnect").on("click", function(){
-      loginFunction();  
-    });
+      var email = $("input#email").val();
+    console.log(email);
+    var password = $("input#password").val();
+    console.log("password");
+    console.log(password);
+    
+//    var user = '{"email":"'+email+'", "password":"'+password+'"}';
+//    var userJ = $(user).toJSON();
+//    console.log(user);
+    //Requête de connection API
+    $.ajax({  
+    type: "POST",
+    url: LOGIN,
+    dataType: 'json',
+    //async: false,
+    data: {"email":email ,"password":password} ,                       //AUTH_MANAGER_FR ,      //"matou@matou.ch""matou"}
+
+    
+    success: function (data, textStatus, jqXHR){
+      console.log("Dialogue client serveur : "+ textStatus);
+      console.log("TextStatut : "+ data.status);
+      
+      
+      console.log(data);
+      if(data.status==='success'){
+          console.log("Data.title : ");
+          console.log(data.data.title);
+          //$("#loginFab").hide();
+          alert(data.data.title);
+      }else{
+          alert(data.message.title);
+          console.log("Phrase d'erreur : "+ data.message.title);
+          //IsConnected();
+          return;
+      }
+      
+      //IsConnected();
+    }
+   //, crossDomain: true
+//    error: function(jqXHR, textStatus,errorThrown){
+//        console.log("Vous n'êtes pas authentifié blblblbl!");
+//        console.log(textStatus);
+//        console.log(errorThrown);
+//        console.log(jqXHR);
+//        
+//    }
+}); //FIN AJAX
+    });//FIN #btnConnect
     
 };
     
    
-    //LOGIN
+    
 
     
 
 
 
-//function loginFunction(){
-//    
-//    var email = $("input#email").val();
-//    console.log(email);
-//    var password = $("input#password").val();
-//    console.log("password");
-//    console.log(password);
-//    
-////    var user = '{"email":"'+email+'", "password":"'+password+'"}';
-////    var userJ = $(user).toJSON();
-////    console.log(user);
-//    //Requête de connection API
-//    $.ajax({  
-//    type: "POST",
-//    url: LOGIN,
-//    dataType: 'json',
-//    //async: false,
-//    data: {"email":email ,"password":password} ,                       //AUTH_MANAGER_FR ,      //"matou@matou.ch""matou"}
-//
-//    
-//    success: function (data, textStatus, jqXHR){
-//      console.log("Dialogue client serveur : "+ textStatus);
-//      console.log("TextStatut : "+ data.status);
-//      
-//      
-//      console.log(data);
-//      if(data.status==='success'){
-//          console.log("Data.title : ");
-//          console.log(data.data.title);
-//          $("#loginFab").hide();
-//          alert(data.data.title);
-//      }else{
-//          console.log("Phrase d'erreur : "+ data.message.title);
-//          //IsConnected();
-//          return;
-//      }
-//      
-//      //IsConnected();
-//    },
-//    crossDomain: true
-////    error: function(jqXHR, textStatus,errorThrown){
-////        console.log("Vous n'êtes pas authentifié blblblbl!");
-////        console.log(textStatus);
-////        console.log(errorThrown);
-////        console.log(jqXHR);
-////        
-////    }
-//}); //FIN AJAX
-//
-//};
+function loginFunction(){
+    
+    
+
+};
 
 
 function TESTS(){

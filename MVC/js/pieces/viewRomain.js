@@ -1,7 +1,7 @@
 
 var MyView = Backbone.View.extend();
 
-var LoginView = MyView.extend({
+var LoginView = MyView.extend({ ///!\ doublon avec loginFab
     template: templates.login,
     initialize: function(attrs, options) {
         this.listenTo(this.model, 'all', this.render);
@@ -10,6 +10,7 @@ var LoginView = MyView.extend({
     render: function() {
         this.$el.html(Mustache.render(this.template, {login: this.model.toJSON()}));
         console.log("render of LoginView is rendering");
+       
         
         return this;
 
