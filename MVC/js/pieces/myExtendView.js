@@ -208,7 +208,6 @@ var ViewArtists = MyView.extend({
         $('#musiciansList').show();
     },
     addArtist: function(event) {
-        
         $('#artistsList').hide();
         $('#advancedResearchArtist').hide();
         $('#addOneArtist').show();
@@ -243,6 +242,9 @@ var ViewShowArtist = MyView.extend({
 
 var ViewAddArtist = MyView.extend({
     template: templates.addArtist,
+    event: {
+        'click #saveOneArtist': 'getValue'
+    },
     initialize: function(attrs, options) {
         this.listenTo(this.model, 'all', this.render);
         this.render();
@@ -250,6 +252,22 @@ var ViewAddArtist = MyView.extend({
     render: function() {
         this.$el.html(Mustache.render(this.template, {addArtist: this.model.toJSON()}));
         return this;
+    },
+    getValue: function(event) {
+        console.log("create Artist");
+//        var name = $("#nameArtistInput").val();
+//        var genre = $("#genreArtistInput").val();
+//        var descr = $("#shortDescrArtistInput").val();
+//        console.log("name");
+//        console.log(name);
+//        if (name === " ") {
+//            console.log("caractère vide");
+//        } else {
+//            saveArtist(name, genre, descr);
+//        }
+    },
+    saveArtist: function(name, genre, descr) {
+
     }
 
 });
@@ -312,6 +330,7 @@ var ViewEvents = MyView.extend({
         $('#showRepresenter').show();
     },
     addEvent: function(event) {
+
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         $('#addEvent').show();
@@ -347,13 +366,13 @@ var ViewAddEvent = MyView.extend({
     initialize: function(attrs, options) {
         // internal view for event detail
         this.addArtistIntoEvent = new ViewAddArtist({model: new Artist({})});
-        
+
         this.listenTo(this.model, 'all', this.render);
         this.render();
     },
     render: function() {
         this.$el.html(Mustache.render(this.template, {addEvent: this.model.toJSON()}));
-        
+
         this.addArtistIntoEvent.render().$el.appendTo(this.$el.find('#addArtistIntoEvent'));
         return this;
     }
