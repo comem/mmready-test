@@ -67,7 +67,7 @@ $(document).ready(function() {
     
     
     $('#Activation').click(function(){
-        loginFunction(); 
+       // loginFunction(); 
     });
     
     $("#btnOneArtist").on("click", function(){
@@ -95,6 +95,8 @@ $("#btnCreateArtist").on("click", function(){
  $("#btnLOGINFab").on("click", function(){
         console.log("clickLOGIN");
         $("section").hide();
+        var login = new MyLoginModel({});
+     var loginViewVar = new LoginView({model: login});
         loginViewVar.render().$el.appendTo("body");
         
         //$("section#loginFab").show();
