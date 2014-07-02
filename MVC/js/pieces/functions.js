@@ -1,3 +1,22 @@
+function initHandler(){
+    
+    
+    
+   $(".moreDetails").on("click", function(){
+       
+       var id = $(this).parent("div[data-id]").attr("data-id");
+        getOneArtist(id);
+        console.log("click");
+   });
+   
+   //    $('button.moreDetails').on("click", function(){
+//        
+//        var id = $(this).parent("div[data-id]").attr("data-id");
+//        getOneArtist(id);
+//        console.log("click");
+//    });
+}
+
 function atomDateStartUTC(dateUTC){
     console.log("String");
         console.log(date);
@@ -44,36 +63,6 @@ function atomDateEndUTC(dateUTC){
     return attrDate;
 }
 
-
-function initHandler(){
-    
-    
-    
-   $(".moreDetails").on("click", function(){
-       
-       var id = $(this).parent("div[data-id]").attr("data-id");
-        getOneArtist(id);
-        console.log("click");
-   });
-   
-   //    $('button.moreDetails').on("click", function(){
-//        
-//        var id = $(this).parent("div[data-id]").attr("data-id");
-//        getOneArtist(id);
-//        console.log("click");
-//    });
-}
-
-function getAllArtists(){
-    
-     var allArtistsView = new ViewAllArtists({collection: artistsList});
-     artistsList.fetch({
-         success: function(){
-             console.log(artistsList);
-         }
-     });
-}
-
 function getAllArtists(){
     
      var allArtistsView = new ViewAllArtists({collection: artistsList});
@@ -87,14 +76,9 @@ function getAllArtists(){
 function getOneArtist(id){
    
    var OneArtist = Artist.extend({
-       urlRoot:ARTISTS+"/"+id,
-       parse: function (response) {
-        // Gestion conditionnelle du format JSEND
-        console.log("La response reçue du Parse d'un collection");
-        console.log(response.data.response);
-        return typeof response.data.response != "undefined" ? response.data.response : response;
-    }
-   });
+       urlRoot:ARTISTS+"/"+id
+    });
+   
        
    console.log("getOneArtists");
    
