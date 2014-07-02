@@ -58,35 +58,21 @@ function getOneArtist(id){
     
 }
 
-function saveArtist(name,genre, descr){
+function saveArtist(name,genre, shortDescr, longDescr, order, isSuppport, hourArrival){
    
     
        
-//   console.log("getOneArtists");
-//   
-//    var artist1 = new Artist({
-//        urlRoot: ARTIST+"/"+name+"/"+genre
-//    });
-//   var oneArtistView = new ViewShowArtist({collection: artist1});
-//   
-//   //artist1.set("id", id);
-//    artist1.fetch();
+
     
-    var artist1 = new Artist({"name":name, "genres": [genre], "short_description_de": descr});
+    var artist1 = new Artist({"name":name, "genres": [genre], "short_description_de": shortDescr,"complete_description_de": longDescr});  //"order":order, hour_of_arrival? main? 
        
-       
-       
-       
-       console.log(artist1);
-       
+        console.log(artist1);
        console.log(JSON.stringify(artist1));
-       
        console.log("L'artiste après le save()");
        console.log(JSON.stringify(artist1));
        
        
-       
-      var id = artist1.save({"short_description_de": "Led Zeppelin [ˌlɛdˈzɛplɪn] war eine englische Rockband. 1968 gegründet, gehört sie mit 300 Millionen verkauften Alben zu den erfolgreichsten Bands überhaupt."},{ //Work only when we add
+      var id = artist1.save({ //Work only when we add
                                                         //a new attribute in the save method in first parameter
 
            success: function(model, response, options){
@@ -106,13 +92,6 @@ function saveArtist(name,genre, descr){
                    return response.data.id;
                    
                }
-               
-//               console.log('Le Model');
-//               console.log(model);
-//               console.log('response');
-//               console.log(response);
-//               console.log('options');
-//               console.log(options);
            },
            error:function(model, response, options){ // A tester en se déconnectant!
                console.log("ARTISTS ERROR");
@@ -126,18 +105,19 @@ function saveArtist(name,genre, descr){
        });
        
                    console.log("Artist Created id");
-                   console.log(id);
-//    console.log(artist1);
-//    console.log(JSON.stringify(artist1));
+                   console.log(id); 
+                   
+            savePerformer(order, isSuppport, hourArrival);       
+                   
+}//FIN save Artist
 
-
-//var id=1;
-//    artist.set("id", id);
-//    artist.fetch();
-//    
-//    console.log(artist);
+function savePerformer(order, isSuppport, hourArrival){
     
-}
+    
+    return;
+    
+}//FIN savePerformer
+
 
 
 function loginButton(){

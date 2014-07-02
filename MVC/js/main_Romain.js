@@ -81,13 +81,17 @@ $("#btnCreateArtist").on("click", function(){
         
       var name = $("#nameArtistInput").val();  
       var genre = $("#genreArtistInput").val();
-      var descr = $("#shortDescrArtistInput").val();
+      var shortDescr = $("#shortDescrArtistInput").val();
+      var longDescr;
+      var order;
+      var isSuppport;
+      var hourArrival;
         console.log("name");
         console.log(name);
         if(name === " "){
             console.log("caractère vide");
         }else{
-          newArtist(name, genre, descr);  
+          saveArtist(name, genre, shortDescr, longDescr, order, isSuppport, hourArrival);  
         }
         
 });
