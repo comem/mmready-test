@@ -192,12 +192,9 @@ var ViewArtists = MyView.extend({
     },
     'delete': function(event) {
         var idArtist = $(event.target).attr('data-id');
-        console.log(idArtist);
-        var remove = this.collection.remove(idArtist);
+        var remove = this.collection.get(idArtist);
         remove.destroy();
-        //console.log(remove);
-        
-        
+
     },
     edit: function(event) {
         console.log('edit');
@@ -374,7 +371,9 @@ var ViewEvents = MyView.extend({
         return this;
     },
     'delete': function(event) {
-        console.log('delete');
+        var idEvent = $(event.target).attr('data-id');
+        var remove = this.collection.get(idEvent);
+        remove.destroy();
     },
     edit: function(event) {
         console.log('edit');
@@ -385,6 +384,7 @@ var ViewEvents = MyView.extend({
         var idEvent = $(event.target).attr('data-id');
         var event = this.showEvent.model;
         event.set('id', idEvent);
+        console.log(event);
         event.fetch({
             success: function(object, response, c) {
 //                console.log(object);
