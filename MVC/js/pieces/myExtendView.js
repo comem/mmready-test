@@ -154,8 +154,8 @@ var ViewMusicians = MyView.extend({
 
     },
     render: function() {
-console.log(this.collection.toJSON());
-        this.$el.html(Mustache.render(this.template, {musicians:this.collection.toJSON()}));
+        console.log(this.collection.toJSON());
+        this.$el.html(Mustache.render(this.template, {musicians: this.collection.toJSON()}));
         return this;
     }
 });
@@ -352,14 +352,14 @@ var ViewEvents = MyView.extend({
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
         'click a.ico-detail': 'detail',
-        'click #btn-addEvent': 'addEvent'
+        'click #btn-addEvent': 'addEvent',
+        'click #page2': 'page2'
     },
     initialize: function(attrs, options) {
         // internal view for event detail
         this.showEvent = new ViewShowEvent({model: new Event({})});
         this.showEvent.render().$el.appendTo('#showDetailEvent');
-        var events = this.collection.fetch();
-
+        this.collection.fetch();
         this.listenTo(this.collection, 'all', this.render);
         this.render();
     },
@@ -398,7 +398,13 @@ var ViewEvents = MyView.extend({
         $('#advancedResearchEvents').hide();
         $('#addEvent').show();
         $('#addArtistIntoEvent').show();
+    },
+    page2: function(event) {
+        var nbPage = $(event.target).attr('data-page');
+        this.collection.set('url', EVENTS + "?page=" + nbPage);
+        console.log(this.collection);
     }
+
 });
 var ViewShowEvent = MyView.extend({
     template: templates.showEvent,
@@ -416,7 +422,7 @@ var ViewShowEvent = MyView.extend({
         this.viewTicket.collection = new Tickets(this.model.get('tickets'));
         this.viewRepresenter.model = new Tickets(this.model.get('representer'));
         this.viewTicket.render().$el.appendTo(this.$el.find('#showTicket'));
-        
+
         this.viewRepresenter.render().$el.appendTo(this.$el.find('#showRepresenter'));
         return this;
     },
