@@ -1,40 +1,66 @@
 
 
-//var DEFAULT_SECTION = 'eventsList';
 
 window.onpopstate = function(event) {
     var section = location.pathname.split('/').pop();
-    console.log(section);
     menuGoToSection(section);
-  
-
 };
 
 
 $(function() {
     
    
-
-    $('#advancedResearchEvents').show;
+    $('.advancedResearch').hide();
+    $('#advancedResearchEvents').hide();
+    $('#advancedResearchArtists').hide();
+    $('#advancedresearchRepresenters').hide();
+    
     $('#login').hide();
     $('#eventsList').show();
     $('#artistsList').hide();
-    $('#advancedResearchArtists').hide();
     $('#researchRepresenters').hide();
     $('#representersList').hide();
     $('#showDetailEvent').hide();
     $('#showDetailArtist').hide();
-    $('#addEvent').hide();
     $('#addOneArtist').hide();
     $('#musiciansList').hide();
     $('#showTicket').hide();
     $('#showRepresenter').hide();
     $('#addArtistIntoEvent').hide();
-    
+    $('#addEvent').hide();
 
 
-//    // gestion des boutons "back" et "forward" du browser
-//    $(window).on('popstate', historyHandler);
+// GESTION ADVANCED SEARCH
+
+$('nav').on('click', '#plusOption', function(e) {
+    e.preventDefault();
+$('.advancedResearch').toggle(function(){
+$('#plusOption > i').toggleClass('ico-plus ico-calendar');
+});
+});
+
+
+$('body').on('click', '#events', function(e){
+     $('#advancedresearchRepresenters').hide();
+    $('#advancedResearchArtists').hide();
+    $('#advancedResearchEvents').show();
+});
+
+$('body').on('click', '#artists', function(e){
+     $('#advancedResearchEvents').hide();
+    $('#advancedresearchRepresenters').hide();
+    $('#advancedResearchArtists').show();
+});
+
+$('body').on('click', '#filterRepresenters', function(e){
+    $('#advancedResearchArtists').hide();
+    $('#advancedResearchEvents').hide();
+    $('#advancedresearchRepresenters').show();
+});
+
+
+
+// gestion des boutons "back" et "forward" du browser
     
     $('ul#mainNav a').on('click', function(e) {
         menuElementClickHandler($(this));
@@ -42,21 +68,29 @@ $(function() {
         return false;
     });
 
-    $('#plusOption').on('click', function(e) {
-        $('#advancedResearchEvents').show();
-        $('#eventsList').show();
+
+
+     $('body').on('click', '.secondNav', function(e) {
+        menuElementClickHandler($(this));
+        e.preventDefault();
+        return false;
     });
-    
-
-    $('nav.mainNav a:first').trigger('click');
 
 
-
-
-       $('#plusOption').on('click', function(e) {
-        $('#advancedResearchEvents').show();
-        $('#eventsList').show();
+    $('body').on('click','a', function(e) {
+        menuElementClickHandler($(this));
+        e.preventDefault();
+        return false;
     });
+
+
+
+
+
+$('ul#mainNav a:first').trigger('click');
+
+
+
     
    
 });
@@ -84,10 +118,9 @@ function historyHandler() {
 //API History
 function menuElementClickHandler(menuElement) {
     // Enlève la classe "activ" de tous les liens
-    $('#mainNav.li').removeClass('activ');
-    
+    $('#mainNav > li').removeClass('active');
     // Rajoute la classe "activ" pour le lien actuellement clické
-    menuElement.addClass('activ');
+    menuElement.parent().addClass('active');
      // Cache toutes les >section>
 
     // Recupère la section corespondante (attribut href du lien)
