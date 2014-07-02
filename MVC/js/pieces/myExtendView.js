@@ -408,7 +408,7 @@ var ViewEvents = MyView.extend({
     page2: function(event) {
         var nbPage = $(event.target).attr('data-page');
         this.collection.set('url', EVENTS + "?page=" + nbPage);
-        this.collection.fetch();
+        
         console.log(this.collection);
     }
 
