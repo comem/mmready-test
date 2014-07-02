@@ -82,7 +82,8 @@ $("#btnCreateArtist").on("click", function(){
       var name = $("#nameArtistInput").val();  
       var genre = $("#genreArtistInput").val();
       var shortDescr = $("#shortDescrArtistInput").val();
-      var longDescr;
+      var longDescr = $("#LongDescrArtistInput").val();
+      
       var order;
       var isSuppport;
       var hourArrival;

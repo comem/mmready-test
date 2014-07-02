@@ -61,7 +61,7 @@ function getOneArtist(id){
 function saveArtist(name,genre, shortDescr, longDescr, order, isSuppport, hourArrival){
    
     
-       
+       //COUCOU NATY
 
     
     var artist1 = new Artist({"name":name, "genres": [genre], "short_description_de": shortDescr,"complete_description_de": longDescr});  //"order":order, hour_of_arrival? main? 
