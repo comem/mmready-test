@@ -1,23 +1,19 @@
+var DEFAULT_SECTION = 'eventsList';
+
 /*--------------------------------------------------------------------------
  *    Default Value Ajax
  *///-----------------------------------------------------------------------
 
 
 $.ajaxSetup({
-    
     xhrFields: {
         withCredentials: true
     }
-    
+
 });
 
-var templateMusician;
-var templateTicket;
-var templateImage;
-var templateLink;
-
 $(function() {
-    
+
     console.log("---DOM IS READY---");
 
     var instrusList = new Instruments();
@@ -28,9 +24,9 @@ $(function() {
     //var artistsList = new Artists();
     var eventsList = new Events([event1]);
     var representerList = new Representers([representant1]);
-    
+
     var event = new Event({});
-    
+
 
 
 
@@ -63,23 +59,23 @@ $(function() {
     $('#showTicket').hide();
     $('#showRepresenter').hide();
     $('#addArtistIntoEvent').hide();
-    
 
 
 
-        //RESEARCH
-        advancedResearchEvent.render().$el.appendTo('#advancedResearchEvents');
-        advancedResearchArtist.render().$el.appendTo('#advancedResearchArtists');
-        //researchRepresentant.render().$el.appendTo('#researchRepresentants');
 
-        //LIST
-        eventsListView.render().$el.appendTo('#eventsList');
-        artistsListView.render().$el.appendTo('#artistsList');
-        representersListView.render().$el.appendTo('#representersList');
-        
-        //ADD
-        addEvent.render().$el.appendTo('#addEvent');
-        addArtist.render().$el.appendTo('#addOneArtist');
+    //RESEARCH
+    advancedResearchEvent.render().$el.appendTo('#advancedResearchEvents');
+    advancedResearchArtist.render().$el.appendTo('#advancedResearchArtists');
+    //researchRepresentant.render().$el.appendTo('#researchRepresentants');
+
+    //LIST
+    eventsListView.render().$el.appendTo('#eventsList');
+    artistsListView.render().$el.appendTo('#artistsList');
+    representersListView.render().$el.appendTo('#representersList');
+
+    //ADD
+    addEvent.render().$el.appendTo('#addEvent');
+    addArtist.render().$el.appendTo('#addOneArtist');
 
 //
 //        artistsList.fetch({
@@ -90,11 +86,81 @@ $(function() {
 //           
 //
 //        });
-    
-     $(".listArtists p").each(function (index, elem){
-        $(elem).prepend(++index +". ");
+
+    $('ul#mainNav a').on('click', function(e) {
+        menuElementClickHandler($(this));
+        e.preventDefault();
+        return false;
     });
-    
+
+    $('a').on('click', function(e) {
+        menuElementClickHandler($(this));
+        e.preventDefault();
+        return false;
+    });
+
+    $('#plusOption').on('click', function(e) {
+        $('#advancedResearchEvents').show();
+        $('#eventsList').show();
+    });
+
+    $(".listArtists p").each(function(index, elem) {
+        $(elem).prepend(++index + ". ");
+    });
+
+
 });
 
 
+/*
+ |--------------------------------------------------------------------------
+ | Gestion de l'historique (pour les boutons "back" et "forward" du browser
+ |--------------------------------------------------------------------------
+ */
+function historyHandler() {
+    // Prend la dernière partie de l'url (après le dernier '/')
+    var sectionName = location.pathname.split("/").pop();
+    // Si aucune section (page d'accueil ?), on va sur 'todo' par défaut
+    if (sectionName === '') {
+        sectionName = DEFAULT_SECTION;
+    }
+    menuGoToSection(sectionName);
+}
+/*
+ |--------------------------------------------------------------------------
+ | Gestion du menu
+ |--------------------------------------------------------------------------
+ */
+//API History
+function menuElementClickHandler(menuElement) {
+    // Recupère la section corespondante (attribut href du lien)
+    var sectionName = menuElement.attr('href');
+    // Si la section est déjà active ne rien faire
+    var actualSectionName = location.pathname.split("/").pop();
+    if (sectionName === actualSectionName) {
+        return;
+    }
+    // Simule le changement d'url ver cette section
+    history.pushState(null, null, sectionName);
+    // Affiche la section en question
+    menuGoToSection(sectionName);
+    
+}
+
+function menuGoToSection(sectionName) {
+    var nodeIdToShow = '#' + sectionName;
+    // Enlève la classe "activ" de tous les liens
+    $('ul#mainNav a').removeClass('activ');
+    // Rajoute la classe "activ" pour le lien actuellement clické
+    $("ul#mainNav a[href='" + sectionName + "']").addClass('activ');
+    // Enlève la classe "activ" de tous les liens
+    $('a').removeClass('activ');
+    // Rajoute la classe "activ" pour le lien actuellement clické
+    $("a[href='" + sectionName + "']").addClass('activ');
+    
+    
+    // Cache toutes les <section>
+    $('section').hide();
+    // Affichage de la bonne <section>
+    $(nodeIdToShow).show();
+}

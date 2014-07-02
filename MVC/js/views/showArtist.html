@@ -15,11 +15,11 @@
     </div>
 </div>
 
-{{#artist}}
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">{{name}}</h1> 
+            <h1 class="page-header">{{artist.name}}</h1> 
         </div>
     </div>
     <div class="row">
@@ -30,16 +30,20 @@
             <dl>     
 
                 <dt>Name</dt>
-                <dd>{{name}}</dd>
+                <dd>{{artist.name}}</dd>
+                
+                {{#artist}}
                 {{#genres}}
                 <dt>Genre(s)</dt>
                 <dd>{{name_de}}</dd>
                 {{/genres}}
+                {{/artist}}
             </dl>
             {{#events}}
             <dl>
                 <dt>Event</dt>
                 <dd>{{title_de}}</dd>
+
                 {{#performers}}
                 <dt>heure d'arrivée </dt>
                 <dd>{{artist_hour_of_arrival}}</dd>
@@ -51,7 +55,7 @@
                 <dd>{{is_support}}</dd>
                 {{/performers}}
             </dl>
-{{/events}}
+            {{/events}}
             <div class="row">
                 <div class="col-lg-6">
                     <h3>Short description</h3> 
@@ -92,7 +96,9 @@
     </div>
     <section id="musiciansList">
 
-    </section>{{/artist}}
+
+
+    </section>
     <!--{{#musicians}}
     <div class="row">
         <div class="col-lg-12">

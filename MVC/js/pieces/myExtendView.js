@@ -323,7 +323,7 @@ var ViewAddArtist = MyView.extend({
         if (name === " ") {
             console.log("caractère vide");
         } else {
-            saveArtist(name, genre, shortDescription);
+            saveArtist(name, genre, shortDescription, completeDescription, order, mainPerformer, hourArrival);
         }
     },
     saveMusician: function(event) {
