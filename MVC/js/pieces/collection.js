@@ -21,7 +21,7 @@ var Artists = MyCollection.extend({
 
 var Events = MyCollection.extend({
     model:Event,
-    url: EVENTS,
+    url: EVENTS+"?nb_item=500",
     parse: function (response) {
         // todo error et fail
         //return typeof response.data.response != "undefined" ? response.data.response : response;
