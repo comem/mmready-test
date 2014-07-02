@@ -504,16 +504,3 @@ var ViewShowRepresenter = MyView.extend({
     }
 });
 
-
-//
-//        var artist = this.collection.get({'id': idArtist}); //.at(idArtist)
-//        //this.showArtist.model.set('urlRoot', ARTISTS + "/" + 2);
-//        console.log(idArtist);
-////        console.log('artist');
-//        console.log(this.showArtist.model);
-////        console.log(JSON.stringify(artist));
-//        this.showArtist.model = artist;
-//        this.showArtist.render();
-//        $('#showDetailArtist').show();
-//        $('#musiciansList').show();
-//        //this.showArtist.model.fetch();
