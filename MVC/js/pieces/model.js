@@ -44,14 +44,14 @@ var Event = MyModel.extend({
         console.log("new Date()");
         console.log(date2);
              var date3 = date2.getDate();
-             var month = date2.getMonth();
+             var month = date2.getMonth()+1;
              var year = date2.getFullYear();
              //var time = date2.getTime();
              var hours = date2.getHours(); //returns 0-23
             var minutes = date2.getMinutes(); //returns 0-59
             var seconds = date2.getSeconds(); // returns 0-59
              this.set({day: date3, month: month,year:year,hours:hours,minutes:minutes});
-             
+             console.log(this);
     }
 });
 

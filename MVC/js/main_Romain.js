@@ -74,7 +74,8 @@ $(document).ready(function() {
         
         var events10 = new Events({});
         events10.fetch({}); // fetch est asynchrone il n'attends pas la réponse du serveur avant de passer à la ligne d'après
-        console.log(events10);
+        
+        
         
         
         
