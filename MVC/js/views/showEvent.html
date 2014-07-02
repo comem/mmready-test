@@ -1,85 +1,66 @@
-
-
 <div class="container-fluid">
     <div class="row buttonsOptions">
         <div class="col-lg-5 col-lg-offset-7">
             <button class="btn btn-default" id="btn-back">Back to List</button>
-            <button class="btn btn-default"><span class="ico-edit">Edit artist</span></button>
-            <button class="btn btn-default"><span class="ico-delete">Delete artist</span></button>
-
+            <button class="btn btn-default">
+                <span class="ico-edit">Edit artist</span>
+            </button>
+            <button class="btn btn-default">
+                <span class="ico-delete">Delete artist</span>
+            </button>
         </div>
-
     </div>
-
 </div>
 
-{{#event}}
 <div class="container-fluid">
-
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">{{title_de}}<small>{{#genres}}{{name_de}} hip-Hop, Deep House{{/genres}}</small></h1> 
-
             <div class="row moreInfo">
                 <div class="col-lg-12">
                     <ul>
                         <li><i class="ico-calendar"></i>{{start_date_hour}}12 juni 2014</li>
                         <li><i class="ico-clock"></i>12:00</li>
                     </ul>
-
-
                 </div>
             </div>
-
         </div>
-
     </div>
-
-
 
     <div class="row">
         <div class="col-lg-12">
-
             <div class="headerShowBox">
                 <h2><i class="ico-info"></i> Information</h2> 
             </div>
-
-
-
             <dl>       
-
                 <dt>Doors:</dt>
-                <dd>{{opening_doors}} 6:00</dd>
+                <dd>{{opening_doors}}</dd>
 
                 <dt>End:</dt>
-                <dd>{{ending_date_hour}} 12th May 1986</dd>
-                
+                <dd>{{ending_date_hour}}</dd>
+
                 <dt>Type: </dt>
-                <dd>Mississipi</dd>
+                <dd>{{event_type.name_de}}</dd>
 
                 <dt>AfterParty: </dt>
-                <dd>{{followed_by_private}} private</dd>
+                <dd>{{followed_by_private}}</dd>
 
                 <dt>Contract src:</dt>
                 <dd>{{contract_src}}</dd>
-
-
             </dl>
-
-
         </div>
-
     </div>
 
     <div class="row">
         <section id="showTicket">
+            
         </section>
-
-
         <div class="col-lg-6">
             <h2 class="ico-img"> Images</h2>
             <!--<img src="img/event.png" height="50px"/>-->
-
+            {{#image}}
+            <p>{{source}}</p>
+            {{/image}}
         </div>
     </div>
 
@@ -88,26 +69,19 @@
             <h2 class="ico-artist">Artist</h2> 
             <div class="listArtists">
                 {{#artists}}
-                <p>name artists</p>
-                <p>name artists</p>
+                <p>{{name}}</p>
+                <p>{{name}}</p>
                 {{/artists}}
             </div>
-
-
-
         </div>
-
     </div>
-
 
     <div class="row">
         <div class="col-lg-12 meal">
             <div class="headerShowBox">
                 <h2><i class="ico-food"></i> Meal</h2> 
             </div>
-
             <dl>       
-
                 <dt>Standrd meal</dt>
                 <dd>{{nb_meal}}</dd>
 
@@ -116,29 +90,24 @@
 
                 <dt>Total</dt>
                 <dd>7</dd>
-
             </dl>
-
-
-
         </div>
-
     </div>
 
     <div class="row">
         <div class="col-lg-12">
             <h2 class="ico-note">Notes</h2> 
             <div class="col-lg-4">
-                <p>{{notes_de}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at magna vel turpis varius suscipit a at elit. Integer semper elit sit amet tristique luctus. Praesent eu lacus pharetra ipsum aliquet aliquet id non metus. Sed sed venenatis turpis. Vestibulum consequat nunc a nisi pulvinar, at volutpat mauris pellentesque. Proin in purus nisl. Nunc sit amet lacus euismod, hendrerit sapien nec, lacinia nibh. Curabitur vitae tellus ornare, aliquet ipsum nec, pharetra est. Vivamus egestas risus vitae purus mollis, nec auctor massa faucibus.</p>
+                <p>{{notes_de}}</p>
             </div>
         </div>
-
     </div>
 
     <div class="row">
-        <section id="showRepresenter"></section>
-
+        <section id="showRepresenter">
+            
+        </section>
     </div>
 
-</div>{{/event}}
+</div>
 

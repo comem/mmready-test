@@ -1,4 +1,4 @@
-
+{{#musicians}}
 <div class="row">
     <div class="col-lg-12">
         <div class="headerShowBox">
@@ -6,23 +6,24 @@
         </div>
         <div class="row">
             <div class="col-lg-3">
-                
+                {{#musicians}}
                 <dl>       
                     <dt>Name</dt>
                     <dd>{{first_name}}</dd>
                     <dt>Scene Name</dt>
-                    <dd>{{musicians.stagename}}</dd>
-                    
+                    <dd>{{stagename}}</dd>
+                    {{#instruments}}
                     <dt>Instruments</dt>
-                    <dd>{{musician.instruments.name_de}}</dd>
-                    
+                    <dd>{{name_de}}</dd>
+                    {{/instruments}}
                 </dl>
-                
+                {{/musicians}}
             </div>
 
 
         </div>
     </div>
 </div>
+{{/musicians}}
 
 

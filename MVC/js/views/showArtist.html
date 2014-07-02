@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
     <div class="row buttonsOptions">
         <div class="col-lg-5 col-lg-offset-7">
@@ -22,13 +21,13 @@
             <h1 class="page-header">{{name}}</h1> 
         </div>
     </div>
+    
     <div class="row">
         <div class="col-lg-12">
             <div class="headerShowBox">
                 <h2><i class="ico-info"></i>Information</h2> 
             </div>
             <dl>     
-
                 <dt>Name</dt>
                 <dd>{{name}}</dd>
 
@@ -36,7 +35,7 @@
                 <dt>Genre(s)</dt>
                 <dd>{{name_de}}</dd>
                 {{/genres}}
-                
+
             </dl>
             {{#events}}
             <dl>
@@ -69,18 +68,18 @@
             </div>
         </div>
     </div>
+    
     <div class="row">
-
         <div class="col-lg-12">
             <div class="headerShowBox">
                 <h2><i class="ico-img"> Images</i></h2>
             </div>
-            
             {{#images}}
             <!--<img src="{{source}}" height="50px">--><p>{{source}}</p>
             {{/images}}
         </div>
     </div>
+    
     <div class="row">
         <div class="col-lg-12">
             <div class="headerShowBox">
@@ -94,35 +93,8 @@
             {{/links}}
         </div>
     </div>
+    
     <section id="musiciansList">
-
-
-
+        
     </section>
-    <!--{{#musicians}}
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="headerShowBox">
-                <h2><i class="ico-musician"></i>Musician</h2> 
-            </div>
-            <div class="row">
-                <div class="col-lg-3">
-
-                    <dl>       
-                        <dt>Name</dt>
-                        <dd>{{first_name}}</dd>
-                        <dt>Scene Name</dt>
-                        <dd>{{stagename}}</dd>
-                        {{#instruments}}
-                        <dt>Instruments</dt>
-                        <dd>{{name_de}}</dd>
-                        {{/instruments}}
-                    </dl>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-    {{/musicians}}-->
 </div>

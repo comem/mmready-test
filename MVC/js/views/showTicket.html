@@ -2,20 +2,12 @@
     <div class="headerShowBox">
         <h2><i class="ico-tiket"></i> Tiket</h2> 
     </div>
-
+    {{#tickets}}
 
     <dl>       
-
-        <dt>AVS</dt>
-        <dd>3 CHF</dd>
-
-        <dt>Students</dt>
-        <dd>4 CHF</dd>
-
-        <dt>Adult</dt>
-        <dd>5 CHF</dd>
-
+        <dt>{{ticket_category_id}}</dt>
+        <dd>{{amount}} CHF</dd>
     </dl>
-
+    {{/tickets}}
 
 </div>
