@@ -505,3 +505,22 @@ var ViewShowRepresenter = MyView.extend({
     }
 });
 
+//        $('#eventsList').hide();
+//        $('#advancedResearchEvents').hide();
+//        var idEvent = $(event.target).attr('data-id');
+//        var event = this.showEvent.model;
+//        event.set('id', idEvent);
+//        console.log(this.collection);
+//        console.log(event);
+//        event.fetch({
+//            success: function(object, response, c) {
+////                console.log(object);
+////                console.log(c);
+//            }, error: function(object, response, c) {
+////                console.log(object);
+////                console.log(response);
+//            }
+//        });
+//        $('#showDetailEvent').show();
+//        $('#showTicket').show();
+//        $('#showRepresenter').show();
