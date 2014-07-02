@@ -165,6 +165,17 @@ function loginButton(){
     console.log("password");
     console.log(password);
     
+    
+   if ($('#remember').is(":checked"))
+{
+  console.log("remember checked");
+  var remember = "true"; //peut-être qu'en string ca ne marche pas à test
+  
+}else{
+    console.log("rememeber not checked");
+    var remember = "false";
+}
+    
 //    var user = '{"email":"'+email+'", "password":"'+password+'"}';
 //    var userJ = $(user).toJSON();
 //    console.log(user);
@@ -174,7 +185,7 @@ function loginButton(){
     url: LOGIN,
     dataType: 'json',
     //async: false,
-    data: {"email":email ,"password":password} ,      //email     password            //AUTH_MANAGER_FR ,      //"matou@matou.ch""matou"}
+    data: {"email":email ,"password":password, remember: remember} ,      //email     password            //AUTH_MANAGER_FR ,      //"matou@matou.ch""matou"}
 
     
     success: function (data, textStatus, jqXHR){

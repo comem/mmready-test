@@ -26,16 +26,18 @@ var LoginView = MyLoginView.extend({ ///!\ doublon avec viewROmain
     },
     render: function() {
         this.$el.html(Mustache.render(this.template, {loginFab: this.model.toJSON()}));
-        console.log("render Login View is rendering");
+        console.log("render LoginFab View is rendering");
         return this;
 
-    },
-    events: {
-//          'submit #Activation': 'activation'
-//        'click a.ico-edit': 'edit',
-//        'click a.ico-detail': 'detail',
-        
-    }
+    }//,
+//    events: {
+//          'click #btnLOGINFab': 'login'
+//
+//        
+//    },
+//    login: function(){
+//        
+//    }
 });
 
 
