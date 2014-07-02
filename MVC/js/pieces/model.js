@@ -8,10 +8,10 @@ var MyInitModel = Backbone.Model.extend();
 
 
 var MyModel = Backbone.Model.extend({
-    parse: function (response) {       
+    parse: function(response) {
         // to do if statut fail/error
-        if (typeof response.data != "undefined"){
-            if (typeof response.data.response != "undefined"){
+        if (typeof response.data != "undefined") {
+            if (typeof response.data.response != "undefined") {
                 response = response.data.response;
             } else {
                 response = response.data;
@@ -36,31 +36,24 @@ var Artist = MyModel.extend({
 
 var Event = MyModel.extend({
     urlRoot: EVENTS,
-    initialize: function(){
-        var dateStart =this.get("start_date_hour");
+    formatDate: function() {
+        var dateStart = this.get("start_date_hour");
         var attrDateStart = atomDateStartUTC(dateStart);
         this.set(attrDateStart);
-        
-        
-        if(this.get("ending_date_hour")!=null){
+
+        if (this.get("ending_date_hour") != null) {
             var attrDateEnd = atomDateEndUTC(this.get("ending_date_hour"));
             this.set(attrDateEnd);
         }
-        
-                 }//,
-//    parse: function(){
-//        var dateStart =this.get("start_date_hour");
-//        var attrDateStart = atomDateStartUTC(dateStart);
-//        this.set(attrDateStart);
-//        
-//        
-//        if(this.get("ending_date_hour")!=null){
-//            var attrDateEnd = atomDateEndUTC(this.get("ending_date_hour"));
-//            this.set(attrDateEnd);
-//        }
-//        
-//             
-//    }
+    },
+    initialize: function() {
+        this.formatDate();
+    },
+    parse: function(){
+        this.formatDate();
+        return Backbone.Model.prototype.toJSON.apply(this, arguments);
+    }
+
 });
 
 var EventType = MyModel.extend({
@@ -68,20 +61,20 @@ var EventType = MyModel.extend({
 });
 
 var Genre = MyModel.extend({
-    urlRoot:GENRES
+    urlRoot: GENRES
 });
 
 var Gift = MyModel.extend({
-    urlRoot:GIFTS
+    urlRoot: GIFTS
 });
 
 //!\ requêtes complexes liées avec Artists-> check DOC
 var Illustration = MyModel.extend({
-    urlRoot:ILLUS
+    urlRoot: ILLUS
 });
 
 var Image = MyModel.extend({
-    urlRoot:IMAGES
+    urlRoot: IMAGES
 });
 
 var Instrument = MyModel.extend({
