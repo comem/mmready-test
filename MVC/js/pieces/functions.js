@@ -79,37 +79,22 @@ function getOneArtist(id){
        urlRoot:ARTISTS+"/"+id
     });
    
-       
-   console.log("getOneArtists");
-   
     var artist1 = new OneArtist();
-//   var oneArtistView = new ViewShowArtist({collection: artist1});
-   
-   //artist1.set("id", id);
+
     artist1.fetch();
-//    console.log(artist1);
-//    console.log(JSON.stringify(artist1));
-
-
-//var id=1;
-//    artist.set("id", id);
-//    artist.fetch();
-//    
-//    console.log(artist);
-    
 }
 
-function saveArtist(name,genre, shortDescr, longDescr, order, isSuppport, hourArrival){
+function saveArtist(event_id, name,genre, shortDescr, longDescr){
 
+    var event_id = event_id;
     
     var artist1 = new Artist({
         "name":name,
         "genres": [genre],
         "short_description_de": shortDescr,
-        "complete_description_de": longDescr});  //"order":order, hour_of_arrival? main? 
+        "complete_description_de": longDescr});
        
-//        var event_id; 
-      var returnArtistSaved = artist1.save({ //Work only when we add ouais confirmation success ne ds'active pas si on ne fait pas de modif^^
+      artist1.save({ //Work only when we add ouais confirmation success ne ds'active pas si on ne fait pas de modif^^
                                                         //a new attribute in the save method in first parameter
 //
 //           success: function(model, response, options){
@@ -143,28 +128,25 @@ function saveArtist(name,genre, shortDescr, longDescr, order, isSuppport, hourAr
 //           ,fail: function(model, response){ //pas prévu pour .save() tout va dans success
 //           
        });
-      
-var event_id;
- var artist_id;
-            savePerformer(event_id, artist_id, order, isSuppport, hourArrival);       
+         
                    
 }//FIN save Artist
 
 function savePerformer(event_id, artist_id, order, isSuppport, hourArrival){
-    
+//    order, isSuppport, hourArrival,
     
     return;
     
 }//FIN savePerformer
 
-function saveMusician(event_id, artist_id, order, isSuppport, hourArrival){
+function saveMusician(artist_id, firstName, lastName, stageName, instrument_id){
     
     
     return;
     
 }//FIN saveMusician
 
-function saveEvent(event_id, artist_id, order, isSuppport, hourArrival){
+function saveEvent(hourArrival){
     
     
     return;
@@ -231,12 +213,6 @@ function loginButton(){
     
 };
     
-   
-    
-
-    
-
-
 
 function loginFunction(){
     
