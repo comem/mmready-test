@@ -381,11 +381,11 @@ var ViewEvents = MyView.extend({
         event.set('id', idEvent);
         event.fetch({
             success: function(object, response, c) {
-                console.log(object);
-                console.log(c);
+//                console.log(object);
+//                console.log(c);
             }, error: function(object, response, c) {
-                console.log(object);
-                console.log(response);
+//                console.log(object);
+//                console.log(response);
             }
         });
         $('#showDetailEvent').show();
