@@ -49,9 +49,17 @@ var Event = MyModel.extend({
     initialize: function() {
         this.formatDate();
     },
-    parse: function(){
+    parse: function(response) {
+        // to do if statut fail/error
+        if (typeof response.data != "undefined") {
+            if (typeof response.data.response != "undefined") {
+                response = response.data.response;
+            } else {
+                response = response.data;
+            }
+        }
         this.formatDate();
-        return Backbone.Model.prototype.toJSON.apply(this, arguments);
+        return response;
     }
 
 });
