@@ -191,7 +191,13 @@ var ViewArtists = MyView.extend({
 
     },
     'delete': function(event) {
-        console.log('delete');
+        var idArtist = $(event.target).attr('data-id');
+        console.log(idArtist);
+        var remove = this.collection.remove(idArtist);
+        remove.destroy();
+        //console.log(remove);
+        
+        
     },
     edit: function(event) {
         console.log('edit');
