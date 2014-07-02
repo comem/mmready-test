@@ -14,11 +14,25 @@ var MyCollection = Backbone.Collection.extend({
 //--------------------------------------------
 
 var Artists = MyCollection.extend({
-    url: ARTISTS
+    url: ARTISTS,
+    
 });
 
+
 var Events = MyCollection.extend({
-    url: EVENTS
+    model:Event,
+    url: EVENTS,
+    parse: function (response) {
+        // todo error et fail
+        //return typeof response.data.response != "undefined" ? response.data.response : response;
+        if (typeof response.data.response != "undefined"){
+            
+            return response.data.response;
+        }else{
+            console.log(response);
+           return response;
+        }
+    }
 });
 
 var EventTypes = MyCollection.extend({

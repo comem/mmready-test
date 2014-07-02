@@ -156,7 +156,8 @@ var ViewMusicians = MyView.extend({
 
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {musicians: this.collection.toJSON()}));
+console.log(this.collection.toJSON());
+        this.$el.html(Mustache.render(this.template, {musicians:this.collection.toJSON()}));
         return this;
     }
 });
@@ -180,7 +181,7 @@ var ViewArtists = MyView.extend({
         // internal view for artist detail
         this.showArtist = new ViewShowArtist({model: new Artist({})});
         this.showArtist.render().$el.appendTo('#showDetailArtist');
-
+        this.collection.fetch();
         this.listenTo(this.collection, 'all', this.render);
         this.render();
 
@@ -198,23 +199,22 @@ var ViewArtists = MyView.extend({
         console.log('edit');
     },
     detail: function(event) {
-
         $('#artistsList').hide();
         var idArtist = $(event.target).attr('data-id');
-       
-
-        var artist = this.collection.get({'id': idArtist}); //.at(idArtist)
-        this.showArtist.model.set('urlRoot', ARTISTS + "/" + idArtist);
-        //console.log(idArtist);
-//        console.log('artist');
-//        console.log(artist);
-//        console.log(JSON.stringify(artist));
-        this.showArtist.model = artist;
-        this.showArtist.render();
+        var artist = this.showArtist.model;
+        artist.set('id', idArtist);
+        var that = this;
+        artist.fetch({
+            success: function(object, response, c) {
+                console.log(object);
+                console.log(c);
+            }, error: function(object, response, c) {
+                console.log(object);
+                console.log(response);
+            }
+        });
         $('#showDetailArtist').show();
         $('#musiciansList').show();
-        //this.showArtist.model.fetch();
-        getOneArtist(idArtist);
     },
     addArtist: function(event) {
         $('#artistsList').hide();
@@ -238,7 +238,8 @@ var ViewShowArtist = MyView.extend({
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {artist: this.model.toJSON()}));
+        this.$el.html(Mustache.render(this.template, this.model.toJSON()));
+        this.viewMusicians.collection = new Musicians(this.model.get('musicians'));
         this.viewMusicians.render().$el.appendTo(this.$el.find('#musiciansList'));
         return this;
 
@@ -261,7 +262,10 @@ var ViewAddArtist = MyView.extend({
     template: templates.addArtist,
     events: {
         'click #addMusician': 'addMusician',
-        'click #saveOneArtist': 'getValue'
+        'click #saveOneArtist': 'getValue',
+        'click #saveMusician': 'saveMusician',
+        'click #saveImage': 'saveImage',
+        'click #saveLink': 'saveLink'
     },
     initialize: function(attrs, options) {
         this.listenTo(this.model, 'all', this.render);
@@ -280,7 +284,10 @@ var ViewAddArtist = MyView.extend({
         var name = this.$el.find('[name="artistNameInput"]').val();
         var genre = this.$el.find('[name="artistGenreInput"]').val();
         var hourArrival = this.$el.find('[name="hourArrival"]').val();
+        var order = this.$el.find('[name="artistOrder"]').val();
+        var mainPerformer = this.$el.find('[name="mainPerformer"]').val();
         var shortDescription = this.$el.find('[name="shortDescription"]').val();
+        var completeDescription = this.$el.find('[name="completeDescription"]').val();
 
         console.log("name");
         console.log(name);
@@ -288,14 +295,31 @@ var ViewAddArtist = MyView.extend({
         console.log("genre");
         console.log(genre);
 
-        console.log("hourArrival");
-        console.log(hourArrival);
+        console.log("short");
+        console.log(shortDescription);
+
+        console.log(completeDescription);
 
         if (name === " ") {
             console.log("caractère vide");
         } else {
-            saveArtist(name, genre, shortDescription);
+            saveArtist(name, genre, shortDescription, completeDescription, order, mainPerformer, hourArrival);
         }
+    },
+    saveMusician: function(event) {
+        var musicianFirstName = this.$el.find('[name="musicianFirstName"]').val();
+        var musicianLastName = this.$el.find('[name="musicianLastName"]').val();
+        var musicianScenetName = this.$el.find('[name="musicianScenetName"]').val();
+        var instrument = this.$el.find('[name="instrument"]').val();
+    },
+    saveImage: function(event) {
+        var imageTitle = this.$el.find('[name="imageTitle"]').val();
+        var imageDescription = this.$el.find('[name="imageDescription"]').val();
+        var artistImage = this.$el.find('[name="artistImage"]').val();
+    },
+    saveLink: function(event) {
+        var linkURL = this.$el.find('[name="linkURL"]').val();
+        var linkDescription = this.$el.find('[name="linkDescription"]').val();
     }
 });
 
@@ -308,12 +332,12 @@ var ViewAddArtist = MyView.extend({
 var ViewTicket = MyView.extend({
     template: templates.showTicket,
     initialize: function(attrs, options) {
-        this.listenTo(this.model, 'all', this.render);
+        this.listenTo(this.collection, 'all', this.render);
         this.render();
 
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {ticket: this.model.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {tickets: this.collection.toJSON()}));
         return this;
     }
 });
@@ -336,6 +360,7 @@ var ViewEvents = MyView.extend({
         // internal view for event detail
         this.showEvent = new ViewShowEvent({model: new Event({})});
         this.showEvent.render().$el.appendTo('#showDetailEvent');
+        var events = this.collection.fetch();
 
         this.listenTo(this.collection, 'all', this.render);
         this.render();
@@ -353,6 +378,18 @@ var ViewEvents = MyView.extend({
     detail: function(event) {
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
+        var idEvent = $(event.target).attr('data-id');
+        var event = this.showEvent.model;
+        event.set('id', idEvent);
+        event.fetch({
+            success: function(object, response, c) {
+//                console.log(object);
+//                console.log(c);
+            }, error: function(object, response, c) {
+//                console.log(object);
+//                console.log(response);
+            }
+        });
         $('#showDetailEvent').show();
         $('#showTicket').show();
         $('#showRepresenter').show();
@@ -371,14 +408,17 @@ var ViewShowEvent = MyView.extend({
         'click #btn-back': 'backListEvents'
     },
     initialize: function(attrs, options) {
-        this.viewTicket = new ViewTicket({model: new Ticket({})});
+        this.viewTicket = new ViewTicket({collection: new Tickets({})});
         this.viewRepresenter = new ViewShowRepresenter({model: new Representer({})});
         this.listenTo(this.model, 'all', this.render);
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {event: this.model.toJSON()}));
+        this.$el.html(Mustache.render(this.template, this.model.toJSON()));
+        this.viewTicket.collection = new Tickets(this.model.get('tickets'));
+        this.viewRepresenter.model = new Tickets(this.model.get('representer'));
         this.viewTicket.render().$el.appendTo(this.$el.find('#showTicket'));
+        
         this.viewRepresenter.render().$el.appendTo(this.$el.find('#showRepresenter'));
         return this;
     },
@@ -452,3 +492,17 @@ var ViewShowRepresenter = MyView.extend({
         return this;
     }
 });
+
+
+//
+//        var artist = this.collection.get({'id': idArtist}); //.at(idArtist)
+//        //this.showArtist.model.set('urlRoot', ARTISTS + "/" + 2);
+//        console.log(idArtist);
+////        console.log('artist');
+//        console.log(this.showArtist.model);
+////        console.log(JSON.stringify(artist));
+//        this.showArtist.model = artist;
+//        this.showArtist.render();
+//        $('#showDetailArtist').show();
+//        $('#musiciansList').show();
+//        //this.showArtist.model.fetch();
