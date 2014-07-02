@@ -14,30 +14,24 @@ var MyCollection = Backbone.Collection.extend({
 //--------------------------------------------
 
 var Artists = MyCollection.extend({
-    url: ARTISTS
+    url: ARTISTS,
+    
 });
 
-//var Event = MyModelNestedCollection.extend({
-//    nested: 'artists',
-//    defaults: function() {
-//        return {
-//            artists: new Artists()
-//        }
-//    },
-//    parse: function(response) {
-//        var data = response.data;
-//        var date = new Date(data.date);
-//        data.month = date.getMonth();
-//        data.hour = date.getHours();
-//        return data;
-//    }
-//});
+
 var Events = MyCollection.extend({
+    model:Event,
     url: EVENTS,
     parse: function (response) {
         // todo error et fail
-        console.log(response.data.response);
-        return typeof response.data.response != "undefined" ? response.data.response : response;
+        //return typeof response.data.response != "undefined" ? response.data.response : response;
+        if (typeof response.data.response != "undefined"){
+            
+            return response.data.response;
+        }else{
+            console.log(response);
+           return response;
+        }
     }
 });
 
