@@ -259,7 +259,7 @@ var ViewShowArtist = MyView.extend({
         this.render();
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {artist: this.model.toJSON()}));
+        this.$el.html(Mustache.render(this.template, this.model.toJSON()));
         this.viewMusicians.render().$el.appendTo(this.$el.find('#musiciansList'));
         return this;
 

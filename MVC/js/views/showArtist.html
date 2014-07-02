@@ -19,7 +19,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">{{artist.name}}</h1> 
+            <h1 class="page-header">{{name}}</h1> 
         </div>
     </div>
     <div class="row">
@@ -30,14 +30,13 @@
             <dl>     
 
                 <dt>Name</dt>
-                <dd>{{artist.name}}</dd>
-                
-                {{#artist}}
+                <dd>{{name}}</dd>
+
                 {{#genres}}
                 <dt>Genre(s)</dt>
                 <dd>{{name_de}}</dd>
                 {{/genres}}
-                {{/artist}}
+                
             </dl>
             {{#events}}
             <dl>
@@ -76,6 +75,7 @@
             <div class="headerShowBox">
                 <h2><i class="ico-img"> Images</i></h2>
             </div>
+            
             {{#images}}
             <!--<img src="{{source}}" height="50px">--><p>{{source}}</p>
             {{/images}}
