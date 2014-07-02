@@ -14,7 +14,7 @@ var MyCollection = Backbone.Collection.extend({
 //--------------------------------------------
 
 var Artists = MyCollection.extend({
-    url: ARTISTS,
+    url: ARTISTS
     
 });
 
