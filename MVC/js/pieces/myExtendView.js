@@ -381,7 +381,6 @@ var ViewEvents = MyView.extend({
         event.set('id', idEvent);
         event.fetch({
             success: function(object, response, c) {
-                this.formatDate();
 //                console.log(object);
 //                console.log(c);
             }, error: function(object, response, c) {
