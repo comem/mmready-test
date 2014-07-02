@@ -59,59 +59,57 @@ function getOneArtist(id){
 }
 
 function saveArtist(name,genre, shortDescr, longDescr, order, isSuppport, hourArrival){
-   
-    
-       //COUCOU NATY
 
     
-    var artist1 = new Artist({"name":name, "genres": [genre], "short_description_de": shortDescr,"complete_description_de": longDescr});  //"order":order, hour_of_arrival? main? 
+    var artist1 = new Artist({
+        "name":name,
+        "genres": [genre],
+        "short_description_de": shortDescr,
+        "complete_description_de": longDescr});  //"order":order, hour_of_arrival? main? 
        
-        console.log(artist1);
-       console.log(JSON.stringify(artist1));
-       console.log("L'artiste après le save()");
-       console.log(JSON.stringify(artist1));
-       
-       
-      var id = artist1.save({ //Work only when we add
+//        var event_id; 
+      var returnArtistSaved = artist1.save({ //Work only when we add ouais confirmation success ne ds'active pas si on ne fait pas de modif^^
                                                         //a new attribute in the save method in first parameter
-
-           success: function(model, response, options){
-               if(response.status == 'fail'){
-                   console.log(response.status);
-                  
-                   console.log(response.data.name);
-                   
-               }else
-               if (response.status == 'error'){
-                   console.log(response.status);
-                   console.log(response.data.name);
-               }else{
-                   console.log("ARTISTS SAVED");
-                   console.log(response.data.title);
-                   console.log(response.data.id);
-                   return response.data.id;
-                   
-               }
-           },
-           error:function(model, response, options){ // A tester en se déconnectant!
-               console.log("ARTISTS ERROR");
-               console.log('Model');
-               console.log(model);
-               console.log('response');
-               console.log(response);
-           }
+//
+//           success: function(model, response, options){
+//               console.log("Reponse dans success");
+//               console.log(response);
+//               if(response.status === 'success'){
+//                   console.log("ARTISTS SAVED");
+//                   console.log(response.data.response.title);
+//                   console.log(response.data.response.id);
+//                   return response.data.response.id;
+//                   
+//               }//else
+////               if (response.status == 'error'){
+//////                   console.log(response.status);
+//////                   console.log(response.data.name);
+////               }else if(response.status == 'fail'){
+//////                   console.log("ARTISTS SAVED");
+//////                   console.log(response.data.response.title);
+//////                   console.log(response.data.response.id);
+//////                   return response.data.response.id;
+////                   
+////               }
+//           },
+//           error:function(model, response, options){ // A tester en se déconnectant!
+//               console.log("ARTISTS ERROR");
+//               console.log('Model');
+//               console.log(model);
+//               console.log('response');
+//               console.log(response);
+//           }
 //           ,fail: function(model, response){ //pas prévu pour .save() tout va dans success
 //           
        });
-       
-                   console.log("Artist Created id");
-                   console.log(id); 
-                   
-            savePerformer(order, isSuppport, hourArrival);       
+      
+var event_id;
+ var artist_id;
+            savePerformer(event_id, artist_id, order, isSuppport, hourArrival);       
                    
 }//FIN save Artist
 
-function savePerformer(order, isSuppport, hourArrival){
+function savePerformer(event_id, artist_id, order, isSuppport, hourArrival){
     
     
     return;

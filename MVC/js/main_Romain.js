@@ -87,8 +87,7 @@ $("#btnCreateArtist").on("click", function(){
       var order;
       var isSuppport;
       var hourArrival;
-        console.log("name");
-        console.log(name);
+        
         if(name === " "){
             console.log("caractère vide");
         }else{
