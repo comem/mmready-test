@@ -42,10 +42,10 @@ var Event = MyModel.extend({
         this.set(attrDateStart);
         
         
-//        if(this.get("ending_date_hour")!=null){
-//            var attrDateEnd = atomDateEndUTC(this.get("ending_date_hour"));
-//            this.set(attrDateEnd);
-//        }
+        if(this.get("ending_date_hour")!=null){
+            var attrDateEnd = atomDateEndUTC(this.get("ending_date_hour"));
+            this.set(attrDateEnd);
+        }
         
              
     }
