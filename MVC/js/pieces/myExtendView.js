@@ -440,10 +440,10 @@ var ViewShowEvent = MyView.extend({
         return this;
     },
     backListEvents: function() {
-//        $('#showDetailEvent').hide();
-//        $('#showTicket').hide();
-//        $('#advancedResearchEvents').show();
-//        $('#eventsList').show();
+        $('#showDetailEvent').hide();
+        $('#showTicket').hide();
+        $('#advancedResearchEvents').show();
+        $('#eventsList').show();
     }
 });
 var ViewAddEvent = MyView.extend({
