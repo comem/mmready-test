@@ -154,7 +154,7 @@ var ViewMusicians = MyView.extend({
 
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {musicians: this.collection.toJSON()}));
+        this.$el.html(Mustache.render(this.template, this.collection.toJSON()));
         return this;
     }
 });
@@ -211,6 +211,31 @@ var ViewArtists = MyView.extend({
         });
         $('#showDetailArtist').show();
         $('#musiciansList').show();
+        //this.showArtist.render();
+//        $('#artistsList').hide();
+//        var idArtist = $(event.target).attr('data-id');
+//        //var idArtist = $(".ico-detail").attr("data-id");
+//        //var artist = this.collection.at(idArtist); //.at(idArtist)
+//
+//        this.showArtist.model.set('urlRoot', ARTISTS + "/" + idArtist);
+//        console.log(this.showArtist.model);
+//        artist = this.showArtist.model;
+//        artist.fetch({
+//            success: function(object, response, c) {
+//                console.log(object);
+//                console.log(c);
+//
+//            }, error: function(object, response, c) {
+//                console.log(object);
+//                console.log(response);
+//            }
+//        });
+//
+//        $('#showDetailArtist').show();
+//        $('#musiciansList').show();
+//        //this.showArtist.render();
+
+
     },
     addArtist: function(event) {
         $('#artistsList').hide();
@@ -402,10 +427,10 @@ var ViewShowEvent = MyView.extend({
         return this;
     },
     backListEvents: function() {
-        $('#showDetailEvent').hide();
-        $('#showTicket').hide();
-        $('#advancedResearchEvents').show();
-        $('#eventsList').show();
+//        $('#showDetailEvent').hide();
+//        $('#showTicket').hide();
+//        $('#advancedResearchEvents').show();
+//        $('#eventsList').show();
     }
 });
 var ViewAddEvent = MyView.extend({
