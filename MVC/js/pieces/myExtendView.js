@@ -330,12 +330,12 @@ var ViewAddArtist = MyView.extend({
 var ViewTicket = MyView.extend({
     template: templates.showTicket,
     initialize: function(attrs, options) {
-        this.listenTo(this.model, 'all', this.render);
+        this.listenTo(this.collection, 'all', this.render);
         this.render();
 
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, {ticket: this.model.toJSON()}));
+        this.$el.html(Mustache.render(this.template, {tickets: this.collection.toJSON()}));
         return this;
     }
 });
@@ -406,14 +406,17 @@ var ViewShowEvent = MyView.extend({
         'click #btn-back': 'backListEvents'
     },
     initialize: function(attrs, options) {
-        this.viewTicket = new ViewTicket({model: new Ticket({})});
+        this.viewTicket = new ViewTicket({collection: new Tickets({})});
         this.viewRepresenter = new ViewShowRepresenter({model: new Representer({})});
         this.listenTo(this.model, 'all', this.render);
         this.render();
     },
     render: function() {
         this.$el.html(Mustache.render(this.template, this.model.toJSON()));
+        this.viewTicket.collection = new Tickets(this.model.get('tickets'));
+        this.viewRepresenter.model = new Tickets(this.model.get('representer'));
         this.viewTicket.render().$el.appendTo(this.$el.find('#showTicket'));
+        
         this.viewRepresenter.render().$el.appendTo(this.$el.find('#showRepresenter'));
         return this;
     },
