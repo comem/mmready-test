@@ -138,12 +138,12 @@ $("#btnCreateArtist").on("click", function(){
         console.log("clickLOGIN");
         $("section").hide();
         
-        var login = new MyLoginModel({});
-     var loginViewVar = new LoginView({model: login});
+        var login = new LoginModel();
+        var loginViewVar = new LoginView({model: login});
         loginViewVar.$el.appendTo("body");
         
         //$("section#loginFab").show();
-        loginButton();
+        //loginButton();
 });
    
     

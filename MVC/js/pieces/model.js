@@ -6,10 +6,10 @@
 //   ainsi que fail et error
 var MyInitModel = Backbone.Model.extend();
 
-
 var MyModel = Backbone.Model.extend({
     parse: function(response) {
-        // to do if statut fail/error
+        // to do if statut fail/error un gros if pour le statut
+        
         if (typeof response.data != "undefined") {
             if (typeof response.data.response != "undefined") {
                 response = response.data.response;
@@ -17,15 +17,31 @@ var MyModel = Backbone.Model.extend({
                 response = response.data;
             }
         }
+        console.log("Parse de myModel"+response);
+        console.log(response);
         return response;
     }
 });
 
-var Login = MyModel.extend({
-    urlRoot: LOGIN
+var LoginModel = MyModel.extend({
+    urlRoot: LOGIN,
+    parse: function(response){
+        console.log("IN parse of LoginModel");
+        if (response.status === 'success') {
+                    alert(response.data.response.title);
+                } else if (response.status === "error") {
+                    alert(response.message);
+                    return;
+                } else if ((response.status === "fail")) {
+                    alert(response.data.auth);
+                    return;
+                }else{
+                    alert("Problème indéterminé");
+                }
+    }
 });
 
-var Logout = MyModel.extend({
+var LogoutModel = MyModel.extend({
     urlRoot: LOGOUT
 });
 //--------------------------------------------
@@ -48,18 +64,20 @@ var Event = MyModel.extend({
     },
     initialize: function() {
         this.formatDate();
-    }//,
-//    parse: function(response) {
-//        // to do if statut fail/error
-//        if (typeof response.data != "undefined") {
-//            if (typeof response.data.response != "undefined") {
-//                response = response.data.response;
-//            } else {
-//                response = response.data;
-//            }
-//        }
-//        this.formatDate();
-//    }
+    },
+    parse: function(response) {
+        // to do if statut fail/error
+        if (typeof response.data != "undefined") {
+            if (typeof response.data.response != "undefined") {
+                response = response.data.response;
+            } else {
+                response = response.data;
+            }
+        }
+      
+        return response;
+        
+    }
 
 });
 

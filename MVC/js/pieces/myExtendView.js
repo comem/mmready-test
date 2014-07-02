@@ -154,7 +154,7 @@ var ViewMusicians = MyView.extend({
 
     },
     render: function() {
-        console.log(this.collection.toJSON());
+        
         this.$el.html(Mustache.render(this.template, {musicians: this.collection.toJSON()}));
         return this;
     }
@@ -360,7 +360,7 @@ var ViewEvents = MyView.extend({
     },
     initialize: function(attrs, options) {
         // internal view for event detail
-        this.showEvent = new ViewShowEvent({model: new Event({})});
+        this.showEvent = new ViewShowEvent({model: new Event()});
         this.showEvent.render().$el.appendTo('#showDetailEvent');
         this.collection.fetch();
         this.listenTo(this.collection, 'all', this.render);
@@ -387,12 +387,8 @@ var ViewEvents = MyView.extend({
         console.log(this.collection);
         console.log(event);
         event.fetch({
-            success: function(object, response, c) {
-//                console.log(object);
-//                console.log(c);
-            }, error: function(object, response, c) {
-//                console.log(object);
-//                console.log(response);
+            success: function() {
+                event.formatDate();
             }
         });
         $('#showDetailEvent').show();
