@@ -27,6 +27,16 @@ function getAllArtists(){
      });
 }
 
+function getAllArtists(){
+    
+     var allArtistsView = new ViewAllArtists({collection: artistsList});
+     artistsList.fetch({
+         success: function(){
+             console.log(artistsList);
+         }
+     });
+}
+
 function getOneArtist(id){
    
    var OneArtist = Artist.extend({
@@ -116,7 +126,19 @@ function savePerformer(event_id, artist_id, order, isSuppport, hourArrival){
     
 }//FIN savePerformer
 
+function saveMusician(event_id, artist_id, order, isSuppport, hourArrival){
+    
+    
+    return;
+    
+}//FIN saveMusician
 
+function saveEvent(event_id, artist_id, order, isSuppport, hourArrival){
+    
+    
+    return;
+    
+}//FIN saveEvent
 
 function loginButton(){
     

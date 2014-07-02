@@ -17,8 +17,28 @@ var Artists = MyCollection.extend({
     url: ARTISTS
 });
 
+var Event = MyModelNestedCollection.extend({
+    nested: 'artists',
+    defaults: function() {
+        return {
+            artists: new Artists()
+        }
+    },
+    parse: function(response) {
+        var data = response.data;
+        var date = new Date(data.date);
+        data.month = date.getMonth();
+        data.hour = date.getHours();
+        return data;
+    }
+});
 var Events = MyCollection.extend({
-    url: EVENTS
+    url: EVENTS,
+    parse: function (response) {
+        // todo error et fail
+        console.log(response.data.response);
+        return typeof response.data.response != "undefined" ? response.data.response : response;
+    }
 });
 
 var EventTypes = MyCollection.extend({
