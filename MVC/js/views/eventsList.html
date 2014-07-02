@@ -22,8 +22,8 @@
                     <div class="row">
                         <div class="col-lg-12 result">
                             <div class="col-lg-2 col-lg-offset-1 ">
-                                <span class="dayResult">{{dayStart}}</span>
-                                <span class="monthResult">{{monthStart}}</span>
+                                <span class="dayResult">31</span>
+                                <span class="monthResult">Dezember</span>
                             </div>
                             <div class="col-lg-7 searchResult">
 
@@ -34,15 +34,15 @@
                                     <a href="#" class="ico-edit"></a>
                                 </span>
                                 <span id="linkEventsList" class="pull-right">
-                                    <a href="showDetailEvent" class="ico-detail" data-id="{{id}}"></a>
+                                    <a href="#" class="ico-detail"></a>
                                 </span>
 
-                                <h1>{{title_de}} 
-                                    <small id="genres">{{#genres}}{{name_de}}{{/genres}}</small>
-                                </h1>
+                                <h1>{{title}} 
+
+                                    <small id="genres">{{name_de}}</small></h1>
                                 <p>
                                     <span class="small ico-clock">{{opening_doors}}</span> 
-                                    <span class="small ico-clock">{{hoursStart}}:{{minutesStart}}</span> 
+                                    <span class="small ico-clock">{{start_date_hour}}</span> 
                                     
                                     {{#artists}}  
                                     <span class="small ico-responsable">{{name}} </span>

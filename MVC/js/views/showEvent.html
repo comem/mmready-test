@@ -1,73 +1,85 @@
+
+
 <div class="container-fluid">
     <div class="row buttonsOptions">
         <div class="col-lg-5 col-lg-offset-7">
             <button class="btn btn-default" id="btn-back">Back to List</button>
-            <button class="btn btn-default">
-                <span class="ico-edit">Edit artist</span>
-            </button>
-            <button class="btn btn-default">
-                <span class="ico-delete">Delete artist</span>
-            </button>
+            <button class="btn btn-default"><span class="ico-edit">Edit artist</span></button>
+            <button class="btn btn-default"><span class="ico-delete">Delete artist</span></button>
+
         </div>
+
     </div>
+
 </div>
 
+{{#event}}
 <div class="container-fluid">
+
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">{{title_de}}<small>{{#genres}}{{name_de}}{{/genres}}</small></h1> 
+            <h1 class="page-header">{{title_de}}<small>{{#genres}}{{name_de}} hip-Hop, Deep House{{/genres}}</small></h1> 
+
             <div class="row moreInfo">
                 <div class="col-lg-12">
                     <ul>
-                        <li><i class="ico-calendar"></i>{{dayStart}}-{{monthStart}}-{{yearStart}}</li>
-                        <li><i class="ico-clock"></i>{{hoursStart}}:{{minutesStart}}</li>
+                        <li><i class="ico-calendar"></i>{{start_date_hour}}12 juni 2014</li>
+                        <li><i class="ico-clock"></i>12:00</li>
                     </ul>
+
+
                 </div>
             </div>
+
         </div>
+
     </div>
+
+
 
     <div class="row">
         <div class="col-lg-12">
+
             <div class="headerShowBox">
                 <h2><i class="ico-info"></i> Information</h2> 
             </div>
+
+
+
             <dl>       
+
                 <dt>Doors:</dt>
-                <dd>{{opening_doors}}</dd>
+                <dd>{{opening_doors}} 6:00</dd>
 
                 <dt>End:</dt>
-                <dd>{{dayEnd}}-{{monthEnd}}-{{yearEnd}} {{hoursEnd}}:{{minutesEnd}}</dd>
-
+                <dd>{{ending_date_hour}} 12th May 1986</dd>
+                
                 <dt>Type: </dt>
-                <dd>{{event_type.name_de}}</dd>
+                <dd>Mississipi</dd>
 
                 <dt>AfterParty: </dt>
-                <dd>{{followed_by_private}}</dd>
+                <dd>{{followed_by_private}} private</dd>
 
                 <dt>Contract src:</dt>
                 <dd>{{contract_src}}</dd>
-                
-                <dt>Description:</dt>
-                <dd>{{description_de}}</dd>
-                
-                <dt>Place</dt>
-                <dd>{{nb_places}}</dd>
+
+
             </dl>
+
+
         </div>
+
     </div>
 
     <div class="row">
         <section id="showTicket">
-
         </section>
+
 
         <div class="col-lg-6">
             <h2 class="ico-img"> Images</h2>
             <!--<img src="img/event.png" height="50px"/>-->
-            {{#image}}
-            <p>{{source}}</p>
-            {{/image}}
+
         </div>
     </div>
 
@@ -75,32 +87,40 @@
         <div class="col-lg-12">
             <h2 class="ico-artist">Artist</h2> 
             <div class="listArtists">
-                {{#performers}}
-                {{#artist}}
-                <p>{{name}}</p>
-                {{/artist}}
-                {{/performers}}
+                {{#artists}}
+                <p>name artists</p>
+                <p>name artists</p>
+                {{/artists}}
             </div>
+
+
+
         </div>
+
     </div>
+
 
     <div class="row">
         <div class="col-lg-12 meal">
             <div class="headerShowBox">
                 <h2><i class="ico-food"></i> Meal</h2> 
             </div>
-            <form action="sumMeal.php">
-                <dl>       
-                    <dt>Standrd meal</dt>
-                    <dd id="nb_meal">{{nb_meal}}</dd>
 
-                    <dt>Vegans meals</dt>
-                    <dd id="nb_vegans_meal">{{nb_vegans_meal}}</dd>
+            <dl>       
 
-                    <dt>Note meal</dt>
-                    <dd>{{meal_notes_de}}</dd>
-                </dl>
-            </form>
+                <dt>Standrd meal</dt>
+                <dd>{{nb_meal}}</dd>
+
+                <dt>Vegans meals</dt>
+                <dd>{{nb_vegans_meal}}</dd>
+
+                <dt>Total</dt>
+                <dd>7</dd>
+
+            </dl>
+
+
+
         </div>
 
     </div>
@@ -109,16 +129,16 @@
         <div class="col-lg-12">
             <h2 class="ico-note">Notes</h2> 
             <div class="col-lg-4">
-                <p>{{notes_de}}</p>
+                <p>{{notes_de}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at magna vel turpis varius suscipit a at elit. Integer semper elit sit amet tristique luctus. Praesent eu lacus pharetra ipsum aliquet aliquet id non metus. Sed sed venenatis turpis. Vestibulum consequat nunc a nisi pulvinar, at volutpat mauris pellentesque. Proin in purus nisl. Nunc sit amet lacus euismod, hendrerit sapien nec, lacinia nibh. Curabitur vitae tellus ornare, aliquet ipsum nec, pharetra est. Vivamus egestas risus vitae purus mollis, nec auctor massa faucibus.</p>
             </div>
         </div>
+
     </div>
 
     <div class="row">
-        <section id="showRepresenter">
+        <section id="showRepresenter"></section>
 
-        </section>
     </div>
 
-</div>
+</div>{{/event}}
 

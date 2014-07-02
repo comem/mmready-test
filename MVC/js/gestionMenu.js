@@ -77,16 +77,6 @@ $('body').on('click', '#filterRepresenters', function(e){
     });
 
 
-<<<<<<< HEAD
-=======
-    $('body').on('click','a', function(e) {
-        menuElementClickHandler($(this));
-        e.preventDefault();
-        return false;
-    });
-
-
->>>>>>> origin/Backbone
 
 
 

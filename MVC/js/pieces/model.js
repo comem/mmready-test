@@ -35,32 +35,7 @@ var Artist = MyModel.extend({
 });
 
 var Event = MyModel.extend({
-    urlRoot: EVENTS,
-    initialize: function(){
-        var dateStart =this.get("start_date_hour");
-        var attrDateStart = atomDateStartUTC(dateStart);
-        this.set(attrDateStart);
-        
-        
-        if(this.get("ending_date_hour")!=null){
-            var attrDateEnd = atomDateEndUTC(this.get("ending_date_hour"));
-            this.set(attrDateEnd);
-        }
-        
-                 }//,
-//    parse: function(){
-//        var dateStart =this.get("start_date_hour");
-//        var attrDateStart = atomDateStartUTC(dateStart);
-//        this.set(attrDateStart);
-//        
-//        
-//        if(this.get("ending_date_hour")!=null){
-//            var attrDateEnd = atomDateEndUTC(this.get("ending_date_hour"));
-//            this.set(attrDateEnd);
-//        }
-//        
-//             
-//    }
+    urlRoot: EVENTS
 });
 
 var EventType = MyModel.extend({

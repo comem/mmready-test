@@ -17,52 +17,6 @@ function initHandler(){
 //    });
 }
 
-function atomDateStartUTC(dateUTC){
-    console.log("String");
-        console.log(date);
-        var date = new Date(dateUTC);
-        console.log("new Date()");
-        console.log(date);
-             var dayDate = date.getDate();
-             
-             var months = [ "Januar", "Februar", "March", "April", "May", "June", 
-               "July", "August", "September", "October", "November", "December" ];
-              var month = date.getMonth();
-            var selectedMonthName = months[month];
-             
-             var year = date.getFullYear();
-             
-             var hours = date.getHours(); //returns 0-23
-            var minutes = date.getMinutes(); //returns 0-59
-            var seconds = date.getSeconds(); // returns 0-59
-            var attrDate = {dayStart: dayDate, monthStart: selectedMonthName,yearStart:year,hoursStart:hours,minutesStart:minutes};
-            
-    return attrDate;
-}
-
-function atomDateEndUTC(dateUTC){
-    console.log("String");
-        console.log(date);
-        var date = new Date(dateUTC);
-        console.log("new Date()");
-        console.log(date);
-             var dayDate = date.getDate();
-             
-             var months = [ "Januar", "Februar", "March", "April", "May", "June", 
-               "July", "August", "September", "October", "November", "December" ];
-              var month = date.getMonth();
-            var selectedMonthName = months[month];
-             
-             var year = date.getFullYear();
-             
-             var hours = date.getHours(); //returns 0-23
-            var minutes = date.getMinutes(); //returns 0-59
-            var seconds = date.getSeconds(); // returns 0-59
-            var attrDate = {dayEnd: dayDate, monthEnd: selectedMonthName,yearEnd:year,hoursEnd:hours,minutesEnd:minutes};
-            
-    return attrDate;
-}
-
 function getAllArtists(){
     
      var allArtistsView = new ViewAllArtists({collection: artistsList});
@@ -76,92 +30,124 @@ function getAllArtists(){
 function getOneArtist(id){
    
    var OneArtist = Artist.extend({
-       urlRoot:ARTISTS+"/"+id
-    });
+       urlRoot:ARTISTS+"/"+id,
+       parse: function (response) {
+        // Gestion conditionnelle du format JSEND
+        console.log("La response reçue du Parse d'un collection");
+        console.log(response.data.response);
+        return typeof response.data.response != "undefined" ? response.data.response : response;
+    }
+   });
+       
+   console.log("getOneArtists");
    
     var artist1 = new OneArtist();
-
+//   var oneArtistView = new ViewShowArtist({collection: artist1});
+   
+   //artist1.set("id", id);
     artist1.fetch();
+//    console.log(artist1);
+//    console.log(JSON.stringify(artist1));
+
+
+//var id=1;
+//    artist.set("id", id);
+//    artist.fetch();
+//    
+//    console.log(artist);
+    
 }
 
-function saveArtist(event_id, name,genre, shortDescr, longDescr){
-
-    var event_id = event_id;
+function saveArtist(name,genre, descr){
+   
     
-    var artist1 = new Artist({
-        "name":name,
-        "genres": [genre],
-        "short_description_de": shortDescr,
-        "complete_description_de": longDescr});
        
-      artist1.save({ //Work only when we add ouais confirmation success ne ds'active pas si on ne fait pas de modif^^
+//   console.log("getOneArtists");
+//   
+//    var artist1 = new Artist({
+//        urlRoot: ARTIST+"/"+name+"/"+genre
+//    });
+//   var oneArtistView = new ViewShowArtist({collection: artist1});
+//   
+//   //artist1.set("id", id);
+//    artist1.fetch();
+    
+    var artist1 = new Artist({"name":name, "genres": [genre], "short_description_de": descr});
+       
+       
+       
+       
+       console.log(artist1);
+       
+       console.log(JSON.stringify(artist1));
+       
+       console.log("L'artiste après le save()");
+       console.log(JSON.stringify(artist1));
+       
+       
+       
+      var id = artist1.save({"short_description_de": "Led Zeppelin [ˌlɛdˈzɛplɪn] war eine englische Rockband. 1968 gegründet, gehört sie mit 300 Millionen verkauften Alben zu den erfolgreichsten Bands überhaupt."},{ //Work only when we add
                                                         //a new attribute in the save method in first parameter
-//
-//           success: function(model, response, options){
-//               console.log("Reponse dans success");
-//               console.log(response);
-//               if(response.status === 'success'){
-//                   console.log("ARTISTS SAVED");
-//                   console.log(response.data.response.title);
-//                   console.log(response.data.response.id);
-//                   return response.data.response.id;
-//                   
-//               }//else
-////               if (response.status == 'error'){
-//////                   console.log(response.status);
-//////                   console.log(response.data.name);
-////               }else if(response.status == 'fail'){
-//////                   console.log("ARTISTS SAVED");
-//////                   console.log(response.data.response.title);
-//////                   console.log(response.data.response.id);
-//////                   return response.data.response.id;
-////                   
-////               }
-//           },
-//           error:function(model, response, options){ // A tester en se déconnectant!
-//               console.log("ARTISTS ERROR");
-//               console.log('Model');
+
+           success: function(model, response, options){
+               if(response.status == 'fail'){
+                   console.log(response.status);
+                  
+                   console.log(response.data.name);
+                   
+               }else
+               if (response.status == 'error'){
+                   console.log(response.status);
+                   console.log(response.data.name);
+               }else{
+                   console.log("ARTISTS SAVED");
+                   console.log(response.data.title);
+                   console.log(response.data.id);
+                   return response.data.id;
+                   
+               }
+               
+//               console.log('Le Model');
 //               console.log(model);
 //               console.log('response');
 //               console.log(response);
-//           }
+//               console.log('options');
+//               console.log(options);
+           },
+           error:function(model, response, options){ // A tester en se déconnectant!
+               console.log("ARTISTS ERROR");
+               console.log('Model');
+               console.log(model);
+               console.log('response');
+               console.log(response);
+           }
 //           ,fail: function(model, response){ //pas prévu pour .save() tout va dans success
 //           
        });
-         
-                   
-}//FIN save Artist
+       
+                   console.log("Artist Created id");
+                   console.log(id);
+//    console.log(artist1);
+//    console.log(JSON.stringify(artist1));
 
-function savePerformer(event_id, artist_id, order, isSuppport, hourArrival){
-//    order, isSuppport, hourArrival,
-    
-    return;
-    
-}//FIN savePerformer
 
-function saveMusician(artist_id, firstName, lastName, stageName, instrument_id){
+//var id=1;
+//    artist.set("id", id);
+//    artist.fetch();
+//    
+//    console.log(artist);
     
-    
-    return;
-    
-}//FIN saveMusician
+}
 
-function saveEvent(hourArrival){
-    
-    
-    return;
-    
-}//FIN saveEvent
 
 function loginButton(){
     
 
      
     $("#btnConnect").on("click", function(){
-      var email = $("input[type=email]").val();
-      console.log("email");
+      var email = $("input#email").val();
     console.log(email);
-    var password = $("input[type=password]").val();
+    var password = $("input#password").val();
     console.log("password");
     console.log(password);
     
@@ -174,7 +160,7 @@ function loginButton(){
     url: LOGIN,
     dataType: 'json',
     //async: false,
-    data: {"email":email ,"password":password} ,      //email     password            //AUTH_MANAGER_FR ,      //"matou@matou.ch""matou"}
+    data: {"email":email ,"password":password} ,                       //AUTH_MANAGER_FR ,      //"matou@matou.ch""matou"}
 
     
     success: function (data, textStatus, jqXHR){
@@ -188,13 +174,10 @@ function loginButton(){
           console.log(data.data.title);
           //$("#loginFab").hide();
           alert(data.data.title);
-      }else if (data.status==="error"){
+      }else{
           alert(data.message.title);
           console.log("Phrase d'erreur : "+ data.message.title);
           //IsConnected();
-          return;
-      }else if((data.status==="fail")){
-          console.log("Phrase d'erreur : "+ data.message);
           return;
       }
       
@@ -213,6 +196,12 @@ function loginButton(){
     
 };
     
+   
+    
+
+    
+
+
 
 function loginFunction(){
     

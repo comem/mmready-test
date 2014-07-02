@@ -22,8 +22,8 @@ var musiciansList = new Musicians();
 var instrusList = new Instruments();
 
 
-//var login = new MyInitModel({"txtButton":"Activation"});
-//var loginViewVar = new LoginView({model: login});
+var login = new MyInitModel({"txtButton":"Activation"});
+var loginViewVar = new LoginView({model: login});
 
 var createArtist = new MyModel();
 var createArtistView = new CreateArtistView({model: createArtist});
@@ -65,27 +65,6 @@ $(document).ready(function() {
         
     });
     
-// collection.forEach(function(model, index) {
-//    model.set(url, urlArray[index]);
-//});
-    
-    
-    $('#btnAllEvents').click(function(){
-        
-        var events10 = new Events({});
-        events10.fetch({}); // fetch est asynchrone il n'attends pas la réponse du serveur avant de passer à la ligne d'après
-        
-        
-        
-        
-        
-        
-        
-        
-    });
-    
-    
-    
     
     $('#Activation').click(function(){
        // loginFunction(); 
@@ -102,17 +81,13 @@ $("#btnCreateArtist").on("click", function(){
         
       var name = $("#nameArtistInput").val();  
       var genre = $("#genreArtistInput").val();
-      var shortDescr = $("#shortDescrArtistInput").val();
-      var longDescr = $("#LongDescrArtistInput").val();
-      
-      var order;
-      var isSuppport;
-      var hourArrival;
-        
+      var descr = $("#shortDescrArtistInput").val();
+        console.log("name");
+        console.log(name);
         if(name === " "){
             console.log("caractère vide");
         }else{
-          saveArtist(name, genre, shortDescr, longDescr, order, isSuppport, hourArrival);  
+          newArtist(name, genre, descr);  
         }
         
 });
