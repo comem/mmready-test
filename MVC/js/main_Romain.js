@@ -68,7 +68,24 @@ $(document).ready(function() {
 // collection.forEach(function(model, index) {
 //    model.set(url, urlArray[index]);
 //});
-    
+    $("#isDate").click(function(){
+        
+        var events = new Events();
+        console.log(events);
+//        events.fetch({
+//            success: function (a, b, c){
+//                
+//                console.log("Event après fetch");
+//                console.log(a);
+//                console.log(b);
+//                console.log(c);
+//            }
+//        });
+    });
+    $("#takeEvent").click(function(){
+        
+        
+    });
     
     $('#btnAllEvents').click(function(){
         
