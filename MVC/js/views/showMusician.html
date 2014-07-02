@@ -5,10 +5,10 @@
         </div>
         <div class="row">
             <div class="col-lg-3">
-                
+                {{#musicians}}
                 <dl>       
                     <dt>Name</dt>
-                    <dd>{{musicians.first_name}}</dd>
+                    <dd>{{first_name}}</dd>
                     <dt>Scene Name</dt>
                     <dd>{{stagename}}</dd>
                     {{#instruments}}
@@ -16,7 +16,7 @@
                     <dd>{{name_de}}</dd>
                     {{/instruments}}
                 </dl>
-                
+                {{/musicians}}
             </div>
 
 

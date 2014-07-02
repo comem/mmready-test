@@ -154,7 +154,8 @@ var ViewMusicians = MyView.extend({
 
     },
     render: function() {
-        this.$el.html(Mustache.render(this.template, this.collection.toJSON()));
+console.log(this.collection.toJSON());
+        this.$el.html(Mustache.render(this.template, {musicians:this.collection.toJSON()}));
         return this;
     }
 });
@@ -200,6 +201,7 @@ var ViewArtists = MyView.extend({
         var idArtist = $(event.target).attr('data-id');
         var artist = this.showArtist.model;
         artist.set('id', idArtist);
+        var that = this;
         artist.fetch({
             success: function(object, response, c) {
                 console.log(object);
@@ -211,31 +213,6 @@ var ViewArtists = MyView.extend({
         });
         $('#showDetailArtist').show();
         $('#musiciansList').show();
-        //this.showArtist.render();
-//        $('#artistsList').hide();
-//        var idArtist = $(event.target).attr('data-id');
-//        //var idArtist = $(".ico-detail").attr("data-id");
-//        //var artist = this.collection.at(idArtist); //.at(idArtist)
-//
-//        this.showArtist.model.set('urlRoot', ARTISTS + "/" + idArtist);
-//        console.log(this.showArtist.model);
-//        artist = this.showArtist.model;
-//        artist.fetch({
-//            success: function(object, response, c) {
-//                console.log(object);
-//                console.log(c);
-//
-//            }, error: function(object, response, c) {
-//                console.log(object);
-//                console.log(response);
-//            }
-//        });
-//
-//        $('#showDetailArtist').show();
-//        $('#musiciansList').show();
-//        //this.showArtist.render();
-
-
     },
     addArtist: function(event) {
         $('#artistsList').hide();
@@ -260,6 +237,7 @@ var ViewShowArtist = MyView.extend({
     },
     render: function() {
         this.$el.html(Mustache.render(this.template, this.model.toJSON()));
+        this.viewMusicians.collection = new Musicians(this.model.get('musicians'));
         this.viewMusicians.render().$el.appendTo(this.$el.find('#musiciansList'));
         return this;
 
