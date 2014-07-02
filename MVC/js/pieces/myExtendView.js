@@ -131,7 +131,9 @@ var ViewResearchRepresenter = MyView.extend({
     showListRepresenter: function() {
 
         $('#artistsList').hide();
+        $('#eventsList').hide();
         $('#advancedResearchArtists').hide();
+        $('#advancedResearchEvents').hide();
         $('#researchRepresenters').show();
         $('#representersList').show();
     },
@@ -171,7 +173,7 @@ var ViewArtists = MyView.extend({
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
         'click a.ico-detail': 'detail',
-        'click #btn-addArtist': 'addArtist'
+        'click #addArtist': 'addArtist'
 
     },
     initialize: function(attrs, options) {
@@ -328,7 +330,7 @@ var ViewEvents = MyView.extend({
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
         'click a.ico-detail': 'detail',
-        'click #btn-addEvent': 'addEvent'
+        'click a.addEvent': 'addEvent'
     },
     initialize: function(attrs, options) {
         // internal view for event detail

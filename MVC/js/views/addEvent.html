@@ -9,7 +9,16 @@
             <div class="col-lg-8">
                 <fieldset> 
                     <h2><i class="ico-info"></i>Informations</h2 > 
+
+                        
                     <div class="col-lg-6">
+                         <div class="input-group">
+                            <label for="username">Artist Nom:*</label>
+                            <input type="text" placeholder="name"  class="form-control" id="nameArtistInput" name="nameArtistInput" />
+                            <span class="help-block hidden"></span>
+                        </div>
+
+
                         <div class="input-group">
                             <label>Event name: </label>
                             <input type="text" name="eventName" id="eventName">
@@ -18,6 +27,7 @@
                         <div class="input-group" itemprop="startDate">
                             <label for="end">Start: * </label>
                             <input type="datetime" name="start" id="start" required>
+                            <span class="help-block hidden"></span>
                         </div>
                         <!--ouverture portes-->
                         <div class="input-group" itemprop="doorTime">

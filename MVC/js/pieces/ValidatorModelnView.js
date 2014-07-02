@@ -25,37 +25,25 @@ _.extend(Backbone.Validation.callbacks, {
     }
 });
 
-
-
-Backbone.Validation.configure({
-  labelFormatter: 'label'
-});
-
-
 // Define a model with some validation rules
-var CreatArtistModel = Backbone.Model.extend({
+var AddEventModel = Backbone.Model.extend({
     
     validation: {
-        nameArtistInput: {
-            
+        artistName: {
+            required: true,
             minLength: 8,
-            required: false,
             msg: "Min 8"
-        },genreArtistInput: {
-            required: true,
-        },
-        shortDescrArtistInput: {
-            required: true,
-            msg: "min 1 genre"
         }
     }
 });
 
-var CreatAnArtist = Backbone.View.extend({
+
+
+var CreatAnEvent = Backbone.View.extend({
     events: {
-        'click #btnCreateArtist': function (e) {
+        'click #saveEvent': function (e) {
             e.preventDefault();
-            this.creatArtist();
+            this.creatEvent();
         }
     },
     
@@ -65,19 +53,6 @@ var CreatAnArtist = Backbone.View.extend({
     bindings: {
         '[name=nameArtistInput]': {
             observe: 'nameArtistInput',
-            setOptions: {
-                validate: false
-            }
-        },
-        '[name=shortDescrArtistInput]': {
-            observe: 'shortDescrArtistInput',
-            setOptions: {
-                validate: true
-            }
-        }
-        ,
-        '[name=genreArtistInput]': {
-            observe: 'genreArtistInput',
             setOptions: {
                 validate: true
             }
@@ -95,7 +70,7 @@ var CreatAnArtist = Backbone.View.extend({
         return this;
     },
     
-    creatArtist: function () {
+    creatEvent: function () {
         // Check if the model is valid before saving
         // See: http://thedersen.com/projects/backbone-validation/#methods/isvalid
         if(this.model.isValid(true)) {       
@@ -113,9 +88,9 @@ var CreatAnArtist = Backbone.View.extend({
 });
 
 $(function () {
-    var view = new CreatAnArtist({
-        el: 'form',
-        model: new CreatArtistModel()
+    var view = new CreatAnEvent({
+        el: 'fieldset',
+        model: new AddEventModel()
     });
     view.render();
 });

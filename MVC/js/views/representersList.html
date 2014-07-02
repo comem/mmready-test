@@ -1,7 +1,30 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="ico-responsable"> List of responsable</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="form-inline">
+                        <label for="sort">Sort by</label>
+                        <select class="form-control">
+                            <option value="" disabled selected>none</option>
+                            <option>Name asc</option>
+                            <option>Name desc</option>
+                        </select>
+                        <button type="button" class="btn btn-default" id="sort">Sort</button>
+                    </div>
+                </div>
+            </div>
 
 {{#representers}}
 <!--ListRepresentant-->
 <div class="row">
+
+
     <div class="col-lg-12 result">
         
         <div class="col-lg-7 col-lg-offset-1 searchResult">
@@ -21,3 +44,6 @@
     </div>
 </div><!-- /.end Representant-->
 {{/representers}}
+        </div>
+    </div>
+</div>

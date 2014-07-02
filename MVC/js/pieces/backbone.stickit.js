@@ -574,7 +574,7 @@
 
   // Export onto Backbone object
   Backbone.Stickit = Stickit;
-  console.log(Backbone.Stickit);
+  //console.log(Backbone.Stickit);
   return Backbone.Stickit;
 
 }));

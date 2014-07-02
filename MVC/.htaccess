@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^(addEvent|artistsList|representersList|eventsList|addOneArtist)$ index.html 
