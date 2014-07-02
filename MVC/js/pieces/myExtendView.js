@@ -384,6 +384,7 @@ var ViewEvents = MyView.extend({
         var idEvent = $(event.target).attr('data-id');
         var event = this.showEvent.model;
         event.set('id', idEvent);
+        console.log(this.collection);
         console.log(event);
         event.fetch({
             success: function(object, response, c) {
