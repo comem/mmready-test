@@ -17,21 +17,21 @@ var Artists = MyCollection.extend({
     url: ARTISTS
 });
 
-var Event = MyModelNestedCollection.extend({
-    nested: 'artists',
-    defaults: function() {
-        return {
-            artists: new Artists()
-        }
-    },
-    parse: function(response) {
-        var data = response.data;
-        var date = new Date(data.date);
-        data.month = date.getMonth();
-        data.hour = date.getHours();
-        return data;
-    }
-});
+//var Event = MyModelNestedCollection.extend({
+//    nested: 'artists',
+//    defaults: function() {
+//        return {
+//            artists: new Artists()
+//        }
+//    },
+//    parse: function(response) {
+//        var data = response.data;
+//        var date = new Date(data.date);
+//        data.month = date.getMonth();
+//        data.hour = date.getHours();
+//        return data;
+//    }
+//});
 var Events = MyCollection.extend({
     url: EVENTS,
     parse: function (response) {
