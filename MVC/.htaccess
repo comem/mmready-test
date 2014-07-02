@@ -1,6 +1,0 @@
-RewriteEngine on
-<<<<<<< HEAD
-RewriteRule ^(addEvent|artistsList|representersList|eventsList|addOneArtist)$ index.html 
-=======
-RewriteRule ^(addEvent|artistsList|representersList|eventsList|addOneArtist|showDetailEvent|showDetailArtist)$ index.html 
->>>>>>> origin/Backbone
