@@ -380,6 +380,7 @@ var ViewEvents = MyView.extend({
         // internal view for event detail
         this.showEvent = new ViewShowEvent({model: new Event({})});
         this.showEvent.render().$el.appendTo('#showDetailEvent');
+        var events = this.collection.fetch();
 
         this.listenTo(this.collection, 'all', this.render);
         this.render();
@@ -397,6 +398,18 @@ var ViewEvents = MyView.extend({
     detail: function(event) {
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
+        var idEvent = $(event.target).attr('data-id');
+        var event = this.showEvent.model;
+        event.set('id', idEvent);
+        event.fetch({
+            success: function(object, response, c) {
+                console.log(object);
+                console.log(c);
+            }, error: function(object, response, c) {
+                console.log(object);
+                console.log(response);
+            }
+        });
         $('#showDetailEvent').show();
         $('#showTicket').show();
         $('#showRepresenter').show();

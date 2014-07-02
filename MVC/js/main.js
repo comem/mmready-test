@@ -17,12 +17,12 @@ $(function() {
     console.log("---DOM IS READY---");
 
     var instrusList = new Instruments();
-    var event1 = new Event({title: 'La grosse fiesta 2014', name_de: 'rock', start_date_hour: '25.06.2014',
-        ending_date_hour: '26.06.2014', opening_doors: '16:00'});
+    //var event1 = new Event({title: 'La grosse fiesta 2014', name_de: 'rock', start_date_hour: '25.06.2014',
+       // ending_date_hour: '26.06.2014', opening_doors: '16:00'});
     var representant1 = new Representer({first_name: 'Jean', last_name: 'Ducommun',
         email: 'jean.duc@gmail.com', phone: '0789867877'});
     //var artistsList = new Artists();
-    var eventsList = new Events([event1]);
+    //var eventsList = new Events([event1]);
     var representerList = new Representers([representant1]);
 
     var event = new Event({});
@@ -32,10 +32,10 @@ $(function() {
 
 
 
-    var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: eventsList});
+    var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: new Events()});
     var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: new Artists()});
     //var researchRepresentant = new ViewResearchRepresentant({collection: artistsList});
-    var eventsListView = new ViewEvents({collection: eventsList});
+    var eventsListView = new ViewEvents({collection: new Events()});
     var artistsListView = new ViewArtists({collection: new Artists()});
     var representersListView = new ViewRepresenters({collection: representerList});
 
@@ -76,16 +76,6 @@ $(function() {
     //ADD
     addEvent.render().$el.appendTo('#addEvent');
     addArtist.render().$el.appendTo('#addOneArtist');
-
-//
-//        artistsList.fetch({
-//            success: function(collection, response, options) {
-//                 //console.log(artistsList);
-//                //console.log(JSON.stringify(artistsList));
-//            }
-//           
-//
-//        });
 
     $('ul#mainNav a').on('click', function(e) {
         menuElementClickHandler($(this));
