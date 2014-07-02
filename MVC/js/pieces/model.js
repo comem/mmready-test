@@ -37,26 +37,17 @@ var Artist = MyModel.extend({
 var Event = MyModel.extend({
     urlRoot: EVENTS,
     initialize: function(){
-        var date =this.get("start_date_hour");
-        console.log("String");
-        console.log(date);
-        var date2 = new Date(date);
-        console.log("new Date()");
-        console.log(date2);
-             var date3 = date2.getDate();
+        var dateStart =this.get("start_date_hour");
+        var attrDateStart = atomDateStartUTC(dateStart);
+        this.set(attrDateStart);
+        
+        
+        if(this.get("ending_date_hour")!=null){
+            var attrDateEnd = atomDateEndUTC(this.get("ending_date_hour"));
+            this.set(attrDateEnd);
+        }
+        
              
-             var months = [ "Januar", "Februar", "March", "April", "May", "June", 
-               "July", "August", "September", "October", "November", "December" ];
-              var month = date2.getMonth()+1;
-            var selectedMonthName = months[month];
-             
-             var year = date2.getFullYear();
-             //var time = date2.getTime();
-             var hours = date2.getHours(); //returns 0-23
-            var minutes = date2.getMinutes(); //returns 0-59
-            var seconds = date2.getSeconds(); // returns 0-59
-             this.set({day: date3, month: selectedMonthName,year:year,hours:hours,minutes:minutes});
-             console.log(this);
     }
 });
 

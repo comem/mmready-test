@@ -1,3 +1,50 @@
+function atomDateStartUTC(dateUTC){
+    console.log("String");
+        console.log(date);
+        var date = new Date(dateUTC);
+        console.log("new Date()");
+        console.log(date);
+             var dayDate = date.getDate();
+             
+             var months = [ "Januar", "Februar", "March", "April", "May", "June", 
+               "July", "August", "September", "October", "November", "December" ];
+              var month = date.getMonth();
+            var selectedMonthName = months[month];
+             
+             var year = date.getFullYear();
+             
+             var hours = date.getHours(); //returns 0-23
+            var minutes = date.getMinutes(); //returns 0-59
+            var seconds = date.getSeconds(); // returns 0-59
+            var attrDate = {dayStart: dayDate, monthStart: selectedMonthName,yearStart:year,hoursStart:hours,minutesStart:minutes};
+            
+    return attrDate;
+}
+
+function atomDateEndUTC(dateUTC){
+    console.log("String");
+        console.log(date);
+        var date = new Date(dateUTC);
+        console.log("new Date()");
+        console.log(date);
+             var dayDate = date.getDate();
+             
+             var months = [ "Januar", "Februar", "March", "April", "May", "June", 
+               "July", "August", "September", "October", "November", "December" ];
+              var month = date.getMonth();
+            var selectedMonthName = months[month];
+             
+             var year = date.getFullYear();
+             
+             var hours = date.getHours(); //returns 0-23
+            var minutes = date.getMinutes(); //returns 0-59
+            var seconds = date.getSeconds(); // returns 0-59
+            var attrDate = {dayEnd: dayDate, monthEnd: selectedMonthName,yearEnd:year,hoursEnd:hours,minutesEnd:minutes};
+            
+    return attrDate;
+}
+
+
 function initHandler(){
     
     
