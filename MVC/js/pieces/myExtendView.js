@@ -13,7 +13,7 @@ var LoginView = MyView.extend({///!\ doublon avec viewROmain
     },
     render: function() {
         this.$el.html(Mustache.render(this.template, {loginFab: this.model.toJSON()}));
-        console.log("render LoginFab View is rendering");
+        
         return this;
 
     },
@@ -22,19 +22,17 @@ var LoginView = MyView.extend({///!\ doublon avec viewROmain
     },
     login: function() {
         var email = $("input[type=email]").val();
-        console.log("email");
-        console.log(email);
+        
         var password = $("input[type=password]").val();
-        console.log("password");
-        console.log(password);
+        
 
         if ($('#remember').is(":checked"))
         {
-            console.log("remember checked");
+            
             var remember = "true"; //peut-être qu'en string ca ne marche pas à test
 
         } else {
-            console.log("rememeber not checked");
+            
             var remember = "false";
         }
 
@@ -281,7 +279,7 @@ var ViewArtists = MyView.extend({
         remove.destroy();
     },
     edit: function(event) {
-        console.log('edit');
+       
     },
     detail: function(event) {
         $('#nav').show();
@@ -292,11 +290,9 @@ var ViewArtists = MyView.extend({
         var that = this;
         artist.fetch({
             success: function(object, response, c) {
-                console.log(object);
-                console.log(c);
+             
             }, error: function(object, response, c) {
-                console.log(object);
-                console.log(response);
+               
             }
         });
         $('#showDetailArtist').show();
@@ -336,7 +332,7 @@ var ViewShowArtist = MyView.extend({
     },
     editArtist: function(event) {
         $('#nav').show();
-        console.log('edit Artist');
+        
     },
     deleteArtist: function(event) {
         $('#nav').show();
@@ -360,49 +356,7 @@ var ViewAddArtist = MyView.extend({
     render: function() {
         this.$el.html(Mustache.render(this.template, {addArtist: this.model.toJSON()}));
         return this;
-    },
-//    addMusician: function(event) {
-//
-//        console.log('addMusician');
-//    },
-//    getValue: function(event) {
-//
-//        console.log("create Artist");
-//        var name = this.$el.find('[name="artistNameInput"]').val();
-//        var genre = this.$el.find('[name="artistGenreInput"]').val();
-//        var hourArrival = this.$el.find('[name="hourArrival"]').val();
-//        var order = this.$el.find('[name="artistOrder"]').val();
-//        var mainPerformer = this.$el.find('[name="mainPerformer"]').val();
-//        var shortDescription = this.$el.find('[name="shortDescription"]').val();
-//        var completeDescription = this.$el.find('[name="completeDescription"]').val();
-//        console.log("name");
-//        console.log(name);
-//        console.log("genre");
-//        console.log(genre);
-//        console.log("short");
-//        console.log(shortDescription);
-//        console.log(completeDescription);
-//        if (name === " ") {
-//            console.log("caractère vide");
-//        } else {
-//            saveArtist(name, genre, shortDescription, completeDescription, order, mainPerformer, hourArrival);
-//        }
-//    },
-//    saveMusician: function(event) {
-//        var musicianFirstName = this.$el.find('[name="musicianFirstName"]').val();
-//        var musicianLastName = this.$el.find('[name="musicianLastName"]').val();
-//        var musicianScenetName = this.$el.find('[name="musicianScenetName"]').val();
-//        var instrument = this.$el.find('[name="instrument"]').val();
-//    },
-//    saveImage: function(event) {
-//        var imageTitle = this.$el.find('[name="imageTitle"]').val();
-//        var imageDescription = this.$el.find('[name="imageDescription"]').val();
-//        var artistImage = this.$el.find('[name="artistImage"]').val();
-//    },
-//    saveLink: function(event) {
-//        var linkURL = this.$el.find('[name="linkURL"]').val();
-//        var linkDescription = this.$el.find('[name="linkDescription"]').val();
-//    }
+    }
 });
 /*
  |--------------------------------------------------------------------------
@@ -454,7 +408,7 @@ var ViewEvents = MyView.extend({
     },
     edit: function(event) {
         $('#nav').show();
-        console.log('edit');
+       
     },
     detail: function(event) {
         $('#nav').show();
@@ -463,8 +417,7 @@ var ViewEvents = MyView.extend({
         var idEvent = $(event.target).attr('data-id');
         var event = this.showEvent.model;
         event.set('id', idEvent);
-        console.log(this.collection);
-        console.log(event);
+       
         event.fetch({
             success: function() {
                 event.formatDate();
@@ -564,7 +517,7 @@ var ViewRepresenters = MyView.extend({
     },
     edit: function(event) {
         $('#nav').show();
-        console.log('edit');
+      
     },
     detail: function(event) {
         $('#nav').show();
@@ -572,8 +525,7 @@ var ViewRepresenters = MyView.extend({
         var idRepresenter = $(event.target).attr('data-id');
         var representer = this.showRepresenter.model;
         representer.set('id', idRepresenter);
-        console.log(this.collection);
-        console.log(event);
+        
         representer.fetch({
             success: function() {
 

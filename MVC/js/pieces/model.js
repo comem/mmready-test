@@ -48,7 +48,7 @@ var LoginModel = MyModel.extend({
     parse: function(response){
         console.log("IN parse of LoginModel");
         if (response.status === 'success') {
-                    alert(response.data.response.title);
+                    
                 } else if (response.status === "error") {
                     alert(response.message);
                     return;

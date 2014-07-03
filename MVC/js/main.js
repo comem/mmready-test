@@ -22,23 +22,22 @@ function checkout() {
     var checkOut = new CheckOut();
     checkOut.fetch({
         success: function(model, response, options) {
-            console.log("IN success fetch of checkout");
+            
             if (response.status === 'success') {
-                console.log("IN success IF of checkout");
+                
                 //render de tout
 
                 renderAll();
                 
 
             } else if (response.status === "fail") {
-                console.log("IN FAIL IF of checkout");
+         
 
 
                 var login = new LoginModel();
                 var loginViewVar = new LoginView({model: login});
                 loginViewVar.$el.appendTo("body");
-
-                return;
+                
             } else if ((response.status === "error")) {
                 alert("Problème de communication indéterminé");
                 return;
@@ -46,21 +45,31 @@ function checkout() {
                 alert("Problème de communication indéterminé");
             }
 
-        },
-        error: function(model, response, options) {
-
-            console.log("Problème de connexion");
         }
     });
 }
 
 $(function() {
 
+checkout();//init the APP
+
+
+ $('#start').datetimepicker({
+        language: 'en'
+    });
+    $('#end').datetimepicker({
+        language: 'en'
+    });
+
+    $('#openingDoors').datetimepicker({
+        pickDate: false,
+        language: 'en'
+    });
  
-    checkout(); //init the APP
+     
 
 
-    console.log("---DOM IS READY---");
+    
 
 
 
@@ -80,17 +89,7 @@ $(function() {
 //----------------------------------------------------------------------
 function navMgmt() {
 
-    $('#start').datetimepicker({
-        language: 'en'
-    });
-    $('#end').datetimepicker({
-        language: 'en'
-    });
-
-    $('#openingDoors').datetimepicker({
-        pickDate: false,
-        language: 'en'
-    });
+   
 
 
 
@@ -301,8 +300,11 @@ function renderAll() {
 
     $("#btnLogout").on("click", function(){
        
-       new LogoutModel().fetch();
-       
+       var logout = new LogoutModel();
+       logout.fetch();
+       var login = new LoginModel();
+                var loginViewVar = new LoginView({model: login});
+                loginViewVar.$el.appendTo("body");
        
    });
 
