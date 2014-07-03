@@ -57,6 +57,21 @@ function checkout() {
 
 $(function() {
 
+  //***************** AUTOCOMPLETE VIEW **********************************
+
+    var plugins = new PluginCollection();
+    console.log(plugins);
+    new AutoCompleteView({
+        input: $("#autocomplete"),
+        model: plugins,
+        onSelect: function(model) {
+            $("#selectionned").find("p").html(model.value());
+        }
+    }).render();
+    
+
+    //***************** AUTOCOMPLETE VIEW **********************************
+
     checkout(); //init the APP
 
 
@@ -67,6 +82,10 @@ $(function() {
     $(".listArtists p").each(function(index, elem) {
         $(elem).prepend(++index + ". ");
     });
+    
+    
+    
+     
 
 });
 
@@ -243,18 +262,7 @@ function renderAll() {
 
 
 
-    //***************** AUTOCOMPLETE VIEW **********************************
-
-    var plugins = new PluginCollection();
-    new AutoCompleteView({
-        input: $("#autocomplete"),
-        model: plugins,
-        onSelect: function(model) {
-            $("#selectionned").find("p").html(model.value());
-        }
-    }).render();
-
-    //***************** AUTOCOMPLETE VIEW **********************************
+    
 
 //    $("#navSection").hide;
 //    var loginViewVar = new LoginView({model: new LoginModel()});
@@ -278,6 +286,8 @@ function renderAll() {
     //NAV
 //    loginViewVar.$el.appendTo("body");
     nav.render().$el.appendTo('body');
+    
+ 
 
     //RESEARCH
     advancedResearchEvent.render().$el.appendTo('#advancedResearchEvents');

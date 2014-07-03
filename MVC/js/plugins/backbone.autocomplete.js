@@ -3,7 +3,6 @@
 var AutoCompleteItemView = Backbone.View.extend({
     tagName: "li",
     template: _.template('<a href="#<%= ccid %>" class="options"><%= value %> <span class="class-autocomplete">&ndash; <%= type %></span></a>'),
-// ici sdi je lui donne une template mustache et que dans cette template je mette les mustache des attribut du model ca doit etre bon
     events: {
         "click .options": "select"
     },
@@ -14,10 +13,10 @@ var AutoCompleteItemView = Backbone.View.extend({
 
     render: function () {
         this.$el.html(this.template({
-            "value": this.model.value(),
-            "type": this.model.type(),
-            "class": this.model.class(),
-            "ccid": this.model.ccid()
+            value: this.model.value(),
+            type: this.model.type(),
+            class: this.model.class(),
+            ccid: this.model.ccid()
         }));
         return this;
     },
@@ -55,7 +54,7 @@ var AutoCompleteView = Backbone.View.extend({
             .keyup(_.bind(this.keyup, this))
             .keydown(_.bind(this.keydown, this))
             .after(this.$el);
-
+        
         return this;
     },
 
@@ -72,7 +71,7 @@ var AutoCompleteView = Backbone.View.extend({
             if (this.isValid(keyword)) {
                 this.filter(keyword);
             } else {
-                this.hide()
+                this.hide();
             }
         }
     },

@@ -30,7 +30,7 @@ var Nav = MyInitModel.extend({
     
 });
 
-var Plugin = MyInitModel.extend({
+var Plugin = MyModel.extend({
     value: function () {
         return this.get("value");
     },
