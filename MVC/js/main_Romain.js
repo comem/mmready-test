@@ -28,7 +28,7 @@ var genresList = new Genres();
 var genresListView = new GenresListView({collection: genresList});
 
 var plugins = new PluginCollection();
-plugins.fetch();
+
 
 //--------------------------------------------------------
 //  DOM READY   Actuel main.js de anciennement login.js de RomainNaty
@@ -51,19 +51,23 @@ $(document).ready(function() {
         TESTS();
     });
 
-    $("#btnAutocomplete").click(function() {
+ 
 
-        $("section").hide();
-        $("#autocomplete").show();
-
+        
 
 
+        new AutoCompleteView({
+        input: $("#autocomplete"),
+        model: plugins,
+        onSelect: function(model){
+            $("#selectionned").find("p").html(model.value());
+        }
+    }).render();
 
-        var autoCompleteView = new AutoCompleteView({model: plugins});
-        autoCompleteView.render();
+       
 
         //autoCompleteView.$el.appendTo("body");
-    });
+    
 
     $('#btnAllArtists').click(function() {
 

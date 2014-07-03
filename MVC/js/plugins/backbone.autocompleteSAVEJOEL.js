@@ -23,6 +23,7 @@ var AutoCompleteItemView = Backbone.View.extend({
     },
 
     select: function () {
+        this.options.parent.hide().select(this.model);
         console.log(this);
         return false;
     }
@@ -140,9 +141,9 @@ var AutoCompleteView = Backbone.View.extend({
     },
 
     select: function (model) {
-        var label = model.label();
-        this.input.val(label);
-        this.currentText = label;
+        var value = model.value();
+        this.input.val(value);
+        this.currentText = value;
         this.onSelect(model);
     },
 

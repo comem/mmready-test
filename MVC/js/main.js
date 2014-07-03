@@ -12,6 +12,9 @@ $.ajaxSetup({
 
 });
 
+
+
+
 $(function() {
 
     console.log("---DOM IS READY---");
@@ -26,8 +29,22 @@ $(function() {
     var representerList = new Representers([representant1]);
 
     var event = new Event({});
+    
+    
+    
+    
+    //***************** AUTOCOMPLETE VIEW **********************************
+    
+    var plugins = new PluginCollection();
+     new AutoCompleteView({
+        input: $("#autocomplete"),
+        model: plugins,
+        onSelect: function(model){
+            $("#selectionned").find("p").html(model.value());
+        }
+    }).render();
 
-
+    //***************** AUTOCOMPLETE VIEW **********************************
 
 
 

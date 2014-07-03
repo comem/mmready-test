@@ -9,14 +9,16 @@ var AutoCompleteItemView = Backbone.View.extend({
         },
         initialize: function(options) {
         this.options = options;
-        },//this.$el.html(Mustache.render(this.template, {login: this.model.toJSON()}));
+        },//
         render: function () {
         this.$el.html(this.template({
                 "value": this.model.value(),
                 "type": this.model.type(),
                 "class": this.model.class(),
                 "ccid": this.model.ccid()
-        }), {autocompleteList: this.model.toJSON()} );
+        })
+                );
+        this.$el.html(Mustache.render(this.template, {autocompleteList: this.model.toJSON()}));
         console.log("Render of AutocompleteItemView");
                 return this;
         },
@@ -66,7 +68,7 @@ var AutoCompleteItemView = Backbone.View.extend({
                 if (this.isValid(keyword)) {
                 this.filter(keyword);
                 } else {
-                this.hide()
+                this.hide();
                 }
                 }
                 },

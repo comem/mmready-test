@@ -20,8 +20,8 @@
         <!-- JS Fabrizio -->
         <script src="js/pieces/backbone.stickit.js"></script>        <!--STICKIT -->
         <script src="js/pieces/validator.js"></script>               <!--VALIDATOR -->
-                                                                        <!--ValidatorModelInView dl in main_Romain.js --> 
-        
+        <!--ValidatorModelInView dl in main_Romain.js --> 
+
 
 
         <script src="js/pieces/JSextention.js"></script>
@@ -29,6 +29,7 @@
         <script src="js/pieces/collection.js"></script>
         <script src="js/views/pack.php"></script>
         <script src="js/pieces/myExtendView.js"></script>
+        <script src="js/plugins/backbone.autocompleteSAVEJOEL.js"></script>
         <script src="js/pieces/functions.js"></script>
         <script src="js/main.js"></script>
 
@@ -60,7 +61,8 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <form class="navbar-group navbar-left mainSearch col-lg-2" role="search">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="artist, event, representer">
+                            <input type="text" class="form-control" placeholder="artist, event, representer" id="autocomplete"><!-- INPUT AUTOMPLETE-->
+                            <ul class="autocomplete" style="width: 374px;"></ul>
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button"><i class="ico-search"></i></button>
                             </span>
@@ -86,8 +88,8 @@
             </div><!-- /.container-fluid -->
         </nav>
 
-              <div id ="advancedResearchArtist" class="container-fluid gray advancedResearch">
-               <div class="row">
+        <div id ="advancedResearchArtist" class="container-fluid gray advancedResearch">
+            <div class="row">
                 <div class="col-lg-4">
                     <div class="btn-group btn-group-justified">
                         <div class="btn-group">
@@ -102,10 +104,16 @@
                     </div>
                 </div>
             </div>
-                
-                <section id="advancedResearchEvents"></section>
-                <section id="advancedResearchArtists"></section>
-                <section id="advancedresearchRepresenters"> </section>
+
+            <section id="advancedResearchEvents"></section>
+            <section id="advancedResearchArtists"></section>
+            <section id="advancedresearchRepresenters"> </section>
+            
+            <section id="selectionned">
+
+                <p></p>
+
+            </section>
         </div>
 
 
@@ -118,49 +126,49 @@
 
 
         <div class="container-fluid content">
-        <section id="login"></section>
-        
-       
+            <section id="login"></section>
 
 
 
-        <section id="eventsList"> 
-
-        </section>
 
 
+            <section id="eventsList"> 
 
-        <section id="showDetailEvent"> 
-
-
-        </section>
-
-        <section id="addEvent"> 
-
-        </section>
+            </section>
 
 
-        
 
-        <section id="artistsList"> 
+            <section id="showDetailEvent"> 
 
-        </section>
 
-        <section id="showDetailArtist">
+            </section>
 
-        </section>
-        <section id="addOneArtist">
+            <section id="addEvent"> 
 
-        </section>
+            </section>
 
-        <section id="researchRepresenters">
 
-        </section>
 
-        <section id="representersList"> 
 
-        </section>
-    </div>
+            <section id="artistsList"> 
+
+            </section>
+
+            <section id="showDetailArtist">
+
+            </section>
+            <section id="addOneArtist">
+
+            </section>
+
+            <section id="researchRepresenters">
+
+            </section>
+
+            <section id="representersList"> 
+
+            </section>
+        </div>
 
 
 
