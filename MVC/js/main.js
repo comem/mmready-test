@@ -1,5 +1,3 @@
-var DEFAULT_SECTION = 'eventsList';
-
 /*--------------------------------------------------------------------------
  *    Default Value Ajax
  *///-----------------------------------------------------------------------
@@ -11,9 +9,6 @@ $.ajaxSetup({
     }
 
 });
-
-
-
 
 $(function() {
 
@@ -47,25 +42,6 @@ $(function() {
     var addEvent = new ViewAddEvent({model: new Event({})});
     var addArtist = new ViewAddArtist({model: new Artist({})});
 
-
-//
-//    $('#advancedResearchEvents').show;
-//    $('#login').hide();
-//    $('#eventsList').show();
-//    $('#artistsList').hide();
-//    $('#advancedResearchArtists').hide();
-//    $('#researchRepresenters').hide();
-//    $('#representersList').hide();
-//    $('#showDetailEvent').hide();
-//    $('#showDetailArtist').hide();
-//    $('#addEvent').hide();
-//    $('#addOneArtist').hide();
-//    $('#musiciansList').hide();
-//    $('#showTicket').hide();
-//    $('#showRepresenter').hide();
-//    $('#addArtistIntoEvent').hide();
-
-
     //NAV
     nav.render().$el.appendTo('body');
 
@@ -87,7 +63,6 @@ $(function() {
     $(".listArtists p").each(function(index, elem) {
         $(elem).prepend(++index + ". ");
     });
-
 
 });
 

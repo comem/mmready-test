@@ -6,6 +6,11 @@ var MyView = Backbone.View.extend();
  */
 var ViewNav = MyView.extend({
     template: templates.nav,
+    events: {
+        'click #navEvent': 'navEvent',
+        'click #navArtist': 'navArtist',
+        'click #navRepresenter': 'navRepresenter'
+    },
     initialize: function(attrs, options) {
         this.listenTo(this.model, 'all', this.render);
         this.render();
@@ -14,6 +19,18 @@ var ViewNav = MyView.extend({
 
         this.$el.html(Mustache.render(this.template, {nav: this.model.toJSON()}));
         return this;
+    },
+    navEvent: function(event) {
+        $('#nav').show();
+        $('#eventsList').show();
+    },
+    navArtist: function(event) {
+        $('#nav').show();
+        $('#artistsList').show();
+    },
+    navRepresenter: function(event) {
+        $('#nav').show();
+        $('#representersList').show();
     }
 });
 /*
@@ -39,25 +56,28 @@ var ViewAdvancedResearchArtist = MyView.extend({
         return this;
     },
     showListEvent: function() {
+        $('#nav').show();
         $('#artistsList').hide();
         $('#eventsList').show();
         $('#advancedResearchArtists').hide();
         $('#advancedResearchEvents').show();
     },
     showListArtist: function() {
+        $('#nav').show();
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
     },
     showListRepresenter: function() {
-
+        $('#nav').show();
         $('#artistsList').hide();
         $('#advancedResearchArtists').hide();
         $('#representersList').show();
         $('#researchRepresenters').show();
     },
     close: function() {
+        $('#nav').show();
         $('#advancedResearchArtists').hide();
     }
 });
@@ -84,25 +104,28 @@ var ViewAdvancedResearchEvent = MyView.extend({
         return this;
     },
     showListEvent: function() {
+        $('#nav').show();
         $('#artistsList').hide();
         $('#eventsList').show();
         $('#advancedResearchEvents').show();
         $('#advancedResearchArtists').hide();
     },
     showListArtist: function() {
+        $('#nav').show();
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         $('#artistsList').show();
         $('#advancedResearchArtists').show();
     },
     showListRepresenter: function() {
-
+        $('#nav').show();
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         $('#researchRepresenters').show();
         $('#representersList').show();
     },
     close: function() {
+        $('#nav').show();
         $('#advancedResearchEvents').hide();
     }
 });
@@ -129,6 +152,7 @@ var ViewResearchRepresenter = MyView.extend({
         return this;
     },
     showListEvent: function() {
+        $('#nav').show();
         $('#artistsList').hide();
         $('#advancedResearchArtists').hide();
         $('#researchRepresenters').hide();
@@ -137,6 +161,7 @@ var ViewResearchRepresenter = MyView.extend({
         $('#advancedResearchEvents').show();
     },
     showListArtist: function() {
+        $('#nav').show();
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         $('#researchRepresenters').hide();
@@ -145,13 +170,14 @@ var ViewResearchRepresenter = MyView.extend({
         $('#advancedResearchArtists').show();
     },
     showListRepresenter: function() {
-
+        $('#nav').show();
         $('#artistsList').hide();
         $('#advancedResearchArtists').hide();
         $('#researchRepresenters').show();
         $('#representersList').show();
     },
     close: function() {
+        $('#nav').show();
         $('#advancedResearchArtists').hide();
     }
 });
@@ -209,6 +235,7 @@ var ViewArtists = MyView.extend({
         console.log('edit');
     },
     detail: function(event) {
+        $('#nav').show();
         $('#artistsList').hide();
         var idArtist = $(event.target).attr('data-id');
         var artist = this.showArtist.model;
@@ -227,6 +254,7 @@ var ViewArtists = MyView.extend({
         $('#musiciansList').show();
     },
     addArtist: function(event) {
+        $('#nav').show();
         $('#artistsList').hide();
         $('#advancedResearchArtist').hide();
         $('#addOneArtist').show();
@@ -252,14 +280,17 @@ var ViewShowArtist = MyView.extend({
         return this;
     },
     backListArtist: function(event) {
+        $('#nav').show();
         $('#showDetailArtist').hide();
         $('#musiciansList').hide();
         $('#artistsList').show();
     },
     editArtist: function(event) {
+        $('#nav').show();
         console.log('edit Artist');
     },
     deleteArtist: function(event) {
+        $('#nav').show();
         var idArtist = $(event.target).attr('data-id');
         this.model.destroy(idArtist);
     }
@@ -282,6 +313,7 @@ var ViewAddArtist = MyView.extend({
         return this;
     },
     addMusician: function(event) {
+
         console.log('addMusician');
     },
     getValue: function(event) {
@@ -372,9 +404,11 @@ var ViewEvents = MyView.extend({
         remove.destroy();
     },
     edit: function(event) {
+        $('#nav').show();
         console.log('edit');
     },
     detail: function(event) {
+        $('#nav').show();
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         var idEvent = $(event.target).attr('data-id');
@@ -392,7 +426,7 @@ var ViewEvents = MyView.extend({
         $('#showRepresenter').show();
     },
     addEvent: function(event) {
-
+        $('#nav').show();
         $('#eventsList').hide();
         $('#advancedResearchEvents').hide();
         $('#addEvent').show();
@@ -421,6 +455,7 @@ var ViewShowEvent = MyView.extend({
         return this;
     },
     backListEvents: function() {
+        $('#nav').show();
         $('#showDetailEvent').hide();
         $('#showTicket').hide();
         $('#advancedResearchEvents').show();
@@ -476,9 +511,11 @@ var ViewRepresenters = MyView.extend({
         remove.destroy();
     },
     edit: function(event) {
+        $('#nav').show();
         console.log('edit');
     },
     detail: function(event) {
+        $('#nav').show();
         $('#representersList').hide();
         var idRepresenter = $(event.target).attr('data-id');
         var representer = this.showRepresenter.model;
@@ -521,6 +558,7 @@ var ViewShowRepresenter = MyView.extend({
         return this;
     },
     backListEvents: function() {
+        $('#nav').show();
         $('#showDetailRepresenter').hide();
         $('#representersList').show();
     },
