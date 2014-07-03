@@ -1,5 +1,4 @@
 var MyView = Backbone.View.extend();
-
 /*
  |--------------------------------------------------------------------------
  | ADVANCED RESEARCH ARTIST
@@ -139,7 +138,6 @@ var ViewResearchRepresenter = MyView.extend({
         $('#advancedResearchArtists').hide();
     }
 });
-
 /*
  |--------------------------------------------------------------------------
  | MUSICIAN
@@ -151,7 +149,6 @@ var ViewMusicians = MyView.extend({
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
         this.render();
-
     },
     render: function() {
 
@@ -159,7 +156,6 @@ var ViewMusicians = MyView.extend({
         return this;
     }
 });
-
 /*
  |--------------------------------------------------------------------------
  | ARTIST
@@ -176,25 +172,21 @@ var ViewArtists = MyView.extend({
 
     },
     initialize: function(attrs, options) {
-        // internal view for artist detail
+// internal view for artist detail
         this.showArtist = new ViewShowArtist({model: new Artist({})});
         this.showArtist.render().$el.appendTo('#showDetailArtist');
         this.collection.fetch();
         this.listenTo(this.collection, 'all', this.render);
         this.render();
-
-
     },
     render: function() {
         this.$el.html(Mustache.render(this.template, {artists: this.collection.toJSON()}));
         return this;
-
     },
     'delete': function(event) {
         var idArtist = $(event.target).attr('data-id');
         var remove = this.collection.get(idArtist);
         remove.destroy();
-
     },
     edit: function(event) {
         console.log('edit');
@@ -221,10 +213,8 @@ var ViewArtists = MyView.extend({
         $('#artistsList').hide();
         $('#advancedResearchArtist').hide();
         $('#addOneArtist').show();
-
     }
 });
-
 var ViewShowArtist = MyView.extend({
     template: templates.showArtist,
     events: {
@@ -233,7 +223,7 @@ var ViewShowArtist = MyView.extend({
         'click #btn-delete': 'deleteArtist',
     },
     initialize: function(attrs, options) {
-        // internal view for musician
+// internal view for musician
         this.viewMusicians = new ViewMusicians({collection: new Musicians({})});
         this.listenTo(this.model, 'all', this.render);
         this.render();
@@ -243,22 +233,20 @@ var ViewShowArtist = MyView.extend({
         this.viewMusicians.collection = new Musicians(this.model.get('musicians'));
         this.viewMusicians.render().$el.appendTo(this.$el.find('#musiciansList'));
         return this;
-
     },
     backListArtist: function(event) {
         $('#showDetailArtist').hide();
         $('#musiciansList').hide();
         $('#artistsList').show();
-
     },
     editArtist: function(event) {
         console.log('edit Artist');
     },
     deleteArtist: function(event) {
-        console.log('delete Artist');
+        var idArtist = $(event.target).attr('data-id');
+        this.model.destroy(idArtist);
     }
 });
-
 var ViewAddArtist = MyView.extend({
     template: templates.addArtist,
     events: {
@@ -289,18 +277,13 @@ var ViewAddArtist = MyView.extend({
         var mainPerformer = this.$el.find('[name="mainPerformer"]').val();
         var shortDescription = this.$el.find('[name="shortDescription"]').val();
         var completeDescription = this.$el.find('[name="completeDescription"]').val();
-
         console.log("name");
         console.log(name);
-
         console.log("genre");
         console.log(genre);
-
         console.log("short");
         console.log(shortDescription);
-
         console.log(completeDescription);
-
         if (name === " ") {
             console.log("caractère vide");
         } else {
@@ -323,7 +306,6 @@ var ViewAddArtist = MyView.extend({
         var linkDescription = this.$el.find('[name="linkDescription"]').val();
     }
 });
-
 /*
  |--------------------------------------------------------------------------
  | TICKET
@@ -335,14 +317,12 @@ var ViewTicket = MyView.extend({
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
         this.render();
-
     },
     render: function() {
         this.$el.html(Mustache.render(this.template, {tickets: this.collection.toJSON()}));
         return this;
     }
 });
-
 /*
  |--------------------------------------------------------------------------
  | EVENT
@@ -358,7 +338,7 @@ var ViewEvents = MyView.extend({
         'click #btn-addEvent': 'addEvent'
     },
     initialize: function(attrs, options) {
-        // internal view for event detail
+// internal view for event detail
         this.showEvent = new ViewShowEvent({model: new Event()});
         this.showEvent.render().$el.appendTo('#showDetailEvent');
         this.collection.fetch();
@@ -406,7 +386,8 @@ var ViewEvents = MyView.extend({
 var ViewShowEvent = MyView.extend({
     template: templates.showEvent,
     events: {
-        'click #btn-back': 'backListEvents'
+        'click #btn-back': 'backListEvents',
+        'click #deleteEvent': 'delete'
     },
     initialize: function(attrs, options) {
         this.viewTicket = new ViewTicket({collection: new Tickets({})});
@@ -419,7 +400,6 @@ var ViewShowEvent = MyView.extend({
         this.viewTicket.collection = new Tickets(this.model.get('tickets'));
         this.viewRepresenter.model = new Tickets(this.model.get('representer'));
         this.viewTicket.render().$el.appendTo(this.$el.find('#showTicket'));
-
         this.viewRepresenter.render().$el.appendTo(this.$el.find('#showRepresenter'));
         return this;
     },
@@ -428,26 +408,27 @@ var ViewShowEvent = MyView.extend({
         $('#showTicket').hide();
         $('#advancedResearchEvents').show();
         $('#eventsList').show();
+    },
+    'delete': function(event) {
+        var idEvent = $(event.target).attr('data-id');
+        this.model.destroy(idEvent);
     }
 });
 var ViewAddEvent = MyView.extend({
     template: templates.addEvent,
     initialize: function(attrs, options) {
-        // internal view for event detail
+// internal view for event detail
         this.addArtistIntoEvent = new ViewAddArtist({model: new Artist({})});
-
         this.listenTo(this.model, 'all', this.render);
         this.render();
     },
     render: function() {
         this.$el.html(Mustache.render(this.template, {addEvent: this.model.toJSON()}));
-
         this.addArtistIntoEvent.render().$el.appendTo(this.$el.find('#addArtistIntoEvent'));
         return this;
     }
 
 });
-
 /*
  |--------------------------------------------------------------------------
  | REPRESENTANT
@@ -473,14 +454,15 @@ var ViewRepresenters = MyView.extend({
         return this;
     },
     'delete': function(event) {
-        console.log('delete');
+        var idRepresenter = $(event.target).attr('data-id');
+        var remove = this.collection.get(idRepresenter);
+        remove.destroy();
     },
     edit: function(event) {
         console.log('edit');
     },
     detail: function(event) {
         $('#representersList').hide();
-
         var idRepresenter = $(event.target).attr('data-id');
         var representer = this.showRepresenter.model;
         representer.set('id', idRepresenter);
@@ -494,7 +476,6 @@ var ViewRepresenters = MyView.extend({
         $('#showDetailRepresenter').show();
     }
 });
-
 var ViewShowRepresenterIntoEvent = MyView.extend({
     template: templates.showRepresenterIntoEvent,
     events: {
@@ -508,11 +489,11 @@ var ViewShowRepresenterIntoEvent = MyView.extend({
         return this;
     }
 });
-
 var ViewShowRepresenter = MyView.extend({
     template: templates.showRepresenter,
     events: {
-        'click #btn-back': 'backListEvents'
+        'click #btn-back': 'backListEvents',
+        'click .ico-delete': 'delete'
     },
     initialize: function(attrs, options) {
         this.listenTo(this.model, 'all', this.render);
@@ -525,12 +506,13 @@ var ViewShowRepresenter = MyView.extend({
     backListEvents: function() {
         $('#showDetailRepresenter').hide();
         $('#representersList').show();
+    },
+    'delete': function(event) {
+        var idRepresenter = $(event.target).attr('data-id');
+        this.model.destroy(idRepresenter);
     }
 
 });
-
-
-
 //        $('#eventsList').hide();
 //        $('#advancedResearchEvents').hide();
 //        var idEvent = $(event.target).attr('data-id');
