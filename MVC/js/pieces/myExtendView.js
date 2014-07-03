@@ -61,6 +61,7 @@ var ViewNav = MyView.extend({
     },
     initialize: function(attrs, options) {
         this.listenTo(this.model, 'all', this.render);
+        
         this.render();
     },
     render: function() {

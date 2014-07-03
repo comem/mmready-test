@@ -23,7 +23,6 @@ var AutoCompleteItemView = Backbone.View.extend({
 
     select: function () {
         this.options.parent.hide().select(this.model);
-        console.log(this);
         return false;
     }
 

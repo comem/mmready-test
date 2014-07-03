@@ -28,6 +28,7 @@ function checkout() {
                 //render de tout
 
                 renderAll();
+                
 
             } else if (response.status === "fail") {
                 console.log("IN FAIL IF of checkout");
@@ -57,21 +58,7 @@ function checkout() {
 
 $(function() {
 
-  //***************** AUTOCOMPLETE VIEW **********************************
-
-    var plugins = new PluginCollection();
-    console.log(plugins);
-    new AutoCompleteView({
-        input: $("#autocomplete"),
-        model: plugins,
-        onSelect: function(model) {
-            $("#selectionned").find("p").html(model.value());
-        }
-    }).render();
-    
-
-    //***************** AUTOCOMPLETE VIEW **********************************
-
+ 
     checkout(); //init the APP
 
 
@@ -83,7 +70,8 @@ $(function() {
         $(elem).prepend(++index + ". ");
     });
     
-    
+     
+   
     
      
 
@@ -260,18 +248,33 @@ function menuGoToSection(sectionName) {
 
 function renderAll() {
 
+  
+    $("nav").show();
+   
 
 
+
+
+//    var nav = new ViewNav({model: new Nav()});
+//    nav.render().$el.appendTo('body');
+    navMgmt();
+    
+    
+    //***************** AUTOCOMPLETE VIEW **********************************
+
+    var plugins = new PluginCollection;
+    
+    new AutoCompleteView({
+        input: $("input#autocomplete"),
+        model: plugins,
+        onSelect: function(model) {
+            new ViewShowEvent({model:model}).render();
+        }
+    }).render();
     
 
-//    $("#navSection").hide;
-//    var loginViewVar = new LoginView({model: new LoginModel()});
+    //***************** AUTOCOMPLETE VIEW **********************************
 
-
-
-    var nav = new ViewNav({model: new Nav()});
-
-    navMgmt();
 
     var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: new Events()});
     var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: new Artists()});
@@ -283,11 +286,6 @@ function renderAll() {
     var addEvent = new ViewAddEvent({model: new Event({})});
     var addArtist = new ViewAddArtist({model: new Artist({})});
 
-    //NAV
-//    loginViewVar.$el.appendTo("body");
-    nav.render().$el.appendTo('body');
-    
- 
 
     //RESEARCH
     advancedResearchEvent.render().$el.appendTo('#advancedResearchEvents');

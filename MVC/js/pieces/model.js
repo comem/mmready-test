@@ -16,8 +16,6 @@ var MyModel = Backbone.Model.extend({
                 response = response.data;
             }
         }
-        console.log("Parse de myModel"+response);
-        console.log(response);
         return response;
     }
 });
