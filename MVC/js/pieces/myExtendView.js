@@ -346,11 +346,11 @@ var ViewShowArtist = MyView.extend({
 var ViewAddArtist = MyView.extend({
     template: templates.addArtist,
     events: {
-        'click #addMusician': 'addMusician',
-        'click #saveOneArtist': 'getValue',
-        'click #saveMusician': 'saveMusician',
-        'click #saveImage': 'saveImage',
-        'click #saveLink': 'saveLink'
+//        'click #addMusician': 'addMusician',
+//        'click #saveOneArtist': 'getValue',
+//        'click #saveMusician': 'saveMusician',
+//        'click #saveImage': 'saveImage',
+//        'click #saveLink': 'saveLink'
     },
     initialize: function(attrs, options) {
         this.listenTo(this.model, 'all', this.render);
@@ -360,48 +360,48 @@ var ViewAddArtist = MyView.extend({
         this.$el.html(Mustache.render(this.template, {addArtist: this.model.toJSON()}));
         return this;
     },
-    addMusician: function(event) {
-
-        console.log('addMusician');
-    },
-    getValue: function(event) {
-
-        console.log("create Artist");
-        var name = this.$el.find('[name="artistNameInput"]').val();
-        var genre = this.$el.find('[name="artistGenreInput"]').val();
-        var hourArrival = this.$el.find('[name="hourArrival"]').val();
-        var order = this.$el.find('[name="artistOrder"]').val();
-        var mainPerformer = this.$el.find('[name="mainPerformer"]').val();
-        var shortDescription = this.$el.find('[name="shortDescription"]').val();
-        var completeDescription = this.$el.find('[name="completeDescription"]').val();
-        console.log("name");
-        console.log(name);
-        console.log("genre");
-        console.log(genre);
-        console.log("short");
-        console.log(shortDescription);
-        console.log(completeDescription);
-        if (name === " ") {
-            console.log("caractère vide");
-        } else {
-            saveArtist(name, genre, shortDescription, completeDescription, order, mainPerformer, hourArrival);
-        }
-    },
-    saveMusician: function(event) {
-        var musicianFirstName = this.$el.find('[name="musicianFirstName"]').val();
-        var musicianLastName = this.$el.find('[name="musicianLastName"]').val();
-        var musicianScenetName = this.$el.find('[name="musicianScenetName"]').val();
-        var instrument = this.$el.find('[name="instrument"]').val();
-    },
-    saveImage: function(event) {
-        var imageTitle = this.$el.find('[name="imageTitle"]').val();
-        var imageDescription = this.$el.find('[name="imageDescription"]').val();
-        var artistImage = this.$el.find('[name="artistImage"]').val();
-    },
-    saveLink: function(event) {
-        var linkURL = this.$el.find('[name="linkURL"]').val();
-        var linkDescription = this.$el.find('[name="linkDescription"]').val();
-    }
+//    addMusician: function(event) {
+//
+//        console.log('addMusician');
+//    },
+//    getValue: function(event) {
+//
+//        console.log("create Artist");
+//        var name = this.$el.find('[name="artistNameInput"]').val();
+//        var genre = this.$el.find('[name="artistGenreInput"]').val();
+//        var hourArrival = this.$el.find('[name="hourArrival"]').val();
+//        var order = this.$el.find('[name="artistOrder"]').val();
+//        var mainPerformer = this.$el.find('[name="mainPerformer"]').val();
+//        var shortDescription = this.$el.find('[name="shortDescription"]').val();
+//        var completeDescription = this.$el.find('[name="completeDescription"]').val();
+//        console.log("name");
+//        console.log(name);
+//        console.log("genre");
+//        console.log(genre);
+//        console.log("short");
+//        console.log(shortDescription);
+//        console.log(completeDescription);
+//        if (name === " ") {
+//            console.log("caractère vide");
+//        } else {
+//            saveArtist(name, genre, shortDescription, completeDescription, order, mainPerformer, hourArrival);
+//        }
+//    },
+//    saveMusician: function(event) {
+//        var musicianFirstName = this.$el.find('[name="musicianFirstName"]').val();
+//        var musicianLastName = this.$el.find('[name="musicianLastName"]').val();
+//        var musicianScenetName = this.$el.find('[name="musicianScenetName"]').val();
+//        var instrument = this.$el.find('[name="instrument"]').val();
+//    },
+//    saveImage: function(event) {
+//        var imageTitle = this.$el.find('[name="imageTitle"]').val();
+//        var imageDescription = this.$el.find('[name="imageDescription"]').val();
+//        var artistImage = this.$el.find('[name="artistImage"]').val();
+//    },
+//    saveLink: function(event) {
+//        var linkURL = this.$el.find('[name="linkURL"]').val();
+//        var linkDescription = this.$el.find('[name="linkDescription"]').val();
+//    }
 });
 /*
  |--------------------------------------------------------------------------
@@ -616,22 +616,3 @@ var ViewShowRepresenter = MyView.extend({
     }
 
 });
-//        $('#eventsList').hide();
-//        $('#advancedResearchEvents').hide();
-//        var idEvent = $(event.target).attr('data-id');
-//        var event = this.showEvent.model;
-//        event.set('id', idEvent);
-//        console.log(this.collection);
-//        console.log(event);
-//        event.fetch({
-//            success: function(object, response, c) {
-////                console.log(object);
-////                console.log(c);
-//            }, error: function(object, response, c) {
-////                console.log(object);
-////                console.log(response);
-//            }
-//        });
-//        $('#showDetailEvent').show();
-//        $('#showTicket').show();
-//        $('#showRepresenter').show();
