@@ -6,7 +6,7 @@ function initHandler(){
        
        var id = $(this).parent("div[data-id]").attr("data-id");
         getOneArtist(id);
-        console.log("click");
+       
    });
    
    //    $('button.moreDetails').on("click", function(){
@@ -18,11 +18,9 @@ function initHandler(){
 }
 
 function atomDateStartUTC(dateUTC){
-    console.log("String UTC");
-        console.log(dateUTC);
+   
         var date = new Date(dateUTC);
-        console.log("new Date()");
-        console.log(date);
+        
              var dayDate = date.getDate();
              var months = [ "Januar", "Februar", "March", "April", "May", "June", 
                "July", "August", "September", "October", "November", "December" ];
@@ -34,28 +32,22 @@ function atomDateStartUTC(dateUTC){
              var hours = date.getHours(); //returns 0-23
             var minutes = date.getMinutes(); //returns 0-59
             if(minutes>9){
-                console.log(">9");
+                
             }else{
-                 console.log("<9");
+                 
                  var minutes = minutes.toString();
                  var minutes = minutes.substr(0)+"0";
             }
             var seconds = date.getSeconds(); // returns 0-59
             var attrDate = {dayStart: dayDate, monthStart: selectedMonthName,yearStart:year,hoursStart:hours,minutesStart:minutes};
-            console.log(dayDate);
-            console.log(selectedMonthName);
-            console.log(year);
-            console.log(hours);
-            console.log(minutes);
+            
     return attrDate;
 }
 
 function atomDateEndUTC(dateUTC){
-    console.log("String");
-        console.log(date);
+    
         var date = new Date(dateUTC);
-        console.log("new Date()");
-        console.log(date);
+        
              var dayDate = date.getDate();
              
              var months = [ "Januar", "Februar", "March", "April", "May", "June", 
@@ -78,7 +70,7 @@ function getAllArtists(){
      var allArtistsView = new ViewAllArtists({collection: artistsList});
      artistsList.fetch({
          success: function(){
-             console.log(artistsList);
+             
          }
      });
 }
