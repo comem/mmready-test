@@ -9,12 +9,12 @@ window.onpopstate = function(event) {
  *///-----------------------------------------------------------------------
 
 
-$.ajaxSetup({
-    xhrFields: {
-        withCredentials: true
-    }
-
-});
+//$.ajaxSetup({
+//    xhrFields: {
+//        withCredentials: true
+//    }
+//
+//});
 
 
 function checkout() {
@@ -33,9 +33,9 @@ function checkout() {
             } else if (response.status === "fail") {
                 console.log("IN FAIL IF of checkout");
 
-                // render de login view
-                console.log("clickLOGIN");
-
+               
+                
+                hideAll();
                 var login = new LoginModel();
                 var loginViewVar = new LoginView({model: login});
                 loginViewVar.$el.appendTo("body");
