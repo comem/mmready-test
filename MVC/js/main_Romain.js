@@ -139,6 +139,8 @@ $(document).ready(function() {
     });
 
     $("#btnLOGINFab").on("click", function() {
+        
+        //dans la fonction success mais en cas de retour fail
         console.log("clickLOGIN");
         $("section").hide();
 

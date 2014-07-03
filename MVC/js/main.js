@@ -9,91 +9,82 @@ window.onpopstate = function(event) {
  *///-----------------------------------------------------------------------
 
 
-//$.ajaxSetup({
-//    xhrFields: {
-//        withCredentials: true
-//    }
-//
-//});
+$.ajaxSetup({
+    xhrFields: {
+        withCredentials: true
+    }
+
+});
+
+
+function checkout() {
+    hideAll();
+    var checkOut = new CheckOut();
+    checkOut.fetch({
+        success: function(model, response, options) {
+            console.log("IN success fetch of checkout");
+            if (response.status === 'success') {
+console.log("IN success IF of checkout");
+                //render de tout
+                
+                renderAll();
+
+            } else if (response.status === "fail") {
+                console.log("IN FAIL IF of checkout");
+
+                // render de login view
+                console.log("clickLOGIN");
+                
+                var login = new LoginModel();
+                var loginViewVar = new LoginView({model: login});
+                loginViewVar.$el.appendTo("body");
+
+                return;
+            } else if ((response.status === "error")) {
+                alert("Problème de communication indéterminé");
+                return;
+            } else {
+                alert("Problème de communication indéterminé");
+            }
+
+        },
+        error: function(model, response, options) {
+
+            console.log("Problème de connexion");
+        }
+    });
+}
 
 $(function() {
-    
-    
-    navMgmt();
+
+    checkout(); //init the APP
+
 
     console.log("---DOM IS READY---");
 
-    var instrusList = new Instruments();
-    
-    //***************** AUTOCOMPLETE VIEW **********************************
-    
-    var plugins = new PluginCollection();
-     new AutoCompleteView({
-        input: $("#autocomplete"),
-        model: plugins,
-        onSelect: function(model){
-            $("#selectionned").find("p").html(model.value());
-        }
-    }).render();
-
-    //***************** AUTOCOMPLETE VIEW **********************************
-
-        $("#navSection").hide;
-        var loginViewVar = new LoginView({model: new LoginModel()});
-        
 
 
-    var nav = new ViewNav({model: new Nav()});
-    var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: new Events()});
-    var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: new Artists()});
-    //var researchRepresentant = new ViewResearchRepresentant({collection: artistsList});
-    var eventsListView = new ViewEvents({collection: new Events()});
-    var artistsListView = new ViewArtists({collection: new Artists()});
-    var representersListView = new ViewRepresenters({collection: new Representers()});
-
-    var addEvent = new ViewAddEvent({model: new Event({})});
-    var addArtist = new ViewAddArtist({model: new Artist({})});
-
-    //NAV
-    loginViewVar.$el.appendTo("body");
-    nav.render().$el.appendTo('body');
-
-    //RESEARCH
-    advancedResearchEvent.render().$el.appendTo('#advancedResearchEvents');
-    advancedResearchArtist.render().$el.appendTo('#advancedResearchArtists');
-    //researchRepresentant.render().$el.appendTo('#researchRepresentants');
-
-    //LIST
-    eventsListView.render().$el.appendTo('#eventsList');
-    artistsListView.render().$el.appendTo('#artistsList');
-    representersListView.render().$el.appendTo('#representersList');
-
-    //ADD
-    addEvent.render().$el.appendTo('#addEvent');
-    addArtist.render().$el.appendTo('#addOneArtist');
-
-    
     $(".listArtists p").each(function(index, elem) {
         $(elem).prepend(++index + ". ");
     });
 
 });
 
-    //----------------------------------------------------------------------
-    //                   Nav Management
-    //----------------------------------------------------------------------
-function navMgmt(){
-    
-    
+//----------------------------------------------------------------------
+//                   Nav Management
+//----------------------------------------------------------------------
+function navMgmt() {
 
-    
+
+
+
     $('.advancedResearch').hide();
     $('#advancedResearchEvents').hide();
     $('#advancedResearchArtists').hide();
     $('#advancedresearchRepresenters').hide();
-    
-    $('#login').show();
-    $('#eventsList').hide();
+
+    $('#login').hide();
+    $('#eventsList').show();
     $('#artistsList').hide();
     $('#researchRepresenters').hide();
     $('#representersList').hide();
@@ -106,41 +97,41 @@ function navMgmt(){
     $('#showRepresenter').hide();
     $('#addArtistIntoEvent').hide();
     $('#addEvent').hide();
-   
+
 
 
 // GESTION ADVANCED SEARCH
 
-$('nav').on('click', '#plusOption', function(e) {
-    e.preventDefault();
-$('.advancedResearch').toggle(function(){
-$('#plusOption > i').toggleClass('ico-plus ico-calendar');
-});
-});
+    $('nav').on('click', '#plusOption', function(e) {
+        e.preventDefault();
+        $('.advancedResearch').toggle(function() {
+            $('#plusOption > i').toggleClass('ico-plus ico-calendar');
+        });
+    });
 
 
-$('body').on('click', '#events', function(e){
-     $('#advancedresearchRepresenters').hide();
-    $('#advancedResearchArtists').hide();
-    $('#advancedResearchEvents').show();
-});
+    $('body').on('click', '#events', function(e) {
+        $('#advancedresearchRepresenters').hide();
+        $('#advancedResearchArtists').hide();
+        $('#advancedResearchEvents').show();
+    });
 
-$('body').on('click', '#artists', function(e){
-     $('#advancedResearchEvents').hide();
-    $('#advancedresearchRepresenters').hide();
-    $('#advancedResearchArtists').show();
-});
+    $('body').on('click', '#artists', function(e) {
+        $('#advancedResearchEvents').hide();
+        $('#advancedresearchRepresenters').hide();
+        $('#advancedResearchArtists').show();
+    });
 
-$('body').on('click', '#filterRepresenters', function(e){
-    $('#advancedResearchArtists').hide();
-    $('#advancedResearchEvents').hide();
-    $('#advancedresearchRepresenters').show();
-});
+    $('body').on('click', '#filterRepresenters', function(e) {
+        $('#advancedResearchArtists').hide();
+        $('#advancedResearchEvents').hide();
+        $('#advancedresearchRepresenters').show();
+    });
 
 
 
 // gestion des boutons "back" et "forward" du browser
-    
+
     $('ul#mainNav a').on('click', function(e) {
         menuElementClickHandler($(this));
         e.preventDefault();
@@ -149,14 +140,14 @@ $('body').on('click', '#filterRepresenters', function(e){
 
 
 
-     $('body').on('click', '.secondNav', function(e) {
+    $('body').on('click', '.secondNav', function(e) {
         menuElementClickHandler($(this));
         e.preventDefault();
         return false;
     });
 
 
-    $('body').on('click','a', function(e) {
+    $('body').on('click', 'a', function(e) {
         menuElementClickHandler($(this));
         e.preventDefault();
         return false;
@@ -166,11 +157,11 @@ $('body').on('click', '#filterRepresenters', function(e){
 
 
 
-$('ul#mainNav a:first').trigger('click');
+    $('ul#mainNav a:first').trigger('click');
 
 
 
-    
+
 }
 
 
@@ -199,7 +190,7 @@ function menuElementClickHandler(menuElement) {
     $('#mainNav > li').removeClass('active');
     // Rajoute la classe "activ" pour le lien actuellement clické
     menuElement.parent().addClass('active');
-     // Cache toutes les >section>
+    // Cache toutes les >section>
 
     // Recupère la section corespondante (attribut href du lien)
     var sectionName = menuElement.attr('href');
@@ -223,3 +214,85 @@ function menuGoToSection(sectionName) {
 }
 
 
+function renderAll() {
+
+    
+
+    //***************** AUTOCOMPLETE VIEW **********************************
+
+    var plugins = new PluginCollection();
+    new AutoCompleteView({
+        input: $("#autocomplete"),
+        model: plugins,
+        onSelect: function(model) {
+            $("#selectionned").find("p").html(model.value());
+        }
+    }).render();
+
+    //***************** AUTOCOMPLETE VIEW **********************************
+
+//    $("#navSection").hide;
+//    var loginViewVar = new LoginView({model: new LoginModel()});
+
+   
+
+    var nav = new ViewNav({model: new Nav()});
+    
+    navMgmt();
+    
+    var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: new Events()});
+    var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: new Artists()});
+    //var researchRepresentant = new ViewResearchRepresentant({collection: artistsList});
+    var eventsListView = new ViewEvents({collection: new Events()});
+    var artistsListView = new ViewArtists({collection: new Artists()});
+    var representersListView = new ViewRepresenters({collection: new Representers()});
+
+    var addEvent = new ViewAddEvent({model: new Event({})});
+    var addArtist = new ViewAddArtist({model: new Artist({})});
+
+    //NAV
+//    loginViewVar.$el.appendTo("body");
+  nav.render().$el.appendTo('body');
+
+    //RESEARCH
+    advancedResearchEvent.render().$el.appendTo('#advancedResearchEvents');
+    advancedResearchArtist.render().$el.appendTo('#advancedResearchArtists');
+    //researchRepresentant.render().$el.appendTo('#researchRepresentants');
+
+    //LIST
+    eventsListView.render().$el.appendTo('#eventsList');
+    artistsListView.render().$el.appendTo('#artistsList');
+    representersListView.render().$el.appendTo('#representersList');
+
+    //ADD
+    addEvent.render().$el.appendTo('#addEvent');
+    addArtist.render().$el.appendTo('#addOneArtist');
+
+
+
+}
+
+function hideAll(){
+    
+    $("nav").hide();
+    $('.advancedResearch').hide();
+    $('#advancedResearchEvents').hide();
+    $('#advancedResearchArtists').hide();
+    $('#advancedresearchRepresenters').hide();
+    $('#login').hide();
+    $('#eventsList').hide();
+    $('#artistsList').hide();
+    $('#researchRepresenters').hide();
+    $('#representersList').hide();
+    $('#showDetailEvent').hide();
+    $('#showDetailArtist').hide();
+    $('#showDetailRepresenter').hide();
+    $('#addOneArtist').hide();
+    $('#musiciansList').hide();
+    $('#showTicket').hide();
+    $('#showRepresenter').hide();
+    $('#addArtistIntoEvent').hide();
+    $('#addEvent').hide();
+    
+    
+}

@@ -8,6 +8,7 @@ var ONLINE;
 
 var ROOTIT            = "http://pingouin.heig-vd.ch/rockit/v1/";
 
+var CHECKOUT          = "http://pingouin.heig-vd.ch/rockit/v1/auth-check";
 var LOGIN             = "http://pingouin.heig-vd.ch/rockit/v1/login";
 var LOGOUT            = "http://pingouin.heig-vd.ch/rockit/v1/logout";
 
