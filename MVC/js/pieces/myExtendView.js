@@ -1,4 +1,52 @@
 var MyView = Backbone.View.extend();
+
+//--------------------------------------------------------
+//                View Login
+//--------------------------------------------------------
+
+var LoginView = MyView.extend({///!\ doublon avec viewROmain
+
+    template: templates.loginFab,
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {loginFab: this.model.toJSON()}));
+        console.log("render LoginFab View is rendering");
+        return this;
+
+    },
+    events: {
+        'click #btnConnect': 'login'
+    },
+    login: function() {
+        var email = $("input[type=email]").val();
+        console.log("email");
+        console.log(email);
+        var password = $("input[type=password]").val();
+        console.log("password");
+        console.log(password);
+
+        if ($('#remember').is(":checked"))
+        {
+            console.log("remember checked");
+            var remember = "true"; //peut-être qu'en string ca ne marche pas à test
+
+        } else {
+            console.log("rememeber not checked");
+            var remember = "false";
+        }
+
+        this.model.set({email: email, password: password, remember: remember});
+        this.model.save({
+             error: function(data, response, x) {
+                alert("server communication failed");
+            }
+        });
+    }
+});
+
 /*
  |--------------------------------------------------------------------------
  | NAV
