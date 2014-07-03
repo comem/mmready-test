@@ -4247,7 +4247,7 @@ button.close {
   padding: 10px;
 }
 .searchResult {
-  background-color: #dcdcdc;
+  background-color: #ffffff;
   border-left: solid 5px;
   padding-left: 15px;
   padding-top: 5px;
@@ -4331,6 +4331,7 @@ button.close {
 }
 body {
   font-family: "Open sans", Helvetica, Arial, sans-serif;
+  background-image: url(../img/bgSignIn.jpg);
   margin-top: 70px;
   background-color: #dcdcdc;
   font-size: 14px;
@@ -4466,10 +4467,6 @@ h6 .small,
 h1,
 .h1 {
   font-size: 36px;
-}
-h2,
-.h2 {
-  font-size: 30px;
 }
 h3,
 .h3 {
@@ -4639,6 +4636,7 @@ p {
 }
 section {
   background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 5px;
   margin-bottom: 10px;
   border-radius: 4px;
@@ -4699,9 +4697,9 @@ fieldset[disabled] .btn {
   box-shadow: none;
 }
 .btn-default {
-  color: #aeaeae;
+  color: #333333;
   background-color: #ffffff;
-  border-color: #aeaeae;
+  border-color: #333333;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -4785,9 +4783,6 @@ dt {
 .mainSearch {
   margin-top: 8px;
 }
-.mainSearch form {
-  background-color: black;
-}
 .signIn {
   border-radius: 4px;
 }
@@ -4827,32 +4822,26 @@ dt {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+/*
 img.bgSignIn {
-  /* Set rules to fill background */
-
   min-height: 100%;
   min-width: 1024px;
   z-index: -1;
-  /* Set up proportionate scaling */
-
+  
   width: 100%;
   height: auto;
-  /* Set up positioning */
-
+  
   position: fixed;
   top: 0;
   left: 0;
 }
-@media screen and (max-width: 1024px) {
-  /* Specific to this particular image */
+
+@media screen and (max-width: 1024px) { 
   img.bgSignIn {
     left: 50%;
-    margin-left: -512px;
-    /* 50% */
-  
+    margin-left: -512px;   
   }
-}
-/**********************************************************************************/
+} **//**********************************************************************************/
 /*************************************MAYA*****************************************/
 /**********************************************************************************/
 .form-control::-moz-placeholder {
@@ -4959,7 +4948,7 @@ fieldset {
   margin-bottom: 10px;
 }
 .mainSearch input {
-  background-color:
+  background-color: ;
   border-radius: solid 1px #acacac;
 }
 .mainSearch .btn {
@@ -4982,6 +4971,9 @@ legend {
 /**********************************************************************************/
 /**********************************************************************************/.row {
   margin-bottom: 10px;
+}
+.white {
+  background-color: #ffffff;
 }
 #plusOption a:hover {
   color: #ffffff;

@@ -2,11 +2,13 @@
     <div class="headerShowBox">
         <h2><i class="ico-tiket"></i>Ticket(s)</h2> 
     </div>
-    {{#tickets}}
-    <dl>       
+    
+    <dl>      
+        {{#tickets}}
         <dt>{{ticket_category.name_de}}</dt>
         <dd>{{amount}} CHF</dd>
+        {{/tickets}}
     </dl>
-    {{/tickets}}
+    
 
 </div>
