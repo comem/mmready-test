@@ -479,6 +479,9 @@ var ViewEvents = MyView.extend({
         $('#advancedResearchEvents').hide();
         $('#addEvent').show();
         $('#addArtistIntoEvent').show();
+        
+        createEvent();
+        
     }
 
 });

@@ -59,7 +59,29 @@ var URLSERVEURMusicianError =   "../php/services/MusicianError.php";
 
 
 
-
+/***************************** 
+ ******variables globales create event****
+ *****************************/
+//templates
+var templateMusician;
+var templateTicket;
+var templateImage;
+var templateImageApercu;
+var templateLink;
+var templateLinkApercu;
+var templateArtist;
+var templateArtistApercu;
+var templateMusicianApercu;
+var templateGenre;
+//comptage d'éléments
+var nbGenres = 1;
+var nbMucicians = 1;
+var idForMusicians;
+var nbTickets = 2;
+var nbArtist = 1;
+var nbLinks = 1;
+var nbImages = 1;
+var nbArtists = 1;
 
 
 
