@@ -1,0 +1,32 @@
+<div class="col-lg-12">
+    <h2 class="ico-responsable">Responsable</h2> 
+    <dl>       
+        {{#representer}}
+        <dt>First name</dt>
+        <dd>{{first_name}}</dd>
+
+        <dt>Last name</dt>
+        <dd>{{last_name}}</dd>
+
+        <dt>Email</dt>
+        <dd>{{email}}{{^email}}-{{/email}}</dd>
+
+        <dt>Phone</dt>
+        <dd>{{phone}}{{^phone}}-{{/phone}}</dd>
+        {{/representer}}
+        
+        {{^representer}}
+        <dt>First name</dt>
+        <dd>-</dd>
+
+        <dt>Last name</dt>
+        <dd>-</dd>
+
+        <dt>Email</dt>
+        <dd>-</dd>
+
+        <dt>Phone</dt>
+        <dd>-</dd>
+        {{/representer}}
+    </dl>
+</div>

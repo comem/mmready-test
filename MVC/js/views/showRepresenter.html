@@ -1,32 +1,43 @@
-<div class="col-lg-12">
-    <h2 class="ico-responsable">Responsable</h2> 
-    <dl>       
-        {{#representer}}
-        <dt>First name</dt>
-        <dd>{{first_name}}</dd>
-
-        <dt>Last name</dt>
-        <dd>{{last_name}}</dd>
-
-        <dt>Email</dt>
-        <dd>{{email}}{{^email}}-{{/email}}</dd>
-
-        <dt>Phone</dt>
-        <dd>{{phone}}{{^phone}}-{{/phone}}</dd>
-        {{/representer}}
-        
-        {{^representer}}
-        <dt>First name</dt>
-        <dd>-</dd>
-
-        <dt>Last name</dt>
-        <dd>-</dd>
-
-        <dt>Email</dt>
-        <dd>-</dd>
-
-        <dt>Phone</dt>
-        <dd>-</dd>
-        {{/representer}}
-    </dl>
+<div class="container-fluid">
+    <div class="row buttonsOptions">
+        <div class="col-lg-5 col-lg-offset-7">
+            <button class="btn btn-default" id="btn-back">Back to List</button>
+            <button class="btn btn-default">
+                <span class="ico-edit">Edit artist</span>
+            </button>
+            <button class="btn btn-default">
+                <span class="ico-delete">Delete artist</span>
+            </button>
+        </div>
+    </div>
 </div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{representer.first_name}} {{representer.last_name}}{{^representer.last_name}}-{{/representer.last_name}}</h1> 
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="headerShowBox">
+                <h2><i class="ico-info"></i>Information</h2> 
+            </div>
+            <dl>       
+                <dt>Email</dt>
+                <dd>{{representer.email}}{{^representer.email}}-{{/representer.email}}</dd>
+
+                <dt>Phone</dt>
+                <dd>{{representer.phone}}{{^representer.phone}}-{{/representer.phone}}</dd>
+                
+                 <dt>Address</dt>
+                <dd>{{representer.street}}{{^representer.street}}-{{/representer.street}} {{representer.npa}}{{^representer.npa}}-{{/representer.npa}} {{representer.city}}{{^representer.city}}-{{/representer.city}}</dd>
+
+                <dt>County</dt>
+                <dd>{{representer.country}}{{^representer.country}}-{{/representer.country}}</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+

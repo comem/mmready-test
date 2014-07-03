@@ -154,7 +154,7 @@ var ViewMusicians = MyView.extend({
 
     },
     render: function() {
-        
+
         this.$el.html(Mustache.render(this.template, {musicians: this.collection.toJSON()}));
         return this;
     }
@@ -331,7 +331,7 @@ var ViewAddArtist = MyView.extend({
  */
 
 var ViewTicket = MyView.extend({
-    template: templates.showTicket,
+    template: templates.showTicketIntoEvent,
     initialize: function(attrs, options) {
         this.listenTo(this.collection, 'all', this.render);
         this.render();
@@ -410,7 +410,7 @@ var ViewShowEvent = MyView.extend({
     },
     initialize: function(attrs, options) {
         this.viewTicket = new ViewTicket({collection: new Tickets({})});
-        this.viewRepresenter = new ViewShowRepresenter({model: new Representer({})});
+        this.viewRepresenter = new ViewShowRepresenterIntoEvent({model: new Representer({})});
         this.listenTo(this.model, 'all', this.render);
         this.render();
     },
@@ -462,6 +462,9 @@ var ViewRepresenters = MyView.extend({
 
     },
     initialize: function(attrs, options) {
+        this.showRepresenter = new ViewShowRepresenter({model: new Representer()});
+        this.showRepresenter.render().$el.appendTo('#showDetailRepresenter');
+        this.collection.fetch();
         this.listenTo(this.collection, 'all', this.render);
         this.render();
     },
@@ -476,12 +479,24 @@ var ViewRepresenters = MyView.extend({
         console.log('edit');
     },
     detail: function(event) {
-        console.log('detail');
+        $('#representersList').hide();
+
+        var idRepresenter = $(event.target).attr('data-id');
+        var representer = this.showRepresenter.model;
+        representer.set('id', idRepresenter);
+        console.log(this.collection);
+        console.log(event);
+        representer.fetch({
+            success: function() {
+
+            }
+        });
+        $('#showDetailRepresenter').show();
     }
 });
 
-var ViewShowRepresenter = MyView.extend({
-    template: templates.showRepresenter,
+var ViewShowRepresenterIntoEvent = MyView.extend({
+    template: templates.showRepresenterIntoEvent,
     events: {
     },
     initialize: function(attrs, options) {
@@ -493,6 +508,28 @@ var ViewShowRepresenter = MyView.extend({
         return this;
     }
 });
+
+var ViewShowRepresenter = MyView.extend({
+    template: templates.showRepresenter,
+    events: {
+        'click #btn-back': 'backListEvents'
+    },
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
+    },
+    render: function() {
+        this.$el.html(Mustache.render(this.template, {representer: this.model.toJSON()}));
+        return this;
+    },
+    backListEvents: function() {
+        $('#showDetailRepresenter').hide();
+        $('#representersList').show();
+    }
+
+});
+
+
 
 //        $('#eventsList').hide();
 //        $('#advancedResearchEvents').hide();

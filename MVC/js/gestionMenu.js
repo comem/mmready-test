@@ -22,12 +22,14 @@ $(function() {
     $('#representersList').hide();
     $('#showDetailEvent').hide();
     $('#showDetailArtist').hide();
+    $('#showDetailRepresenter').hide();
     $('#addOneArtist').hide();
     $('#musiciansList').hide();
     $('#showTicket').hide();
     $('#showRepresenter').hide();
     $('#addArtistIntoEvent').hide();
     $('#addEvent').hide();
+   
 
 
 // GESTION ADVANCED SEARCH
