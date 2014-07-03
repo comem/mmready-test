@@ -24,9 +24,9 @@ function checkout() {
         success: function(model, response, options) {
             console.log("IN success fetch of checkout");
             if (response.status === 'success') {
-console.log("IN success IF of checkout");
+                console.log("IN success IF of checkout");
                 //render de tout
-                
+
                 renderAll();
 
             } else if (response.status === "fail") {
@@ -34,7 +34,7 @@ console.log("IN success IF of checkout");
 
                 // render de login view
                 console.log("clickLOGIN");
-                
+
                 var login = new LoginModel();
                 var loginViewVar = new LoginView({model: login});
                 loginViewVar.$el.appendTo("body");
@@ -75,6 +75,20 @@ $(function() {
 //----------------------------------------------------------------------
 function navMgmt() {
 
+    $('#start').datetimepicker({
+        language: 'en'
+    });
+    $('#end').datetimepicker({
+        language: 'en'
+    });
+
+    $('#openingDoors').datetimepicker({
+        pickDate: false,
+        language: 'en'
+    });
+
+
+
 
 
 
@@ -90,7 +104,6 @@ function navMgmt() {
     $('#representersList').hide();
     $('#showDetailEvent').hide();
     $('#showDetailArtist').hide();
-    $('#showDetailRepresenter').hide();
     $('#addOneArtist').hide();
     $('#musiciansList').hide();
     $('#showTicket').hide();
@@ -99,13 +112,12 @@ function navMgmt() {
     $('#addEvent').hide();
 
 
-
 // GESTION ADVANCED SEARCH
 
     $('nav').on('click', '#plusOption', function(e) {
         e.preventDefault();
         $('.advancedResearch').toggle(function() {
-            $('#plusOption > i').toggleClass('ico-plus ico-calendar');
+            $('#plusOption > i').toggleClass('ico-plus ico-minus');
         });
     });
 
@@ -141,6 +153,7 @@ function navMgmt() {
 
 
     $('body').on('click', '.secondNav', function(e) {
+
         menuElementClickHandler($(this));
         e.preventDefault();
         return false;
@@ -156,10 +169,22 @@ function navMgmt() {
 
 
 
-
     $('ul#mainNav a:first').trigger('click');
 
-
+/*
+ |--------------------------------------------------------------------------
+ | Gestion de l'input autocomplète
+ |--------------------------------------------------------------------------
+ */
+    $('#autocomplete').on('click', function(event) {
+        $(this).addClass('largeSearch');
+        event.preventDefault();
+    }).on('blur', function(event) {
+        if( !$(this).val() ) {
+            $(this).removeClass('largeSearch');
+            event.preventDefault();
+        }
+    });
 
 
 }
@@ -216,7 +241,7 @@ function menuGoToSection(sectionName) {
 
 function renderAll() {
 
-    
+
 
     //***************** AUTOCOMPLETE VIEW **********************************
 
@@ -234,12 +259,12 @@ function renderAll() {
 //    $("#navSection").hide;
 //    var loginViewVar = new LoginView({model: new LoginModel()});
 
-   
+
 
     var nav = new ViewNav({model: new Nav()});
-    
+
     navMgmt();
-    
+
     var advancedResearchEvent = new ViewAdvancedResearchEvent({collection: new Events()});
     var advancedResearchArtist = new ViewAdvancedResearchArtist({collection: new Artists()});
     //var researchRepresentant = new ViewResearchRepresentant({collection: artistsList});
@@ -252,7 +277,7 @@ function renderAll() {
 
     //NAV
 //    loginViewVar.$el.appendTo("body");
-  nav.render().$el.appendTo('body');
+    nav.render().$el.appendTo('body');
 
     //RESEARCH
     advancedResearchEvent.render().$el.appendTo('#advancedResearchEvents');
@@ -272,8 +297,8 @@ function renderAll() {
 
 }
 
-function hideAll(){
-    
+function hideAll() {
+
     $("nav").hide();
     $('.advancedResearch').hide();
     $('#advancedResearchEvents').hide();
@@ -293,6 +318,6 @@ function hideAll(){
     $('#showRepresenter').hide();
     $('#addArtistIntoEvent').hide();
     $('#addEvent').hide();
-    
-    
+
+
 }

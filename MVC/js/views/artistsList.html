@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!--<div class="container-fluid">
     <div class="row buttonsOptions">
         <div class="col-lg-5 col-lg-offset-7">
             <button class="btn btn-default" id="btn-addArtist">Add Artist</button>
@@ -8,15 +8,14 @@
 
     </div>
 
-</div>
+</div>-->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-8">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h1>Artists</h1>
-                </div>
-            </div>
+        <div class="col-lg-12">
+        
+                
+                    <h1 class="ico-artist">Artists</h1>
+    
             <div class="row">
                 <div class="col-lg-2">
                     <div class="form-inline">
@@ -36,18 +35,18 @@
                 
                 <div class="col-lg-12 result">
                     
-                    <div class="col-lg-7 col-lg-offset-1 searchResult">
+                    <div class="col-lg-9 col-lg-offset-1 searchResult">
                         <span class="pull-right"><a href="#" class="ico-delete" data-id="{{id}}"></a></span>
                         <span class="pull-right"><a href="#" class="ico-edit"></a></span>
 
                         <span class="pull-right"><a href="showDetailArtist" class="ico-detail" data-id="{{id}}"></a></span>
-                        <h1>{{name}} {{#genres}}<small> {{name_de}} </small>{{/genres}}</h1>
+                        <h1>{{name}} {{#genres}}<small><span class="genreBreak"> {{name_de}} </span></small>{{/genres}}</h1>
                         <div class="row moreInfo">
                             <div class="col-lg-12">
-                                <ul>
-                                    <li>{{short_description_de}}{{^short_description_de}}-{{/short_description_de}}</li>
+                                
+                                    <p>{{short_description_de}}{{^short_description_de}}-{{/short_description_de}}</p>
                           
-                                </ul>
+                                
                             </div>
                         </div> <!-- end artist-->
                         
