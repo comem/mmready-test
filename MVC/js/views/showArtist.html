@@ -31,8 +31,9 @@
                 <dt>Name</dt>
                 <dd>{{name}}</dd>
 
-                {{#genres}}
+
                 <dt>Genre(s)</dt>
+                {{#genres}}
                 <dd>{{name_de}}</dd>
                 {{/genres}}
 
@@ -72,7 +73,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="headerShowBox">
-                <h2><i class="ico-img"> Images</i></h2>
+                <h2><i class="ico-img">Images(s)</i></h2>
             </div>
             {{#images}}
             <img src="{{source}}" height="50px">
@@ -94,11 +95,12 @@
                 <dt>Link name</dt>
                 <dd><a href="{{url}}">{{url}}</a></dd>
                 {{/links}}
+                {{^links}}
+                <dt>Link name</dt>
+                <dd><a href="">-</a></dd>
+                {{/links}}
             </dl>
-            {{^links}}
-            <dt>Link name</dt>
-            <dd><a href="">-</a></dd>
-            {{/links}}
+
 
         </div>
     </div>
