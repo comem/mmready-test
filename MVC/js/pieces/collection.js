@@ -38,7 +38,7 @@ var Events = MyCollection.extend({
             
             return response.data.response;
         }else{
-            console.log(response);
+            //console.log(response);
            return response;
         }
     }

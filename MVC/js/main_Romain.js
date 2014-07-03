@@ -39,8 +39,8 @@ $(document).ready(function() {
 
     
     createArtistView.$el.appendTo("#createArtist");
-    console.log("genresList depuis MAIN");
-    console.log(genresList);
+    
+    
     //genresListView.$el.after("#nameArtistInput");
     console.log("document ready occurred!");
 
@@ -78,7 +78,7 @@ $(document).ready(function() {
     $("#isDate").click(function() {
 
         var events = new Events();
-        console.log(events);
+       
 //        events.fetch({
 //            success: function (a, b, c){
 //                
