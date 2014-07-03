@@ -23,7 +23,7 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-4">
             <div class="headerShowBox">
                 <h2><i class="ico-info"></i>Information</h2> 
             </div>
@@ -55,23 +55,38 @@
                 {{/performers}}
             </dl>
             {{/events}}
-            <div class="row">
-                <div class="col-lg-6">
-                    <h3>Short description</h3> 
-                    <p>{{short_description_de}}{{^short_description_de}}-{{/short_description_de}}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <h3>Long description</h3> 
-                    <p>{{complete_description_de}}{{^complete_description_de}}-{{/complete_description_de}}</p>
-                </div>
-            </div>
+             </div>
+         <div class="col-lg-4">
+        <div class="headerShowBox">
+            <h2><i class="ico-musician"></i>Musician(s)</h2> 
         </div>
-    </div>
+        
+                {{#musicians}}
+                <dl>       
+                    <dt>Name</dt>
+                    <dd>{{first_name}}</dd>
+                    <dt>Scene Name</dt>
+                    <dd>{{stagename}}{{^stagename}}-{{/stagename}}</dd>
+                    {{#instruments}}
+                    <dt>Instruments</dt>
+                    <dd>{{name_de}}</dd>
+                    {{/instruments}}
+                </dl>
+                {{/musicians}}
+                {{^musicians}}
+                <dl>       
+                    <dt>Name</dt>
+                    <dd>-</dd>
+                    <dt>Scene Name</dt>
+                    <dd>-</dd>
+                    <dt>Instruments</dt>
+                    <dd>-</dd>
+                </dl>
+                {{/musicians}}
+   
+</div>
 
-    <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-4">
             <div class="headerShowBox">
                 <h2><i class="ico-img">Images(s)</i></h2>
             </div>
@@ -82,10 +97,15 @@
             <p>-</p>
             {{/images}}
         </div>
-    </div>
+            
+           
+        </div>
+   
 
     <div class="row">
-        <div class="col-lg-12">
+             
+
+        <div class="col-lg-4">
             <div class="headerShowBox">
                 <h2><i class="ico-link"></i>Link(s)</h2> 
             </div>
@@ -103,8 +123,21 @@
 
 
         </div>
+        
+                <div class="col-lg-4">
+                     <div class="headerShowBox">
+                <h2>Short description</h2> 
+            </div>
+                    <p>{{short_description_de}}{{^short_description_de}}-{{/short_description_de}}</p>
+                </div>
+           
+           
+                <div class="col-lg-4">
+                     <div class="headerShowBox">
+                <h2>Long description</h2> 
+            </div> 
+                    <p>{{complete_description_de}}{{^complete_description_de}}-{{/complete_description_de}}</p>
+                </div>
     </div>
-    <section id="musiciansList">
-
-    </section>
+ 
 </div>

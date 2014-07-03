@@ -28,7 +28,7 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-4">
             <div class="headerShowBox">
                 <h2><i class="ico-info"></i>Information</h2> 
             </div>
@@ -55,15 +55,15 @@
                 <dd>{{nb_places}}{{^nb_places}}-{{/nb_places}}</dd>
             </dl>
         </div>
-    </div>
-
-    <div class="row">
+   
         <section id="showTicket">
 
         </section>
 
-        <div class="col-lg-6">
-            <h2 class="ico-img">Image</h2>
+        <div class="col-lg-4">
+            <div class="headerShowBox">
+                <h2><i class="ico-img">Image</i></h2>
+            </div>
             <!--<img src="img/event.png" height="50px"/>-->
             {{#image}}
             <p>{{source}}</p>
@@ -73,10 +73,11 @@
             {{/image}}
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <h2 class="ico-artist">Artist(s)</h2> 
+  <div class="row">
+        <div class="col-lg-4">
+            <div class="headerShowBox">
+                <h2><i class="ico-artist">Artist(s)</i></h2> 
+            </div>
             <div class="listArtists">
                 {{#performers}}
                 {{#artist}}
@@ -88,10 +89,10 @@
                 {{/performers}}
             </div>
         </div>
-    </div>
+    
 
-    <div class="row">
-        <div class="col-lg-12 meal">
+    
+        <div class="col-lg-4 meal">
             <div class="headerShowBox">
                 <h2><i class="ico-food"></i>Meal</h2> 
             </div>
@@ -109,18 +110,18 @@
             </form>
         </div>
 
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <h2 class="ico-note">Notes</h2> 
-            <div class="col-lg-4">
+   
+        <div class="col-lg-4">
+            <div class="headerShowBox">
+                <h2><i  class="ico-note">Notes</i></h2>
+            </div>
+            <div class="col-lg-12">
                 <p>{{notes_de}}{{^notes_de}}-{{/notes_de}}</p>
             </div>
         </div>
-    </div>
+  </div>
 
-    <div class="row">
+      <div class="row">
         <section id="showRepresenter">
 
         </section>
