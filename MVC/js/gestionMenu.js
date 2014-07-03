@@ -9,7 +9,7 @@ window.onpopstate = function(event) {
 
 $(function() {
     
-   
+    
     $('.advancedResearch').hide();
     $('#advancedResearchEvents').hide();
     $('#advancedResearchArtists').hide();

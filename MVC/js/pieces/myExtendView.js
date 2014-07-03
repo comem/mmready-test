@@ -1,6 +1,23 @@
 var MyView = Backbone.View.extend();
 /*
  |--------------------------------------------------------------------------
+ | NAV
+ |--------------------------------------------------------------------------
+ */
+var ViewNav = MyView.extend({
+    template: templates.nav,
+    initialize: function(attrs, options) {
+        this.listenTo(this.model, 'all', this.render);
+        this.render();
+    },
+    render: function() {
+
+        this.$el.html(Mustache.render(this.template, {nav: this.model.toJSON()}));
+        return this;
+    }
+});
+/*
+ |--------------------------------------------------------------------------
  | ADVANCED RESEARCH ARTIST
  |--------------------------------------------------------------------------
  */

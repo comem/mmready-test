@@ -60,6 +60,10 @@ var LoginModel = MyModel.extend({
 var LogoutModel = MyModel.extend({
     urlRoot: LOGOUT
 });
+
+var Nav = MyModel.extend({
+    
+});
 //--------------------------------------------
 
 var Artist = MyModel.extend({
