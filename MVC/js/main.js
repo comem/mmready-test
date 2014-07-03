@@ -33,9 +33,7 @@ function checkout() {
             } else if (response.status === "fail") {
                 console.log("IN FAIL IF of checkout");
 
-               
-                
-                hideAll();
+
                 var login = new LoginModel();
                 var loginViewVar = new LoginView({model: login});
                 loginViewVar.$el.appendTo("body");
@@ -301,7 +299,12 @@ function renderAll() {
     addEvent.render().$el.appendTo('#addEvent');
     addArtist.render().$el.appendTo('#addOneArtist');
 
-
+    $("#btnLogout").on("click", function(){
+       
+       new LogoutModel().fetch();
+       
+       
+   });
 
 }
 

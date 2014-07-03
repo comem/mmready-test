@@ -6,7 +6,7 @@ var MyView = Backbone.View.extend();
 
 var LoginView = MyView.extend({///!\ doublon avec viewROmain
 
-    template: templates.loginFab,
+    template: templates.login,
     initialize: function(attrs, options) {
         this.listenTo(this.model, 'all', this.render);
         this.render();
