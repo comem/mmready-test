@@ -355,8 +355,7 @@ var ViewEvents = MyView.extend({
         'click a.ico-delete': 'delete',
         'click a.ico-edit': 'edit',
         'click a.ico-detail': 'detail',
-        'click #btn-addEvent': 'addEvent',
-        'click #page2': 'page2'
+        'click #btn-addEvent': 'addEvent'
     },
     initialize: function(attrs, options) {
         // internal view for event detail
@@ -401,12 +400,6 @@ var ViewEvents = MyView.extend({
         $('#advancedResearchEvents').hide();
         $('#addEvent').show();
         $('#addArtistIntoEvent').show();
-    },
-    page2: function(event) {
-        var nbPage = $(event.target).attr('data-page');
-        this.collection.set('url', EVENTS + "?page=" + nbPage);
-        
-        console.log(this.collection);
     }
 
 });
