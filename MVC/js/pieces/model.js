@@ -6,6 +6,21 @@
 //   ainsi que fail et error
 var MyInitModel = Backbone.Model.extend();
 
+var Plugin = Backbone.Model.extend({
+    value: function () {
+        return this.get("value");
+    },
+    type: function () {
+        return this.get("type");
+    },
+    class: function () {
+        return this.get("class");
+    },
+    ccid: function(){
+        return this.get("id");
+    }
+});
+
 var MyModel = Backbone.Model.extend({
     parse: function(response) {
         // to do if statut fail/error un gros if pour le statut
@@ -22,6 +37,7 @@ var MyModel = Backbone.Model.extend({
         return response;
     }
 });
+
 
 var LoginModel = MyModel.extend({
     urlRoot: LOGIN,

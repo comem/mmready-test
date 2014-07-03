@@ -12,6 +12,15 @@ var MyCollection = Backbone.Collection.extend({
 });
 
 //--------------------------------------------
+//--------------------------------------------
+
+var PluginCollection = MyCollection.extend({
+    url: SEARCH,
+    model:Plugin
+});
+
+//--------------------------------------------
+//--------------------------------------------
 
 var Artists = MyCollection.extend({
     url: ARTISTS

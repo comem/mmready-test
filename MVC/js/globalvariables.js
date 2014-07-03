@@ -16,6 +16,7 @@ var AUTH_MANAGER_FR   = {"email":"matou@matou.ch","password":"matou"};
 var AUTH_STAFF_DE     = {"email":"de@staff.ch","password":"staff"};
 var AUTH_STAFF_FR     = {"email":"fr@staff.ch","password":"staff"};
    
+var SEARCH            = "http://pingouin.heig-vd.ch/rockit/v1/search";
 var ARTISTS           = "http://pingouin.heig-vd.ch/rockit/v1/artists";
 var EVENTS            = "http://pingouin.heig-vd.ch/rockit/v1/events";
 
