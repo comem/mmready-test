@@ -21,7 +21,7 @@
             <h1 class="page-header">{{name}}</h1> 
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-lg-12">
             <div class="headerShowBox">
@@ -40,60 +40,69 @@
             {{#events}}
             <dl>
                 <dt>Event</dt>
-                <dd>{{title_de}}</dd>
+                <dd>{{title_de}}{{^title_de}}-{{/title_de}}</dd>
 
                 {{#performers}}
                 <dt>heure d'arrivée </dt>
-                <dd>{{artist_hour_of_arrival}}</dd>
+                <dd>{{artist_hour_of_arrival}}{{^artist_hour_of_arrival}}-{{/artist_hour_of_arrival}}</dd>
 
                 <dt>Order </dt>
                 <dd>{{order}}</dd>
 
                 <dt>Is Support</dt>
-                <dd>{{is_support}}</dd>
+                <dd>{{is_support}}{{^is_support}}-{{/is_support}}</dd>
                 {{/performers}}
             </dl>
             {{/events}}
             <div class="row">
                 <div class="col-lg-6">
                     <h3>Short description</h3> 
-                    <p>{{short_description_de}}</p>
+                    <p>{{short_description_de}}{{^short_description_de}}-{{/short_description_de}}</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
                     <h3>Long description</h3> 
-                    <p>{{complete_description_de}}</p>
+                    <p>{{complete_description_de}}{{^complete_description_de}}-{{/complete_description_de}}</p>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-lg-12">
             <div class="headerShowBox">
                 <h2><i class="ico-img"> Images</i></h2>
             </div>
             {{#images}}
-            <!--<img src="{{source}}" height="50px">--><p>{{source}}</p>
+            <img src="{{source}}" height="50px">
+            {{/images}}
+            {{^images}}
+            <p>-</p>
             {{/images}}
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-lg-12">
             <div class="headerShowBox">
                 <h2><i class="ico-link"></i>Link</h2> 
             </div>
-            {{#links}}
-            <dl>     
+
+            <dl> 
+                {{#links}}
                 <dt>Link name</dt>
-                <dd><a href="">{{url}}</a></dd>
+                <dd><a href="{{url}}">{{url}}</a></dd>
+                {{/links}}
             </dl>
+            {{^links}}
+            <dt>Link name</dt>
+            <dd><a href="">-</a></dd>
             {{/links}}
+
         </div>
     </div>
     <section id="musiciansList">
-        
+
     </section>
 </div>

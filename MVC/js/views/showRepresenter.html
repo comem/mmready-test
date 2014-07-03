@@ -7,12 +7,26 @@
 
         <dt>Last name</dt>
         <dd>{{last_name}}</dd>
-        
+
         <dt>Email</dt>
-        <dd>{{email}}</dd>
-        
+        <dd>{{email}}{{^email}}-{{/email}}</dd>
+
         <dt>Phone</dt>
-        <dd>{{phone}}</dd>
-    {{/representer}}
+        <dd>{{phone}}{{^phone}}-{{/phone}}</dd>
+        {{/representer}}
+        
+        {{^representer}}
+        <dt>First name</dt>
+        <dd>-</dd>
+
+        <dt>Last name</dt>
+        <dd>-</dd>
+
+        <dt>Email</dt>
+        <dd>-</dd>
+
+        <dt>Phone</dt>
+        <dd>-</dd>
+        {{/representer}}
     </dl>
 </div>

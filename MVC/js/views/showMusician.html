@@ -10,11 +10,21 @@
                     <dt>Name</dt>
                     <dd>{{first_name}}</dd>
                     <dt>Scene Name</dt>
-                    <dd>{{stagename}}</dd>
+                    <dd>{{stagename}}{{^stagename}}-{{/stagename}}</dd>
                     {{#instruments}}
                     <dt>Instruments</dt>
                     <dd>{{name_de}}</dd>
                     {{/instruments}}
+                </dl>
+                {{/musicians}}
+                {{^musicians}}
+                <dl>       
+                    <dt>Name</dt>
+                    <dd>-</dd>
+                    <dt>Scene Name</dt>
+                    <dd>-</dd>
+                    <dt>Instruments</dt>
+                    <dd>-</dd>
                 </dl>
                 {{/musicians}}
             </div>
