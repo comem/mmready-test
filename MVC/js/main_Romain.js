@@ -52,10 +52,6 @@ $(document).ready(function() {
     });
 
  
-
-        
-
-
         new AutoCompleteView({
         input: $("#autocomplete"),
         model: plugins,

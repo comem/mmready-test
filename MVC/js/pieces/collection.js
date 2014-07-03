@@ -23,14 +23,14 @@ var PluginCollection = MyCollection.extend({
 //--------------------------------------------
 
 var Artists = MyCollection.extend({
-    url: ARTISTS
+    url: ARTISTS+"?nb_item=500"
     
 });
 
 
 var Events = MyCollection.extend({
     model:Event,
-    url: EVENTS,
+    url: EVENTS+"?nb_item=500",
     parse: function (response) {
         // todo error et fail
         //return typeof response.data.response != "undefined" ? response.data.response : response;
