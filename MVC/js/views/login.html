@@ -1,5 +1,16 @@
-{{#login}}
-<input type="text" placeholder="email" id="email" autocomplete="off">
-<input type="text" placeholder="password" id="password">
-<button type="submit" id="{{txtButton}}">{{txtButton}}</button>
-{{/login}}
+
+<div class="container-fluid signIn">
+
+      <form class="form-signin" role="form">
+       <div class="headerShowBox">
+    <h1><i class="ico-key"></i>Login</h1> 
+  </div>
+        <input id="email" type="email" class="form-control" placeholder="Email" required autofocus>
+        <input id="password" type="password" class="form-control" placeholder="Password" required>
+        <label class="checkbox">
+          <input id="remember" type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button id="btnConnect" class="btn btn-lg btn-default btn-block" type="button">Meld An !</button>
+      </form>
+
+    </div> <!-- /container -->
